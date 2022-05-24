@@ -1,1 +1,0 @@
-../../../../../../libxlsxwriter/include/xlsxwriter/third_party/emyg_dtoa.h
