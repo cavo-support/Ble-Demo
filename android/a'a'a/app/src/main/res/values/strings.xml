@@ -1,0 +1,211 @@
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingTranslation">
+    <string name="app_name">SdkDemo</string>
+    <string name="app_scan">Scan</string>
+    <string name="app_function">Function list</string>
+    <string name="app_login">Login (Must operate)</string>
+    <string name="app_time">Sync time</string>
+    <string name="app_user">User information</string>
+    <string name="app_clock">Clock</string>
+    <string name="app_call">Call reminder</string>
+    <string name="app_notify">Notify reminder</string>
+    <string name="app_camera">Camera</string>
+    <string name="app_sedentary">Sedentary reminder</string>
+    <string name="app_home_ui">Screen ui</string>
+    <string name="app_disturb">Disturb mode</string>
+    <string name="app_find_band">Find watch</string>
+    <string name="app_find_phone">Find phone</string>
+    <string name="app_battery">Battery</string>
+    <string name="app_sport">Exercise</string>
+    <string name="app_reset">Disconnect/Remove bind</string>
+    <string name="app_step">Step</string>
+    <string name="app_sleep">Sleep</string>
+    <string name="app_rate">Heart rate</string>
+    <string name="app_bp">Blood pressure</string>
+    <string name="app_temp">Temperature</string>
+    <string name="app_sync_data">Sync device data</string>
+    <string name="app_mac_address">Earphone connect</string>
+    <string name="app_language">Language</string>
+    <string name="app_unit">Unit Setting</string>
+    <string name="app_timer">Count down</string>
+    <string name="app_rate_detect">Heart rate detect</string>
+    <string name="app_light_control">Screen light control</string>
+    <string name="app_notify_switch">Notify switch control</string>
+    <string name="app_device_info">Device information (Must operate)</string>
+    <string name="app_goal_setting">Goal setting</string>
+    <string name="app_music">music</string>
+    <string name="app_silence_ota">Silence ota</string>
+    <string name="app_custom_ui">Custom UI</string>
+    <string name="app_debug_notify">Debug Notify Switch</string>
+    <string name="app_set_custom_style_color" >JW Update Interface Color</string>
+
+    <string name="app_start_measure">Start detect</string>
+    <string name="app_stop_measure">Stop detect</string>
+
+    <string name="app_phone_num">Phone number</string>
+    <string name="app_nick_name">Nick name</string>
+    <string name="app_in_call">Sync in call</string>
+    <string name="app_off_call">Reject call</string>
+
+    <string name="app_enter_camera">Enter camera mode</string>
+    <string name="app_exit_camera">Exit camera mode</string>
+
+    <string name="app_read">Read</string>
+    <string name="app_year">Year</string>
+    <string name="app_month">Month</string>
+    <string name="app_day">Day</string>
+    <string name="app_hour">Hour</string>
+    <string name="app_minute">Minute</string>
+    <string name="app_sunday">Sunday</string>
+    <string name="app_monday">Monday</string>
+    <string name="app_tuesday">Tuesday</string>
+    <string name="app_wednesday">Wednesday</string>
+    <string name="app_thursday">Thursday</string>
+    <string name="app_friday">Friday</string>
+    <string name="app_saturday">Saturday</string>
+    <string name="app_set">Setting</string>
+
+    <string name="app_read_device_info">Read device information</string>
+    <string name="app_read_device_function">Read device support function</string>
+
+    <string name="app_open">Open</string>
+    <string name="app_close">Close</string>
+    <string name="app_start_hour">Begin hour</string>
+    <string name="app_start_minute">Begin minute</string>
+    <string name="app_end_hour">End hour</string>
+    <string name="app_end_minute">End minute</string>
+
+    <string name="app_home_ui_index">Screen ui index</string>
+
+    <string name="app_read_local">Read local</string>
+
+    <string name="app_measure_interval">Detect interval</string>
+
+    <string name="app_language_index">Language index</string>
+
+    <string name="app_read_turn_wrist">Read turn wrist setting</string>
+    <string name="app_set_turn_wrist">Set turn wrist setting</string>
+    <string name="app_read_screen_light_duration">Read screen light duration</string>
+    <string name="app_set_screen_light_duration">Set screen light duration</string>
+    <string name="app_screen_light_duration">Screen light duration</string>
+
+    <string name="app_notify_type">Notify type</string>
+    <string name="app_notify_content">Notify Content</string>
+    <string name="app_send">Send</string>
+
+    <string name="app_phone">Call</string>
+    <string name="app_sms">Sms</string>
+
+    <string name="app_disconnect">Disconnect</string>
+    <string name="app_remove_bind">Remove bind</string>
+
+    <string name="app_max_value">Max value</string>
+    <string name="app_interval">Interval</string>
+
+    <string name="app_check_sport_rate">check sport rate detect</string>
+    <string name="app_start_sport_rate">Start sport rate detect</string>
+    <string name="app_stop_sport_rate">Stop sport rate detect</string>
+
+    <string name="app_sync_today_to_device">Sync today step count to device</string>
+
+    <string name="app_step_goal">Step goal</string>
+    <string name="app_sleep_goal">Sleep goal minute</string>
+
+    <string name="sync_data">Sync device data</string>
+
+    <string name="app_normal_duration">Normal duration seconds</string>
+    <string name="app_start">Start</string>
+    <string name="app_stop">Stop</string>
+
+    <string name="app_metric_system">Metric system</string>
+    <string name="app_english_system">English system</string>
+
+    <string name="app_age">Age</string>
+    <string name="app_male">Male</string>
+    <string name="app_female">Female</string>
+    <string name="app_height">Height cm</string>
+    <string name="app_weight">Weight kg</string>
+    <string name="app_sync_user_info">sync user information</string>
+
+    <string name="app_success">Success</string>
+    <string name="app_fail">Fail</string>
+
+    <string name="app_error">Some thing error</string>
+
+    <string name="app_reject_call">Reject call</string>
+    <string name="app_call_hint">Please input phone number or nick name</string>
+
+    <string name="app_clock_hint_year">Please input clock year</string>
+    <string name="app_clock_hint_month">Please input clock month</string>
+    <string name="app_clock_hint_day">Please input clock day</string>
+    <string name="app_clock_hint_hour">Please input clock hour</string>
+    <string name="app_clock_hint_minute">Please input clock minute</string>
+
+    <string name="app_disturb_hint_start_hour">Please input begin hour</string>
+    <string name="app_disturb_hint_start_minute">Please input begin minute</string>
+    <string name="app_disturb_hint_end_hour">Please input begin hour</string>
+    <string name="app_disturb_hint_end_minute">Please input end minute</string>
+
+    <string name="app_home_ui_hint">Please input screen ui index</string>
+
+    <string name="app_hr_detect_hint">Please input detect interval</string>
+
+    <string name="app_language_hint">Please input language index</string>
+
+    <string name="app_light_duration_hint">Please input screen light duration</string>
+
+    <string name="app_notify_hint_type">Please input notify type</string>
+    <string name="app_notify_hint_content">Please input notify content</string>
+
+    <string name="app_connect_success">Connect success</string>
+    <string name="app_connect_fail">Connect fail</string>
+
+    <string name="app_sedentary_hint_max_value">Please input max value</string>
+    <string name="app_sedentary_hint_start">Please input begin minutes</string>
+    <string name="app_sedentary_hint_end">Please input end minutes</string>
+    <string name="app_sedentary_hint_interval">Please input detect interval</string>
+
+    <string name="app_goal_hint_step">Please input step goal</string>
+    <string name="app_goal_hint_sleep">Please input sleep goal minutes</string>
+
+    <string name="app_timer_hint_duration">Please input normal duration</string>
+
+    <string name="app_user_hint_age">Please input age</string>
+    <string name="app_user_hint_height">Please input height</string>
+    <string name="app_user_hint_weight">Please input weight</string>
+
+    <string name="app_read_ear_mac">Read ear phone mac</string>
+    <string name="app_read_ear_status">Read ear phone status</string>
+
+    <string name="app_check_test_temp_status">Check temperature measure status</string>
+    <string name="app_read_temp_setting">Read temperature setting</string>
+    <string name="app_set_temp_setting">Set temperature setting</string>
+    <string name="app_temp_show">Show temperature on device</string>
+    <string name="app_temp_adjust">Adjust temperature </string>
+    <string name="app_temp_unit">Temperature unit</string>
+
+    <string name="app_read_bp_setting">Read bp setting</string>
+    <string name="app_set_bp_setting">Setting bp</string>
+    <string name="app_show_bp">Show bp on device</string>
+
+    <string name="app_read_private_bp_setting">Read private bp setting</string>
+    <string name="app_set_private_bp_setting">Setting private bp</string>
+    <string name="app_private_bp">private bp </string>
+    <string name="app_load_local_bp">Query local bp</string>
+
+    <string name="app_music_play">Music play</string>
+    <string name="app_music_volume">Volume percent (0-100)</string>
+    <string name="app_set_music">set music status</string>
+
+    <string name="app_check_silence_ota_status">Check silence ota status</string>
+    <string name="app_silence_mode">Upgrade mode 0-4</string>
+    <string name="app_set_silence_ota_mode">set silence ota mode</string>
+    <string name="app_read_silence_ota_mode">Read silence ota mode</string>
+
+    <string name="app_time_color">Time color 0:dark 1:light</string>
+    <string name="app_gravity">Gravity 0:left 1:center 2:right</string>
+    <string name="app_x_coordinate">X coordinate</string>
+    <string name="app_y_coordinate">Y coordinate</string>
+    <string name="app_default_text">default</string>
+    <string name="app_connect_device_not">Please connect the device</string>
+</resources>

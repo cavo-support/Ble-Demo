@@ -1,0 +1,210 @@
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ExtraTranslation">
+    <string name="app_name">SdkDemo</string>
+    <string name="app_scan">扫描</string>
+    <string name="app_function">功能列表</string>
+    <string name="app_login">登录（必须操作）</string>
+    <string name="app_time">同步时间</string>
+    <string name="app_user">用户信息</string>
+    <string name="app_clock">设置闹钟</string>
+    <string name="app_call">来电提醒</string>
+    <string name="app_notify">通知推送</string>
+    <string name="app_camera">拍照</string>
+    <string name="app_sedentary">久坐提醒</string>
+    <string name="app_home_ui">设置主页</string>
+    <string name="app_disturb">勿扰模式</string>
+    <string name="app_find_band">查找手环</string>
+    <string name="app_find_phone">查找手机</string>
+    <string name="app_battery">查询电量</string>
+    <string name="app_sport">运动</string>
+    <string name="app_reset">断开连接/解除绑定</string>
+    <string name="app_step">计步</string>
+    <string name="app_sleep">睡眠</string>
+    <string name="app_rate">心率</string>
+    <string name="app_bp">血压</string>
+    <string name="app_temp">温度</string>
+    <string name="app_sync_data">同步数据</string>
+    <string name="app_mac_address">耳机连接相关</string>
+    <string name="app_language">语言</string>
+    <string name="app_unit">单位设置</string>
+    <string name="app_timer">倒计时</string>
+    <string name="app_rate_detect">心率自动检测</string>
+    <string name="app_light_control">亮屏控制</string>
+    <string name="app_notify_switch">通知开关</string>
+    <string name="app_device_info">设备信息（必须操作）</string>
+    <string name="app_goal_setting">目标设定</string>
+    <string name="app_music">音乐</string>
+    <string name="app_silence_ota">静默升级</string>
+    <string name="app_custom_ui">自定义主界面</string>
+    <string name="app_debug_notify">DEBUGNOTIFY开关</string>
+    <string name="app_set_custom_style_color" >设置表盘颜色</string>
+
+    <string name="app_start_measure">开始测量</string>
+    <string name="app_stop_measure">结束测量</string>
+
+    <string name="app_phone_num">电话号码</string>
+    <string name="app_nick_name">昵称</string>
+    <string name="app_in_call">同步来电</string>
+    <string name="app_off_call">挂断电话</string>
+
+    <string name="app_enter_camera">开始拍照</string>
+    <string name="app_exit_camera">结束拍照</string>
+
+    <string name="app_read">读取</string>
+    <string name="app_year">年</string>
+    <string name="app_month">月</string>
+    <string name="app_day">日</string>
+    <string name="app_hour">时</string>
+    <string name="app_minute">分</string>
+    <string name="app_sunday">星期日</string>
+    <string name="app_monday">星期一</string>
+    <string name="app_tuesday">星期二</string>
+    <string name="app_wednesday">星期三</string>
+    <string name="app_thursday">星期四</string>
+    <string name="app_friday">星期五</string>
+    <string name="app_saturday">星期六</string>
+    <string name="app_set">设置</string>
+
+    <string name="app_read_device_info">读取设备信息</string>
+    <string name="app_read_device_function">读取设备功能</string>
+
+    <string name="app_open">开</string>
+    <string name="app_close">关</string>
+    <string name="app_start_hour">开始 时</string>
+    <string name="app_start_minute">开始 分</string>
+    <string name="app_end_hour">结束 时</string>
+    <string name="app_end_minute">结束 分</string>
+
+    <string name="app_home_ui_index">主页风格序号</string>
+
+    <string name="app_read_local">读取本地</string>
+
+    <string name="app_measure_interval">检测周期分钟</string>
+
+    <string name="app_language_index">语言编号</string>
+
+    <string name="app_read_turn_wrist">读取转腕</string>
+    <string name="app_set_turn_wrist">设置转腕</string>
+    <string name="app_read_screen_light_duration">读取亮屏时长</string>
+    <string name="app_set_screen_light_duration">设置亮屏时长</string>
+    <string name="app_screen_light_duration">亮屏时长</string>
+
+    <string name="app_notify_type">通知类型</string>
+    <string name="app_notify_content">通知内容</string>
+    <string name="app_send">发送</string>
+
+    <string name="app_phone">电话</string>
+    <string name="app_sms">短信</string>
+
+    <string name="app_disconnect">断开连接</string>
+    <string name="app_remove_bind">解除绑定</string>
+
+    <string name="app_max_value">阀值</string>
+    <string name="app_interval">间隔</string>
+
+    <string name="app_check_sport_rate">检查运动时心率</string>
+    <string name="app_start_sport_rate">开启运动时心率</string>
+    <string name="app_stop_sport_rate">结束运动时心率</string>
+
+    <string name="app_sync_today_to_device">同步今日计步到设备</string>
+
+    <string name="app_step_goal">目标步数</string>
+    <string name="app_sleep_goal">目标睡眠 分钟</string>
+
+    <string name="sync_data">同步数据</string>
+
+    <string name="app_normal_duration">常用时长 秒</string>
+    <string name="app_start">开始</string>
+    <string name="app_stop">结束</string>
+
+    <string name="app_metric_system">公制</string>
+    <string name="app_english_system">英制</string>
+
+    <string name="app_age">年龄</string>
+    <string name="app_male">男</string>
+    <string name="app_female">女</string>
+    <string name="app_height">身高 cm</string>
+    <string name="app_weight">体重 kg</string>
+    <string name="app_sync_user_info">同步个人信息</string>
+
+    <string name="app_success">成功</string>
+    <string name="app_fail">失败</string>
+
+    <string name="app_error">出错了</string>
+
+    <string name="app_reject_call">来电拒接</string>
+    <string name="app_call_hint">请输入电话或昵称</string>
+
+    <string name="app_clock_hint_year">请输入闹钟 年</string>
+    <string name="app_clock_hint_month">请输入闹钟 月</string>
+    <string name="app_clock_hint_day">请输入闹钟 日</string>
+    <string name="app_clock_hint_hour">请输入闹钟 时</string>
+    <string name="app_clock_hint_minute">请输入闹钟 分</string>
+
+    <string name="app_disturb_hint_start_hour">请输入开始小时</string>
+    <string name="app_disturb_hint_start_minute">请输入开始分钟</string>
+    <string name="app_disturb_hint_end_hour">请输入结束小时</string>
+    <string name="app_disturb_hint_end_minute">请输入结束分钟</string>
+
+    <string name="app_home_ui_hint">请输入Ui序号</string>
+
+    <string name="app_hr_detect_hint">请输入检测间隔</string>
+
+    <string name="app_language_hint">请输入语言编号</string>
+
+    <string name="app_light_duration_hint">请输入亮屏时长</string>
+
+    <string name="app_notify_hint_type">请输入通知类型</string>
+    <string name="app_notify_hint_content">请输入通知内容</string>
+
+    <string name="app_connect_success">连接成功</string>
+    <string name="app_connect_fail">连接失败</string>
+
+    <string name="app_sedentary_hint_max_value">请输入阀值</string>
+    <string name="app_sedentary_hint_start">请输入开始分钟</string>
+    <string name="app_sedentary_hint_end">请输入结束分钟</string>
+    <string name="app_sedentary_hint_interval">请输入间隔时间</string>
+
+    <string name="app_goal_hint_step">请输入目标步数</string>
+    <string name="app_goal_hint_sleep">请输入目标睡眠</string>
+
+    <string name="app_timer_hint_duration">请输入常用时长</string>
+
+    <string name="app_user_hint_age">请输入年龄</string>
+    <string name="app_user_hint_height">请输入身高</string>
+    <string name="app_user_hint_weight">请输入体重</string>
+
+    <string name="app_read_ear_mac">读取耳机地址</string>
+    <string name="app_read_ear_status">读取耳机状态</string>
+
+    <string name="app_check_test_temp_status">检查温度测量状态</string>
+    <string name="app_read_temp_setting">读取温度设置</string>
+    <string name="app_set_temp_setting">设置温度设置</string>
+    <string name="app_temp_show">设备中显示温度</string>
+    <string name="app_temp_adjust">温度补偿</string>
+    <string name="app_temp_unit">温度单位设置</string>
+
+    <string name="app_read_bp_setting">读取血压开关</string>
+    <string name="app_set_bp_setting">设置血压开关</string>
+    <string name="app_show_bp">设备中显示血压</string>
+
+    <string name="app_read_private_bp_setting">读取私人血压</string>
+    <string name="app_set_private_bp_setting">设置私人血压</string>
+    <string name="app_private_bp">私人血压</string>
+    <string name="app_load_local_bp">读取本地血压</string>
+
+    <string name="app_music_play">音乐播放</string>
+    <string name="app_music_volume">音量百分比(0-100)</string>
+    <string name="app_set_music">设置音乐</string>
+
+    <string name="app_check_silence_ota_status">检查静默升级状态</string>
+    <string name="app_silence_mode">升级模式 0-4</string>
+    <string name="app_set_silence_ota_mode">设置静默升级模式</string>
+    <string name="app_read_silence_ota_mode">读取静默升级模式</string>
+
+    <string name="app_time_color">时间颜色 0深色 1浅色</string>
+    <string name="app_gravity">对齐类型 0：左 1：中 2：右</string>
+    <string name="app_x_coordinate">x 坐标</string>
+    <string name="app_y_coordinate">y 坐标</string>
+    <string name="app_connect_device_not">请连接设备</string>
+</resources>

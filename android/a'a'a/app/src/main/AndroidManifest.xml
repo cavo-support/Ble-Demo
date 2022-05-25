@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.wosmart.sdkdemo">
+
+    <!-- 蓝牙-->
+    <uses-permission android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"
+        />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN"
+        />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"
+        />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <!-- 高精度定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <!-- 大致定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity android:name=".activity.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.ScanActivity" />
+
+        <activity android:name=".activity.FunctionActivity" />
+
+        <activity android:name=".activity.EarPhoneActivity" />
+
+        <activity android:name=".activity.LoginActivity" />
+
+        <activity android:name=".activity.TimeActivity" />
+
+        <activity android:name=".activity.UserActivity" />
+
+        <activity android:name=".activity.ClockActivity" />
+
+        <activity android:name=".activity.CallActivity" />
+
+        <activity android:name=".activity.NotifyActivity" />
+
+        <activity android:name=".activity.CameraActivity" />
+
+        <activity android:name=".activity.SedentaryActivity" />
+
+        <activity android:name=".activity.HomeUiActivity" />
+
+        <activity android:name=".activity.DisturbActivity" />
+
+        <activity android:name=".activity.FindBandActivity" />
+
+        <activity android:name=".activity.FindPhoneActivity" />
+
+        <activity android:name=".activity.BatteryActivity" />
+
+        <activity android:name=".activity.SportActivity" />
+
+        <activity android:name=".activity.ResetActivity" />
+
+        <activity android:name=".activity.SyncDataActivity" />
+
+        <activity android:name=".activity.StepActivity" />
+
+        <activity android:name=".activity.SleepActivity" />
+
+        <activity android:name=".activity.HrActivity" />
+
+        <activity android:name=".activity.BpActivity" />
+
+        <activity android:name=".activity.TempActivity" />
+
+        <activity android:name=".activity.LanguageActivity" />
+
+        <activity android:name=".activity.UnitActivity" />
+
+        <activity android:name=".activity.HrDetectActivity" />
+
+        <activity android:name=".activity.LightControlActivity" />
+
+        <activity android:name=".activity.NotifySwitchActivity" />
+
+        <activity android:name=".activity.DeviceInfoActivity" />
+
+        <activity android:name=".activity.TimerActivity" />
+
+        <activity android:name=".activity.StepGoalActivity" />
+
+        <activity android:name=".activity.MusicControlActivity" />
+
+        <activity android:name=".activity.SilenceOtaActivity" />
+
+        <activity android:name=".activity.CustomUiActivity" />
+
+        <activity android:name=".activity.DebugSwitchActivity" />
+
+        <activity android:name=".activity.UpdateStyleColorActivityActivity" />
+
+    </application>
+
+</manifest>

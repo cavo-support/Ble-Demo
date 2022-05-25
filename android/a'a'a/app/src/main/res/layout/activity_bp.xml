@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        app:navigationIcon="@mipmap/ic_back"
+        app:title=" ">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_bp"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+
+        <Button
+            android:id="@+id/btn_start_measure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_start_measure" />
+
+        <Button
+            android:id="@+id/btn_stop_measure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_start_measure"
+            android:text="@string/app_stop_measure" />
+
+        <Button
+            android:id="@+id/btn_read_bp_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_stop_measure"
+            android:text="@string/app_read_bp_setting" />
+
+        <Switch
+            android:id="@+id/sw_show_bp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_read_bp_setting"
+            android:text="@string/app_show_bp" />
+
+        <Button
+            android:id="@+id/btn_setting_bp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sw_show_bp"
+            android:text="@string/app_set_bp_setting" />
+
+        <Button
+            android:id="@+id/btn_read_private_bp_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_setting_bp"
+            android:text="@string/app_read_private_bp_setting" />
+
+        <Switch
+            android:id="@+id/sw_private_bp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_read_private_bp_setting"
+            android:text="@string/app_private_bp" />
+
+        <Button
+            android:id="@+id/btn_setting_private_bp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sw_private_bp"
+            android:text="@string/app_set_private_bp_setting" />
+
+
+        <Button
+            android:id="@+id/btn_query_local_bp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_setting_private_bp"
+            android:text="@string/app_load_local_bp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
