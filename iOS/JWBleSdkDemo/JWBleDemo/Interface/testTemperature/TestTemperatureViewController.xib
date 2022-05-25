@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestTemperatureViewController">
+            <connections>
+                <outlet property="lb" destination="Mjr-vS-GTg" id="UuD-IL-C74"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx2-eG-KvE">
+                    <rect key="frame" x="30" y="154.5" width="162" height="60"/>
+                    <color key="backgroundColor" red="1" green="0.090196078430000007" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="DB3-Lb-xQ4"/>
+                    </constraints>
+                    <state key="normal" title="stop"/>
+                    <connections>
+                        <action selector="clickStopBtn:" destination="-1" eventType="touchUpInside" id="RwX-Br-dct"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mjr-vS-GTg">
+                    <rect key="frame" x="20" y="94" width="374" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4II-a5-U15">
+                    <rect key="frame" x="222" y="154.5" width="162" height="60"/>
+                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="UOw-6N-0NF"/>
+                    </constraints>
+                    <state key="normal" title="start">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickStartBtn:" destination="-1" eventType="touchUpInside" id="XR4-pi-hp6"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44C-eQ-56y">
+                    <rect key="frame" x="20" y="284.5" width="374" height="70"/>
+                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="pT1-sy-IHF"/>
+                    </constraints>
+                    <state key="normal" title="open automatic temperature monitoring">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickOpenBtn:" destination="-1" eventType="touchUpInside" id="AkB-Rg-8pc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJo-PQ-h9k">
+                    <rect key="frame" x="20" y="374.5" width="374" height="70"/>
+                    <color key="backgroundColor" red="0.93032288549999997" green="0.031767191969999997" blue="0.1097493415" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="ggX-gq-pnt"/>
+                    </constraints>
+                    <state key="normal" title="close automatic temperature monitoring">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickCloseBtn:" destination="-1" eventType="touchUpInside" id="Tx6-yw-A7Z"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="awl-g0-W3S">
+                    <rect key="frame" x="20" y="484.5" width="374" height="60"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="wjR-gB-oiJ"/>
+                    </constraints>
+                    <state key="normal" title="Get temperature data">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickGetBtn:" destination="-1" eventType="touchUpInside" id="CyO-by-j1R"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="4II-a5-U15" firstAttribute="top" secondItem="bx2-eG-KvE" secondAttribute="top" id="060-pU-J0z"/>
+                <constraint firstItem="bx2-eG-KvE" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="30" id="3Hv-Tp-5zx"/>
+                <constraint firstItem="44C-eQ-56y" firstAttribute="top" secondItem="bx2-eG-KvE" secondAttribute="bottom" constant="70" id="5M4-og-4Db"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="awl-g0-W3S" secondAttribute="trailing" constant="20" id="7R0-s5-rEC"/>
+                <constraint firstItem="awl-g0-W3S" firstAttribute="top" secondItem="lJo-PQ-h9k" secondAttribute="bottom" constant="40" id="Bh1-Sx-sVn"/>
+                <constraint firstItem="awl-g0-W3S" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="CiY-Sc-3Fr"/>
+                <constraint firstItem="4II-a5-U15" firstAttribute="leading" secondItem="bx2-eG-KvE" secondAttribute="trailing" constant="30" id="FLl-WC-s9n"/>
+                <constraint firstItem="lJo-PQ-h9k" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="GXx-rt-Ci4"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Mjr-vS-GTg" secondAttribute="trailing" constant="20" id="HIj-Xl-cZb"/>
+                <constraint firstItem="bx2-eG-KvE" firstAttribute="width" secondItem="4II-a5-U15" secondAttribute="width" id="OMp-Rm-GTS"/>
+                <constraint firstItem="bx2-eG-KvE" firstAttribute="top" secondItem="Mjr-vS-GTg" secondAttribute="bottom" constant="40" id="UIK-UP-52T"/>
+                <constraint firstItem="Mjr-vS-GTg" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="UIn-S8-6Fk"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="44C-eQ-56y" secondAttribute="trailing" constant="20" id="UpC-sG-ahT"/>
+                <constraint firstItem="44C-eQ-56y" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="VCd-A3-kbc"/>
+                <constraint firstItem="Mjr-vS-GTg" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="50" id="dsp-ym-f78"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="lJo-PQ-h9k" secondAttribute="trailing" constant="20" id="gXs-ml-aag"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="4II-a5-U15" secondAttribute="trailing" constant="30" id="h2W-vn-rqa"/>
+                <constraint firstItem="lJo-PQ-h9k" firstAttribute="top" secondItem="44C-eQ-56y" secondAttribute="bottom" constant="20" id="ivD-Lo-2Uc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="-239" y="155"/>
+        </view>
+    </objects>
+</document>

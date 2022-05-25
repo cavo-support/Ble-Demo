@@ -1,0 +1,13 @@
+com.wosmart.blehub.dfu
+com.wosmart.ukprotocollibary
+com.wosmart.ukprotocollibary.applicationlayer
+com.wosmart.ukprotocollibary.corespec
+com.wosmart.ukprotocollibary.gattlayer
+com.wosmart.ukprotocollibary.model.db
+com.wosmart.ukprotocollibary.model.enums
+com.wosmart.ukprotocollibary.model.hrp
+com.wosmart.ukprotocollibary.model.sleep
+com.wosmart.ukprotocollibary.model.sleep.filter
+com.wosmart.ukprotocollibary.model.sport
+com.wosmart.ukprotocollibary.transportlayer
+com.wosmart.ukprotocollibary.util
