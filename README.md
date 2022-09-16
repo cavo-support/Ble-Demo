@@ -1,2 +1,2 @@
 # Ble-Demo
-Cavo Technology Bluetooth SDK and Demo   
+Wo-Smart Technologies Bluetooth SDK and Demo   
