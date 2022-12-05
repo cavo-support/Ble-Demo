@@ -17,18 +17,21 @@
 //蓝牙连接状态枚举 Bluetooth connection status enumeration
 typedef NS_ENUM (NSInteger, JWBleDeviceConnectStatus) {
     JWBleDeviceConnectStatus_DisConnect = 0,//断开连接 Disconnect
-    JWBleDeviceConnectStatus_Connect = 1,//已经连接 Already connected
-    JWBleDeviceConnectStatus_BondSuccess = 2,//绑定成功 Bind successfully
-    JWBleDeviceConnectStatus_BondFailure = 3,//绑定失败 Bind failed
-    JWBleDeviceConnectStatus_SyncSuccess = 4,//同步信息成功 Information synchronization succeeded
-    JWBleDeviceConnectStatus_SyncFailure = 5,//同步信息失败 Sync information failed
-    JWBleDeviceConnectStatus_DiscoverNewUpdateFirm = 6,//发现可以升级的新固件 Discover new firmware that can be upgraded
-    JWBleDeviceConnectStatus_BatteryUpdate = 7,//电量改变了 The battery has changed
-    JWBleDeviceConnectStatus_ChargeStatusChanged = 8,//充电状态改变 Change in state of charge
-    JWBleDeviceConnectStatus_HeadphoneDeviceStatusChanged = 9,//耳机状态改变 Headphone status changes
-    JWBleDeviceConnectStatus_TimeOutDisconnect = 10,//通信超时，已主动断开连接 Communication timed out and disconnected actively
-    JWBleDeviceConnectStatus_DeviceStatusChanges = 11,//设备状态改变（省点模式、飞行模式等） Device status changes (point-saving mode, flight mode, etc.)
-    JWBleDeviceConnectStatus_Temp = 12
+    JWBleDeviceConnectStatus_Connect,//已经连接 Already connected
+    JWBleDeviceConnectStatus_BondSuccess,//绑定成功 Bind successfully
+    JWBleDeviceConnectStatus_BondFailure,//绑定失败 Bind failed
+    JWBleDeviceConnectStatus_SyncSuccess,//同步信息成功 Information synchronization succeeded
+    JWBleDeviceConnectStatus_SyncFailure,//同步信息失败 Sync information failed
+    JWBleDeviceConnectStatus_DiscoverNewUpdateFirm,//发现可以升级的新固件 Discover new firmware that can be upgraded
+    JWBleDeviceConnectStatus_BatteryUpdate,//电量改变了 The battery has changed
+    JWBleDeviceConnectStatus_ChargeStatusChanged,//充电状态改变 Change in state of charge
+    JWBleDeviceConnectStatus_HeadphoneDeviceStatusChanged,//耳机状态改变 Headphone status changes
+    JWBleDeviceConnectStatus_TimeOutDisconnect,//通信超时，已主动断开连接 Communication timed out and disconnected actively
+    JWBleDeviceConnectStatus_DeviceStatusChanges,//设备状态改变（省点模式、飞行模式等） Device status changes (point-saving mode, flight mode, etc.)
+    JWBleDeviceConnectStatus_BondConfirm_NotAllowed,//绑定失败，用户点击不允许 Binding failed, user click is not allowed
+    JWBleDeviceConnectStatus_BondConfirm_TimeOut,//绑定失败，用户不操作设备 The binding fails, the user does not operate the device
+    JWBleDeviceConnectStatus_BleRemovedPairingInformation,//系统绑定的蓝牙设备缓存被删除，一般是被其它手机也系统绑定了 The bluetooth device cache bound by the system is deleted, usually it is bound by other mobile phones
+    JWBleDeviceConnectStatus_Temp
 };
 
 //通信的通用状态 General status of communication
@@ -97,6 +100,7 @@ typedef NS_ENUM(NSInteger, JWBleTestBPStatus) {
     JWBleTestBPStatus_DeviceResponse,//手环响应中 Bracelet responding
     JWBleTestBPStatus_TestEnd,//测试结束 End of test
     JWBleTestBPStatus_TestField,//测试失败 Test failed
+    JWBleTestBPStatus_TestInterrupt,//测试中断 Test interrupt
 };
 
 //测试温度状态 Test temperature status
@@ -120,7 +124,9 @@ typedef NS_ENUM(NSInteger, JWBleBusyStatus) {
     JWBleBusyStatus_Manual_Pressure_Measurement, //压力手动测量
     JWBleBusyStatus_Silent_Measurement_Of_Pressure, //压力静默测量
     JWBleBusyStatus_In_Motion, //运动中
-    JWBleBusyStatus_ECG_Testing, //ECG测试中
+    JWBleBusyStatus_ECG_Testing,//ECG测试中
+    JWBleBusyStatus_Manual_Blood_Glucose_Measurement, //血糖手动测量
+    JWBleBusyStatus_Silent_Measurement_Of_Blood_Glucose, //血糖静默测量
 };
 
 #pragma mark - 功能枚举 Function enumeration
@@ -219,6 +225,25 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_Address_Book = 48,//通讯录 address book
     
     JWBleFunctionEnum_HRV = 47,
+    JWBleFunctionEnum_DeviceBPMonitoring = 46, // 设备血压监测  Equipment blood pressure monitoring
+    JWBleFunctionEnum_BloodGlucose = 45, // 血糖 BloodGlucose
+    
+};
+
+//手环可设置开关枚举 The device can be set to switch enumeration
+typedef NS_ENUM (NSInteger, JWBleDeviceSwitchFunctionEnum) {
+    JWBleDeviceSwitchFunctionEnum_Error = -1,//占位符 Placeholder
+    
+    JWBleDeviceSwitchFunctionEnum_Time_Format,//时间制式， 返回值（0:24小时制，1:12小时制）  time format, return value (0:24 hour format, 1:12 hour format)
+    JWBleDeviceSwitchFunctionEnum_Language,//语言选择， 返回值（JWBleLanguageEnum）   language selection, return value (JWBleLanguageEnum)
+    JWBleDeviceSwitchFunctionEnum_Heart_Rate_Monitoring,//心率监测开关，返回值（0：关闭， 1：开启）  Heart rate monitor switch, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_Blood_Pressure_Monitoring,//血压监测开关，返回值（0：关闭， 1：开启）  Blood pressure monitoring switch, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_Blood_Oxygen_Monitoring,//血氧监测开关，返回值（0：关闭， 1：开启）  Blood oxygen monitoring switch, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_Temperature_Monitoring,//温度监测开关，返回值（0：关闭， 1：开启）   Temperature monitoring switch, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_Temperature_Compensation,//温度补偿开关，返回值（0：关闭， 1：开启）  Temperature compensation switch, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_Temperature_Function_Independent,//温度功能独立，返回值（0：关闭， 1：开启）  Temperature function independent, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_BloodGlucose_Monitoring,//血糖功能独立，返回值（0：关闭， 1：开启）  BloodGlucose function independent, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_Gesture_Bright_Screen,//手势亮屏，返回值（0：关闭， 1：开启） Gesture bright screen, return value (0: off, 1: on)
     
 };
 
@@ -330,19 +355,25 @@ typedef NS_ENUM (NSInteger, JWDeviceStatusType) {
     JWDeviceStatusType_Temp
 };
 
-//测试血氧请求枚举
+//测试血氧请求枚举  Test blood oxygen request enumeration
 typedef NS_ENUM (NSInteger, JWTestOxygenRequestType) {
     JWTestOxygenRequestType_End = 0,
     JWTestOxygenRequestType_Start,
     JWTestOxygenRequestType_Check,
 };
 
-//测试血氧返回枚举
+//测试血氧返回枚举  Test blood oxygen returns enumeration
 typedef NS_ENUM (NSInteger, JWTestOxygenResultType) {
     JWTestOxygenResultType_End = 0,
     JWTestOxygenResultType_Start,
     JWTestOxygenResultType_Disable,
     JWTestOxygenResultType_Available,
+};
+
+
+//用户偏好设置枚举 User preference enumeration
+typedef NS_ENUM (NSInteger, JWUserPreferenceType) {
+    JWUserPreferenceType_BloodGlucose_Unit = 0, //0:mmol；1:mg
 };
 
 
@@ -652,7 +683,20 @@ typedef void (^JwFactoryFunctionCallBack)(JWBleCommunicationStatus status, NSDat
  ECG data callback
  */
 typedef void (^JwECGDataCallBack)(NSArray *originalSignals, NSArray *filterSignals);
+
+/**
+ Device Test ECG data callback
+ */
+typedef void (^JwDeviceTestECGCallBack)(NSDictionary *dic);
 /**
  ECG value data callback
  */
 typedef void (^JwECGValueDataCallBack)(int bpm, int qt, int hrv, int rri, int progress);
+
+/**
+ Device switch change callback
+ 
+ Please use the following method to get the changed value
+  [JWBleAction jwGetDeviceSNIDWithBlock]
+ */
+typedef void (^JwDeviceSwitchChangeCallBack)(NSData *deviceSwitchData);

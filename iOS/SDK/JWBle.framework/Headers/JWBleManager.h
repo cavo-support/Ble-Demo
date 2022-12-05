@@ -149,9 +149,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 // ecg 数据回调
 @property(nonatomic, copy) JwECGDataCallBack ecgDataCallBack;
+// ecg 数据回调
+@property(nonatomic, copy) JwDeviceTestECGCallBack deviceTestECGCallBack;
 
 // ecg 数据回调
 @property(nonatomic, copy) JwECGValueDataCallBack ecgValueDataCallBack;
+
+// Device switch change callback
+@property(nonatomic, copy) JwDeviceSwitchChangeCallBack deviceSwitchChangeCallBack;
+
 
 /**
  连接后是否弹出系统配对窗口，默认YES
@@ -159,6 +165,15 @@ NS_ASSUME_NONNULL_BEGIN
  Whether to pop up the system pairing window after connection, default YES
  */
 @property(nonatomic, assign) BOOL isAutoShowPair;
+
+/**
+ 检查用户绑定，默认YES
+ 同一个手环被“A”uid用户连接，在不解绑情况下，使用“B”uid用户去连接，是否能被连接上
+ 
+ Check User Binding, default YES
+ The same bracelet is connected by the "A" uid user, if the "B" uid user is used to connect without unbinding, can it be connected?
+ */
+@property(nonatomic, assign) BOOL checkUserBinding;
 
 @end
 

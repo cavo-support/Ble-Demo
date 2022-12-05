@@ -36,5 +36,18 @@ typedef void (^JWBleCustomizeMainInterfaceActionCallBack)(JWBleCustomizeMainInte
         actionCallBack:(JWBleCustomizeMainInterfaceActionCallBack)actionCallBack
         updateCallBack:(JWBleDFUCallBack)updateCallBack;
 
+/**
+ 动态图片大小
+ */
++ (void)startWithImage:(UIImage *)bgImage
+          previewImage:(UIImage *)previewImage
+          deviceWidth:(int)deviceWidth
+           deviceHeight:(int)deviceHeight
+            configModel:(JWBleCustomizeMainInterfaceActionConfigModel *)configModel
+        actionCallBack:(JWBleCustomizeMainInterfaceActionCallBack)actionCallBack
+        updateCallBack:(JWBleDFUCallBack)updateCallBack;
+
++ (unsigned char *) convertUIImageToBitmapRGBRGB:(UIImage *) image;
+
 @end
 

@@ -41,6 +41,11 @@
  */
 + (void)jwDisConnectNotUnBond;
 
+/**
+ 删除连接记录[会导致无法自动重连]  Delete the connection record [will cause automatic reconnection not possible]
+ deviceUUID: 如果和最后一次连接的设备uuid一致，则删除，传”“则直接删除  If it is consistent with the uuid of the last connected device, delete it, and pass "" to delete it directly
+ */
++ (void)jwRemoveConnectRecord:(NSString *)deviceUUID;
 
 /**
  同步个人信息 Synchronize personal information
@@ -103,6 +108,18 @@
  @param callBack 回调 Callback
  */
 + (void)jwHrAutomaticDetectionAction:(BOOL)isGet
+                                open:(BOOL)open
+                            timeSpan:(int)timeSpan callBack:(JWBleAutomaticDetectionActionCallBack)callBack;
+
+/**
+ 血压自动检测功能 Heart rate automatic detection function
+ 
+ @param isGet 是否获取 Whether to get
+ @param open 是否开启 Whether to open
+ @param timeSpan 时间间隔 分钟 5-30-60-120 Interval minutes 5-30-60-120
+ @param callBack 回调 Callback
+ */
++ (void)jwBPAutomaticDetectionAction_V3:(BOOL)isGet
                                 open:(BOOL)open
                             timeSpan:(int)timeSpan callBack:(JWBleAutomaticDetectionActionCallBack)callBack;
 
@@ -263,6 +280,14 @@
  @return return 功能状态枚举  Functional state enumeration
  */
 + (JWBleFunctionStatesEnum)jwCheckFunctionStates:(JWBleFunctionEnum)functionEnum;
+
+/**
+ 检查设备控制开关 Check the device control switch
+ 
+ @param functionEnum 功能枚举  Function enumeration
+ @return return 对应的值，详情查看JWBleDeviceSwitchFunctionEnum ，-1为手环不支持该设置   The corresponding value, see JWBleDeviceSwitchFunctionEnum for details, -1 means that the bracelet does not support this setting
+ */
++ (int)jwCheckControlSwitchStates:(JWBleDeviceSwitchFunctionEnum)functionEnum;
 
 /**
  检查隐藏功能状态  Check hidden function status
@@ -523,6 +548,10 @@
 
 + (void)jwCustomize_1_47_MainInterfaceAction:(BOOL)get configModel:(JWBleCustomizeMainInterfaceActionConfigModel *)configModel;
 
++ (void)jwCustomize_238_MainInterfaceAction:(BOOL)get configModel:(JWBleCustomizeMainInterfaceActionConfigModel *)configModel;
+
++ (void)jwCustomizeMainInterfacePositionWithConfigModel:(JWBleCustomizeMainInterfaceActionConfigModel *)configModel;
+
 /**
  同步总步数、总距离、总卡路里给手环
     
@@ -590,6 +619,7 @@
      2: end
      3: interrupt
      4:interrupt 10s after end
+     999: data collection
  */
 + (void)jwECGAction:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, int ecgStatus))callBack;
 
@@ -645,6 +675,42 @@
  colorIndex：1-7
  */
 + (void)jwUpdateInterfaceColor:(int)colorIndex callBack:(void (^)(JWBleCommunicationStatus status))callBack;
+
+/**
+ 连续血糖开关操作
+ */
++ (void)jwContinuousBloodGlucoseAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+/**
+ 测试血糖 Test BloodGlucose
+ 
+ @param callBack 回调
+ */
++ (void)jwTestBloodGlucoseAction:(BOOL)start callBack:(void (^)(JWBleCommunicationStatus status, JWBleTestBPStatus testStatus, int value))callBack;
+/**
+ 私人血糖 PrivateBloodGlucose
+ 
+ @param isGet 是否获取
+ @param high 高值，传值需要乘以10，比如7.5，则传75 High value, the passed value needs to be multiplied by 10, such as 7.5, then pass 75
+ @param low 低值，传值需要乘以10，比如7.5，则传75 Low value, the passed value needs to be multiplied by 10, such as 7.5, then pass 75
+ @param callBack 回调
+ */
++ (void)jwPrivateBloodGlucoseAction:(BOOL)isGet high:(int)high low:(int)low callBack:(void (^)(JWBleCommunicationStatus status, int high, int low))callBack;
+
+/**
+ 用户偏好设置
+ 
+ @param isGet 是否获取  User Preferences
+ @param values
+        [
+            @{
+              type:@(JWUserPreferenceType),
+              value:@(0)
+            },
+            ...
+        ]
+ @param callBack 回调
+ */
++ (void)jwUserPreferencesAction:(BOOL)isGet values:(NSArray *)values callBack:(void (^)(JWBleCommunicationStatus status, NSArray *values))callBack;
 
 #pragma mark - 以下是生产测试方法  The following is the production test method
 /**
@@ -709,8 +775,8 @@
 + (void)jwGetHALLWithBlock:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
 
 //默认功能设置  Default function settings
-+ (void)jwDefaultFunctionSettings:(BOOL)bpOpen temperatureOpen:(BOOL)temperatureOpen pressureOpen:(BOOL)pressureOpen;
-+ (void)jwGetDefaultFunctionSettings:(void (^)(JWBleCommunicationStatus status, BOOL bpOpen, BOOL temperatureOpen, BOOL pressureOpen))callBack;
++ (void)jwDefaultFunctionSettings:(BOOL)bpOpen temperatureOpen:(BOOL)temperatureOpen pressureOpen:(BOOL)pressureOpen sceneControl:(BOOL)sceneControl alexa:(BOOL)alexa;
++ (void)jwGetDefaultFunctionSettings:(void (^)(JWBleCommunicationStatus status, BOOL bpOpen, BOOL temperatureOpen, BOOL pressureOpen, BOOL sceneControl, BOOL alexa))callBack;
 
 //生产测试结束  End of production test
 + (void)jwProduceEnd:(void (^)(JWBleCommunicationStatus status))callBack;
@@ -768,6 +834,10 @@
 // Set the bracelet SN update
 + (void)jwUpdateSN:(NSString *)sn callBack:(void (^)(JWBleCommunicationStatus status, BOOL success))callBack;
 
+// 设置手环SN更新v2，仅数字
+// Set the bracelet SN update v2 numbers only
++ (void)jwUpdateSN_V2:(NSString *)sn callBack:(void (^)(JWBleCommunicationStatus status, BOOL success))callBack;
+
 // reset指令(恢复出厂)
 // reset command (restore factory)
 + (void)jwReset;
@@ -822,6 +892,22 @@
  获取睡眠原数据
  */
 + (void)jwGetOriSleepDataWithCallBack:(void (^)(JWBleCommunicationStatus status, NSData *data))callBack;
+
+/**
+ 获取手环测试结果
+ */
++ (void)jwGetDeviceTestResultWithCallBack:(void (^)(JWBleCommunicationStatus status, NSData *data))callBack;
+
+/**
+ 固件烧录配置
+ */
++ (void)jwSteFirmwareBurningConfiguration:(NSString *)resultStr callBack:(void (^)(JWBleCommunicationStatus status, BOOL success))callBack;
++ (void)jwGetFirmwareBurningConfigurationWithCallBack:(void (^)(JWBleCommunicationStatus status, NSString *resultStr))callBack;
+
+/**
+ DVT检查
+ */
++ (void)jwDvtCheckAction:(BOOL)isGet index:(int)showIndex callBack:(void (^)(JWBleCommunicationStatus status, int count))callBack;
 
 @end
 

@@ -146,6 +146,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSDictionary<NSString *, id> *advertisementData;
 
+//手环可控制的开关数据  The switch data that the bracelet can control
+@property(nonatomic, strong) NSData *deviceSwitchData;
+
 @end
 
 NS_ASSUME_NONNULL_END
