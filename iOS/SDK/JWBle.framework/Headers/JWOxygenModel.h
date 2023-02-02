@@ -10,11 +10,11 @@
 
 @interface JWOxygenModel : NSObject
 
-@property(nonatomic, assign) int mCurValue;
-@property(nonatomic, assign) int mHighValue;
-@property(nonatomic, assign) int mLowValue;
+@property(nonatomic, assign) int mCurValue; //当前血氧值 Current blood oxygen value
+@property(nonatomic, assign) int mHighValue; //最高血氧值 Maximum blood oxygen value
+@property(nonatomic, assign) int mLowValue; //最低血氧值 Minimum blood oxygen value
 
-@property(nonatomic, assign) NSInteger time;
+@property(nonatomic, assign) NSInteger time; //时间戳 timestamp
 
 
 @end
