@@ -712,6 +712,30 @@
  */
 + (void)jwUserPreferencesAction:(BOOL)isGet values:(NSArray *)values callBack:(void (^)(JWBleCommunicationStatus status, NSArray *values))callBack;
 
+/**
+ 低氧提醒 LowOxygenReminder
+ */
++ (void)jwLowOxygenReminderAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+
+/**
+ 心率上限 HighHeartRateReminder
+ 
+ maxValue:  最大值（40-220） Maximum (40-220)
+ */
++ (void)jwHighHeartRateReminderAction:(BOOL)isGet open:(BOOL)open maxValue:(int)maxValue callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int maxValue))callBack;
+
+/**
+ 全天睡眠 SleepAllDay
+ */
++ (void)jwSleepAllDayAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+
+/**
+ 表盘日期格式 DialDateFormat
+ 
+ open：false:(MM-DD) true:(DD-MM)
+ */
++ (void)jwDialDateFormatAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+
 #pragma mark - 以下是生产测试方法  The following is the production test method
 /**
  修改设备名称

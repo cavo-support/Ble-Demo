@@ -365,8 +365,21 @@
  删除某个时间戳之前的数据
  
  Delete data before a certain timestamp
+ 
+ t: 小于该时间戳的时间 time less than this timestamp
  */
 + (void)jwRemoveDataTimeLessThan:(NSInteger)t;
+
+/**
+ 删除某个时间戳之前的数据
+ 
+ Delete data before a certain timestamp
+ 
+ t: 小于该时间戳的时间 time less than this timestamp
+ dataType: JWDeleteDataType
+    
+ */
++ (void)jwRemoveDataTimeLessThan:(NSInteger)t dataType:(JWDeleteDataType)dataType;
 
 
 @end

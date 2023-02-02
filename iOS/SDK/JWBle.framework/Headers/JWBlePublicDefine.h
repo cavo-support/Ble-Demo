@@ -227,6 +227,10 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_HRV = 47,
     JWBleFunctionEnum_DeviceBPMonitoring = 46, // 设备血压监测  Equipment blood pressure monitoring
     JWBleFunctionEnum_BloodGlucose = 45, // 血糖 BloodGlucose
+    JWBleFunctionEnum_LowOxygenReminder = 44, // 低氧提醒 Low oxygen reminder
+    JWBleFunctionEnum_HighHeartRateReminder = 43, // 心率过高提醒 High heart rate reminder
+    JWBleFunctionEnum_SleepAllDay = 42, // 全天睡眠 sleep all day
+    JWBleFunctionEnum_DialDateFormat = 41, // 表盘日期格式 Dial date format
     
 };
 
@@ -370,12 +374,22 @@ typedef NS_ENUM (NSInteger, JWTestOxygenResultType) {
     JWTestOxygenResultType_Available,
 };
 
-
 //用户偏好设置枚举 User preference enumeration
 typedef NS_ENUM (NSInteger, JWUserPreferenceType) {
     JWUserPreferenceType_BloodGlucose_Unit = 0, //0:mmol；1:mg
 };
 
+//删除数据枚举 delete data enumeration
+typedef NS_ENUM (NSInteger, JWDeleteDataType) {
+    JWDeleteDataType_Step = 0,
+    JWDeleteDataType_HeartRate,
+    JWDeleteDataType_BloodPressure,
+    JWDeleteDataType_Oxygen,
+    JWDeleteDataType_Temperature,
+    JWDeleteDataType_BloodGlucose,
+    JWDeleteDataType_Hrv,
+    JWDeleteDataType_Sports
+};
 
 #pragma mark - CallBack
 
