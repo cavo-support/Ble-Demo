@@ -402,7 +402,7 @@
 ///         1：爬山
 ///         3：户外骑行
 ///         8：室内跑步
-///         10	：plank
+///         10：plank
 ///         11：户外健走
 ///         14：徒步
 ///
@@ -711,6 +711,39 @@
  @param callBack 回调
  */
 + (void)jwUserPreferencesAction:(BOOL)isGet values:(NSArray *)values callBack:(void (^)(JWBleCommunicationStatus status, NSArray *values))callBack;
+
+/**
+ 低氧提醒 LowOxygenReminder
+ */
++ (void)jwLowOxygenReminderAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+
+/**
+ 心率上限 HighHeartRateReminder
+ 
+ maxValue:  最大值（40-220） Maximum (40-220)
+ */
++ (void)jwHighHeartRateReminderAction:(BOOL)isGet open:(BOOL)open maxValue:(int)maxValue callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int maxValue))callBack;
+
+/**
+ 全天睡眠 SleepAllDay
+ */
++ (void)jwSleepAllDayAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+
+/**
+ 表盘日期格式 DialDateFormat
+ 
+ open：false:(MM-DD) true:(DD-MM)
+ */
++ (void)jwDialDateFormatAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+
+#pragma mark - 客户定制  Customer customization
+
+/**
+ 客户定制，消息通知，需要告知商务，客户对应的包名
+ 
+ Customer customization, message notification, need to inform the business, the package name corresponding to the customer
+ */
++ (void)jwCustomCustomizationNotifyAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
 
 #pragma mark - 以下是生产测试方法  The following is the production test method
 /**

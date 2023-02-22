@@ -146,6 +146,22 @@
  
  */
 + (void)jwGetSleepDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+/**
+ 计算睡眠质量 sleep quality calculation
+ @param firstSleepMinute 第一段睡眠的时长
+ @param deepMinute 深睡分钟数
+ @param totalMinute 总睡眠分钟数
+ @param wakeUpCount 属性次数
+ 
+ return:
+    0：较差     poor
+    1：较差     poor
+    2：一般    generally
+    3：好        good
+    4：很好    very good
+    5：完美    Perfect
+ */
++ (int)jwSleepQualityCalculation:(NSInteger)firstSleepMinute deepMinute:(NSInteger)deepMinute totalMinute:(NSInteger)totalMinute wakeUpCount:(NSInteger)wakeUpCount;
 
 /**
  获取心率数据
@@ -282,15 +298,76 @@
 + (void)jwGetTemperatureDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 + (void)jwGetTemperatureDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
 
-
+/**
+ 获取 设备血氧数据
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ dataArr:
+ [
+    JWOxygenModel,JWOxygenModel,JWOxygenModel,JWOxygenModel...
+ ]
+ 
+ Get device blood oxygen data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+      JWOxygenModel, JWOxygenModel, JWOxygenModel, JWOxygenModel...
+   ]
+ */
 + (void)jwGetOxygenDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 + (void)jwGetOxygenDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
 
-
+/**
+ 获取 设备HRV数据
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ dataArr:
+ [
+    {
+     @"hrvValue": // HRV 值
+     @"time": //时间戳
+    }
+ ]
+ 
+ Get equipment HRV data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+      {
+       @"hrvValue": // HRV value
+       @"time": //time stamp
+      }
+   ]
+ */
 + (void)jwGetHrvDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 + (void)jwGetHrvDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
 
 
+/**
+ 获取 设备血糖数据
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ dataArr:
+ [
+    {
+     @"value": // 血糖 值
+     @"time": //时间戳
+    }
+ ]
+ 
+ Get equipment BloodGlucose data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+      {
+       @"value": // BloodGlucose value
+       @"time": //time stamp
+      }
+   ]
+ */
 + (void)jwGetBloodGlucoseDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 + (void)jwGetBloodGlucoseDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
 
@@ -308,7 +385,7 @@
          @"day": 7
          @"minuteIndex": 995
          @"seconds": 19
-         @"motionType": 运动类型 （0：跑步 1：登山 2：足球 3：骑行 4：跳绳）
+         @"motionType": 运动类型 （JWBleDeviceMotionEnum）
          @"sportsMinute": 运动时长分钟数
          @"sportsSeconds": 运动时长秒数
          @"pauseCount": 暂停次数
@@ -338,7 +415,7 @@
           @"day": 7
           @"minuteIndex": 995
           @"seconds": 19
-          @"motionType": sports type (0: running 1: climbing 2: football 3: riding 4: skipping rope)
+          @"motionType": sports type (JWBleDeviceMotionEnum)
           @"sportsMinute": minutes of exercise time
           @"sportsSeconds": the number of seconds of exercise time
           @"pauseCount": number of pauses
@@ -357,16 +434,27 @@
  */
 + (void)jwGetMotionDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 
-//+ (void)jwRemoveMotionData:(int)year month:(int)month day:(int)day minuteIndex:(int)minuteIndex seconds:()
-
 + (void)jwRemoveMotionDataWithPK:(int)pk;
 
 /**
  删除某个时间戳之前的数据
  
  Delete data before a certain timestamp
+ 
+ t: 小于该时间戳的时间 time less than this timestamp
  */
 + (void)jwRemoveDataTimeLessThan:(NSInteger)t;
+
+/**
+ 删除某个时间戳之前的数据
+ 
+ Delete data before a certain timestamp
+ 
+ t: 小于该时间戳的时间 time less than this timestamp
+ dataType: JWDeleteDataType
+    
+ */
++ (void)jwRemoveDataTimeLessThan:(NSInteger)t dataType:(JWDeleteDataType)dataType;
 
 
 @end

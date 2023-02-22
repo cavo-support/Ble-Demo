@@ -146,6 +146,22 @@
  
  */
 + (void)jwGetSleepDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+/**
+ 计算睡眠质量 sleep quality calculation
+ @param firstSleepMinute 第一段睡眠的时长
+ @param deepMinute 深睡分钟数
+ @param totalMinute 总睡眠分钟数
+ @param wakeUpCount 属性次数
+ 
+ return:
+    0：较差     poor
+    1：较差     poor
+    2：一般    generally
+    3：好        good
+    4：很好    very good
+    5：完美    Perfect
+ */
++ (int)jwSleepQualityCalculation:(NSInteger)firstSleepMinute deepMinute:(NSInteger)deepMinute totalMinute:(NSInteger)totalMinute wakeUpCount:(NSInteger)wakeUpCount;
 
 /**
  获取心率数据
