@@ -10,15 +10,34 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.realsil.sdk.core.RtkConfigure;
+import com.realsil.sdk.core.RtkCore;
+import com.realsil.sdk.dfu.RtkDfu;
+import com.realsil.sdk.dfu.model.DfuConfig;
+import com.realsil.sdk.dfu.model.DfuProgressInfo;
+import com.realsil.sdk.dfu.model.OtaDeviceInfo;
+import com.realsil.sdk.dfu.model.Throughput;
+import com.realsil.sdk.dfu.utils.DfuAdapter;
+import com.realsil.sdk.dfu.utils.GattDfuAdapter;
 import com.wosmart.sdkdemo.R;
 import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 
+import java.util.logging.Logger;
+
+import static com.realsil.sdk.dfu.DfuConstants.PROGRESS_ACTIVE_IMAGE_AND_RESET;
+
 
 public class SilenceOtaActivity extends BaseActivity implements View.OnClickListener {
 
     private String tag = "SilenceOtaActivity";
+
+    public static final int OTA_MODE_MAIN_DISPLAY_RESOURCE = 0;//主显示资源 Main display resource
+    public static final int OTA_MODE_DISPLAY_FONT = 1;//显示字库 Display font
+    public static final int OTA_MODE_MAIN_FONT_LIBRARIES_INVOLVED_IN_THE_MAIN_INTERFACE = 2;//主界面涉及到的字库 Font libraries involved in the main interface
+    public static final int OTA_MODE_CUSTOM_INTERFACE_RESOURCES = 3;//自定义界面资源 Custom interface resources
+    public static final int OTA_MODE_DIAL_MARKET_RESOURCES = 4;//表盘市场资源 Dial market resources
 
     private Toolbar toolbar;
 
@@ -39,6 +58,16 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
         initView();
         initData();
         addListener();
+
+        //init rtk OTA
+        RtkConfigure configure = new RtkConfigure.Builder()
+                .debugEnabled(true)
+                .printLog(true)
+                .logTag("OTA")
+                .globalLogLevel(1)
+                .build();
+        RtkCore.initialize(this, configure);
+        RtkDfu.initialize(this, true);
     }
 
     private void initView() {
@@ -115,11 +144,23 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
         thread.start();
     }
 
+    /**
+     * EnterSilenceModel tell device ready to ota
+     *
+     * @param mode see {@link WristbandManager#OTA_MODE_MAIN_DISPLAY_RESOURCE}
+     *                 {@link WristbandManager#OTA_MODE_DISPLAY_FONT}
+     *                 {@link WristbandManager#OTA_MODE_MAIN_FONT_LIBRARIES_INVOLVED_IN_THE_MAIN_INTERFACE}
+     *                 {@link WristbandManager#OTA_MODE_CUSTOM_INTERFACE_RESOURCES}
+     *                 {@link WristbandManager#OTA_MODE_DIAL_MARKET_RESOURCES}
+     */
     private void setMode(final int mode) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 if (WristbandManager.getInstance(SilenceOtaActivity.this).sendEnterSilenceModel(mode)) {
+
+                    initUkOta("your device mac", "your ota file path");
+
                     handler.sendEmptyMessage(0x01);
                 } else {
                     handler.sendEmptyMessage(0x02);
@@ -141,6 +182,74 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
             }
         });
         thread.start();
+    }
+
+    private GattDfuAdapter dfuHelper;
+
+    private DfuAdapter.DfuHelperCallback dfuHelperCallback;
+
+    private DfuConfig dfuConfig;
+
+    /**
+     * ota
+     *
+     * @param mac         device mac address
+     * @param otaFilePath new ota file path
+     */
+    private void initUkOta(final String mac, final String otaFilePath) {
+        if (null == dfuHelper) {
+            dfuHelper = GattDfuAdapter.getInstance(this);
+        }
+
+        if (null == dfuHelperCallback) {
+            dfuHelperCallback = new DfuAdapter.DfuHelperCallback() {
+                @Override
+                public void onStateChanged(int i) {
+                    super.onStateChanged(i);
+                    if (i == DfuAdapter.STATE_INIT_OK) {
+                        // ready to ota
+                        startUkOta(mac, otaFilePath);
+                    }
+                }
+
+                @Override
+                public void onTargetInfoChanged(OtaDeviceInfo otaDeviceInfo) {
+                    super.onTargetInfoChanged(otaDeviceInfo);
+                }
+
+                @Override
+                public void onError(int i, int i1) {
+                    super.onError(i, i1);
+                    // fail
+                }
+
+                @Override
+                public void onProcessStateChanged(int i, Throughput throughput) {
+                    super.onProcessStateChanged(i, throughput);
+                    if (i == PROGRESS_ACTIVE_IMAGE_AND_RESET) {
+                        // success
+                    }
+                }
+
+                @Override
+                public void onProgressChanged(DfuProgressInfo dfuProgressInfo) {
+                    super.onProgressChanged(dfuProgressInfo);
+                    // progress info
+                }
+            };
+        }
+        dfuHelper.initialize(dfuHelperCallback);
+    }
+
+    private void startUkOta(String mac, String filePath) {
+        if (null == dfuConfig) {
+            dfuConfig = new DfuConfig();
+        }
+        dfuConfig.setFilePath(filePath);
+        dfuConfig.setAddress(mac);
+        dfuConfig.setSectionSizeCheckEnabled(false);//取消大小限制
+        dfuConfig.setVersionCheckEnabled(false);//版本检查
+        dfuHelper.startOtaProcess(dfuConfig);// start to ota
     }
 
     private class MyHandler extends Handler {
