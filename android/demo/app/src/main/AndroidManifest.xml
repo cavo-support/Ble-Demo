@@ -111,6 +111,8 @@
 
         <activity android:name=".activity.UpdateStyleColorActivityActivity" />
 
+        <activity android:name=".activity.CustomNotifyActivity" />
+
     </application>
 
 </manifest>

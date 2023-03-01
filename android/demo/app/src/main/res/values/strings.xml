@@ -38,6 +38,7 @@
     <string name="app_custom_ui">Custom UI</string>
     <string name="app_debug_notify">Debug Notify Switch</string>
     <string name="app_set_custom_style_color" >JW Update Interface Color</string>
+    <string name="app_custom_notify" >Custom notify</string>
 
     <string name="app_start_measure">Start detect</string>
     <string name="app_stop_measure">Stop detect</string>
@@ -208,4 +209,9 @@
     <string name="app_y_coordinate">Y coordinate</string>
     <string name="app_default_text">default</string>
     <string name="app_connect_device_not">Please connect the device</string>
+
+    <string name="app_open_notify_switch">open notify switch</string>
+    <string name="app_close_notify_switch">close notify switch</string>
+
+    <string name="app_current_switch_status">current switch status：</string>
 </resources>

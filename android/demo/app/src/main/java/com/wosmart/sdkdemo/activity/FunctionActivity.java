@@ -127,6 +127,7 @@ public class FunctionActivity extends BaseActivity {
 
         Function styleColor = new Function(42, getString(R.string.app_set_custom_style_color));
 
+        Function customNotify = new Function(43, getString(R.string.app_custom_notify));
 
 
         functions.add(login);
@@ -164,6 +165,7 @@ public class FunctionActivity extends BaseActivity {
         functions.add(macAddress);
         functions.add(openDebug);
         functions.add(styleColor);
+        functions.add(customNotify);
 
         rcy_function.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FunctionAdapter(this, functions);
@@ -355,6 +357,11 @@ public class FunctionActivity extends BaseActivity {
                         Intent styleColor = new Intent();
                         styleColor.setClass(FunctionActivity.this,UpdateStyleColorActivityActivity.class);
                         startActivity(styleColor);
+                        break;
+                    case 43:
+                        Intent customNotify = new Intent();
+                        customNotify.setClass(FunctionActivity.this, CustomNotifyActivity.class);
+                        startActivity(customNotify);
                         break;
                 }
             }
