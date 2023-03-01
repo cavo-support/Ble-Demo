@@ -27,6 +27,7 @@
 #import "ContinuousBPViewController.h"
 #import "CustomizeMainInterfaceViewController.h"
 #import "UpdateInterfaceColorViewController.h"
+#import "OtaActionViewController.h"
 
 @interface ActionListViewController ()
 <
@@ -161,8 +162,9 @@
         [self.navigationController pushViewController:[CustomizeMainInterfaceViewController new] animated:true];
     } else if ([actionStr isEqualToString:NSLocalizedString(@"Update Interface Color", nil)]) {
         [self.navigationController pushViewController:[UpdateInterfaceColorViewController new] animated:true];
+    } else if ([actionStr isEqualToString:NSLocalizedString(@"OTA", nil)]) {
+        [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
     }
-    
     
 }
 
@@ -196,6 +198,7 @@
                     @"Continuous blood pressure",
                     @"Get bracelet data",
                     @"Update Interface Color",
+                    @"OTA",
                  ];
     }
     return _functionArr;

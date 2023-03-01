@@ -232,6 +232,8 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_SleepAllDay = 42, // 全天睡眠 sleep all day
     JWBleFunctionEnum_DialDateFormat = 41, // 表盘日期格式 Dial date format
     
+#pragma mark - Device Function 2
+    JWBleFunctionEnum_DevicePrivateBloodPressure = 10001, // 设备私人血压  Device private blood pressure
 };
 
 //手环可设置开关枚举 The device can be set to switch enumeration

@@ -82,6 +82,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSData *functionData;
 
 /**
+ 可用功能data v2
+ Available functions data
+ */
+@property(nonatomic, strong) NSArray *functionDataV2;
+
+/**
  隐藏功能菜单data
  Hide function menu data
  */
