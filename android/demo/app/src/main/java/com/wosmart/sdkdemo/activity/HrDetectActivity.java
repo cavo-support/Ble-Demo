@@ -30,8 +30,6 @@ public class HrDetectActivity extends BaseActivity implements View.OnClickListen
 
     private RadioGroup rg_detect_status;
 
-    private EditText et_interval;
-
     private Button btn_set;
 
     private Handler handler;
@@ -49,7 +47,6 @@ public class HrDetectActivity extends BaseActivity implements View.OnClickListen
         toolbar = findViewById(R.id.toolbar);
         btn_read = findViewById(R.id.btn_read);
         rg_detect_status = findViewById(R.id.rg_detect_status);
-        et_interval = findViewById(R.id.et_interval);
         btn_set = findViewById(R.id.btn_set);
     }
 
@@ -83,13 +80,8 @@ public class HrDetectActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.btn_set:
                 boolean flag = rg_detect_status.getCheckedRadioButtonId() == R.id.rb_detect_open;
-                String intervalStr = et_interval.getText().toString();
-                if (null != intervalStr && !intervalStr.isEmpty()) {
-                    int interval = Integer.parseInt(intervalStr);
-                    setHrDetect(flag, interval);
-                } else {
-                    showToast(getString(R.string.app_hr_detect_hint));
-                }
+                // now default value of interval is 1
+                setHrDetect(flag, 1);
                 break;
         }
     }

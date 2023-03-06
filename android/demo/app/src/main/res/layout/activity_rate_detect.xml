@@ -59,19 +59,13 @@
 
         </RadioGroup>
 
-        <EditText
-            android:id="@+id/et_interval"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rg_detect_status"
-            android:hint="@string/app_measure_interval"
-            android:inputType="number" />
 
         <Button
             android:id="@+id/btn_set"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/et_interval"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/rg_detect_status"
             android:text="@string/app_set" />
 
     </RelativeLayout>
