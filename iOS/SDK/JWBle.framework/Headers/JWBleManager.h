@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (JWBleManager *)shareInstance;
 
-+ (NSString *)version;
+- (NSString *)sdkInfo;
 
 /**
  初始化

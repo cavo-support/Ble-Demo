@@ -34,9 +34,10 @@
     
     self.title = @"JW Ble Demo";
     
+    NSLog(@"%@",[JWBleManager sdkInfo]);
+    
     JWBleManager.showLog = true;
     [JWBleManager setUpWithUid:@"huangbo"];
-    NSString *version = [JWBleManager version];
     
     __weak __typeof(self)weakSelf = self;
     JWBleManager.connectStateChangeCallBack = ^(JWBleDeviceConnectStatus deviceConnectStatus) {
