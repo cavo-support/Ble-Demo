@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
       Default: 30
       Description: After the cache reaches the set value, the logs will be saved in batches. The smaller the value, the more obvious the impact on performance, and the larger the value may lose some logs
  */
-@property(nonatomic, assign) BOOL cacheLogCount;
+@property(nonatomic, assign) int cacheLogCount;
 
 
 /**
