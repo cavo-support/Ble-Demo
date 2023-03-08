@@ -33,11 +33,7 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
 
     private String tag = "SilenceOtaActivity";
 
-    public static final int OTA_MODE_MAIN_DISPLAY_RESOURCE = 0;//主显示资源 Main display resource
-    public static final int OTA_MODE_DISPLAY_FONT = 1;//显示字库 Display font
-    public static final int OTA_MODE_MAIN_FONT_LIBRARIES_INVOLVED_IN_THE_MAIN_INTERFACE = 2;//主界面涉及到的字库 Font libraries involved in the main interface
-    public static final int OTA_MODE_CUSTOM_INTERFACE_RESOURCES = 3;//自定义界面资源 Custom interface resources
-    public static final int OTA_MODE_DIAL_MARKET_RESOURCES = 4;//表盘市场资源 Dial market resources
+
 
     private Toolbar toolbar;
 
@@ -59,15 +55,8 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
         initData();
         addListener();
 
-        //init rtk OTA
-        RtkConfigure configure = new RtkConfigure.Builder()
-                .debugEnabled(true)
-                .printLog(true)
-                .logTag("OTA")
-                .globalLogLevel(1)
-                .build();
-        RtkCore.initialize(this, configure);
-        RtkDfu.initialize(this, true);
+        // we have init ota sdk at App，if you want to use it, you can init ota sdk at application.
+        // and you must add DfuService in AndroidManifest.xml
     }
 
     private void initView() {
@@ -143,6 +132,12 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
         });
         thread.start();
     }
+
+    public static final int OTA_MODE_MAIN_DISPLAY_RESOURCE = 0;//主显示资源 Main display resource
+    public static final int OTA_MODE_DISPLAY_FONT = 1;//显示字库 Display font
+    public static final int OTA_MODE_MAIN_FONT_LIBRARIES_INVOLVED_IN_THE_MAIN_INTERFACE = 2;//主界面涉及到的字库 Font libraries involved in the main interface
+    public static final int OTA_MODE_CUSTOM_INTERFACE_RESOURCES = 3;//自定义界面资源 Custom interface resources
+    public static final int OTA_MODE_DIAL_MARKET_RESOURCES = 4;//表盘市场资源 Dial market resources
 
     /**
      * EnterSilenceModel tell device ready to ota

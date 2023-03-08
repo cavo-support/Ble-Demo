@@ -129,6 +129,8 @@ public class FunctionActivity extends BaseActivity {
 
         Function customNotify = new Function(43, getString(R.string.app_custom_notify));
 
+        Function firmwareUpgradeOTA = new Function(44, getString(R.string.app_firmware_upgrade));
+
 
         functions.add(login);
         functions.add(device);
@@ -166,6 +168,7 @@ public class FunctionActivity extends BaseActivity {
         functions.add(openDebug);
         functions.add(styleColor);
         functions.add(customNotify);
+        functions.add(firmwareUpgradeOTA);
 
         rcy_function.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FunctionAdapter(this, functions);
@@ -362,6 +365,12 @@ public class FunctionActivity extends BaseActivity {
                         Intent customNotify = new Intent();
                         customNotify.setClass(FunctionActivity.this, CustomNotifyActivity.class);
                         startActivity(customNotify);
+                        break;
+                    case 44:
+                        Intent firmwareUpgrade = new Intent();
+                        firmwareUpgrade.setClass(FunctionActivity.this, FirmwareUpgradeOtaActivity.class);
+                        firmwareUpgrade.putExtra("mac", mac);
+                        startActivity(firmwareUpgrade);
                         break;
                 }
             }

@@ -27,6 +27,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".App"
         android:theme="@style/AppTheme">
 
         <activity android:name=".activity.MainActivity"
@@ -36,6 +37,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--rtk 升级服务-->
+        <service
+            android:name="com.realsil.sdk.dfu.DfuService"
+            android:enabled="true"
+            android:exported="false" />
+
 
         <activity android:name=".activity.ScanActivity" />
 
@@ -112,6 +120,8 @@
         <activity android:name=".activity.UpdateStyleColorActivityActivity" />
 
         <activity android:name=".activity.CustomNotifyActivity" />
+
+        <activity android:name=".activity.FirmwareUpgradeOtaActivity" />
 
     </application>
 
