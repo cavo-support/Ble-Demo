@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+|  1.0.3  | Added log fine-grained control configuration:<br/>1: JWBleManager. shareInstance. saveLog<br/>2: JWBleManager. shareInstance. cacheLogCount |
 |  1.0.2  | 1：Add step target setting log  <br />2：Add [[JWBleManager shareInstance] sdkInfo] display sdk information |
 |  1.0.1  | Support sleep quality calculation<br />[JWBleDataAction jwSleepQualityCalculation:] |
 |  1.0.0  |                   official release version                   |

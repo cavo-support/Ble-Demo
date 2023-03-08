@@ -49,6 +49,34 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, assign) BOOL showLog;
 /**
+ 是否保存日志
+     默认：false
+     描述：
+        1：前提showLog必须为true，否则无效
+        2：获取log方式为[JWLogModel getLog];
+        3：开启保存日志，会影响性能
+ 
+ Whether to save the log
+    Default: false
+    describe:
+      1:  The premise showLog must be true, otherwise it is invalid
+      2:  The way to get the log is [JWLogModel getLog];
+      3：Turning on saving logs will affect performance
+ */
+@property(nonatomic, assign) BOOL saveLog;
+/**
+ 保存日志的缓存条数
+    默认：30条
+    描述：缓存到达设置的值后，才会批量保存日志，值越小影响性能越明显，值越大可能会丢失一些日志
+ 
+ The number of cache entries for saving logs
+      Default: 30
+      Description: After the cache reaches the set value, the logs will be saved in batches. The smaller the value, the more obvious the impact on performance, and the larger the value may lose some logs
+ */
+@property(nonatomic, assign) int cacheLogCount;
+
+
+/**
  是否是生产模式
  决定是否回连手环
  
