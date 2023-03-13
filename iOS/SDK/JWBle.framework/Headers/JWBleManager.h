@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (JWBleManager *)shareInstance;
 
 - (NSString *)sdkInfo;
+- (NSDictionary *)sdkInfoDic;
 
 /**
  初始化
@@ -88,6 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
  Default: false
  */
 @property(nonatomic, assign) BOOL isProduce;
+@property(nonatomic, assign) BOOL checkSpecialOtaShutdown;
 @property(nonatomic, strong) NSMutableArray *cacheLogArr;
 
 /**
