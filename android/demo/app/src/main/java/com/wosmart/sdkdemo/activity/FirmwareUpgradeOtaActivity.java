@@ -1,6 +1,5 @@
 package com.wosmart.sdkdemo.activity;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -19,6 +18,8 @@ import com.wosmart.sdkdemo.App;
 import com.wosmart.sdkdemo.R;
 import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.ukprotocollibary.WristbandManager;
+import com.wosmart.ukprotocollibary.WristbandManagerCallback;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerDeviceInfoPacket;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,6 +31,10 @@ import static com.realsil.sdk.dfu.DfuConstants.PROGRESS_ACTIVE_IMAGE_AND_RESET;
 
 
 /**
+ *
+ * 0. read device info to get device version code
+ *    compare the device version code to your latest version code(you can save it to your app or get it from you web service).
+ *
  * 1. check ota sdk {@link App#onCreate()}
  *    we have init ota sdk at App，if you want to use it, you can init ota sdk at application.
  *    and you should add DfuService in AndroidManifest.xml
@@ -74,9 +79,30 @@ public class FirmwareUpgradeOtaActivity extends BaseActivity {
         findViewById(R.id.btn_firmware_upgrade).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startOta();
+                checkVersion();
             }
         });
+    }
+
+    private void checkVersion() {
+        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+
+            @Override
+            public void onDeviceInfo(ApplicationLayerDeviceInfoPacket packet) {
+                super.onDeviceInfo(packet);
+
+                int curVersionCode = packet.getVersionCode();
+                String curVersionName = packet.getVersionName();
+
+                // compare the device version code to your latest version code(you can save it to your app or get it from you web service)
+                int yourVersionCode = 0;
+                if (yourVersionCode > curVersionCode) {
+                    startOta();
+                }
+            }
+        });
+
+        WristbandManager.getInstance(this).requestDeviceInfo();
     }
 
     private void startOta() {
