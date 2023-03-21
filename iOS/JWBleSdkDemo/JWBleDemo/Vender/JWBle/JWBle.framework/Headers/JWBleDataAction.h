@@ -297,6 +297,17 @@
  */
 + (void)jwGetTemperatureDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 + (void)jwGetTemperatureDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+/**
+ 温度数据校准
+ 
+ value: 设备返回来的数据
+ 注意：设备返回compensationStatus时才需要校准
+ 
+ Temperature data calibration
+ Value: Data returned by the device
+ Note: Calibration is only required when the device returns to the compensationStatus
+ */
++ (float)jwTemperatureCalibration:(float)value;
 
 /**
  获取 设备血氧数据
