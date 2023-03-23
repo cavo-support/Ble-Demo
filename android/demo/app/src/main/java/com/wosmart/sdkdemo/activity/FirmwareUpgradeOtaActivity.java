@@ -1,7 +1,8 @@
 package com.wosmart.sdkdemo.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -82,6 +83,9 @@ public class FirmwareUpgradeOtaActivity extends BaseActivity {
                 checkVersion();
             }
         });
+
+        boolean connect = WristbandManager.getInstance(this).isConnect();
+        Log.e("EEEEE", "isConnect = " + connect);
     }
 
     private void checkVersion() {

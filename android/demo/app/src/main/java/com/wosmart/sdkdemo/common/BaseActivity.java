@@ -2,12 +2,13 @@ package com.wosmart.sdkdemo.common;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.wosmart.sdkdemo.R;
 import com.wosmart.ukprotocollibary.util.SDKLogger;
