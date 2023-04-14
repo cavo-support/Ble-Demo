@@ -2,18 +2,17 @@ package com.wosmart.sdkdemo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-
+import com.wosmart.sdkdemo.R;
 import com.wosmart.sdkdemo.adapter.FunctionAdapter;
 import com.wosmart.sdkdemo.common.BaseActivity;
-import com.wosmart.sdkdemo.R;
 import com.wosmart.sdkdemo.model.Function;
-import com.wosmart.ukprotocollibary.WristbandManager;
 
 import java.util.ArrayList;
 import java.util.List;

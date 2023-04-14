@@ -20,6 +20,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.2.12  |     1. support sos function[setSOSNumberToDevice]<br /> 2. support [getGluContinuous]|
 | 1.2.11  |     1. update device info attr [ApplicationLayerDeviceInfoPacket] |
 | 1.2.10  |     1. fix SDK error 2. add code annotation and sdk info [WristbandManager.getSDKInfo()]    |
 |  1.2.9  | support filter sleep data SleepFilter.filterByData(int year, int month, int day); |
