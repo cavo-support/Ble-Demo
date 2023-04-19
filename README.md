@@ -20,6 +20,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.2.13  |     1. remove invalid attr from AndroidManifest<br /> 2. optimize connection speed|
 | 1.2.12  |     1. support sos function[setSOSNumberToDevice]<br /> 2. support [getGluContinuous]|
 | 1.2.11  |     1. update device info attr [ApplicationLayerDeviceInfoPacket] |
 | 1.2.10  |     1. fix SDK error 2. add code annotation and sdk info [WristbandManager.getSDKInfo()]    |
