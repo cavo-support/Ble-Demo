@@ -61,6 +61,7 @@
             weakSelf.textView.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@\n%@\n",name,mac,deviceNumber,power,appVersion];
             [weakSelf.view hideToastActivity];
 
+            NSLog(@"JWBleDeviceConnectStatus_SyncSuccess \n \t weakSelf.textView.text : %@", weakSelf.textView.text);
         } else if (deviceConnectStatus == JWBleDeviceConnectStatus_SyncFailure) {
             weakSelf.textView.text = NSLocalizedString(@"Failed to obtain device information", nil);
             [weakSelf.view hideToastActivity];

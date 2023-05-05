@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */; };
+		154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */; };
 		15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */; };
 		15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */; };
 		15C3F79729AEFC19007662F7 /* OtaActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C3F79629AEFC19007662F7 /* OtaActionViewController.m */; };
@@ -141,6 +143,9 @@
 
 /* Begin PBXFileReference section */
 		12D2B67BF32848152AF69358 /* Pods-JWBleDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWBleDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JWBleDemo/Pods-JWBleDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		154308E429CA9B9F00E76C66 /* ImageOtaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageOtaViewController.h; sourceTree = "<group>"; };
+		154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageOtaViewController.m; sourceTree = "<group>"; };
+		154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageOtaViewController.xib; sourceTree = "<group>"; };
 		15AE9FB9283C886200D9A227 /* UpdateInterfaceColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateInterfaceColorViewController.h; sourceTree = "<group>"; };
 		15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateInterfaceColorViewController.m; sourceTree = "<group>"; };
 		15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateInterfaceColorViewController.xib; sourceTree = "<group>"; };
@@ -364,6 +369,9 @@
 			children = (
 				15C3F79529AEFC19007662F7 /* OtaActionViewController.h */,
 				15C3F79629AEFC19007662F7 /* OtaActionViewController.m */,
+				154308E429CA9B9F00E76C66 /* ImageOtaViewController.h */,
+				154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */,
+				154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */,
 			);
 			path = ota;
 			sourceTree = "<group>";
@@ -1037,6 +1045,7 @@
 				4D67F72124FE20B800A70682 /* merge.bin in Resources */,
 				4D94A79F22438A9000A3B618 /* AlarmClockViewController.xib in Resources */,
 				E29786542423576200E9D10B /* LICENSE in Resources */,
+				154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */,
 				4D94A7A822438A9000A3B618 /* MainInterfaceStyleViewController.xib in Resources */,
 				4D75427D22FBF71D003462B3 /* NoticeTableViewCell.xib in Resources */,
 				4D34573722FAD4BC00479CC0 /* LanguageViewController.xib in Resources */,
@@ -1138,6 +1147,7 @@
 				4D2C608324B810E2001C5AD2 /* GetDeviceDataViewController.m in Sources */,
 				E29786662423576200E9D10B /* MJRefreshHeader.m in Sources */,
 				E29786592423576200E9D10B /* UIScrollView+MJExtension.m in Sources */,
+				154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */,
 				4D94A7B122438A9000A3B618 /* ActionListViewControllerTableViewCell.m in Sources */,
 				E297865B2423576200E9D10B /* UIView+MJExtension.m in Sources */,
 				4D26A2A824628847007C71E2 /* ConnectionRecordModel.m in Sources */,

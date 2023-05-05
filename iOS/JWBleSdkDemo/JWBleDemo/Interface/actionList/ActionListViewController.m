@@ -28,6 +28,7 @@
 #import "CustomizeMainInterfaceViewController.h"
 #import "UpdateInterfaceColorViewController.h"
 #import "OtaActionViewController.h"
+#import "ImageOtaViewController.h"
 
 @interface ActionListViewController ()
 <
@@ -164,7 +165,11 @@
         [self.navigationController pushViewController:[UpdateInterfaceColorViewController new] animated:true];
     } else if ([actionStr isEqualToString:NSLocalizedString(@"OTA", nil)]) {
         [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
+    } else if ([actionStr isEqualToString:NSLocalizedString(@"Image OTA", nil)]) {
+        [self.navigationController pushViewController:[ImageOtaViewController new] animated:true];
     }
+    
+    
     
 }
 
@@ -199,6 +204,7 @@
                     @"Get bracelet data",
                     @"Update Interface Color",
                     @"OTA",
+                    @"Image OTA"
                  ];
     }
     return _functionArr;

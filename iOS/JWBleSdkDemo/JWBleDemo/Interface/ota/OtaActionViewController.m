@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"Ota Action";
+    
     /**
      操作步骤
      1：联系商务，得到新版本的bin文件

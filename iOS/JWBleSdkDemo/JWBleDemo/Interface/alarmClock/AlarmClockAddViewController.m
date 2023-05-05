@@ -101,7 +101,7 @@
         sdkModel.hour = 10;
         sdkModel.minute = 30;
         sdkModel.repeatWeekArr = clockModel.repeatWeekArr;
-        sdkModel.content = @"张总你真帅";
+        sdkModel.content = @"good";
         
         [JWBleAction jwAlarmV2Action:false alarmModel:sdkModel callBack:^(JWBleCommunicationStatus status, NSArray<JWBleAlarmClockModel *> *alarmArr) {
             NSLog(@"123123");
