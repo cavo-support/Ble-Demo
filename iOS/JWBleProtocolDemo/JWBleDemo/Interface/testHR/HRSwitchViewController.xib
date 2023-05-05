@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HRSwitchViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rHX-1K-w6Q">
+                    <rect key="frame" x="20" y="74" width="374" height="60"/>
+                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="kUl-ZJ-uQU"/>
+                    </constraints>
+                    <state key="normal" title="open">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickOpen:" destination="-1" eventType="touchUpInside" id="7T1-JW-OBx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JCH-AM-mmx">
+                    <rect key="frame" x="20" y="164" width="374" height="60"/>
+                    <color key="backgroundColor" red="0.93032288549999997" green="0.031767191969999997" blue="0.1097493415" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="dIm-os-1DU"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="rX5-zI-QqZ"/>
+                    </constraints>
+                    <state key="normal" title="close">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickClose:" destination="-1" eventType="touchUpInside" id="xfz-rY-Enx"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="JCH-AM-mmx" secondAttribute="trailing" constant="20" id="2z7-7j-c41"/>
+                <constraint firstItem="rHX-1K-w6Q" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="7v5-GO-kb3"/>
+                <constraint firstItem="JCH-AM-mmx" firstAttribute="top" secondItem="rHX-1K-w6Q" secondAttribute="bottom" constant="30" id="CJd-Z7-JR5"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="rHX-1K-w6Q" secondAttribute="trailing" constant="20" id="JYs-pB-Owy"/>
+                <constraint firstItem="rHX-1K-w6Q" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="30" id="aIy-NL-RVv"/>
+                <constraint firstItem="JCH-AM-mmx" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="sRF-V0-KMH"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="132" y="153"/>
+        </view>
+    </objects>
+</document>
