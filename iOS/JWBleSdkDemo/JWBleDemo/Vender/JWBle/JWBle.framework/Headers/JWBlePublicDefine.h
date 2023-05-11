@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "JWBleDeviceModel.h"
 #import "JWBleAlarmClockModel.h"
+#import "JWBleMedicationReminderModel.h"
 #import "JWNotDisturbModel.h"
 #import "JWCountDownModel.h"
 #import "JWOxygenModel.h"
@@ -234,6 +235,19 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     
 #pragma mark - Device Function 2
     JWBleFunctionEnum_DevicePrivateBloodPressure = 10001, // 设备私人血压  Device private blood pressure
+    JWBleFunctionEnum_SOS = 10002, // sos
+    JWBleFunctionEnum_DrinkWaterReminder = 10003, // 喝水提醒 drink water reminder
+    JWBleFunctionEnum_TemperatureReminder = 10004, // 体温提醒 Temperature reminder
+    JWBleFunctionEnum_MedicationReminder = 10005, // 吃药提醒 Medication reminder
+};
+
+//客户功能枚举 Custom Function enumeration
+typedef NS_ENUM (NSInteger, JWBleCustomFunctionEnum) {
+    JWBleCustomFunctionEnum_Error = -1,//占位符 Placeholder
+    
+    JWBleCustomFunctionEnum_SetPulse = 0,//设置脉冲 set pulse
+    JWBleCustomFunctionEnum_SleepAid,//辅助睡眠 sleep aid
+    
 };
 
 //手环可设置开关枚举 The device can be set to switch enumeration
@@ -571,6 +585,14 @@ typedef void (^JWBleTestTemperatureCallBack)(JWBleCommunicationStatus status, JW
  @param alarmArr 闹钟数组 Alarm clock array
  */
 typedef void (^JWBleAlarmActionCallBack)(JWBleCommunicationStatus status, NSArray<JWBleAlarmClockModel *> *alarmArr);
+
+/**
+ 吃药提醒 Alarm event callback
+
+ @param status 状态 status
+ @param alarmArr 提醒数组 Alarm clock array
+ */
+typedef void (^JWBleMedicationReminderActionCallBack)(JWBleCommunicationStatus status, NSArray<JWBleMedicationReminderModel *> *alarmArr);
 
 /**
  查找手机回调 Find phone callback

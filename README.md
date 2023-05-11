@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+|  1.0.5  | 1：Added【customized pulse function】in SDK<br />2：DEMO implements 【customized pulse function】 |
 |  1.0.4  | Add Temperature data calibration:<br />[JWBleDataAction jwTemperatureCalibration:(float)]; |
 |  1.0.3  | Added log fine-grained control configuration:<br/>1: JWBleManager. shareInstance. saveLog<br/>2: JWBleManager. shareInstance. cacheLogCount |
 |  1.0.2  | 1：Add step target setting log  <br />2：Add [[JWBleManager shareInstance] sdkInfo] display sdk information |

@@ -29,6 +29,7 @@
 #import "UpdateInterfaceColorViewController.h"
 #import "OtaActionViewController.h"
 #import "ImageOtaViewController.h"
+#import "CustomSetPluseViewController.h"
 
 @interface ActionListViewController ()
 <
@@ -66,6 +67,7 @@
  @param indexPath indexPath description
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     NSString *actionStr = NSLocalizedString(self.functionArr[indexPath.row], nil);
     
     __weak __typeof(self)weakSelf = self;
@@ -167,7 +169,10 @@
         [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
     } else if ([actionStr isEqualToString:NSLocalizedString(@"Image OTA", nil)]) {
         [self.navigationController pushViewController:[ImageOtaViewController new] animated:true];
+    } else if ([actionStr isEqualToString:NSLocalizedString(@"Custom Set Pulse", nil)]) {
+        [self.navigationController pushViewController:[CustomSetPluseViewController new] animated:true];
     }
+    
     
     
     
@@ -204,7 +209,8 @@
                     @"Get bracelet data",
                     @"Update Interface Color",
                     @"OTA",
-                    @"Image OTA"
+                    @"Image OTA",
+                    @"Custom Set Pulse"
                  ];
     }
     return _functionArr;

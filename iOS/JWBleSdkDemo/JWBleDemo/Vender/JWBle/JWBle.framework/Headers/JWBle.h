@@ -14,6 +14,7 @@
 #import "JWBleDataAction.h"
 #import "JWBleDeviceModel.h"
 #import "JWBleAlarmClockModel.h"
+#import "JWBleMedicationReminderModel.h"
 #import "JWBlePublicHelp.h"
 #import "JWBleOTAAction.h"
 #import "JWBleCustomizeMainInterfaceAction.h"

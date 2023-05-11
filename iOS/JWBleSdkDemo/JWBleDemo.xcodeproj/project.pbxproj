@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */; };
 		154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */; };
+		15A25C092A0CB95600D7954C /* CustomSetPluseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */; };
+		15A25C0B2A0CBB2C00D7954C /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A25C0A2A0CBB2C00D7954C /* JWBle.framework */; };
 		15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */; };
 		15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */; };
 		15C3F79729AEFC19007662F7 /* OtaActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C3F79629AEFC19007662F7 /* OtaActionViewController.m */; };
-		15C7721129B6CD1C001366C0 /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C7721029B6CD1C001366C0 /* JWBle.framework */; };
 		4D18086D24EF613E00DD46F7 /* ContinuousBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D18086B24EF613E00DD46F7 /* ContinuousBPViewController.m */; };
 		4D18086E24EF613E00DD46F7 /* ContinuousBPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D18086C24EF613E00DD46F7 /* ContinuousBPViewController.xib */; };
 		4D1D9EF024BC410100818548 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4D1D9EF224BC410100818548 /* Localizable.strings */; };
@@ -146,12 +147,14 @@
 		154308E429CA9B9F00E76C66 /* ImageOtaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageOtaViewController.h; sourceTree = "<group>"; };
 		154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageOtaViewController.m; sourceTree = "<group>"; };
 		154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageOtaViewController.xib; sourceTree = "<group>"; };
+		15A25C072A0CB95600D7954C /* CustomSetPluseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSetPluseViewController.h; sourceTree = "<group>"; };
+		15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSetPluseViewController.m; sourceTree = "<group>"; };
+		15A25C0A2A0CBB2C00D7954C /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
 		15AE9FB9283C886200D9A227 /* UpdateInterfaceColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateInterfaceColorViewController.h; sourceTree = "<group>"; };
 		15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateInterfaceColorViewController.m; sourceTree = "<group>"; };
 		15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateInterfaceColorViewController.xib; sourceTree = "<group>"; };
 		15C3F79529AEFC19007662F7 /* OtaActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtaActionViewController.h; sourceTree = "<group>"; };
 		15C3F79629AEFC19007662F7 /* OtaActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtaActionViewController.m; sourceTree = "<group>"; };
-		15C7721029B6CD1C001366C0 /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
 		4D18086A24EF613E00DD46F7 /* ContinuousBPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContinuousBPViewController.h; sourceTree = "<group>"; };
 		4D18086B24EF613E00DD46F7 /* ContinuousBPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContinuousBPViewController.m; sourceTree = "<group>"; };
 		4D18086C24EF613E00DD46F7 /* ContinuousBPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContinuousBPViewController.xib; sourceTree = "<group>"; };
@@ -347,13 +350,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCDD64B792C45C2DF324E2B4 /* libPods-JWBleDemo.a in Frameworks */,
-				15C7721129B6CD1C001366C0 /* JWBle.framework in Frameworks */,
+				15A25C0B2A0CBB2C00D7954C /* JWBle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15A25C062A0CB93F00D7954C /* CustomSetPluse */ = {
+			isa = PBXGroup;
+			children = (
+				15A25C072A0CB95600D7954C /* CustomSetPluseViewController.h */,
+				15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */,
+			);
+			path = CustomSetPluse;
+			sourceTree = "<group>";
+		};
 		15AE9FB8283C885600D9A227 /* UpdateInterfaceColor */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,7 +622,7 @@
 		4D94A7BF2243922400A3B618 /* JWBle */ = {
 			isa = PBXGroup;
 			children = (
-				15C7721029B6CD1C001366C0 /* JWBle.framework */,
+				15A25C0A2A0CBB2C00D7954C /* JWBle.framework */,
 				E2A0E3C0238F7D03004EB9C7 /* RTKOTASDK.framework */,
 				4D1E1F8C236D1C6800AB8A4A /* CocoaLumberjack.framework */,
 				4D1E1F88236D1BCC00AB8A4A /* RTKLEFoundation.framework */,
@@ -763,6 +775,7 @@
 		4DEE82AB224261040068A80B /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				15A25C062A0CB93F00D7954C /* CustomSetPluse */,
 				15C3F79429AEFBF0007662F7 /* ota */,
 				15AE9FB8283C885600D9A227 /* UpdateInterfaceColor */,
 				4DC81F2D24FDF7A90055B07C /* customizeMainInterface */,
@@ -1177,6 +1190,7 @@
 				4D94A7A722438A9000A3B618 /* MainInterfaceStyleViewController.m in Sources */,
 				4DAF3AEB2370163D0033301B /* UpdateVersionFileViewController.m in Sources */,
 				4D36BC652335C00E00E0D8E2 /* ScanFilterView.m in Sources */,
+				15A25C092A0CB95600D7954C /* CustomSetPluseViewController.m in Sources */,
 				4D36BC6E2335CCCB00E0D8E2 /* ScanFilterRecordModel.m in Sources */,
 				E29786652423576200E9D10B /* MJRefreshFooter.m in Sources */,
 				4DC81F3424FDF7FC0055B07C /* CustomizeMainInterfaceViewController.m in Sources */,

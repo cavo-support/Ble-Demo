@@ -666,6 +666,30 @@
 + (void)jwSyncContacts:(NSArray<NSDictionary *> *)addressBooks callBack:(void (^)(JWBleCommunicationStatus status, int index))callBack;
 
 /**
+ 同步SOS
+ 
+ addressBooks: // 最多5个，max length：5
+ @[
+    @{
+        @"name":@"xxxx", //最多15个UTF8
+        @"phone":@"1368xxxxx", //最多19个UTF8
+    }
+ ]
+ 
+ Sync Contacts
+  
+   addressBooks: // 最多5个，max length：5
+   @[
+      @{
+          @"name":@"xxxx", //Up to 15 UTF8
+          @"phone":@"1368xxxxx", //Up to 19 UTF8
+      }
+   ]
+ 
+ */
++ (void)jwSyncSOSContacts:(NSArray<NSDictionary *> *)addressBooks callBack:(void (^)(JWBleCommunicationStatus status, int index))callBack;
+
+/**
  更新界面颜色
  仅支持特殊手环固件
  
@@ -736,7 +760,75 @@
  */
 + (void)jwDialDateFormatAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
 
+/**
+ 体温过高提醒
+ 
+ isGet: 是否获取
+ value:
+    1：范围：38.0->41.9，该值可根据客户定制进行调整
+    2：0为关闭提醒
+    3：值类型为 摄氏度
+ 
+ TemperatureReminder
+  
+   isGet: whether to get
+   value:
+      1: Range: 38.0->41.9, this value can be adjusted according to customer customization
+      2:0 is to close the reminder
+      3: The value type is Celsius
+ */
++ (void)jwTemperatureReminderAction:(BOOL)isGet value:(int)value callBack:(void (^)(JWBleCommunicationStatus status, int value))callBack;
+
+/**
+ 喝水提醒
+ 
+ isGet: 是否获取
+ open: 是否开启
+ startHour: 开始小时
+ startMinute: 开始分钟
+ endHour: 结束小时
+ endMinute: 结束分钟
+ span: 间隔 30-480分钟
+ 
+ drink water reminder
+  
+   isGet: whether to get
+   open: whether to open
+   startHour: start hour
+   startMinute: start minute
+   endHour: end hour
+   endMinute: end minute
+   span: interval 30-480 minutes
+ */
++ (void)jwDrinkWaterReminderAction:(BOOL)isGet
+                              open:(bool)open
+                         startHour:(int)startHour
+                       startMinute:(int)startMinute
+                         endHour:(int)endHour
+                         endMinute:(int)endMinute
+                         span:(int)span
+                          callBack:(void (^)(JWBleCommunicationStatus status, bool open, int startHour, int startMinute, int endHour, int endMinute, int span))callBack;
+
+/**
+ 吃药提醒
+ 
+ @param get  是否获取
+ @param alarmArr 提醒数组（如果设置）
+ @param callBack 回调
+ */
++ (void)jwMedicationReminderAction:(BOOL)get
+             alarmArr:(NSArray<JWBleMedicationReminderModel *> *)alarmArr
+             callBack:(JWBleMedicationReminderActionCallBack)callBack;
+
 #pragma mark - 客户定制  Customer customization
+
+/**
+ 检查客户功能状态 Check Custom function status
+ 
+ @param functionEnum 功能枚举  Function enumeration
+ @return return 功能状态枚举  Functional state enumeration
+ */
++ (JWBleFunctionStatesEnum)jwCheckCustomFunctionStates:(JWBleCustomFunctionEnum)functionEnum;
 
 /**
  客户定制，消息通知，需要告知商务，客户对应的包名
@@ -744,6 +836,20 @@
  Customer customization, message notification, need to inform the business, the package name corresponding to the customer
  */
 + (void)jwCustomCustomizationNotifyAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+
+/**
+ 客户定制 - 设置脉冲
+ open：是否开启
+ minute：持续分钟时间 (1-15)，默认1
+ level：档位强度 (1-7)，默认1
+ 
+ Custom - set pulse
+ open: whether to open
+ minute: duration in minutes (1-15), default 1
+ level: gear strength (1-7), default 1
+ */
++ (void)jwCustomSetPulseAction:(bool)open minute:(int)minute level:(int)level callBack:(void (^)(JWBleCommunicationStatus status))callBack;
+
 
 #pragma mark - 以下是生产测试方法  The following is the production test method
 /**

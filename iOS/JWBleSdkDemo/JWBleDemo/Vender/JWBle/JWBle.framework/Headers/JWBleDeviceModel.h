@@ -155,6 +155,9 @@ NS_ASSUME_NONNULL_BEGIN
 //手环可控制的开关数据  The switch data that the bracelet can control
 @property(nonatomic, strong) NSData *deviceSwitchData;
 
+//客户定制功能支持 Customer customized function support
+@property(nonatomic, strong) NSDictionary *customizedFunctionDic;
+
 @end
 
 NS_ASSUME_NONNULL_END
