@@ -123,6 +123,10 @@
 
         <activity android:name=".activity.FirmwareUpgradeOtaActivity" />
 
+        <activity android:name=".activity.PulseActivity" />
+
+        <activity android:name=".activity.SleepHelpActivity" />
+
     </application>
 
 </manifest>

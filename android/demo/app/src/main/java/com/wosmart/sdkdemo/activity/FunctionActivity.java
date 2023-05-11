@@ -131,6 +131,10 @@ public class FunctionActivity extends BaseActivity {
 
         Function firmwareUpgradeOTA = new Function(44, getString(R.string.app_firmware_upgrade));
 
+        Function pulse = new Function(45, getString(R.string.app_pulse));
+
+        Function sleepHelp = new Function(46, getString(R.string.app_sleep_help));
+
 
         functions.add(login);
         functions.add(device);
@@ -169,6 +173,8 @@ public class FunctionActivity extends BaseActivity {
         functions.add(styleColor);
         functions.add(customNotify);
         functions.add(firmwareUpgradeOTA);
+        functions.add(pulse);
+        functions.add(sleepHelp);
 
         rcy_function.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FunctionAdapter(this, functions);
@@ -371,6 +377,12 @@ public class FunctionActivity extends BaseActivity {
                         firmwareUpgrade.setClass(FunctionActivity.this, FirmwareUpgradeOtaActivity.class);
                         firmwareUpgrade.putExtra("mac", mac);
                         startActivity(firmwareUpgrade);
+                        break;
+                    case 45:
+                        startActivity(new Intent(FunctionActivity.this, FirmwareUpgradeOtaActivity.class));
+                        break;
+                    case 46:
+                        startActivity(new Intent(FunctionActivity.this, SleepHelpActivity.class));
                         break;
                 }
             }

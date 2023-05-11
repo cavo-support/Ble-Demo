@@ -40,6 +40,8 @@
     <string name="app_set_custom_style_color" >JW Update Interface Color</string>
     <string name="app_custom_notify" >Custom notify</string>
     <string name="app_firmware_upgrade" >Firmware Upgrade</string>
+    <string name="app_pulse">Pulse</string>
+    <string name="app_sleep_help">Sleep Help</string>
 
 
     <string name="app_start_measure">Start detect</string>

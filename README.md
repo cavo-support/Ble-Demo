@@ -21,6 +21,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.2.14  | 1：Added[set pulse] and [setSleepHelp] function】in SDK<br />2：DEMO implements [setPulse] [setSleepHelp] function |
 | 1.2.13  |     1. remove invalid attr from AndroidManifest<br /> 2. optimize connection speed|
 | 1.2.12  |     1. support sos function[setSOSNumberToDevice]<br /> 2. support [getGluContinuous]|
 | 1.2.11  |     1. update device info attr [ApplicationLayerDeviceInfoPacket] |

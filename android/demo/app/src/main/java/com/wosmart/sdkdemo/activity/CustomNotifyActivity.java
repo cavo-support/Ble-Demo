@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -104,8 +103,6 @@ public class CustomNotifyActivity extends BaseActivity implements View.OnClickLi
             public void run() {
                 String content = contentEdit.getText().toString();
                 if (!TextUtils.isEmpty(content)) {
-                    byte[] bytes = content.getBytes();
-                    Log.e("AAAA", "content = " + content + ", byte = " + bytes.toString());
                     WristbandManager.getInstance(CustomNotifyActivity.this).sendCustomNotify(content);
                 }
             }
