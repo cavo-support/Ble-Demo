@@ -839,17 +839,31 @@
 
 /**
  客户定制 - 设置脉冲
- open：是否开启
- minute：持续分钟时间 (1-15)，默认1
- level：档位强度 (1-7)，默认1
+     open：是否开启
+     minute：持续分钟时间 (1-15)，默认1
+     level：档位强度 (1-7)，默认1
  
  Custom - set pulse
- open: whether to open
- minute: duration in minutes (1-15), default 1
- level: gear strength (1-7), default 1
+     open: whether to open
+     minute: duration in minutes (1-15), default 1
+     level: gear strength (1-7), default 1
  */
 + (void)jwCustomSetPulseAction:(bool)open minute:(int)minute level:(int)level callBack:(void (^)(JWBleCommunicationStatus status))callBack;
 
+/**
+ 客户定制 - 设置辅助睡眠
+     open：是否开启
+     time：时间（10、15、20、30）
+     effectTime：生效时间（1~x），必须小于time
+     level：档位，默认1
+ 
+ Customization - Setting Up Assisted Sleep
+    open: whether to open
+    time: time (10, 15, 20, 30)
+    effectTime: effective time (1~x), must be less than time
+    level: gear level, default 1
+ */
++ (void)jwCustomSleepAidAction:(bool)open time:(int)time effectTime:(int)effectTime level:(int)level callBack:(void (^)(JWBleCommunicationStatus status))callBack;
 
 #pragma mark - 以下是生产测试方法  The following is the production test method
 /**

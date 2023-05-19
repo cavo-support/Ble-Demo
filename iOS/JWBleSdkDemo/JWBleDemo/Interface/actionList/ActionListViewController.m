@@ -169,13 +169,9 @@
         [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
     } else if ([actionStr isEqualToString:NSLocalizedString(@"Image OTA", nil)]) {
         [self.navigationController pushViewController:[ImageOtaViewController new] animated:true];
-    } else if ([actionStr isEqualToString:NSLocalizedString(@"Custom Set Pulse", nil)]) {
+    } else if ([actionStr isEqualToString:NSLocalizedString(@"Custom Set Pulse/SleepAid", nil)]) {
         [self.navigationController pushViewController:[CustomSetPluseViewController new] animated:true];
     }
-    
-    
-    
-    
 }
 
 #pragma mark - getter
@@ -210,7 +206,7 @@
                     @"Update Interface Color",
                     @"OTA",
                     @"Image OTA",
-                    @"Custom Set Pulse"
+                    @"Custom Set Pulse/SleepAid"
                  ];
     }
     return _functionArr;

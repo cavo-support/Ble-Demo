@@ -128,6 +128,7 @@ typedef NS_ENUM(NSInteger, JWBleBusyStatus) {
     JWBleBusyStatus_ECG_Testing,//ECG测试中
     JWBleBusyStatus_Manual_Blood_Glucose_Measurement, //血糖手动测量
     JWBleBusyStatus_Silent_Measurement_Of_Blood_Glucose, //血糖静默测量
+    JWBleBusyStatus_Pulsed_Magnetic_Therapy, //脉冲磁疗测试中
 };
 
 #pragma mark - 功能枚举 Function enumeration
@@ -441,6 +442,24 @@ typedef void (^JWBleFindPhoneV2CallBack)(BOOL start);
  If hrValue is -999, the bracelet is actively stopped
  */
 typedef void (^JWBleRealTimeHeartRateCallBack)(NSInteger hrValue);
+
+/**
+ 脉冲结束回调 Pulse end callback
+ */
+typedef void (^JWBleEndOfPulseCallBack)(int value);
+
+/**
+ 脉冲数据回调 Pulse data callback
+ 
+ status:
+    0:end
+    1: start
+    2:receiving
+ length: How many pieces of data exist，（only status == 1）
+ timestamp：timestamp，（only status == 2）
+ value：value，（only status == 2）
+ */
+typedef void (^JWBlePulseDataCallBack)(int status, int length ,int timestamp, int value);
 
 /**
  实时温度回调

@@ -383,6 +383,32 @@
 + (void)jwGetBloodGlucoseDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
+ 获取 设备脉冲数据
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ dataArr:
+ [
+    {
+     @"value": //  值
+     @"time": //时间戳
+    }
+ ]
+ 
+ Get device pulse data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+      {
+       @"value": //  value
+       @"time": //time stamp
+      }
+   ]
+ */
++ (void)jwGetPulseDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetPulseDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
  获取运动数据
 
  @param yyyymmddStr 获取的日期 如：20180911

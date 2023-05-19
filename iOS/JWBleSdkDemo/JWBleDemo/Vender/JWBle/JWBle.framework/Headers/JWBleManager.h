@@ -176,6 +176,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, copy) JWBleRealTimeTemperatureCallBack realTimeTemperatureCallBack;
 
+/**
+ 脉冲结束回调 Pulse end callback
+ */
+@property(nonatomic, copy) JWBleEndOfPulseCallBack endOfPulseCallBack;
+
+/**
+ 脉冲数据回调 Pulse data callback
+ */
+@property(nonatomic, copy) JWBlePulseDataCallBack pulseDataCallBack;
+
 //Opus数据回调 -- Opus数据回调
 @property(nonatomic, copy) JWBleOpusDataCallBack opusDataCallBack;
 

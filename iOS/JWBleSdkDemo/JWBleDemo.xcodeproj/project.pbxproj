@@ -10,7 +10,6 @@
 		154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */; };
 		154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */; };
 		15A25C092A0CB95600D7954C /* CustomSetPluseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */; };
-		15A25C0B2A0CBB2C00D7954C /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A25C0A2A0CBB2C00D7954C /* JWBle.framework */; };
 		15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */; };
 		15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */; };
 		15C3F79729AEFC19007662F7 /* OtaActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C3F79629AEFC19007662F7 /* OtaActionViewController.m */; };
@@ -149,7 +148,6 @@
 		154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageOtaViewController.xib; sourceTree = "<group>"; };
 		15A25C072A0CB95600D7954C /* CustomSetPluseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSetPluseViewController.h; sourceTree = "<group>"; };
 		15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSetPluseViewController.m; sourceTree = "<group>"; };
-		15A25C0A2A0CBB2C00D7954C /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
 		15AE9FB9283C886200D9A227 /* UpdateInterfaceColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateInterfaceColorViewController.h; sourceTree = "<group>"; };
 		15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateInterfaceColorViewController.m; sourceTree = "<group>"; };
 		15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateInterfaceColorViewController.xib; sourceTree = "<group>"; };
@@ -350,7 +348,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCDD64B792C45C2DF324E2B4 /* libPods-JWBleDemo.a in Frameworks */,
-				15A25C0B2A0CBB2C00D7954C /* JWBle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,7 +619,6 @@
 		4D94A7BF2243922400A3B618 /* JWBle */ = {
 			isa = PBXGroup;
 			children = (
-				15A25C0A2A0CBB2C00D7954C /* JWBle.framework */,
 				E2A0E3C0238F7D03004EB9C7 /* RTKOTASDK.framework */,
 				4D1E1F8C236D1C6800AB8A4A /* CocoaLumberjack.framework */,
 				4D1E1F88236D1BCC00AB8A4A /* RTKLEFoundation.framework */,
