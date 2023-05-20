@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */; };
 		154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */; };
+		156EE4942A18C36700A8020A /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 156EE4932A18C36700A8020A /* JWBle.framework */; };
+		159AC2022A18756800F0C98D /* SaunaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 159AC2012A18756800F0C98D /* SaunaViewController.m */; };
 		15A25C092A0CB95600D7954C /* CustomSetPluseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */; };
 		15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */; };
 		15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */; };
@@ -146,6 +148,9 @@
 		154308E429CA9B9F00E76C66 /* ImageOtaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageOtaViewController.h; sourceTree = "<group>"; };
 		154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageOtaViewController.m; sourceTree = "<group>"; };
 		154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageOtaViewController.xib; sourceTree = "<group>"; };
+		156EE4932A18C36700A8020A /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
+		159AC2002A18756800F0C98D /* SaunaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaunaViewController.h; sourceTree = "<group>"; };
+		159AC2012A18756800F0C98D /* SaunaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaunaViewController.m; sourceTree = "<group>"; };
 		15A25C072A0CB95600D7954C /* CustomSetPluseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSetPluseViewController.h; sourceTree = "<group>"; };
 		15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSetPluseViewController.m; sourceTree = "<group>"; };
 		15AE9FB9283C886200D9A227 /* UpdateInterfaceColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateInterfaceColorViewController.h; sourceTree = "<group>"; };
@@ -348,12 +353,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCDD64B792C45C2DF324E2B4 /* libPods-JWBleDemo.a in Frameworks */,
+				156EE4942A18C36700A8020A /* JWBle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		159AC1FF2A18755600F0C98D /* SaunaData */ = {
+			isa = PBXGroup;
+			children = (
+				159AC2002A18756800F0C98D /* SaunaViewController.h */,
+				159AC2012A18756800F0C98D /* SaunaViewController.m */,
+			);
+			path = SaunaData;
+			sourceTree = "<group>";
+		};
 		15A25C062A0CB93F00D7954C /* CustomSetPluse */ = {
 			isa = PBXGroup;
 			children = (
@@ -619,6 +634,7 @@
 		4D94A7BF2243922400A3B618 /* JWBle */ = {
 			isa = PBXGroup;
 			children = (
+				156EE4932A18C36700A8020A /* JWBle.framework */,
 				E2A0E3C0238F7D03004EB9C7 /* RTKOTASDK.framework */,
 				4D1E1F8C236D1C6800AB8A4A /* CocoaLumberjack.framework */,
 				4D1E1F88236D1BCC00AB8A4A /* RTKLEFoundation.framework */,
@@ -771,6 +787,7 @@
 		4DEE82AB224261040068A80B /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				159AC1FF2A18755600F0C98D /* SaunaData */,
 				15A25C062A0CB93F00D7954C /* CustomSetPluse */,
 				15C3F79429AEFBF0007662F7 /* ota */,
 				15AE9FB8283C885600D9A227 /* UpdateInterfaceColor */,
@@ -1154,6 +1171,7 @@
 				E29786562423576200E9D10B /* MJRefreshConst.m in Sources */,
 				4DEE829322425E940068A80B /* AppDelegate.m in Sources */,
 				4D2C608324B810E2001C5AD2 /* GetDeviceDataViewController.m in Sources */,
+				159AC2022A18756800F0C98D /* SaunaViewController.m in Sources */,
 				E29786662423576200E9D10B /* MJRefreshHeader.m in Sources */,
 				E29786592423576200E9D10B /* UIScrollView+MJExtension.m in Sources */,
 				154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */,

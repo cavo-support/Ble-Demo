@@ -37,6 +37,7 @@
     NSLog(@"%@",[JWBleManager sdkInfo]);
     
     JWBleManager.showLog = true;
+    JWBleManager.checkUserBinding = false;
     [JWBleManager setUpWithUid:@"huangbo"];
     
     __weak __typeof(self)weakSelf = self;
@@ -45,13 +46,14 @@
             return ;
         }
         
-        [weakSelf.navigationController popToRootViewControllerAnimated:true];
         [weakSelf updateConnectionBtnTitle];
         
         if (deviceConnectStatus == JWBleDeviceConnectStatus_Connect) {
             weakSelf.textView.text = NSLocalizedString(@"Successful connection, binding the bracelet", nil);
             [weakSelf.view makeToastActivity:self];
         } else if (deviceConnectStatus == JWBleDeviceConnectStatus_SyncSuccess) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:true];
+            
             NSString *name = [NSString stringWithFormat:@"name : %@",JWBleManager.connectionModel.deviceName];
             NSString *mac = [NSString stringWithFormat:@"mac : %@",JWBleManager.connectionModel.macAddress];
             NSString *deviceNumber = [NSString stringWithFormat:@"%@ : %d",NSLocalizedString(@"Hardware number", nil),JWBleManager.connectionModel.deviceNumber];
@@ -75,6 +77,7 @@
             weakSelf.textView.text = NSLocalizedString(@"Discover new firmware that can be upgraded", nil);
             [weakSelf.view hideToastActivity];
         } else if (deviceConnectStatus == JWBleDeviceConnectStatus_DisConnect) {
+            [weakSelf.navigationController popToRootViewControllerAnimated:true];
             weakSelf.textView.text = NSLocalizedString(@"Device is not connected", nil);
             [weakSelf.view hideToastActivity];
             [weakSelf updateConnectionBtnTitle];

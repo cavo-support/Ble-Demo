@@ -30,6 +30,7 @@
 #import "OtaActionViewController.h"
 #import "ImageOtaViewController.h"
 #import "CustomSetPluseViewController.h"
+#import "SaunaViewController.h"
 
 @interface ActionListViewController ()
 <
@@ -171,6 +172,8 @@
         [self.navigationController pushViewController:[ImageOtaViewController new] animated:true];
     } else if ([actionStr isEqualToString:NSLocalizedString(@"Custom Set Pulse/SleepAid", nil)]) {
         [self.navigationController pushViewController:[CustomSetPluseViewController new] animated:true];
+    } else if ([actionStr isEqualToString:NSLocalizedString(@"Sauna Data", nil)]) {
+        [self.navigationController pushViewController:[SaunaViewController new] animated:true];
     }
 }
 
@@ -206,7 +209,8 @@
                     @"Update Interface Color",
                     @"OTA",
                     @"Image OTA",
-                    @"Custom Set Pulse/SleepAid"
+                    @"Custom Set Pulse/SleepAid",
+                    @"Sauna Data"
                  ];
     }
     return _functionArr;

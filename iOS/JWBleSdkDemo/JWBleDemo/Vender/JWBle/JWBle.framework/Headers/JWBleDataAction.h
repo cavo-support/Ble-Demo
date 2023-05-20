@@ -409,6 +409,20 @@
 + (void)jwGetPulseDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
+ Get device Sauna data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+      {
+        ....
+      }
+   ]
+ */
++ (void)jwGetSaunaDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetSaunaDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
  获取运动数据
 
  @param yyyymmddStr 获取的日期 如：20180911

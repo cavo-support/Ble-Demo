@@ -248,6 +248,7 @@ typedef NS_ENUM (NSInteger, JWBleCustomFunctionEnum) {
     
     JWBleCustomFunctionEnum_SetPulse = 0,//设置脉冲 set pulse
     JWBleCustomFunctionEnum_SleepAid,//辅助睡眠 sleep aid
+    JWBleCustomFunctionEnum_Sauna,//桑拿 sauna
     
 };
 
@@ -460,6 +461,17 @@ typedef void (^JWBleEndOfPulseCallBack)(int value);
  value：value，（only status == 2）
  */
 typedef void (^JWBlePulseDataCallBack)(int status, int length ,int timestamp, int value);
+
+/**
+ 桑拿数据回调 sauna data callback
+ 
+ status:
+    0:end
+    1: start
+    2:receiving
+ length: How many pieces of data exist，（only status == 1）
+ */
+typedef void (^JWBleSaunaDataCallBack)(int status, int length ,int time, int hr, int tem, int label, int move);
 
 /**
  实时温度回调
