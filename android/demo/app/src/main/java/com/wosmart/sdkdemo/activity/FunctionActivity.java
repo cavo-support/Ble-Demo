@@ -135,6 +135,8 @@ public class FunctionActivity extends BaseActivity {
 
         Function sleepHelp = new Function(46, getString(R.string.app_sleep_help));
 
+        Function sauna = new Function(47, getString(R.string.app_sauna));
+
 
         functions.add(login);
         functions.add(device);
@@ -175,6 +177,7 @@ public class FunctionActivity extends BaseActivity {
         functions.add(firmwareUpgradeOTA);
         functions.add(pulse);
         functions.add(sleepHelp);
+        functions.add(sauna);
 
         rcy_function.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FunctionAdapter(this, functions);
@@ -383,6 +386,9 @@ public class FunctionActivity extends BaseActivity {
                         break;
                     case 46:
                         startActivity(new Intent(FunctionActivity.this, SleepHelpActivity.class));
+                        break;
+                    case 47:
+                        startActivity(new Intent(FunctionActivity.this, SaunaActivity.class));
                         break;
                 }
             }

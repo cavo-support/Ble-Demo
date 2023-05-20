@@ -42,6 +42,7 @@
     <string name="app_firmware_upgrade">固件升级</string>
     <string name="app_pulse">脉冲</string>
     <string name="app_sleep_help">睡眠辅助</string>
+    <string name="app_sauna">桑拿</string>
 
     <string name="app_start_measure">开始测量</string>
     <string name="app_stop_measure">结束测量</string>

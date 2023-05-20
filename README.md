@@ -23,6 +23,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.2.16  | 1：sdk and demo [SaunaActivity]  |
 | 1.2.15  | 1：sdk and demo [PulseActivity]  |
 | 1.2.14  | 1：Added[set pulse] and [setSleepHelp] function】in SDK<br />2：DEMO implements [setPulse] [setSleepHelp] function |
 | 1.2.13  |     1. remove invalid attr from AndroidManifest<br /> 2. optimize connection speed|

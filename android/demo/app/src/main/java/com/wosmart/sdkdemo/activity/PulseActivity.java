@@ -88,7 +88,7 @@ public class PulseActivity extends BaseActivity implements View.OnClickListener 
                 // after sync pulse data, you can get special pulse data by date from SDK database
                 List<JWPulseInfo> pulseInfoList = GlobalGreenDAO.getInstance().loadPulseDataByDate(year, month, day);
                 if (pulseInfoList != null) {
-                    Log.e(TAG, "onSyncPulseDataFinished, dataList = " + pulseInfoList.toString());
+                    Log.e(TAG, "onSyncPulseDataFinished, local dataList = " + pulseInfoList.toString());
                 }
             }
 

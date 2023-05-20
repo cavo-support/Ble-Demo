@@ -127,6 +127,8 @@
 
         <activity android:name=".activity.SleepHelpActivity" />
 
+        <activity android:name=".activity.SaunaActivity" />
+
     </application>
 
 </manifest>
