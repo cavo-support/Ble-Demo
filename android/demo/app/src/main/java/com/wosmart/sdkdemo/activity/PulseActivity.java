@@ -19,10 +19,18 @@ import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerFunctionPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerSitPacket;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerTodaySumSportPacket;
+import com.wosmart.ukprotocollibary.model.db.GlobalGreenDAO;
 import com.wosmart.ukprotocollibary.model.enums.DeviceFunctionStatus;
 import com.wosmart.ukprotocollibary.v2.JWCallback;
+import com.wosmart.ukprotocollibary.v2.entity.JWPulseInfo;
+
+import java.util.Calendar;
+import java.util.List;
 
 public class PulseActivity extends BaseActivity implements View.OnClickListener {
+
+    private static final String TAG = "PulseActivity";
 
     private Toolbar toolbar;
 
@@ -38,6 +46,61 @@ public class PulseActivity extends BaseActivity implements View.OnClickListener 
         initView();
         initData();
         addListener();
+    }
+
+    private void initData() {
+        // check is support pulse
+        WristbandManager.getInstance(this).sendFunctionReq();
+        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+
+            @Override
+            public void onDeviceFunction(ApplicationLayerFunctionPacket functionPacket) {
+                super.onDeviceFunction(functionPacket);
+                if (functionPacket.getPulse() == DeviceFunctionStatus.SUPPORT) {
+                    setBtn.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void onSyncPulseDataStart(int totalCount) {
+                super.onSyncPulseDataStart(totalCount);
+                // sync pulse data started
+                Log.e(TAG, "onSyncPulseDataStart");
+            }
+
+            @Override
+            public void onSyncPulseDataReceived(List<JWPulseInfo> pulseInfoList) {
+                super.onSyncPulseDataReceived(pulseInfoList);
+                // sync pulse data received, you can save it by yourself
+                Log.e(TAG, "onSyncPulseDataReceived, dataList = " + (pulseInfoList != null ? pulseInfoList.toString() : ""));
+            }
+
+            @Override
+            public void onSyncPulseDataFinished() {
+                super.onSyncPulseDataFinished();
+                // sync pulse data finished
+                Log.e(TAG, "onSyncPulseDataFinished");
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                int month = calendar.get(Calendar.MONTH) + 1;
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+                // after sync pulse data, you can get special pulse data by date from SDK database
+                List<JWPulseInfo> pulseInfoList = GlobalGreenDAO.getInstance().loadPulseDataByDate(year, month, day);
+                if (pulseInfoList != null) {
+                    Log.e(TAG, "onSyncPulseDataFinished, dataList = " + pulseInfoList.toString());
+                }
+            }
+
+            @Override
+            public void onPulseFinished(int duration) {
+                super.onPulseFinished(duration);
+                // after pulse finished, this callback will be trigger
+                Log.e(TAG, "onPulseFinished, duration = " + duration);
+            }
+
+        });
+
     }
 
     private void initView() {
@@ -74,12 +137,10 @@ public class PulseActivity extends BaseActivity implements View.OnClickListener 
                         WristbandManager.getInstance(PulseActivity.this).setPulse(isOpen, duration, level, new JWCallback() {
                             @Override
                             public void onSuccess() {
-                                showToast(getString(R.string.app_success));
                             }
 
                             @Override
                             public void onError(int code, String desc) {
-                                showToast(getString(R.string.app_fail));
                             }
                         });
                     }
@@ -88,21 +149,7 @@ public class PulseActivity extends BaseActivity implements View.OnClickListener 
         });
     }
 
-    private void initData() {
-        // check is support pulse
-        WristbandManager.getInstance(this).sendFunctionReq();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
 
-            @Override
-            public void onDeviceFunction(ApplicationLayerFunctionPacket functionPacket) {
-                super.onDeviceFunction(functionPacket);
-                if (functionPacket.getPulse() == DeviceFunctionStatus.SUPPORT) {
-                    setBtn.setEnabled(true);
-                }
-            }
-        });
-
-    }
 
     private void addListener() {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {

@@ -379,7 +379,7 @@ public class FunctionActivity extends BaseActivity {
                         startActivity(firmwareUpgrade);
                         break;
                     case 45:
-                        startActivity(new Intent(FunctionActivity.this, FirmwareUpgradeOtaActivity.class));
+                        startActivity(new Intent(FunctionActivity.this, PulseActivity.class));
                         break;
                     case 46:
                         startActivity(new Intent(FunctionActivity.this, SleepHelpActivity.class));
