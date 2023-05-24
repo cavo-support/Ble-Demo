@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+|  1.0.8  | 1. Added female and weather functions;<br/>2. Delete the abnormal value of heart rate; |
 |  1.0.7  |              1：sdk and demo【sauna function】               |
 |  1.0.6  |         1：sdk and demo【customized pulse function】         |
 |  1.0.5  | 1：Added【customized pulse function】in SDK<br />2：DEMO implements 【customized pulse function】 |
