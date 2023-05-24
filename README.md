@@ -24,6 +24,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.2.18  | 1. Added female and weather functions;<br/>2. Delete the abnormal value of heart rate |
 | 1.2.17  | 1：fix parse ble protocol error  |
 | 1.2.16  | 1：sdk and demo [SaunaActivity]  |
 | 1.2.15  | 1：sdk and demo [PulseActivity]  |
