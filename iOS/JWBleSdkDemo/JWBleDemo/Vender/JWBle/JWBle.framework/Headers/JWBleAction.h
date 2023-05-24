@@ -819,6 +819,31 @@
 + (void)jwMedicationReminderAction:(BOOL)get
              alarmArr:(NSArray<JWBleMedicationReminderModel *> *)alarmArr
              callBack:(JWBleMedicationReminderActionCallBack)callBack;
+/**
+ 女性健康设置
+     open: 开启/关闭
+     mode：类型
+     cycleDay：周期（天）
+     menstrualDay：经期（天）
+     year：年
+     month：月
+     day：日
+ 
+ Women's Health Settings
+       open: open/close
+       mode: type
+       cycleDay: cycle (days)
+       menstrualDay: menstrual period (days)
+       year: year
+       month: month
+       day: day
+ */
++ (void)jwFemaleAction:(BOOL)open mode:(JWBleFemaleStatus)mode cycleDay:(int)cycleDay menstrualDay:(int)menstrualDay year:(int)year month:(int)month day:(int)day callBack:(void (^)(JWBleCommunicationStatus status))callBack;
+
+/**
+ 天气操作 weather action
+ */
++ (void)jwWeatherAction:(JWBleWeatherModel *)weatherModel callBack:(void (^)(JWBleCommunicationStatus status))callBack;
 
 #pragma mark - 客户定制  Customer customization
 

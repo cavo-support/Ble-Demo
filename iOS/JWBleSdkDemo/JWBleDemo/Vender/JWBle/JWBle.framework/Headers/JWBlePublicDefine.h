@@ -10,6 +10,7 @@
 #import "JWBleDeviceModel.h"
 #import "JWBleAlarmClockModel.h"
 #import "JWBleMedicationReminderModel.h"
+#import "JWBleWeatherModel.h"
 #import "JWNotDisturbModel.h"
 #import "JWCountDownModel.h"
 #import "JWOxygenModel.h"
@@ -131,6 +132,15 @@ typedef NS_ENUM(NSInteger, JWBleBusyStatus) {
     JWBleBusyStatus_Pulsed_Magnetic_Therapy, //脉冲磁疗测试中
 };
 
+//女性状态枚举 female status enumeration
+typedef NS_ENUM(NSInteger, JWBleFemaleStatus) {
+    JWBleFemaleStatus_None = 0, //none
+    JWBleFemaleStatus_Menstrual, //月经期
+    JWBleFemaleStatus_Getting_Pregnant, //备孕期
+    JWBleFemaleStatus_Pregnancy, //怀孕期
+    JWBleFemaleStatus_Mom //宝妈期
+};
+
 #pragma mark - 功能枚举 Function enumeration
 //手环运动枚举 Bracelet sports enumeration
 typedef NS_ENUM (NSInteger, JWBleDeviceMotionEnum) {
@@ -240,6 +250,8 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_DrinkWaterReminder = 10003, // 喝水提醒 drink water reminder
     JWBleFunctionEnum_TemperatureReminder = 10004, // 体温提醒 Temperature reminder
     JWBleFunctionEnum_MedicationReminder = 10005, // 吃药提醒 Medication reminder
+    JWBleFunctionEnum_Female = 10006, // 女性
+    JWBleFunctionEnum_Weather = 10007, // 天气
 };
 
 //客户功能枚举 Custom Function enumeration
