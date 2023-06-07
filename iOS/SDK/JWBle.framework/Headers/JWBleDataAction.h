@@ -146,6 +146,7 @@
  
  */
 + (void)jwGetSleepDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+
 /**
  计算睡眠质量 sleep quality calculation
  @param firstSleepMinute 第一段睡眠的时长
@@ -204,6 +205,7 @@
  */
 + (void)jwGetHRDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 + (void)jwGetHRDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetHRRawDataWithCallBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
  获取血压数据
