@@ -21,6 +21,7 @@
     <string name="app_step">计步</string>
     <string name="app_sleep">睡眠</string>
     <string name="app_rate">心率</string>
+    <string name="app_spo2">血氧</string>
     <string name="app_bp">血压</string>
     <string name="app_temp">温度</string>
     <string name="app_sync_data">同步数据</string>

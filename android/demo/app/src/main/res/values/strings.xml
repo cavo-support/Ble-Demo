@@ -21,6 +21,7 @@
     <string name="app_step">Step</string>
     <string name="app_sleep">Sleep</string>
     <string name="app_rate">Heart rate</string>
+    <string name="app_spo2">Spo2</string>
     <string name="app_bp">Blood pressure</string>
     <string name="app_temp">Temperature</string>
     <string name="app_sync_data">Sync device data</string>

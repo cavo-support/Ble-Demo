@@ -13,6 +13,9 @@ import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.sdkdemo.R;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerBeginPacket;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerStepPacket;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerTodaySumSportPacket;
 import com.wosmart.ukprotocollibary.model.db.GlobalGreenDAO;
 import com.wosmart.ukprotocollibary.model.sport.SportData;
 
@@ -49,6 +52,24 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
         handler = new MyHandler();
         WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
 
+            @Override
+            public void onSyncDataBegin(ApplicationLayerBeginPacket packet) {
+                super.onSyncDataBegin(packet);
+                // start sync
+            }
+
+            @Override
+            public void onStepDataReceiveIndication(ApplicationLayerStepPacket packet) {
+                super.onStepDataReceiveIndication(packet);
+                // we will receive step info in sync progress,you can save it by yourself
+            }
+
+            @Override
+            public void onSyncDataEnd(ApplicationLayerTodaySumSportPacket packet) {
+                super.onSyncDataEnd(packet);
+                // after sync, we can get step from sdk database
+                readStepLocal();
+            }
         });
     }
 
@@ -79,7 +100,8 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (WristbandManager.getInstance(StepActivity.this).sendSyncTodayStepCommand()) {
+                // request sync health data
+                if (WristbandManager.getInstance(StepActivity.this).sendDataRequest()) {
                     handler.sendEmptyMessage(0x01);
                 } else {
                     handler.sendEmptyMessage(0x02);
