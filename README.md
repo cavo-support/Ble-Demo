@@ -25,7 +25,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
-| 1.2.18  | 1. optimize heart rate data storage, adapt to different firmware versions<br/>2. optimize sync health data speed <br/>3. add function JWHealthDataManager to get health data  from db, such as step, sleep, sport, blood pressure, blood sugar,<br/> heart rate, heart rate variability, pulse, sauna, spo2, temperature |
+| 1.2.19  | 1. optimize heart rate data storage, adapt to different firmware versions<br/>2. optimize sync health data speed <br/>3. add function JWHealthDataManager to get health data  from db, such as step, sleep, sport, blood pressure, blood sugar,<br/> heart rate, heart rate variability, pulse, sauna, spo2, temperature |
 | 1.2.18  | 1. Added female and weather functions;<br/>2. Delete the abnormal value of heart rate |
 | 1.2.17  | 1：fix parse ble protocol error  |
 | 1.2.16  | 1：sdk and demo [SaunaActivity]  |
