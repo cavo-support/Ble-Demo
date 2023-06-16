@@ -31,6 +31,7 @@
 #import "ImageOtaViewController.h"
 #import "CustomSetPluseViewController.h"
 #import "SaunaViewController.h"
+#import "V7_GT7D_ActionListViewController.h"
 
 @interface ActionListViewController ()
 <
@@ -174,13 +175,17 @@
         [self.navigationController pushViewController:[CustomSetPluseViewController new] animated:true];
     } else if ([actionStr isEqualToString:NSLocalizedString(@"Sauna Data", nil)]) {
         [self.navigationController pushViewController:[SaunaViewController new] animated:true];
+    } else if ([actionStr isEqualToString:NSLocalizedString(@"V7(GT7D) ActionList", nil)]) {
+        [self.navigationController pushViewController:[V7_GT7D_ActionListViewController new] animated:true];
     }
+    
 }
 
 #pragma mark - getter
 - (NSArray *)functionArr {
     if (!_functionArr) {
         _functionArr = @[
+                    @"V7(GT7D) ActionList",
                     @"Customize the main interface",
                     @"Alarm setting",
                     @"Synchronize personal information",
