@@ -73,7 +73,7 @@
 /**
  设置卡路里目标 Set calorie goal
  
- @param calorie 单位千卡  Unit kcal
+ @param calorie 单位千卡  Unit kcal 100~9999
  @param callBack 回调 Callback
  */
 + (void)jwSetCalorieTargetAction:(int)calorie callBack:(JWBleCommunicationCallBack)callBack;
@@ -845,6 +845,11 @@
  */
 + (void)jwWeatherAction:(JWBleWeatherModel *)weatherModel callBack:(void (^)(JWBleCommunicationStatus status))callBack;
 
+/**
+ 设置时间 SetTime
+ */
++ (void)jwSetTimeWithYear:(UInt8)year andMonth:(UInt8)month andDay:(UInt8)day andHour:(UInt8)hour andMinute:(UInt8)minute andSecond:(UInt8)second callBack:(void (^)(JWBleCommunicationStatus status))callBack;
+
 #pragma mark - 客户定制  Customer customization
 
 /**
@@ -994,7 +999,7 @@
 ///
 /// Get the SN ID of the device
 /// param callBack callBack description
-+ (void)jwGetDeviceSNIDWithBlock:(void (^)(JWBleCommunicationStatus status, NSString *snID))callBack;
++ (void)jwGetDeviceSNIDWithBlock:(void (^)(JWBleCommunicationStatus status, NSString *snID, NSData *oriContentData))callBack;
 
 // 设置温度 36.5 则传365
 // Set the temperature 36.5, then pass 365

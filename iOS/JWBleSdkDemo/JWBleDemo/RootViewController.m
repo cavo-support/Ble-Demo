@@ -38,7 +38,7 @@
     
     JWBleManager.showLog = true;
     JWBleManager.checkUserBinding = false;
-    [JWBleManager setUpWithUid:@"huangbo"];
+    [JWBleManager setUpWithUid:@"cavo"];
     
     __weak __typeof(self)weakSelf = self;
     JWBleManager.connectStateChangeCallBack = ^(JWBleDeviceConnectStatus deviceConnectStatus) {
