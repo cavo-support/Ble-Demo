@@ -8,10 +8,17 @@ import com.realsil.sdk.dfu.RtkDfu;
 
 public class App extends Application {
 
+    private static App sInstance;
+
+    public static App getInstance() {
+        return sInstance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
 
+        sInstance = this;
         //init rtk OTA
         RtkConfigure configure = new RtkConfigure.Builder()
                 .debugEnabled(true)
