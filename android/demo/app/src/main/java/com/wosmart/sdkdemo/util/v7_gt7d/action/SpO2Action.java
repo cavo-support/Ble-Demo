@@ -11,6 +11,7 @@ import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerFunctionPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerReadHealthPacket;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerSpo2Packet;
 import com.wosmart.ukprotocollibary.model.db.JWHealthDataManager;
 import com.wosmart.ukprotocollibary.model.enums.DeviceFunctionStatus;
 import com.wosmart.ukprotocollibary.v2.JWHealthDataSearchParams;
@@ -91,6 +92,14 @@ public class SpO2Action extends BaseActivity {
     }
 
     private void startMeasure() {
+        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+
+            @Override
+            public void onSpo2DataReceive(ApplicationLayerSpo2Packet packet) {
+                super.onSpo2DataReceive(packet);
+                // 血氧数据返回
+            }
+        });
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -126,6 +135,7 @@ public class SpO2Action extends BaseActivity {
      * 自动监测
      */
     private void autoMeasure() {
+        // 自动测量不会实时返回数据，需进行同步后获取
         new Thread(new Runnable() {
             @Override
             public void run() {
