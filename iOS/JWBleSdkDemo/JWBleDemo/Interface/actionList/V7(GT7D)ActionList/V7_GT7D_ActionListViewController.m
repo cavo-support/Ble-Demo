@@ -8,6 +8,7 @@
 
 #import "V7_GT7D_ActionListViewController.h"
 #import "ActionListViewControllerTableViewCell.h"
+#import "OtaActionViewController.h"
 
 @interface V7_GT7D_ActionListViewController ()
 <
@@ -343,6 +344,11 @@
                //测试结束
            }
        }];
+       
+       //血氧自动监测,不支持设置间隔，如需设置间隔，请联系商务提供，固件写死
+       [JWBleAction jwContinuousBloodOxygenAction:false open:true callBack:^(JWBleCommunicationStatus status, BOOL open) {
+           
+       }];
    } else if ([actionStr isEqualToString:@"查询电量"]) {
        //1: 设备当前电量
        int power = JWBleManager.connectionModel.power;
@@ -383,7 +389,8 @@
    } else if ([actionStr isEqualToString:@"通知推送"]) {
        // ios 走 ancs 不需要该方法
    } else if ([actionStr isEqualToString:@"闹钟"]) {
-       //1: 添加闹钟
+       
+       //1: 添加闹钟（最多添加8个）
        JWBleAlarmClockModel *model = [[JWBleAlarmClockModel alloc] init];
        
        // 2023-06-16 11:20
@@ -392,57 +399,323 @@
        model.day = 16;
        model.hour = 11;
        model.minute = 20;
+       model.content = @"闹钟";
+       
+       //content 最大长度
+       if ([self getStringLenthOfBytes:model.content] > 15) {
+           model.content = [self subBytesOfstringToIndex:15 str:model.content];
+       }
+       
+       // 周1、3、5、7重复（year、month、day可为0）
+       {
+           model.repeatWeekArr = @[@(1),@(0),@(1),@(0),@(1),@(0),@(1)];
+       }
+       // 不重复
+       {
+           model.repeatWeekArr = @[@(0),@(0),@(0),@(0),@(0),@(0),@(0)];
+       }
+       [JWBleAction jwAlarmV2Action:false alarmModel:model callBack:^(JWBleCommunicationStatus status, NSArray<JWBleAlarmClockModel *> *alarmArr) {
+       }];
        
        
-//       [JWBleAction jwAlarmV2Action:false alarmModel:model callBack:^(JWBleCommunicationStatus status, NSArray<JWBleAlarmClockModel *> *alarmArr) {
-//           [MBProgressHUD hideHUDForView:weakSelf.view animated:true];
-//           if (status == JWBleCommunicationStatus_Success) {
-//               [[WFOtherFun getCurrentVC].navigationController popViewControllerAnimated:true];
-//           } else {
-//               [WFNotiView showNotiWithMessage:NSLocalizedString(@"操作失败", nil)];
-//           }
-//       }];
+       //2：获取闹钟
+       [JWBleAction jwAlarmV2Action:true alarmModel:nil callBack:^(JWBleCommunicationStatus status, NSArray<JWBleAlarmClockModel *> *alarmArr) {
+           if (alarmArr.count == 8) {
+               // 这里要限制 8个后 不允许新增
+           }
+       }];
+       
+       //3: 删除闹钟(闹钟有idd，找到那个idd所属的闹钟，并且设置月 日 重复为空)
+       {
+           JWBleAlarmClockModel *model = nil;//self.dataArray[indexPath.row];
+           model.month = 0;
+           model.day = 0;
+           model.repeatWeekArr = @[];
+           
+           [JWBleAction jwAlarmV2Action:false alarmModel:model callBack:^(JWBleCommunicationStatus status, NSArray<JWBleAlarmClockModel *> *alarmArr) {
+               if (status == JWBleCommunicationStatus_Success) {
+                   
+               }
+           }];
+       }
+       
    } else if ([actionStr isEqualToString:@"心率自动检测"]) {
-       
+       //open： 开、关
+       //timeSpan：固定传1
+       [JWBleAction jwHrAutomaticDetectionAction:false open:true timeSpan:1 callBack:^(JWBleCommunicationStatus status, BOOL open, int timeSpan) {
+           
+       }];
    } else if ([actionStr isEqualToString:@"久坐提醒"]) {
-       
+       /**
+        久坐提醒 Sedentary reminder
+        
+        @param isGet 是否获取 Whether to get
+        @param open 开启、关闭 switch on switch off
+        @param startH 开始小时 Start hour 0~23
+        @param endH 结束小时 End hour 0~23
+        @param span 间隔【30~240】（分钟） Interval【30~240】(minutes)
+        @param threshold 阈值（在设定的时间段内，没有 xxx 步数即提醒）【0~65535】 Threshold (in the set time period, there is no xxx steps to remind)【0~65535】
+        @param dayFlagArr 周重复【周一,周二,周三,周四.....周日】重复为true，不重复为false  Week repeat [Monday, Tuesday, Wednesday, Thursday... Sunday] Repeat is true, not repeat is false
+        @param callBack 回调 Callback
+        */
+       NSArray *dayFlagArr = @[@(1),@(1),@(1),@(1),@(1),@(1),@(1)];//改设备不支持改变，固定传全1即可
+       [JWBleAction jwSedentaryReminder:false
+                           open:true
+                         startH:0
+                           endH:23
+                           span:50
+                      threshold:200
+                     dayFlagArr:dayFlagArr
+                       callBack:^(JWBleCommunicationStatus status, BOOL open, int startH, int endH, int span, int threshold, NSArray *dayFlagArr) {
+                  
+       }];
    } else if ([actionStr isEqualToString:@"亮屏设置"]) {
+       /**
+        转腕亮屏 Turn wrist bright screen
+        
+        @param isGet 是否获取 Whether to get
+        @param open 是否开启 Whether to open
+        @param sensitivity 灵敏度 Sensitivity
+        @param startMinute 开始分钟 Start minute
+        @param endMinute 结束分钟 End minute
+        @param callBack 回调 Callback
+        */
        
+       //该设备，只支持 开、关
+       [JWBleAction jwTurnWristCreenActionWithIsGet:false open:true sensitivity:0 startMinute:0 endMinute:0 callBack:^(JWBleCommunicationStatus status, BOOL open, int sensitivity, int startMinute, int endMinute) {
+           
+       }];
    } else if ([actionStr isEqualToString:@"倒计时"]) {
+       //设置倒计时
+       {
+           JWCountDownModel *model = [JWCountDownModel new];
+           model.optionEnum = JWCountDownOptionEnum_Setting;
+           model.open = true;//显示在手环ui上
+           model.seconds = 30;//30秒
+           [JWBleAction jwCountDownAction:false model:model callBack:^(JWBleCommunicationStatus status, JWCountDownModel *countDownModel) {
+               
+           }];
+       }
+       
+       //获取设备当前倒计时状态
+       {
+           [JWBleAction jwCountDownAction:true model:nil callBack:^(JWBleCommunicationStatus status, JWCountDownModel *countDownModel) {
+               if (status == JWBleCommunicationStatus_Success) {
+                   
+                   if (countDownModel.optionEnum == JWCountDownOptionEnum_Start) {
+                       //倒计时中
+                   } else if (countDownModel.optionEnum == JWCountDownOptionEnum_Setting) {
+                       // 倒计时配置
+                   }
+               } else {
+                   //获取常用时长失败
+               }
+           }];
+       }
+       
+       //开启设备倒计时
+       {
+           JWCountDownModel *model = [JWCountDownModel new];
+           model.optionEnum = JWCountDownOptionEnum_Start;
+           model.open = true;//显示在手环ui上
+           model.seconds = 30;//30秒
+           [JWBleAction jwCountDownAction:false model:model callBack:^(JWBleCommunicationStatus status, JWCountDownModel *countDownModel) {
+               
+           }];
+       }
        
    } else if ([actionStr isEqualToString:@"查找手机"]) {
-       
+       JWBleManager.findPhoneV2CallBack = ^(BOOL start) {
+           if (start) {
+               //设备正在查找
+           } else {
+               //设备停止
+           }
+       };
    } else if ([actionStr isEqualToString:@"固体升级"]) {
-       
+       [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
    } else if ([actionStr isEqualToString:@"运动"]) {
-       
+       // sdk 不支持开启 设备运动
    } else if ([actionStr isEqualToString:@"天气"]) {
+       JWBleWeatherModel *weatherModel = [JWBleWeatherModel new];
+       weatherModel.open = true;
        
+       //当天天气
+       {
+           JWBleCurWeatherModel *curWeatherModel = [JWBleCurWeatherModel new];
+           curWeatherModel.year = 2023;
+           curWeatherModel.month = 6;
+           curWeatherModel.day = 6;
+           
+           curWeatherModel.cityStr = @"shenzhen";//最长33个bytes;
+           curWeatherModel.weatherCode = JWBleWeatherCode_Sunny;
+           curWeatherModel.maxTemp = 37;
+           curWeatherModel.minTemp = 16;
+           curWeatherModel.temp = 25;
+           //湿度、紫外线、pm 目前没有数值限制范围 都可为0
+           curWeatherModel.humidity = 23;
+           curWeatherModel.uv = 23;
+           curWeatherModel.pm = 0;
+           weatherModel.curWeatherModel = curWeatherModel;
+       }
+       
+       //未来天气，manx6，可为空
+       NSMutableArray<JWBleFutureWeatherModel *> *futureWeatherArr = [NSMutableArray new];
+       for (int i = 0; i < 6; i++) {
+           JWBleFutureWeatherModel *futureModel = [JWBleFutureWeatherModel new];
+           futureModel.weatherCode = JWBleWeatherCode_Sunny;
+           futureModel.maxTemp = 37;
+           futureModel.minTemp = 16;
+           [futureWeatherArr addObject:futureModel];
+       }
+       
+       weatherModel.futureWeatherArr = [futureWeatherArr mutableCopy];
+       
+       [JWBleAction jwWeatherAction:weatherModel callBack:^(JWBleCommunicationStatus status) {
+                               
+       }];
    } else if ([actionStr isEqualToString:@"遥控拍照"]) {
+       //设备进入拍照模式
+       [JWBleAction jwRemotePhotography:true callBack:nil];
        
+       //监听拍照回调
+       JWBleManager.remotePhotographyCallBack = ^(JWBleRemotePhotographyStatus remotePhotographyStatus) {
+           if (remotePhotographyStatus == JWBleRemotePhotographyStatus_TakePhoto) {
+               
+           }
+       };
    } else if ([actionStr isEqualToString:@"音乐控制"]) {
        
    } else if ([actionStr isEqualToString:@"亮屏时长"]) {
-       
+       /**
+        亮屏控制功能 Bright screen control function
+        
+        @param isGet 是否获取 Whether to get
+        @param timeLength 亮屏时长 3~30秒 Bright screen duration 3~30 seconds
+        @param callBack 回调 Callback
+        */
+       [JWBleAction jwbBrightScreenDuration:false timeLength:15 callBack:^(JWBleCommunicationStatus status, int timeLength, int defalut) {
+           
+       }];
    } else if ([actionStr isEqualToString:@"开关设置"]) {
-       
+       //需要什么开关
    } else if ([actionStr isEqualToString:@"蓝牙拨号"]) {
-       
+       //ios 走ancs 不需要调
    } else if ([actionStr isEqualToString:@"通讯录"]) {
        
-   } else if ([actionStr isEqualToString:@"音频蓝牙配对"]) {
+       NSMutableArray *syncArr = [NSMutableArray new];
+       for (int i = 0; i < 20; i++) {
+           [syncArr addObject:@{
+               @"name": @"zhangsan", //最多15个UTF8
+               @"phone": @"13688888888" //最多19个UTF8
+           }];
+       }
        
+       __weak __typeof(self)weakSelf = self;
+       [JWBleAction jwSyncContacts:[syncArr mutableCopy] callBack:^(JWBleCommunicationStatus status, int index) {
+           index += 1;
+           float progress = index / (float)syncArr.count;
+           NSString *progressStr = [NSString stringWithFormat:@"%@%.0f%%",NSLocalizedString(@"同步中", nil), progress * 100];
+           
+           NSLog(@"%d \t %f", index, progress);
+           
+           if (index == syncArr.count) {
+               NSLog(@"success");
+           }
+       }];
+       
+   } else if ([actionStr isEqualToString:@"音频蓝牙配对"]) {
+       // 1: 音频蓝牙状态监听
+       JWBleManager.connectStateChangeCallBack = ^(JWBleDeviceConnectStatus deviceConnectStatus) {
+           if (deviceConnectStatus == JWBleDeviceConnectStatus_HeadphoneDeviceStatusChanged) {
+               //耳机状态
+               int headphoneDeviceStatus = JWBleManager.connectionModel.headphoneDeviceStatus;
+               //配对状态
+               int headsetPaired = JWBleManager.connectionModel.headsetPaired;
+           }
+       };
+       
+       // 2: 弹出 仿苹果弹窗，30秒可认为超时
+       [JWBleAction jwHeadphonePairing];
+       
+       // 3: 取消 仿苹果弹窗
+       [JWBleAction jwCancelHeadphonePairing];
    } else if ([actionStr isEqualToString:@"在线表盘"]) {
        
    } else if ([actionStr isEqualToString:@"表盘下载/切换/删除"]) {
-       
+       // ota 资源模式
+       [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
    } else if ([actionStr isEqualToString:@"运动记录"]) {
+       
+       //获取历史数据，必须先同步设备数据至sdk中 [JWBleDataAction jwSyncDataWithCallBack:];
+       
+       NSString *dayStr = @"20180911";//yyyyMMdd
+       //以天获取
+       [JWBleDataAction jwGetMotionDataByYYYYMMDDStr:dayStr callBack:^(NSArray *dataArr) {
+           /**
+            dataArr: 返回值解析
+            @[
+               @{
+                    @"pk" //Primary key
+                    @"year": 2019
+                    @"month": 9
+                    @"day": 7
+                    @"minuteIndex": 995
+                    @"seconds": 19
+                    @"motionType": sports type (JWBleDeviceMotionEnum)
+                    @"sportsMinute": minutes of exercise time
+                    @"sportsSeconds": the number of seconds of exercise time
+                    @"pauseCount": number of pauses
+                    @"pauseMinute": Pause minutes
+                    @"pauseSeconds": Pause seconds
+                    @"stepCount": number of exercise steps
+                    @"distance": Movement distance in meters
+                    @"uid": user id
+                    @"calories": calories burned per unit card
+                },
+               @{
+                   ...
+               }
+            ]
+            */
+       }];
        
    } else if ([actionStr isEqualToString:@"语音助手"]) {
        
    } else if ([actionStr isEqualToString:@"时间制式"]) {
-       
+       //1: 小时制
+       bool show12 = false;
+       [JWBleAction jwCommonFunction:JWBleFunctionEnum_TimeSystem functionsState:show12 ? JWBleCommonFunctionsStatus_Open : JWBleCommonFunctionsStatus_Close callBack:^(JWBleCommunicationStatus communicationStatus, JWBleCommonFunctionsStatus functionStatus) {
+       }];
    }
+}
+
+#pragma mark - help
+- (NSInteger)getStringLenthOfBytes:(NSString *)str {
+    NSInteger length = 0;
+    for (int i = 0; i < [str length]; i++) {
+        NSString *s = [str substringWithRange:NSMakeRange(i, 1)];
+        NSData *data = [s dataUsingEncoding:NSUTF8StringEncoding];
+        length += data.length;
+    }
+    return length;
+}
+
+- (NSString *)subBytesOfstringToIndex:(NSInteger)index str:(NSString *)str {
+    NSInteger length = 0;
+    
+    for (int i = 0; i < [str length]; i++) {
+        NSString *s = [str substringWithRange:NSMakeRange(i, 1)];
+        NSData *data = [s dataUsingEncoding:NSUTF8StringEncoding];
+        
+        if (length + data.length > index) {
+            return [str substringToIndex:i];
+        }
+        
+        length += data.length;
+    }
+    
+    return [str substringToIndex:index];
 }
 
 #pragma mark - getter
