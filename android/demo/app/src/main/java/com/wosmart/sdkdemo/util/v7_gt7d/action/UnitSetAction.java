@@ -41,7 +41,8 @@ public class UnitSetAction extends BaseActivity {
                 // 设置时间格式 true 24 小时，false 12 小时
                 WristbandManager.getInstance(App.getInstance()).setHourSystem(true);
 
-
+                // 设置日期格式，0 MM-DD(月份在前)  1 DD-MM(月份在后)
+                WristbandManager.getInstance(App.getInstance()).setDeviceDateFormat(0);
             }
         }).start();
 

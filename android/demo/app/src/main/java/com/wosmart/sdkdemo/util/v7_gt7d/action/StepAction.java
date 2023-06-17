@@ -20,7 +20,7 @@ public class StepAction extends BaseActivity {
 
 
         // 步数自动计量，无需开启或关闭
-        // 在同步结束后，可从 SDK 数据库中获取指定时间步数
+        // 可从 SDK 数据库中获取指定时间数据，同步完成后数据为最完整状态
 
         // 指定日期
         JWHealthDataManager.getInstance().getHistoryStepListByDate(2023, 6, 16, new JWValueCallback<List<JWStepInfo>>() {
@@ -37,8 +37,8 @@ public class StepAction extends BaseActivity {
 
         // 指定条件
         // for example, if you want get data at 2022-03-04 07:00 - 2022-03-04 08:00
-        // option.timeBegin = 1646348400000
-        // option.timePeriod = 3600s * 1000
+        // params.timeBegin = 1646348400000
+        // params.timePeriod = 3600s * 1000
         JWHealthDataSearchParams searchParams = new JWHealthDataSearchParams();
         searchParams.setUserID("");
         searchParams.setTimeBegin(1646348400000L);
