@@ -145,8 +145,8 @@
  
  @param isGet 是否获取 Whether to get
  @param open 开启、关闭 switch on switch off
- @param startH 开始小时 Start hour
- @param endH 结束小时 End hour
+ @param startH 开始小时 Start hour 0~23
+ @param endH 结束小时 End hour 0~23
  @param span 间隔【30~240】（分钟） Interval【30~240】(minutes)
  @param threshold 阈值（在设定的时间段内，没有 xxx 步数即提醒）【0~65535】 Threshold (in the set time period, there is no xxx steps to remind)【0~65535】
  @param dayFlagArr 周重复【周一,周二,周三,周四.....周日】重复为true，不重复为false  Week repeat [Monday, Tuesday, Wednesday, Thursday... Sunday] Repeat is true, not repeat is false
@@ -338,7 +338,10 @@
  主界面风格操作 Main interface style operation
 
  @param isGet 是否获取 Whether to get
- @param willShowIndex isGet == false，则需要设置显示的主界面    isGet == false, you need to set the main interface displayed
+ @param willShowIndex
+    isGet == false，则需要设置显示的主界面    isGet == false, you need to set the main interface displayed
+    count+1：显示自定义表盘  count+1: display custom dial
+    count+2：显示下载表盘  count+2: display download dial
  @param callBack status 通信状态，curShowIndex 当前显示的主界面, count 手环有多少个主界面可以选择     Communication status, curShowIndex currently displayed main interface, count how many main interfaces the bracelet can choose
  */
 + (void)jwMainInterfaceAction:(BOOL)isGet

@@ -9,6 +9,7 @@
 #import "V7_GT7D_ActionListViewController.h"
 #import "ActionListViewControllerTableViewCell.h"
 #import "OtaActionViewController.h"
+#import "CustomizeMainInterfaceViewController.h"
 
 @interface V7_GT7D_ActionListViewController ()
 <
@@ -46,7 +47,6 @@
    
    NSString *actionStr = NSLocalizedString(self.functionArr[indexPath.row], nil);
    
-   __weak __typeof(self)weakSelf = self;
    if ([actionStr isEqualToString:@"蓝牙搜索"]) {
        [JWBleAction jwStartScanDeviceWithCallBack:^(JWBleDeviceModel *deviceModel) {
            
@@ -585,7 +585,7 @@
            }
        };
    } else if ([actionStr isEqualToString:@"音乐控制"]) {
-       
+       //ios 不需要调
    } else if ([actionStr isEqualToString:@"亮屏时长"]) {
        /**
         亮屏控制功能 Bright screen control function
@@ -640,11 +640,8 @@
        
        // 3: 取消 仿苹果弹窗
        [JWBleAction jwCancelHeadphonePairing];
-   } else if ([actionStr isEqualToString:@"在线表盘"]) {
-       
-   } else if ([actionStr isEqualToString:@"表盘下载/切换/删除"]) {
-       // ota 资源模式
-       [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
+   } else if ([actionStr isEqualToString:@"内置/下载/自定义表盘"]) {
+       [self.navigationController pushViewController:[CustomizeMainInterfaceViewController new] animated:true];
    } else if ([actionStr isEqualToString:@"运动记录"]) {
        
        //获取历史数据，必须先同步设备数据至sdk中 [JWBleDataAction jwSyncDataWithCallBack:];
@@ -681,7 +678,10 @@
        }];
        
    } else if ([actionStr isEqualToString:@"语音助手"]) {
-       
+       bool showInDevice = true;
+       [JWBleAction jwUpdateHideFunction:JWBleFunctionEnum_VoiceAssistant open:showInDevice callBack:^(JWBleCommunicationStatus status) {
+
+       }];
    } else if ([actionStr isEqualToString:@"时间制式"]) {
        //1: 小时制
        bool show12 = false;
@@ -758,8 +758,7 @@
                    @"蓝牙拨号",
                    @"通讯录",
                    @"音频蓝牙配对",
-                   @"在线表盘",
-                   @"表盘下载/切换/删除",
+                   @"内置/下载/自定义表盘",
                    @"运动记录",
                    @"语音助手",
                    @"时间制式"
