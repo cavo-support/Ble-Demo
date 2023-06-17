@@ -21,6 +21,7 @@ import com.realsil.sdk.dfu.utils.DfuAdapter;
 import com.realsil.sdk.dfu.utils.GattDfuAdapter;
 import com.wosmart.sdkdemo.R;
 import com.wosmart.sdkdemo.common.BaseActivity;
+import com.wosmart.sdkdemo.util.v7_gt7d.utils.ota.CustomOTAFileUtils;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 
@@ -57,6 +58,8 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
 
         // we have init ota sdk at App，if you want to use it, you can init ota sdk at application.
         // and you must add DfuService in AndroidManifest.xml
+        // 我们已在 Application 中初始化 OTA SDK，用户如需 OTA 也需提前初始化
+        // 同时需要在清单文件中添加 DfuService
     }
 
     private void initView() {
@@ -154,6 +157,9 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
             public void run() {
                 if (WristbandManager.getInstance(SilenceOtaActivity.this).sendEnterSilenceModel(mode)) {
 
+                    // 需要用户自行准备 ota 文件，如果是我们的已有的表盘文件，可与我们联系获取
+                    // 如果是用户自定义表盘文件，则调用如下工具类制作，具体参数请看函数注释
+//                  String otaFilePath = CustomOTAFileUtils.createOTAFile();
                     initUkOta("your device mac", "your ota file path");
 
                     handler.sendEmptyMessage(0x01);

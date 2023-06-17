@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.wosmart.sdkdemo.App;
 import com.wosmart.sdkdemo.common.BaseActivity;
-import com.wosmart.sdkdemo.util.v7_gt7d.Utils;
+import com.wosmart.sdkdemo.util.v7_gt7d.utils.Utils;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerFunctionPacket;

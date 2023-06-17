@@ -6,12 +6,10 @@ import androidx.annotation.Nullable;
 
 import com.wosmart.sdkdemo.App;
 import com.wosmart.sdkdemo.common.BaseActivity;
-import com.wosmart.sdkdemo.util.v7_gt7d.utils.Utils;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 
-public class BatteryLevelAction extends BaseActivity {
-
+public class FindPhoneAction extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,19 +18,16 @@ public class BatteryLevelAction extends BaseActivity {
         WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
 
             @Override
-            public void onBatteryRead(int value) {
-                super.onBatteryRead(value);
-                // 0 - 100
-                Utils.batteryLevel = value;
+            public void onFindPhone() {
+                super.onFindPhone();
+                // 老版本，设备呼叫手机
             }
 
             @Override
-            public void onBatteryChange(int value) {
-                super.onBatteryChange(value);
-                Utils.batteryLevel = value;
+            public void onFindPhone(int status) {
+                super.onFindPhone(status);
+                // 新版本带状态，status == 0 关闭查找手机 == 1 打开查找手机
             }
         });
-
-        WristbandManager.getInstance(App.getInstance()).readBatteryLevel();
     }
 }

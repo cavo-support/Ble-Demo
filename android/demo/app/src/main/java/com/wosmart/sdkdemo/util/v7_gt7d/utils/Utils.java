@@ -1,4 +1,4 @@
-package com.wosmart.sdkdemo.util.v7_gt7d;
+package com.wosmart.sdkdemo.util.v7_gt7d.utils;
 
 import com.wosmart.sdkdemo.App;
 import com.wosmart.ukprotocollibary.WristbandManager;

@@ -6,7 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.wosmart.sdkdemo.App;
 import com.wosmart.sdkdemo.common.BaseActivity;
-import com.wosmart.sdkdemo.util.v7_gt7d.Utils;
+import com.wosmart.sdkdemo.util.v7_gt7d.utils.Utils;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerFunctionPacket;
@@ -17,7 +17,6 @@ import com.wosmart.ukprotocollibary.model.enums.DeviceFunctionStatus;
 import com.wosmart.ukprotocollibary.v2.JWHealthDataSearchParams;
 import com.wosmart.ukprotocollibary.v2.JWValueCallback;
 import com.wosmart.ukprotocollibary.v2.entity.JWSpO2Info;
-import com.wosmart.ukprotocollibary.v2.entity.JWTemperatureInfo;
 
 import java.util.List;
 
