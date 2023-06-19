@@ -9,6 +9,7 @@ import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.sdkdemo.util.v7_gt7d.utils.Utils;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerCustomUiPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerScreenStylePacket;
 
 public class WatchFaceAction extends BaseActivity {
@@ -59,9 +60,22 @@ public class WatchFaceAction extends BaseActivity {
 
                 // 设置内置表盘
                 WristbandManager.getInstance(App.getInstance()).settingHomePager(0);
+
+                // 设置表盘时间位置，字体颜色，坐标等信息
+                ApplicationLayerCustomUiPacket packet = new ApplicationLayerCustomUiPacket();
+                WristbandManager.getInstance(App.getInstance()).setCustomUi(packet);
             }
         }).start();
-
     }
+
+
+    /**
+     * 文件形式表盘，可从服务器下载或 app 内置 或自定义照片生成表盘文件
+     * 这一部分请参考 {@link com.wosmart.sdkdemo.activity.SilenceOtaActivity#setMode(int)}
+     */
+    private void setOTAFile() {
+        
+    }
+
 
 }
