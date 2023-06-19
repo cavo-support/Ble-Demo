@@ -29,6 +29,7 @@ public class BatteryLevelAction extends BaseActivity {
             @Override
             public void onBatteryChange(int value) {
                 super.onBatteryChange(value);
+                // 0 - 100
                 Utils.batteryLevel = value;
             }
         });

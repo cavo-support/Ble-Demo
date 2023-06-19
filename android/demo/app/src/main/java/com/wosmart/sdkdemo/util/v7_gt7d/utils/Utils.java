@@ -5,6 +5,7 @@ import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerDeviceStatusPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerReadHealthPacket;
+import com.wosmart.ukprotocollibary.model.enums.DeviceFunctionStatus;
 
 public class Utils {
 
@@ -42,6 +43,7 @@ public class Utils {
             @Override
             public void onDeviceStatus(ApplicationLayerDeviceStatusPacket packet) {
                 super.onDeviceStatus(packet);
+                isLowPowerMode = packet.getLowPower() == DeviceFunctionStatus.SUPPORT;
             }
         });
         // 获取设备状态
