@@ -18,6 +18,16 @@
 		154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */; };
 		159AC2022A18756800F0C98D /* SaunaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 159AC2012A18756800F0C98D /* SaunaViewController.m */; };
 		15A25C092A0CB95600D7954C /* CustomSetPluseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */; };
+		15A855102A42873500916A12 /* SyncTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A8550E2A42873500916A12 /* SyncTimeViewController.m */; };
+		15A855112A42873500916A12 /* SyncTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A8550F2A42873500916A12 /* SyncTimeViewController.xib */; };
+		15A855162A4289B100916A12 /* SyncUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855142A4289B100916A12 /* SyncUserInfoViewController.m */; };
+		15A855172A4289B100916A12 /* SyncUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A855152A4289B100916A12 /* SyncUserInfoViewController.xib */; };
+		15A8551C2A428C1400916A12 /* SyncUnitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A8551A2A428C1400916A12 /* SyncUnitViewController.m */; };
+		15A8551D2A428C1400916A12 /* SyncUnitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A8551B2A428C1400916A12 /* SyncUnitViewController.xib */; };
+		15A855222A428FFE00916A12 /* SyncTargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855202A428FFE00916A12 /* SyncTargetViewController.m */; };
+		15A855232A428FFE00916A12 /* SyncTargetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A855212A428FFE00916A12 /* SyncTargetViewController.xib */; };
+		15A855282A42915E00916A12 /* SyncDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855262A42915E00916A12 /* SyncDataViewController.m */; };
+		15A855292A42915E00916A12 /* SyncDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A855272A42915E00916A12 /* SyncDataViewController.xib */; };
 		15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */; };
 		15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */; };
 		15C3F79729AEFC19007662F7 /* OtaActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C3F79629AEFC19007662F7 /* OtaActionViewController.m */; };
@@ -160,6 +170,21 @@
 		159AC2012A18756800F0C98D /* SaunaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaunaViewController.m; sourceTree = "<group>"; };
 		15A25C072A0CB95600D7954C /* CustomSetPluseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSetPluseViewController.h; sourceTree = "<group>"; };
 		15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomSetPluseViewController.m; sourceTree = "<group>"; };
+		15A8550D2A42873500916A12 /* SyncTimeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncTimeViewController.h; sourceTree = "<group>"; };
+		15A8550E2A42873500916A12 /* SyncTimeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncTimeViewController.m; sourceTree = "<group>"; };
+		15A8550F2A42873500916A12 /* SyncTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncTimeViewController.xib; sourceTree = "<group>"; };
+		15A855132A4289B100916A12 /* SyncUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncUserInfoViewController.h; sourceTree = "<group>"; };
+		15A855142A4289B100916A12 /* SyncUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncUserInfoViewController.m; sourceTree = "<group>"; };
+		15A855152A4289B100916A12 /* SyncUserInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncUserInfoViewController.xib; sourceTree = "<group>"; };
+		15A855192A428C1400916A12 /* SyncUnitViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncUnitViewController.h; sourceTree = "<group>"; };
+		15A8551A2A428C1400916A12 /* SyncUnitViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncUnitViewController.m; sourceTree = "<group>"; };
+		15A8551B2A428C1400916A12 /* SyncUnitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncUnitViewController.xib; sourceTree = "<group>"; };
+		15A8551F2A428FFE00916A12 /* SyncTargetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncTargetViewController.h; sourceTree = "<group>"; };
+		15A855202A428FFE00916A12 /* SyncTargetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncTargetViewController.m; sourceTree = "<group>"; };
+		15A855212A428FFE00916A12 /* SyncTargetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncTargetViewController.xib; sourceTree = "<group>"; };
+		15A855252A42915E00916A12 /* SyncDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncDataViewController.h; sourceTree = "<group>"; };
+		15A855262A42915E00916A12 /* SyncDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncDataViewController.m; sourceTree = "<group>"; };
+		15A855272A42915E00916A12 /* SyncDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncDataViewController.xib; sourceTree = "<group>"; };
 		15AE9FB9283C886200D9A227 /* UpdateInterfaceColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateInterfaceColorViewController.h; sourceTree = "<group>"; };
 		15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateInterfaceColorViewController.m; sourceTree = "<group>"; };
 		15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateInterfaceColorViewController.xib; sourceTree = "<group>"; };
@@ -396,6 +421,56 @@
 				15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */,
 			);
 			path = CustomSetPluse;
+			sourceTree = "<group>";
+		};
+		15A8550C2A42872600916A12 /* syncTime */ = {
+			isa = PBXGroup;
+			children = (
+				15A8550D2A42873500916A12 /* SyncTimeViewController.h */,
+				15A8550E2A42873500916A12 /* SyncTimeViewController.m */,
+				15A8550F2A42873500916A12 /* SyncTimeViewController.xib */,
+			);
+			path = syncTime;
+			sourceTree = "<group>";
+		};
+		15A855122A42899D00916A12 /* syncUserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				15A855132A4289B100916A12 /* SyncUserInfoViewController.h */,
+				15A855142A4289B100916A12 /* SyncUserInfoViewController.m */,
+				15A855152A4289B100916A12 /* SyncUserInfoViewController.xib */,
+			);
+			path = syncUserInfo;
+			sourceTree = "<group>";
+		};
+		15A855182A428C0500916A12 /* syncUnit */ = {
+			isa = PBXGroup;
+			children = (
+				15A855192A428C1400916A12 /* SyncUnitViewController.h */,
+				15A8551A2A428C1400916A12 /* SyncUnitViewController.m */,
+				15A8551B2A428C1400916A12 /* SyncUnitViewController.xib */,
+			);
+			path = syncUnit;
+			sourceTree = "<group>";
+		};
+		15A8551E2A428FF100916A12 /* syncTarget */ = {
+			isa = PBXGroup;
+			children = (
+				15A8551F2A428FFE00916A12 /* SyncTargetViewController.h */,
+				15A855202A428FFE00916A12 /* SyncTargetViewController.m */,
+				15A855212A428FFE00916A12 /* SyncTargetViewController.xib */,
+			);
+			path = syncTarget;
+			sourceTree = "<group>";
+		};
+		15A855242A42915100916A12 /* syncData */ = {
+			isa = PBXGroup;
+			children = (
+				15A855252A42915E00916A12 /* SyncDataViewController.h */,
+				15A855262A42915E00916A12 /* SyncDataViewController.m */,
+				15A855272A42915E00916A12 /* SyncDataViewController.xib */,
+			);
+			path = syncData;
 			sourceTree = "<group>";
 		};
 		15AE9FB8283C885600D9A227 /* UpdateInterfaceColor */ = {
@@ -806,6 +881,11 @@
 		4DEE82AB224261040068A80B /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				15A855242A42915100916A12 /* syncData */,
+				15A8551E2A428FF100916A12 /* syncTarget */,
+				15A855182A428C0500916A12 /* syncUnit */,
+				15A855122A42899D00916A12 /* syncUserInfo */,
+				15A8550C2A42872600916A12 /* syncTime */,
 				159AC1FF2A18755600F0C98D /* SaunaData */,
 				15A25C062A0CB93F00D7954C /* CustomSetPluse */,
 				15C3F79429AEFBF0007662F7 /* ota */,
@@ -1089,6 +1169,7 @@
 				4D34572B22FA81A000479CC0 /* TurnWristViewController.xib in Resources */,
 				4D67F72124FE20B800A70682 /* merge.bin in Resources */,
 				4D94A79F22438A9000A3B618 /* AlarmClockViewController.xib in Resources */,
+				15A855172A4289B100916A12 /* SyncUserInfoViewController.xib in Resources */,
 				E29786542423576200E9D10B /* LICENSE in Resources */,
 				154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */,
 				4D94A7A822438A9000A3B618 /* MainInterfaceStyleViewController.xib in Resources */,
@@ -1099,17 +1180,21 @@
 				4DC81F3524FDF7FC0055B07C /* CustomizeMainInterfaceViewController.xib in Resources */,
 				4D94A7A422438A9000A3B618 /* AlarmClockAddViewController.xib in Resources */,
 				4D67F72324FE23CD00A70682 /* mode4_userdata_GT3_OTA.bin in Resources */,
+				15A855112A42873500916A12 /* SyncTimeViewController.xib in Resources */,
+				15A8551D2A428C1400916A12 /* SyncUnitViewController.xib in Resources */,
 				15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */,
 				4D75427822FBF66C003462B3 /* NoticeViewController.xib in Resources */,
 				4D94A7AB22438A9000A3B618 /* NotDisturbViewController.xib in Resources */,
 				4D94A7A322438A9000A3B618 /* AlarmClockTableViewCell.xib in Resources */,
 				4DEE829B22425E950068A80B /* Assets.xcassets in Resources */,
+				15A855232A428FFE00916A12 /* SyncTargetViewController.xib in Resources */,
 				4DEE22CD22426A81006EF5F2 /* RootViewController.xib in Resources */,
 				4D67F74524FE466B00A70682 /* merge2_3.bin in Resources */,
 				E29786582423576200E9D10B /* MJRefresh.bundle in Resources */,
 				4DAF3AEA2370163D0033301B /* UpdateVersionFileTableViewCell.xib in Resources */,
 				4D36BC7C23361BF900E0D8E2 /* TotalStepsViewController.xib in Resources */,
 				4D88036424C6865D007F2CC2 /* HRSwitchViewController.xib in Resources */,
+				15A855292A42915E00916A12 /* SyncDataViewController.xib in Resources */,
 				4D34573122FABA2C00479CC0 /* TimeThemeViewController.xib in Resources */,
 				4DAF3AEC2370163D0033301B /* UpdateVersionViewController.xib in Resources */,
 				4D18086E24EF613E00DD46F7 /* ContinuousBPViewController.xib in Resources */,
@@ -1156,6 +1241,8 @@
 				E29786692423576200E9D10B /* MJRefreshComponent.m in Sources */,
 				4DAF3AE92370163D0033301B /* UpdateVersionViewController.m in Sources */,
 				4D94A7A222438A9000A3B618 /* AlarmClockTableViewCell.m in Sources */,
+				15A8551C2A428C1400916A12 /* SyncUnitViewController.m in Sources */,
+				15A855282A42915E00916A12 /* SyncDataViewController.m in Sources */,
 				15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */,
 				4D36BC7B23361BF900E0D8E2 /* TotalStepsViewController.m in Sources */,
 				E29786642423576200E9D10B /* MJRefreshGifHeader.m in Sources */,
@@ -1164,6 +1251,7 @@
 				E29786672423576200E9D10B /* MJRefreshBackFooter.m in Sources */,
 				4D2F672E22F92C10001D8EFD /* TimeActionViewController.m in Sources */,
 				4D94A7A922438A9000A3B618 /* SedentaryReminderViewController.m in Sources */,
+				15A855162A4289B100916A12 /* SyncUserInfoViewController.m in Sources */,
 				4D34573622FAD4BC00479CC0 /* LanguageViewController.m in Sources */,
 				4D34572A22FA81A000479CC0 /* TurnWristViewController.m in Sources */,
 				E29786622423576200E9D10B /* MJRefreshNormalHeader.m in Sources */,
@@ -1181,6 +1269,7 @@
 				E21BA8EE2420C3C000D58E28 /* OTARecordModel.m in Sources */,
 				E297865C2423576200E9D10B /* MJRefreshBackGifFooter.m in Sources */,
 				4DEE82B8224264E60068A80B /* MBProgressHUD.m in Sources */,
+				15A855102A42873500916A12 /* SyncTimeViewController.m in Sources */,
 				15C3F79729AEFC19007662F7 /* OtaActionViewController.m in Sources */,
 				4DEE82B4224263680068A80B /* ScanViewControllerTableViewCell.m in Sources */,
 				4DEE82A122425E950068A80B /* main.m in Sources */,
@@ -1221,6 +1310,7 @@
 				E29786572423576200E9D10B /* MJRefreshConfig.m in Sources */,
 				4D94A7AF22438A9000A3B618 /* ActionListViewController.m in Sources */,
 				4D94A7A722438A9000A3B618 /* MainInterfaceStyleViewController.m in Sources */,
+				15A855222A428FFE00916A12 /* SyncTargetViewController.m in Sources */,
 				4DAF3AEB2370163D0033301B /* UpdateVersionFileViewController.m in Sources */,
 				15F9C6D92A3C2F4400E73613 /* V7_GT7D_ActionListViewController.m in Sources */,
 				4D36BC652335C00E00E0D8E2 /* ScanFilterView.m in Sources */,

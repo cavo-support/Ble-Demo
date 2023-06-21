@@ -8,3 +8,35 @@
 
 
 "连接成功，正在绑定手环" = "ASDASDASDASDSA";
+
+
+"V7(GT7D) ActionList" = "GT7D专项功能-代码详情";
+"Customize the main interface" = "自定义主界面";
+"Alarm setting" = "闹钟设置";
+"Synchronize personal information" = "个人信息";
+"Test headphones" = "耳机测试";
+"Set step goal" = "计步目标";
+"Set sleep goals" = "睡眠目标";
+"Find bracelet" = "查找手环";
+"Turn off the remote camera" = "转腕拍照";
+"Continuous heart rate monitoring" = "心率连续监测";
+"Turn the wrist bright screen-bright screen duration" = "转腕亮屏-亮屏时长";
+"Sedentary reminder" = "久坐提醒";
+"Hour System-Metric and Imperial" = "小时制 - 公制和英制";
+"Language" = "语言";
+"Do not disturb mode" = "勿扰模式";
+"notification" = "消息通知";
+"Test heart rate" = "测试心率";
+"Test blood pressure" = "测试血压";
+"Temperature correlation" = "温度相关";
+"Check if there is a function" = "检查设备是否有功能";
+"Bracelet function display and hide" = "手环功能显示与隐藏";
+"Heart rate switch" = "心率监测开关";
+"Temperature correlation" = "温度相关";
+"Continuous blood pressure" = "血压自动监测";
+"Get bracelet data" = "获取设备信息";
+"Update Interface Color" = "更换内置表盘";
+"OTA" = "  ";
+"Image OTA" = "  ";
+"Custom Set Pulse/SleepAid" = "  ";
+"Sauna Data" = "  ";
