@@ -10,6 +10,10 @@
 
 @interface SyncDataViewController ()
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *dataTypeSeg;
+@property (weak, nonatomic) IBOutlet UILabel *syncStatusLB;
+@property (weak, nonatomic) IBOutlet UITextView *detaDetailTextView;
+
 @end
 
 @implementation SyncDataViewController
@@ -19,21 +23,166 @@
     
     self.title = NSLocalizedString(@"SyncData", nil);
     
-//    // 1： 先将设备的数据，同步至sdk中
-//    [JWBleDataAction jwSyncDataWithCallBack:^(JWBleCommunicationStatus status, JWBleSyncStateEnum syncStateEnum) {
-//        //监听 JWBleSyncEnum_Complete 状态为成功后 进行 第二步
-//    }];
-//
-//    // 2: 从sdk db 中获取数据
-//
-//    // 2.1: 抽象来说，所有数据类型，都提供了，根据天获取数据，如步数
-//    // 2.2: 其它的数据会在下列方法中详细补充
-//    [JWBleDataAction jwGetStepDataByYYYYMMDDStr:@"20180911" callBack:^(NSArray *dataArr) {
-//
-//    }];
 }
 
+- (IBAction)clickSyncBtn:(id)sender {
+    
+    self.syncStatusLB.text = @"synchronizing";
+    self.detaDetailTextView.text = @"";
+    
+//    JWBleSyncEnum_Start = 0,//开始 Start
+//    JWBleSyncEnum_Interrupt, //中断 Interrupt
+//    JWBleSyncEnum_InconsistentTotals, //总数不一致 Inconsistent totals
+//    JWBleSyncEnum_Complete //完成
+    
+    __weak __typeof(self)weakSelf = self;
+    [JWBleDataAction jwSyncDataWithCallBack:^(JWBleCommunicationStatus status, JWBleSyncStateEnum syncStateEnum) {
+        if (syncStateEnum == JWBleSyncEnum_Start) {
+            weakSelf.syncStatusLB.text = @"synchron Start" ;
+        } else if (syncStateEnum == JWBleSyncEnum_Interrupt) {
+            weakSelf.syncStatusLB.text = @"synchron Interrupt";
+        } else if (syncStateEnum == JWBleSyncEnum_InconsistentTotals) {
+            weakSelf.syncStatusLB.text = @"synchron InconsistentTotals";
+        } else if (syncStateEnum == JWBleSyncEnum_Complete) {
+            weakSelf.syncStatusLB.text = @"synchron Complete";
+            
+            [weakSelf getDBData];
+        }
+    }];
+}
 
+- (void)getDBData {
+    
+    NSString *dateString = [self currentDayStr];
+    self.detaDetailTextView.text = dateString;
+    
+    // step sleep hr temp oxygen sports
+    __weak __typeof(self)weakSelf = self;
+    if (self.dataTypeSeg.selectedSegmentIndex == 0) {//step
+        
+        [JWBleDataAction jwGetStepDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) {
+            for (int i = 0; i < dataArr.count; i++) {
+                NSDictionary *valueDic = dataArr[i];
+                
+                int steps = [[valueDic objectForKey:@"steps"] intValue];
+                if (steps == 0) {
+                    continue;
+                }
+                int offset = [[valueDic objectForKey:@"offset"] intValue];
+                int distance = [[valueDic objectForKey:@"distance"] intValue];
+                int calory = [[valueDic objectForKey:@"calory"] intValue];
+                NSString *valueStr = [NSString stringWithFormat:@"steps:%d offest:%d distance:%d calory:%d",steps,offset,distance,calory];
+                
+                weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n %@",weakSelf.detaDetailTextView.text,valueStr];
+            }
+            
+            // device total
+            [JWBleDataAction jwGetDayStepTotalValue:dateString callback:^(JWBleCommunicationStatus status, int step, int dis, int calories) {
+                NSString *valueStr = [NSString stringWithFormat:@"step:%d dis:%d calories:%d",step,dis,calories];
+                weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n total: %@",weakSelf.detaDetailTextView.text,valueStr];
+            }];
+        }];
+    } else if (self.dataTypeSeg.selectedSegmentIndex == 1) {//sleep
+        
+        [JWBleDataAction jwGetSleepDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) {
+            if (dataArr.count == 0) {
+                weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n empty data",weakSelf.detaDetailTextView.text];
+            } else {
+                for (int i = 0; i < dataArr.count; i++) {
+                    NSDictionary *valueDic = dataArr[i];
+                    
+                    int minute = [[valueDic objectForKey:@"minute"] intValue];
+                    int status = [[valueDic objectForKey:@"status"] intValue];
+                    NSString *statusStr = @"sober";
+                    if (status == 1) {
+                        statusStr = @"light sleep";
+                    } else if (status == 2) {
+                        statusStr = @"deep sleep";
+                    }
+                    NSString *valueStr = [NSString stringWithFormat:@"minute:%d statusStr:%@",minute,statusStr];
+                    
+                    weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n %@",weakSelf.detaDetailTextView.text,valueStr];
+                }
+            }
+        }];
+    } else if (self.dataTypeSeg.selectedSegmentIndex == 2) {//hr
+        [JWBleDataAction jwGetHRDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) {
+            if (dataArr.count == 0) {
+                weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n empty data",weakSelf.detaDetailTextView.text];
+            } else {
+                for (int i = 0; i < dataArr.count; i++) {
+                    NSDictionary *valueDic = dataArr[i];
+                    
+                    int time = [[valueDic objectForKey:@"time"] intValue];
+                    int value = [[valueDic objectForKey:@"value"] intValue];
+                    NSString *valueStr = [NSString stringWithFormat:@"time:%d value:%d",time,value];
+                    
+                    weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n %@",weakSelf.detaDetailTextView.text,valueStr];
+                }
+            }
+        }];
+    } else if (self.dataTypeSeg.selectedSegmentIndex == 3) {//temp
+        [JWBleDataAction jwGetTemperatureDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) {
+            if (dataArr.count == 0) {
+                weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n empty data",weakSelf.detaDetailTextView.text];
+            } else {
+                for (int i = 0; i < dataArr.count; i++) {
+                    NSDictionary *valueDic = dataArr[i];
+                    
+                    int time = [[valueDic objectForKey:@"time"] intValue];
+                    int value = [[valueDic objectForKey:@"value"] intValue];
+                    int wearingState = [[valueDic objectForKey:@"wearingState"] intValue];
+                    int compensationStatus = [[valueDic objectForKey:@"compensationStatus"] intValue];
+                    NSString *valueStr = [NSString stringWithFormat:@"time:%d value:%d wearingState:%d compensationStatus:%d",time,value,wearingState,compensationStatus];
+                    
+                    weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n %@",weakSelf.detaDetailTextView.text,valueStr];
+                }
+            }
+        }];
+    } else if (self.dataTypeSeg.selectedSegmentIndex == 4) {//oxygen
+        [JWBleDataAction jwGetOxygenDataByYYYYDDStr:dateString callBack:^(NSArray *dataArr) {
+            if (dataArr.count == 0) {
+                weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n empty data",weakSelf.detaDetailTextView.text];
+            } else {
+                for (int i = 0; i < dataArr.count; i++) {
+                    JWOxygenModel *oxygenModel = dataArr[i];
+                    
+                    NSString *valueStr = [NSString stringWithFormat:@"time:%d mCurValue:%d mHighValue:%d mLowValue:%d",oxygenModel.time,oxygenModel.mCurValue,oxygenModel.mHighValue,oxygenModel.mLowValue];
+                    
+                    weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n %@",weakSelf.detaDetailTextView.text,valueStr];
+                }
+            }
+            
+        }];
+    } else if (self.dataTypeSeg.selectedSegmentIndex == 5) {//sports
+        
+        [JWBleDataAction jwGetMotionDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) {
+            if (dataArr.count == 0) {
+                weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n empty data",weakSelf.detaDetailTextView.text];
+            } else {
+                for (int i = 0; i < dataArr.count; i++) {
+                    NSDictionary *valueDic = dataArr[i];
+                    
+                    int minuteIndex = [[valueDic objectForKey:@"minuteIndex"] intValue];
+                    int seconds = [[valueDic objectForKey:@"seconds"] intValue];
+                    int motionType = [[valueDic objectForKey:@"motionType"] intValue];
+                    int sportsMinute = [[valueDic objectForKey:@"sportsMinute"] intValue];
+                    int sportsSeconds = [[valueDic objectForKey:@"sportsSeconds"] intValue];
+                    NSString *valueStr = [NSString stringWithFormat:@"minuteIndex:%d seconds:%d motionType:%d sportsMinute:%d sportsSeconds:%d",minuteIndex,seconds,motionType,sportsMinute,sportsSeconds];
+                    
+                    weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n %@",weakSelf.detaDetailTextView.text,valueStr];
+                }
+            }
+        }];
+    }
+}
 
+- (NSString *)currentDayStr{
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYYMMdd"];
+    NSString *dateString = [dateFormatter stringFromDate:currentDate];
+    return dateString;
+}
 
 @end

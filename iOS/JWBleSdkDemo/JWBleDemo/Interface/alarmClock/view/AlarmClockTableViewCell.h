@@ -16,6 +16,7 @@ typedef void (^AlarmClockCellValueChangedBlock)(void);
 @interface AlarmClockTableViewCell : UITableViewCell
 
 @property(nonatomic, strong) DemoAlarmClockModel *clockModel;
+@property(nonatomic, strong) JWBleAlarmClockModel *clockModel_v2;
 
 @property(nonatomic, copy) AlarmClockCellValueChangedBlock changedBlock;
 

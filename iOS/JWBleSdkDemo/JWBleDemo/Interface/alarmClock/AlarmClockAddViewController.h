@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AlarmClockAddViewController : UIViewController
 
 @property(nonatomic, assign) BOOL isClock;
+@property(nonatomic, assign) int nextIdd;//next alarm id
+@property(nonatomic, strong) JWBleAlarmClockModel *clockModel_v2;
 
 @end
 

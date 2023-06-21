@@ -35,7 +35,7 @@
 
     //2：temperature
     bool celsiusUnit = self.temperatureSeg.selectedSegmentIndex == 0;
-    [JWBleAction jwTemperatureSwitchAction:false unit:celsiusUnit compensate:false monitor:false callBack:^(JWBleCommunicationStatus status, BOOL unit, BOOL compensate, BOOL monitor) {
+    [JWBleAction jwTemperatureSwitchAction:false unit:celsiusUnit compensate:false monitor:true callBack:^(JWBleCommunicationStatus status, BOOL unit, BOOL compensate, BOOL monitor) {
     }];
 
     //3：Metric

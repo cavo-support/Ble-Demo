@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,15 +27,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38y-9v-41l">
                     <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                     <subviews>
-                        <button opaque="NO" tag="10000" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HIz-HF-ani">
-                            <rect key="frame" x="0.0" y="0.0" width="187.5" height="150"/>
-                            <state key="normal" title="add event"/>
-                            <connections>
-                                <action selector="clickActionBtn:" destination="-1" eventType="touchUpInside" id="VEs-M5-P5K"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3X1-Jq-Kr9">
-                            <rect key="frame" x="187.5" y="0.0" width="187.5" height="150"/>
+                        <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3X1-Jq-Kr9">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                            <color key="backgroundColor" red="0.2821426494" green="0.74691166019999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="add clock"/>
                             <connections>
                                 <action selector="clickActionBtn:" destination="-1" eventType="touchUpInside" id="zZ8-iw-HFE"/>
@@ -51,19 +47,15 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="ZMc-aQ-xZi" firstAttribute="top" secondItem="38y-9v-41l" secondAttribute="top" constant="8" id="4Z2-sc-oma"/>
-                        <constraint firstItem="3X1-Jq-Kr9" firstAttribute="leading" secondItem="HIz-HF-ani" secondAttribute="trailing" id="4cu-j8-hEI"/>
                         <constraint firstItem="3X1-Jq-Kr9" firstAttribute="top" secondItem="38y-9v-41l" secondAttribute="top" id="7eB-bW-BxZ"/>
-                        <constraint firstItem="HIz-HF-ani" firstAttribute="top" secondItem="38y-9v-41l" secondAttribute="top" id="C9n-aO-gmu"/>
                         <constraint firstItem="ZMc-aQ-xZi" firstAttribute="centerX" secondItem="38y-9v-41l" secondAttribute="centerX" id="KpA-NE-Bgq"/>
-                        <constraint firstItem="3X1-Jq-Kr9" firstAttribute="width" secondItem="HIz-HF-ani" secondAttribute="width" id="QWb-Ly-vPL"/>
                         <constraint firstAttribute="bottom" secondItem="3X1-Jq-Kr9" secondAttribute="bottom" id="TPe-2T-tFI"/>
-                        <constraint firstItem="HIz-HF-ani" firstAttribute="leading" secondItem="38y-9v-41l" secondAttribute="leading" id="WpY-Sq-io5"/>
-                        <constraint firstItem="3X1-Jq-Kr9" firstAttribute="leading" secondItem="HIz-HF-ani" secondAttribute="trailing" id="X3q-e2-oQx"/>
-                        <constraint firstAttribute="bottom" secondItem="HIz-HF-ani" secondAttribute="bottom" id="hzT-Al-bj1"/>
+                        <constraint firstItem="3X1-Jq-Kr9" firstAttribute="leading" secondItem="38y-9v-41l" secondAttribute="leading" id="ajq-uq-cMZ"/>
                         <constraint firstAttribute="trailing" secondItem="3X1-Jq-Kr9" secondAttribute="trailing" id="nUz-RB-1R1"/>
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="38y-9v-41l" firstAttribute="top" secondItem="cqX-QH-oMA" secondAttribute="bottom" id="2cA-Vc-i83"/>
@@ -76,8 +68,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cqX-QH-oMA" secondAttribute="trailing" id="sGW-rF-sL9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="-538" y="264"/>
+            <point key="canvasLocation" x="269.60000000000002" y="-45.42728635682159"/>
         </view>
     </objects>
 </document>

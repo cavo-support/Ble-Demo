@@ -41,6 +41,10 @@
     }];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:true];
+}
+
 - (IBAction)clickSaveBtn:(id)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
     __weak __typeof(self)weakSelf = self;

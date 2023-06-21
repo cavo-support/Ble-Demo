@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -79,49 +79,49 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09l-32-CPx">
                     <rect key="frame" x="0.0" y="322" width="375" height="65"/>
                     <subviews>
-                        <button opaque="NO" tag="10000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRZ-qV-viY">
+                        <button opaque="NO" tag="10000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRZ-qV-viY">
                             <rect key="frame" x="0.0" y="0.0" width="53.5" height="65"/>
                             <state key="normal" title="日"/>
                             <connections>
                                 <action selector="clickWeekBtn:" destination="-1" eventType="touchUpInside" id="59O-iA-idj"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0X-3d-29o">
+                        <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0X-3d-29o">
                             <rect key="frame" x="53.5" y="0.0" width="53.5" height="65"/>
                             <state key="normal" title="一"/>
                             <connections>
                                 <action selector="clickWeekBtn:" destination="-1" eventType="touchUpInside" id="o5O-TH-1Ll"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwm-gL-pEk">
+                        <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwm-gL-pEk">
                             <rect key="frame" x="107" y="0.0" width="53.5" height="65"/>
                             <state key="normal" title="二"/>
                             <connections>
                                 <action selector="clickWeekBtn:" destination="-1" eventType="touchUpInside" id="M7s-nr-LjN"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="10003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBr-wl-swm">
+                        <button opaque="NO" tag="10003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBr-wl-swm">
                             <rect key="frame" x="160.5" y="0.0" width="54" height="65"/>
                             <state key="normal" title="三"/>
                             <connections>
                                 <action selector="clickWeekBtn:" destination="-1" eventType="touchUpInside" id="ZPu-rg-X2h"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="10004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXr-oB-ZLx">
+                        <button opaque="NO" tag="10004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EXr-oB-ZLx">
                             <rect key="frame" x="214.5" y="0.0" width="53.5" height="65"/>
                             <state key="normal" title="四"/>
                             <connections>
                                 <action selector="clickWeekBtn:" destination="-1" eventType="touchUpInside" id="Xgr-gz-Otd"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="10005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILt-7U-zoA">
+                        <button opaque="NO" tag="10005" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILt-7U-zoA">
                             <rect key="frame" x="268" y="0.0" width="53.5" height="65"/>
                             <state key="normal" title="五"/>
                             <connections>
                                 <action selector="clickWeekBtn:" destination="-1" eventType="touchUpInside" id="cx2-GM-viv"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="10006" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-6F-RM9">
+                        <button opaque="NO" tag="10006" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C3I-6F-RM9">
                             <rect key="frame" x="321.5" y="0.0" width="53.5" height="65"/>
                             <state key="normal" title="六"/>
                             <connections>
@@ -168,6 +168,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="XUm-x1-4if" firstAttribute="centerY" secondItem="ybd-gb-4xq" secondAttribute="centerY" id="53o-Mn-b2z"/>
@@ -189,8 +190,7 @@
                 <constraint firstItem="6ml-7l-MbW" firstAttribute="leading" secondItem="XUm-x1-4if" secondAttribute="trailing" constant="10" id="wSD-v5-AeO"/>
                 <constraint firstItem="ybd-gb-4xq" firstAttribute="centerY" secondItem="gMO-rY-WX3" secondAttribute="centerY" id="xbY-vq-zUN"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="-186" y="131"/>
+            <point key="canvasLocation" x="65" y="73"/>
         </view>
     </objects>
 </document>

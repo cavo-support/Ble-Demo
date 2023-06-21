@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SyncDataViewController">
             <connections>
+                <outlet property="dataTypeSeg" destination="7yw-TB-he2" id="joo-Qt-N4b"/>
+                <outlet property="detaDetailTextView" destination="sSU-P4-YoO" id="z3D-Gy-nUV"/>
+                <outlet property="syncStatusLB" destination="bN3-Cg-PO7" id="UL3-4Q-w0U"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,7 +34,7 @@
                         <segment title="step"/>
                         <segment title="sleep"/>
                         <segment title="hr"/>
-                        <segment title="temperature"/>
+                        <segment title="temp"/>
                         <segment title="oxygen"/>
                         <segment title="sports"/>
                     </segments>
@@ -42,30 +45,58 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="synchronizing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bN3-Cg-PO7">
-                    <rect key="frame" x="132" y="171" width="106" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bN3-Cg-PO7">
+                    <rect key="frame" x="132" y="181.66666666666666" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" red="1" green="0.51311558329999996" blue="0.035219442230000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d3-iO-Nsi">
+                    <rect key="frame" x="165.66666666666666" y="201.66666666666666" width="62" height="35"/>
+                    <color key="backgroundColor" red="0.2821426494" green="0.74691166019999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Sync"/>
+                    <connections>
+                        <action selector="clickSyncBtn:" destination="-1" eventType="touchUpInside" id="Hge-ST-UQM"/>
+                    </connections>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSU-P4-YoO">
+                    <rect key="frame" x="20" y="256.66666666666669" width="353" height="200"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="u0C-Zm-LXR"/>
+                    </constraints>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="qjc-BD-BK3" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="4kx-Vc-qnE"/>
                 <constraint firstItem="7yw-TB-he2" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="7HJ-CZ-4QG"/>
+                <constraint firstItem="sSU-P4-YoO" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="FQj-l9-OM0"/>
+                <constraint firstItem="6d3-iO-Nsi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KNL-PZ-hkl"/>
                 <constraint firstItem="bN3-Cg-PO7" firstAttribute="centerY" secondItem="mca-65-GFL" secondAttribute="centerY" id="LLn-4t-hNJ"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="sSU-P4-YoO" secondAttribute="trailing" constant="20" id="TOg-6u-IzG"/>
                 <constraint firstItem="mca-65-GFL" firstAttribute="top" secondItem="7yw-TB-he2" secondAttribute="bottom" constant="20" id="Y9G-lq-a5h"/>
                 <constraint firstItem="bN3-Cg-PO7" firstAttribute="leading" secondItem="mca-65-GFL" secondAttribute="trailing" constant="10" id="Zq4-2X-erP"/>
                 <constraint firstItem="7yw-TB-he2" firstAttribute="top" secondItem="qjc-BD-BK3" secondAttribute="bottom" constant="20" id="bBe-9r-Dxy"/>
+                <constraint firstItem="sSU-P4-YoO" firstAttribute="top" secondItem="6d3-iO-Nsi" secondAttribute="bottom" constant="20" id="fN3-Wb-5kR"/>
                 <constraint firstItem="qjc-BD-BK3" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="20" id="fSa-Ks-FmJ"/>
                 <constraint firstItem="mca-65-GFL" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="gd1-2z-Mo8"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="7yw-TB-he2" secondAttribute="trailing" constant="20" id="uhH-iv-mSr"/>
+                <constraint firstItem="6d3-iO-Nsi" firstAttribute="top" secondItem="bN3-Cg-PO7" secondAttribute="bottom" constant="20" id="zie-Z3-AJu"/>
             </constraints>
-            <point key="canvasLocation" x="104.58015267175573" y="22.535211267605636"/>
+            <point key="canvasLocation" x="192" y="15"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1506E2F52A3C474C00330665 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E522A3C451F005E8934 /* CocoaLumberjack.framework */; };
 		1506E2F62A3C474C00330665 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E522A3C451F005E8934 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1506E2FA2A3D99CA00330665 /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1506E2F92A3D99CA00330665 /* JWBle.framework */; };
 		151A2E5C2A3C4620005E8934 /* RTKLEFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E532A3C451F005E8934 /* RTKLEFoundation.framework */; };
 		151A2E5D2A3C4620005E8934 /* RTKLEFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E532A3C451F005E8934 /* RTKLEFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		151A2E5E2A3C4622005E8934 /* RTKOTASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E542A3C451F005E8934 /* RTKOTASDK.framework */; };
@@ -28,6 +27,19 @@
 		15A855232A428FFE00916A12 /* SyncTargetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A855212A428FFE00916A12 /* SyncTargetViewController.xib */; };
 		15A855282A42915E00916A12 /* SyncDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855262A42915E00916A12 /* SyncDataViewController.m */; };
 		15A855292A42915E00916A12 /* SyncDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A855272A42915E00916A12 /* SyncDataViewController.xib */; };
+		15A8552E2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A8552C2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.m */; };
+		15A8552F2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A8552D2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.xib */; };
+		15A855322A42D8F500916A12 /* WFJWDeviceFunctionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855312A42D8F500916A12 /* WFJWDeviceFunctionModel.m */; };
+		15A8553B2A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855392A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.m */; };
+		15A8553C2A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A8553A2A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.xib */; };
+		15A855402A42EE3000916A12 /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A8553F2A42EE3000916A12 /* JWBle.framework */; };
+		15A855452A42EFE300916A12 /* CountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855432A42EFE300916A12 /* CountDownViewController.m */; };
+		15A855462A42EFE300916A12 /* CountDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15A855442A42EFE300916A12 /* CountDownViewController.xib */; };
+		15A8554A2A42F3BB00916A12 /* FindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855492A42F3BB00916A12 /* FindPhoneViewController.m */; };
+		15A8554E2A42F61500916A12 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A8554D2A42F61500916A12 /* WeatherViewController.m */; };
+		15A855522A42F6FC00916A12 /* RemotePhotographyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855512A42F6FC00916A12 /* RemotePhotographyViewController.m */; };
+		15A855562A42F95900916A12 /* AddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855552A42F95900916A12 /* AddressBookViewController.m */; };
+		15A8555A2A42FA1E00916A12 /* AudioBluetoothPairingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A855592A42FA1E00916A12 /* AudioBluetoothPairingViewController.m */; };
 		15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */; };
 		15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */; };
 		15C3F79729AEFC19007662F7 /* OtaActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C3F79629AEFC19007662F7 /* OtaActionViewController.m */; };
@@ -159,7 +171,6 @@
 
 /* Begin PBXFileReference section */
 		12D2B67BF32848152AF69358 /* Pods-JWBleDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JWBleDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JWBleDemo/Pods-JWBleDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		1506E2F92A3D99CA00330665 /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
 		151A2E522A3C451F005E8934 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
 		151A2E532A3C451F005E8934 /* RTKLEFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RTKLEFoundation.framework; sourceTree = "<group>"; };
 		151A2E542A3C451F005E8934 /* RTKOTASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RTKOTASDK.framework; sourceTree = "<group>"; };
@@ -185,6 +196,28 @@
 		15A855252A42915E00916A12 /* SyncDataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncDataViewController.h; sourceTree = "<group>"; };
 		15A855262A42915E00916A12 /* SyncDataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncDataViewController.m; sourceTree = "<group>"; };
 		15A855272A42915E00916A12 /* SyncDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncDataViewController.xib; sourceTree = "<group>"; };
+		15A8552B2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncAutomaticMonitoringViewController.h; sourceTree = "<group>"; };
+		15A8552C2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncAutomaticMonitoringViewController.m; sourceTree = "<group>"; };
+		15A8552D2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncAutomaticMonitoringViewController.xib; sourceTree = "<group>"; };
+		15A855302A42D8F500916A12 /* WFJWDeviceFunctionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WFJWDeviceFunctionModel.h; sourceTree = "<group>"; };
+		15A855312A42D8F500916A12 /* WFJWDeviceFunctionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WFJWDeviceFunctionModel.m; sourceTree = "<group>"; };
+		15A855382A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyncAutomaticMonitoringTableViewCell.h; sourceTree = "<group>"; };
+		15A855392A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyncAutomaticMonitoringTableViewCell.m; sourceTree = "<group>"; };
+		15A8553A2A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyncAutomaticMonitoringTableViewCell.xib; sourceTree = "<group>"; };
+		15A8553F2A42EE3000916A12 /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
+		15A855422A42EFE300916A12 /* CountDownViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountDownViewController.h; sourceTree = "<group>"; };
+		15A855432A42EFE300916A12 /* CountDownViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountDownViewController.m; sourceTree = "<group>"; };
+		15A855442A42EFE300916A12 /* CountDownViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountDownViewController.xib; sourceTree = "<group>"; };
+		15A855482A42F3BB00916A12 /* FindPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FindPhoneViewController.h; sourceTree = "<group>"; };
+		15A855492A42F3BB00916A12 /* FindPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FindPhoneViewController.m; sourceTree = "<group>"; };
+		15A8554C2A42F61500916A12 /* WeatherViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
+		15A8554D2A42F61500916A12 /* WeatherViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
+		15A855502A42F6FC00916A12 /* RemotePhotographyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemotePhotographyViewController.h; sourceTree = "<group>"; };
+		15A855512A42F6FC00916A12 /* RemotePhotographyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemotePhotographyViewController.m; sourceTree = "<group>"; };
+		15A855542A42F95900916A12 /* AddressBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookViewController.h; sourceTree = "<group>"; };
+		15A855552A42F95900916A12 /* AddressBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookViewController.m; sourceTree = "<group>"; };
+		15A855582A42FA1E00916A12 /* AudioBluetoothPairingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioBluetoothPairingViewController.h; sourceTree = "<group>"; };
+		15A855592A42FA1E00916A12 /* AudioBluetoothPairingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioBluetoothPairingViewController.m; sourceTree = "<group>"; };
 		15AE9FB9283C886200D9A227 /* UpdateInterfaceColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateInterfaceColorViewController.h; sourceTree = "<group>"; };
 		15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateInterfaceColorViewController.m; sourceTree = "<group>"; };
 		15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateInterfaceColorViewController.xib; sourceTree = "<group>"; };
@@ -383,7 +416,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1506E2FA2A3D99CA00330665 /* JWBle.framework in Frameworks */,
+				15A855402A42EE3000916A12 /* JWBle.framework in Frameworks */,
 				151A2E5C2A3C4620005E8934 /* RTKLEFoundation.framework in Frameworks */,
 				1506E2F52A3C474C00330665 /* CocoaLumberjack.framework in Frameworks */,
 				151A2E5E2A3C4622005E8934 /* RTKOTASDK.framework in Frameworks */,
@@ -397,7 +430,7 @@
 		151A2E512A3C451F005E8934 /* JWBle */ = {
 			isa = PBXGroup;
 			children = (
-				1506E2F92A3D99CA00330665 /* JWBle.framework */,
+				15A8553F2A42EE3000916A12 /* JWBle.framework */,
 				151A2E522A3C451F005E8934 /* CocoaLumberjack.framework */,
 				151A2E532A3C451F005E8934 /* RTKLEFoundation.framework */,
 				151A2E542A3C451F005E8934 /* RTKOTASDK.framework */,
@@ -471,6 +504,76 @@
 				15A855272A42915E00916A12 /* SyncDataViewController.xib */,
 			);
 			path = syncData;
+			sourceTree = "<group>";
+		};
+		15A8552A2A42D41000916A12 /* syncAutomaticMonitoring */ = {
+			isa = PBXGroup;
+			children = (
+				15A855302A42D8F500916A12 /* WFJWDeviceFunctionModel.h */,
+				15A855312A42D8F500916A12 /* WFJWDeviceFunctionModel.m */,
+				15A8552B2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.h */,
+				15A8552C2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.m */,
+				15A8552D2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.xib */,
+				15A855382A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.h */,
+				15A855392A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.m */,
+				15A8553A2A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.xib */,
+			);
+			path = syncAutomaticMonitoring;
+			sourceTree = "<group>";
+		};
+		15A855412A42EFD000916A12 /* countDown */ = {
+			isa = PBXGroup;
+			children = (
+				15A855422A42EFE300916A12 /* CountDownViewController.h */,
+				15A855432A42EFE300916A12 /* CountDownViewController.m */,
+				15A855442A42EFE300916A12 /* CountDownViewController.xib */,
+			);
+			path = countDown;
+			sourceTree = "<group>";
+		};
+		15A855472A42F3B000916A12 /* findPhone */ = {
+			isa = PBXGroup;
+			children = (
+				15A855482A42F3BB00916A12 /* FindPhoneViewController.h */,
+				15A855492A42F3BB00916A12 /* FindPhoneViewController.m */,
+			);
+			path = findPhone;
+			sourceTree = "<group>";
+		};
+		15A8554B2A42F60B00916A12 /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				15A8554C2A42F61500916A12 /* WeatherViewController.h */,
+				15A8554D2A42F61500916A12 /* WeatherViewController.m */,
+			);
+			path = weather;
+			sourceTree = "<group>";
+		};
+		15A8554F2A42F6F200916A12 /* RemotePhotography */ = {
+			isa = PBXGroup;
+			children = (
+				15A855502A42F6FC00916A12 /* RemotePhotographyViewController.h */,
+				15A855512A42F6FC00916A12 /* RemotePhotographyViewController.m */,
+			);
+			path = RemotePhotography;
+			sourceTree = "<group>";
+		};
+		15A855532A42F94E00916A12 /* addressBook */ = {
+			isa = PBXGroup;
+			children = (
+				15A855542A42F95900916A12 /* AddressBookViewController.h */,
+				15A855552A42F95900916A12 /* AddressBookViewController.m */,
+			);
+			path = addressBook;
+			sourceTree = "<group>";
+		};
+		15A855572A42FA1600916A12 /* AudioBluetoothPairing */ = {
+			isa = PBXGroup;
+			children = (
+				15A855582A42FA1E00916A12 /* AudioBluetoothPairingViewController.h */,
+				15A855592A42FA1E00916A12 /* AudioBluetoothPairingViewController.m */,
+			);
+			path = AudioBluetoothPairing;
 			sourceTree = "<group>";
 		};
 		15AE9FB8283C885600D9A227 /* UpdateInterfaceColor */ = {
@@ -881,6 +984,13 @@
 		4DEE82AB224261040068A80B /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				15A855572A42FA1600916A12 /* AudioBluetoothPairing */,
+				15A855532A42F94E00916A12 /* addressBook */,
+				15A8554F2A42F6F200916A12 /* RemotePhotography */,
+				15A8554B2A42F60B00916A12 /* weather */,
+				15A855472A42F3B000916A12 /* findPhone */,
+				15A855412A42EFD000916A12 /* countDown */,
+				15A8552A2A42D41000916A12 /* syncAutomaticMonitoring */,
 				15A855242A42915100916A12 /* syncData */,
 				15A8551E2A428FF100916A12 /* syncTarget */,
 				15A855182A428C0500916A12 /* syncUnit */,
@@ -1170,6 +1280,7 @@
 				4D67F72124FE20B800A70682 /* merge.bin in Resources */,
 				4D94A79F22438A9000A3B618 /* AlarmClockViewController.xib in Resources */,
 				15A855172A4289B100916A12 /* SyncUserInfoViewController.xib in Resources */,
+				15A8552F2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.xib in Resources */,
 				E29786542423576200E9D10B /* LICENSE in Resources */,
 				154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */,
 				4D94A7A822438A9000A3B618 /* MainInterfaceStyleViewController.xib in Resources */,
@@ -1182,12 +1293,14 @@
 				4D67F72324FE23CD00A70682 /* mode4_userdata_GT3_OTA.bin in Resources */,
 				15A855112A42873500916A12 /* SyncTimeViewController.xib in Resources */,
 				15A8551D2A428C1400916A12 /* SyncUnitViewController.xib in Resources */,
+				15A855462A42EFE300916A12 /* CountDownViewController.xib in Resources */,
 				15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */,
 				4D75427822FBF66C003462B3 /* NoticeViewController.xib in Resources */,
 				4D94A7AB22438A9000A3B618 /* NotDisturbViewController.xib in Resources */,
 				4D94A7A322438A9000A3B618 /* AlarmClockTableViewCell.xib in Resources */,
 				4DEE829B22425E950068A80B /* Assets.xcassets in Resources */,
 				15A855232A428FFE00916A12 /* SyncTargetViewController.xib in Resources */,
+				15A8553C2A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.xib in Resources */,
 				4DEE22CD22426A81006EF5F2 /* RootViewController.xib in Resources */,
 				4D67F74524FE466B00A70682 /* merge2_3.bin in Resources */,
 				E29786582423576200E9D10B /* MJRefresh.bundle in Resources */,
@@ -1244,8 +1357,10 @@
 				15A8551C2A428C1400916A12 /* SyncUnitViewController.m in Sources */,
 				15A855282A42915E00916A12 /* SyncDataViewController.m in Sources */,
 				15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */,
+				15A8555A2A42FA1E00916A12 /* AudioBluetoothPairingViewController.m in Sources */,
 				4D36BC7B23361BF900E0D8E2 /* TotalStepsViewController.m in Sources */,
 				E29786642423576200E9D10B /* MJRefreshGifHeader.m in Sources */,
+				15A855322A42D8F500916A12 /* WFJWDeviceFunctionModel.m in Sources */,
 				4D94A7BE2243919E00A3B618 /* DemoAlarmClockModel.m in Sources */,
 				4DDB0F8E22FD4C7400428E16 /* TestHRViewController.m in Sources */,
 				E29786672423576200E9D10B /* MJRefreshBackFooter.m in Sources */,
@@ -1264,10 +1379,12 @@
 				4D868BA62339EB5900AA1BFC /* SettingRecordModel.m in Sources */,
 				E297865E2423576200E9D10B /* MJRefreshBackNormalFooter.m in Sources */,
 				4DEE82C3224266A90068A80B /* JWBleDemoHelp.m in Sources */,
+				15A8554E2A42F61500916A12 /* WeatherViewController.m in Sources */,
 				E29786602423576200E9D10B /* MJRefreshAutoGifFooter.m in Sources */,
 				4D94A7CC2243923000A3B618 /* JKDBHelper.m in Sources */,
 				E21BA8EE2420C3C000D58E28 /* OTARecordModel.m in Sources */,
 				E297865C2423576200E9D10B /* MJRefreshBackGifFooter.m in Sources */,
+				15A855452A42EFE300916A12 /* CountDownViewController.m in Sources */,
 				4DEE82B8224264E60068A80B /* MBProgressHUD.m in Sources */,
 				15A855102A42873500916A12 /* SyncTimeViewController.m in Sources */,
 				15C3F79729AEFC19007662F7 /* OtaActionViewController.m in Sources */,
@@ -1279,18 +1396,23 @@
 				E29786562423576200E9D10B /* MJRefreshConst.m in Sources */,
 				4DEE829322425E940068A80B /* AppDelegate.m in Sources */,
 				4D2C608324B810E2001C5AD2 /* GetDeviceDataViewController.m in Sources */,
+				15A8554A2A42F3BB00916A12 /* FindPhoneViewController.m in Sources */,
 				159AC2022A18756800F0C98D /* SaunaViewController.m in Sources */,
 				E29786662423576200E9D10B /* MJRefreshHeader.m in Sources */,
 				E29786592423576200E9D10B /* UIScrollView+MJExtension.m in Sources */,
+				15A8552E2A42D41C00916A12 /* SyncAutomaticMonitoringViewController.m in Sources */,
 				154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */,
 				4D94A7B122438A9000A3B618 /* ActionListViewControllerTableViewCell.m in Sources */,
 				E297865B2423576200E9D10B /* UIView+MJExtension.m in Sources */,
+				15A8553B2A42DBD200916A12 /* SyncAutomaticMonitoringTableViewCell.m in Sources */,
 				4D26A2A824628847007C71E2 /* ConnectionRecordModel.m in Sources */,
 				4D94A7CB2243923000A3B618 /* JKDBModel.m in Sources */,
 				4D88036324C6865D007F2CC2 /* HRSwitchViewController.m in Sources */,
 				E297865F2423576200E9D10B /* MJRefreshAutoStateFooter.m in Sources */,
 				4D94A7A122438A9000A3B618 /* AlarmClockViewController.m in Sources */,
+				15A855562A42F95900916A12 /* AddressBookViewController.m in Sources */,
 				4D94A7AC22438A9000A3B618 /* NotDisturbViewController.m in Sources */,
+				15A855522A42F6FC00916A12 /* RemotePhotographyViewController.m in Sources */,
 				E297865A2423576200E9D10B /* NSBundle+MJRefresh.m in Sources */,
 				4D18086D24EF613E00DD46F7 /* ContinuousBPViewController.m in Sources */,
 				4D94A7A522438A9000A3B618 /* UpdatePWDViewController.m in Sources */,
