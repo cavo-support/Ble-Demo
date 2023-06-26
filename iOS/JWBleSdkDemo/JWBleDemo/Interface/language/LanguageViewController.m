@@ -37,6 +37,7 @@
     self.pickView.dataSource = self;
     self.pickView.delegate = self;
     
+    //获取设备当前显示语言 Get the current display language of the device
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
     __weak __typeof(self)weakSelf = self;
     [JWBleAction jwLanguageAction:true languageEnum:JWBleLanguageEnum_ChineseSimplified callBack:^(JWBleCommunicationStatus status, JWBleLanguageEnum languageEnum) {

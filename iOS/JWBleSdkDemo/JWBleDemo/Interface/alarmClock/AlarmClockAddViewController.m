@@ -91,31 +91,45 @@
     
     if ([JWBleAction jwCheckFunctionStates:JWBleFunctionEnum_SmartAlarmClockV2] == JWBleFunctionStateEnum_Open) {
         
-        JWBleAlarmClockModel *sdkModel = [JWBleAlarmClockModel new];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        NSUInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+        NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:self.dataPicker.date];
         
-        sdkModel.isOpen = false;
-        sdkModel.idd = 1;
-        sdkModel.year = 20;
-        sdkModel.month = 10;
-        sdkModel.day = 20;
-        sdkModel.hour = 10;
-        sdkModel.minute = 30;
+        JWBleAlarmClockModel *sdkModel = [JWBleAlarmClockModel new];
+        if (self.clockModel_v2) {
+            sdkModel = self.clockModel_v2;
+        } else {
+            sdkModel.idd = self.nextIdd;
+        }
+        
+        sdkModel.isOpen = self.openSwitch.on;
+        sdkModel.year = [dateComponent year] - 2000;
+        sdkModel.month = [dateComponent month];
+        sdkModel.day = [dateComponent day];
+        sdkModel.hour = [dateComponent hour];
+        sdkModel.minute = [dateComponent minute];
         sdkModel.repeatWeekArr = clockModel.repeatWeekArr;
         sdkModel.content = @"good";
+        // CONTENT MAX LENGTH
+        if ([self getStringLenthOfBytes:sdkModel.content] > 15) {
+            sdkModel.content = [self subBytesOfstringToIndex:15 str:sdkModel.content];
+        }
         
         [JWBleAction jwAlarmV2Action:false alarmModel:sdkModel callBack:^(JWBleCommunicationStatus status, NSArray<JWBleAlarmClockModel *> *alarmArr) {
-            NSLog(@"123123");
+            [weakSelf.view hideToastActivity];
+            [weakSelf.view makeToast:NSLocalizedString(@"Set up successfully", nil)];
+            [weakSelf.navigationController popViewControllerAnimated:true];
         }];
         
     } else {
         [DemoAlarmClockModel saveAndSynchronize:clockModel callBack:^(JWBleCommunicationStatus status) {
             weakSelf.navigationItem.rightBarButtonItem.enabled = true;
-            [self.view hideToastActivity];
+            [weakSelf.view hideToastActivity];
             if (status == JWBleCommunicationStatus_Success) {
-                [self.view makeToast:NSLocalizedString(@"Set up successfully", nil)];
+                [weakSelf.view makeToast:NSLocalizedString(@"Set up successfully", nil)];
                 [weakSelf.navigationController popViewControllerAnimated:true];
             } else {
-                [self.view makeToast:NSLocalizedString(@"Setup failed", nil)];
+                [weakSelf.view makeToast:NSLocalizedString(@"Setup failed", nil)];
             }
         }];
     }
@@ -133,5 +147,34 @@
 - (IBAction)cycleSwitchChanged:(id)sender {
     self.weekBGView.hidden = !self.cycleSwitch.on;
 }
+
+#pragma mark - help
+- (NSInteger)getStringLenthOfBytes:(NSString *)str {
+    NSInteger length = 0;
+    for (int i = 0; i < [str length]; i++) {
+        NSString *s = [str substringWithRange:NSMakeRange(i, 1)];
+        NSData *data = [s dataUsingEncoding:NSUTF8StringEncoding];
+        length += data.length;
+    }
+    return length;
+}
+
+- (NSString *)subBytesOfstringToIndex:(NSInteger)index str:(NSString *)str {
+    NSInteger length = 0;
+    
+    for (int i = 0; i < [str length]; i++) {
+        NSString *s = [str substringWithRange:NSMakeRange(i, 1)];
+        NSData *data = [s dataUsingEncoding:NSUTF8StringEncoding];
+        
+        if (length + data.length > index) {
+            return [str substringToIndex:i];
+        }
+        
+        length += data.length;
+    }
+    
+    return [str substringToIndex:index];
+}
+
 
 @end

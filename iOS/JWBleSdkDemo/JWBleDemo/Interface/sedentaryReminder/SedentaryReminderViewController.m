@@ -31,10 +31,19 @@
         [weakSelf.view makeToast:[JWBleDemoHelp communication2Str:status]];
         if (status == JWBleCommunicationStatus_Success) {
             weakSelf.openSwitch.on = open;
+            
+            weakSelf.shTextField.text = [NSString stringWithFormat:@"%d",startH];
+            weakSelf.ehTextField.text = [NSString stringWithFormat:@"%d",endH];
+            weakSelf.spanTextField.text = [NSString stringWithFormat:@"%d",span];
+            
             [weakSelf updateWeekBtn:dayFlagArr];
         }
     }];
 
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:true];
 }
 
 - (void)updateWeekBtn:(NSArray *)reserve {
@@ -50,7 +59,6 @@
             btn.selected = [reserve[i] boolValue];
         }
     }
-    
 }
 
 - (IBAction)clickWeekBtn:(UIButton *)sender {
@@ -73,7 +81,7 @@
                   startH:self.shTextField.text.intValue
                     endH:self.ehTextField.text.intValue
                     span:self.spanTextField.text.intValue
-               threshold:30
+               threshold:30// fix 30
               dayFlagArr:reserveArr
                 callBack:^(JWBleCommunicationStatus status, BOOL open, int startH, int endH, int span, int threshold, NSArray *dayFlagArr) {
         [weakSelf.view hideToastActivity];
