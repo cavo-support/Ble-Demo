@@ -5,12 +5,14 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 
 import com.wosmart.sdkdemo.App;
+import com.wosmart.sdkdemo.activity.TempActivity;
 import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.sdkdemo.util.v7_gt7d.utils.Utils;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerFunctionPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerReadHealthPacket;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerTemperatureControlPacket;
 import com.wosmart.ukprotocollibary.model.db.JWHealthDataManager;
 import com.wosmart.ukprotocollibary.model.enums.DeviceFunctionStatus;
 import com.wosmart.ukprotocollibary.v2.JWHealthDataSearchParams;
@@ -63,6 +65,30 @@ public class TemperatureAction extends BaseActivity {
             @Override
             public void run() {
                 WristbandManager.getInstance(App.getInstance()).readHealth();
+            }
+        }).start();
+    }
+
+    private void tempSet() {
+        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+
+            @Override
+            public void onTemperatureMeasureSetting(ApplicationLayerTemperatureControlPacket packet) {
+                super.onTemperatureMeasureSetting(packet);
+                // 读取温度设置返回
+            }
+        });
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // 读取温度设置配置
+                WristbandManager.getInstance(App.getInstance()).requestTemperatureSetting();
+                // 温度设置
+                ApplicationLayerTemperatureControlPacket packet = new ApplicationLayerTemperatureControlPacket();
+                packet.setCelsiusUnit(true);// true 摄氏度 false 华氏度
+                packet.setShow(true);// 打开固件温度测试
+                packet.setAdjust(true);// 打开温度补偿
+                WristbandManager.getInstance(App.getInstance()).setTemperatureControl(packet);
             }
         }).start();
     }
