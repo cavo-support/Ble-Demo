@@ -53,13 +53,13 @@ public class MusicControllerAction extends BaseActivity {
             @Override
             public void onMusicVolumeUp() {
                 super.onMusicVolumeUp();
-                // 音乐加
+                // 音量加
             }
 
             @Override
             public void onMusicVolumeDown() {
                 super.onMusicVolumeDown();
-                // 音乐减
+                // 音量减
             }
         });
 
