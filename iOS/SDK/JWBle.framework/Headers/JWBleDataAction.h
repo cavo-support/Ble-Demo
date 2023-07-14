@@ -425,6 +425,80 @@
 + (void)jwGetSaunaDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
+ 获取 设备佩戴状态数据
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ dataArr:
+ [
+     {
+         time: 1688433457，//时间戳，精确到秒
+         wearingState: 0：未佩戴，1：已佩戴
+     },
+     ...
+ ]
+ 
+ Get device wearing status data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+        {
+           time: 1688433457, //time stamp, accurate to seconds
+           wearingState: 0: not worn, 1: worn
+       },
+       ...
+   ]
+ */
++ (void)jwGetWearStatusDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetWearStatusDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ 获取 设备尿酸【周期】数据
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param deviceMac 设备mac
+ @param callBack
+     resultDic:
+    {
+         @"cycleStartTime":1688441255, //周期开始时间。
+         @"valueTime":1688745599,//周期出值时间，（白天、黑夜 累积有14个出值）
+         @"cycleEndTime":1688441255, //周期结束时间，cycleStartTime + 14天
+         @"dayStatusList":
+                 [
+                     {
+                        “t”:1689609599
+                        "day":0// 0：不达标，1：达标,
+                        "night":0// 0：不达标，1：达标,
+                     },
+                     ......//总长度为：14
+                 ]
+         @"evaluationResult":1688441255, //评估结果。  详情请查看【JWUricAcidEvaluationResultEnum】枚举
+    }
+ 
+ Get device uric acid [period] data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param deviceMac device mac
+   @param callBack
+       resultDic:
+         {
+               @"cycleStartTime":1688441255, //Cycle start time.
+               @"valueTime":1688745599,//period value output time, (there are 14 output values accumulatively during day and night)
+               @"cycleEndTime":1688441255, //cycle end time, cycleStartTime + 14 days
+               @"dayStatusList":
+                       [
+                           {
+                              “t”:1689609599
+                              "day":0// 0: not up to standard, 1: up to standard,
+                              "night":0// 0: not up to standard, 1: up to standard,
+                           },
+                           ......//The total length is: 14
+                       ]
+               @"evaluationResult":1688441255, //Evaluation result. For details, please refer to [JWUricAcidEvaluationResultEnum] enumeration
+          }
+ */
++ (void)jwGetUricAcidCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
+
+
+/**
  获取运动数据
 
  @param yyyymmddStr 获取的日期 如：20180911

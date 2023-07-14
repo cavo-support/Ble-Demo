@@ -196,6 +196,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // ecg 数据回调
 @property(nonatomic, copy) JwECGDataCallBack ecgDataCallBack;
+
 // ecg 数据回调
 @property(nonatomic, copy) JwDeviceTestECGCallBack deviceTestECGCallBack;
 
@@ -204,6 +205,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 // Device switch change callback
 @property(nonatomic, copy) JwDeviceSwitchChangeCallBack deviceSwitchChangeCallBack;
+
+// 尿酸状态改变回调 uricAcid status callback
+@property(nonatomic, copy) JWBleUricAcidStatusCallBack uricAcidStatusCallBack;
+
+
 
 
 /**

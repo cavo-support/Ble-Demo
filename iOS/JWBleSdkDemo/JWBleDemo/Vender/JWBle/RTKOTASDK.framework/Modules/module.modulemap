@@ -1,6 +1,0 @@
-framework module RTKOTASDK {
-  umbrella header "RTKOTASDK.h"
-
-  export *
-  module * { export * }
-}

@@ -141,6 +141,15 @@ typedef NS_ENUM(NSInteger, JWBleFemaleStatus) {
     JWBleFemaleStatus_Mom //宝妈期
 };
 
+//尿酸评估结果 UricAcid evaluation result
+typedef NS_ENUM(NSInteger, JWUricAcidEvaluationResultEnum) {
+    JWUricAcidEvaluationResultEnum_None = 0,
+    JWUricAcidEvaluationResultEnum_Insufficient_Wearing_Time,//佩戴时间不足
+    JWUricAcidEvaluationResultEnum_Low_Risk,//低风险
+    JWUricAcidEvaluationResultEnum_Medium_Risk,//中风险
+    JWUricAcidEvaluationResultEnum_High_Risk,//高风险
+};
+
 #pragma mark - 功能枚举 Function enumeration
 //手环运动枚举 Bracelet sports enumeration
 typedef NS_ENUM (NSInteger, JWBleDeviceMotionEnum) {
@@ -252,6 +261,9 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_MedicationReminder = 10005, // 吃药提醒 Medication reminder
     JWBleFunctionEnum_Female = 10006, // 女性
     JWBleFunctionEnum_Weather = 10007, // 天气
+    JWBleFunctionEnum_WearingTime = 10008, // 佩戴时间
+    JWBleFunctionEnum_UricAcid = 10009, // 尿酸
+    JWBleFunctionEnum_BloodFat = 10010, // 血脂
 };
 
 //客户功能枚举 Custom Function enumeration
@@ -484,6 +496,15 @@ typedef void (^JWBlePulseDataCallBack)(int status, int length ,int timestamp, in
  length: How many pieces of data exist，（only status == 1）
  */
 typedef void (^JWBleSaunaDataCallBack)(int status, int length ,int time, int hr, int tem, int label, int move);
+
+/**
+ 尿酸状态改变回调 uricAcid status callback
+ 
+ @param open 是否开启（get = false 生效）
+ @param privateValue 私人值（get = false 生效）【男性：238~356 μmol/L】【女性：178~297 μmol/L】，设备默认值为0
+ @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
+ */
+typedef void (^JWBleUricAcidStatusCallBack)(BOOL open, int privateValue, int privateRtc);
 
 /**
  实时温度回调

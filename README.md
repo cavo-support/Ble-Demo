@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.0.11  | 1.Weather function optimization<br />2.Added 【uric acid】function |
 | 1.0.10  |         1. Fix sedentary reminder weekly repeat bug          |
 |  1.0.9  | 1.optimize heart rate data storage, adapt to different firmware versions |
 |  1.0.8  | 1. Added female and weather functions;<br/>2. Delete the abnormal value of heart rate; |
@@ -14,11 +15,7 @@
 |  1.0.5  | 1：Added【customized pulse function】in SDK<br />2：DEMO implements 【customized pulse function】 |
 |  1.0.4  | Add Temperature data calibration:<br />[JWBleDataAction jwTemperatureCalibration:(float)]; |
 |  1.0.3  | Added log fine-grained control configuration:<br/>1: JWBleManager. shareInstance. saveLog<br/>2: JWBleManager. shareInstance. cacheLogCount |
-|  1.0.2  | 1：Add step target setting log  <br />2：Add [[JWBleManager shareInstance] sdkInfo] display sdk information |
-|  1.0.1  | Support sleep quality calculation<br />[JWBleDataAction jwSleepQualityCalculation:] |
-|  1.0.0  |                   official release version                   |
-|         |                                                              |
-|         |                                                              |
+|  1.0.2  |                                                              |
 
 
 
