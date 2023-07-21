@@ -40,9 +40,11 @@ typedef NS_ENUM(NSInteger, JWBleWeatherCode) {
 
 @interface JWBleCurWeatherModel : NSObject
 
+#warning mark 年月日需要与设备日期一致 The year, month, and day need to be consistent with the device date
 @property(nonatomic, assign) int year;//2023
 @property(nonatomic, assign) int month;
 @property(nonatomic, assign) int day;
+
 @property(nonatomic, strong) NSString *cityStr;//最长33个bytes   max 33bytes
 @property(nonatomic, assign) JWBleWeatherCode weatherCode;
 @property(nonatomic, assign) int temp;//当前温度 需>0，单位摄氏度  The current temperature needs to be >0, in degrees Celsius
