@@ -23,6 +23,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.2.23  | 1：Added [uric acid], [blood fat], [blood sugar cycle] function  |
 | 1.2.22  | 1：fix spo2 storage error  |
 | 1.2.21  | 1：support delete health data [JWHealthDataManager.getInstance().deleteHealthData()]  |
 | 1.2.20  | 1：add code note  |
