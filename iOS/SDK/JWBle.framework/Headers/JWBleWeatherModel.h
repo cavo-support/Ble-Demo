@@ -51,7 +51,20 @@ typedef NS_ENUM(NSInteger, JWBleWeatherCode) {
 @property(nonatomic, assign) int maxTemp;//最高温度，需>0，单位摄氏度 Maximum temperature, must be >0, unit is Celsius
 @property(nonatomic, assign) int minTemp;//最低温度，需>0，单位摄氏度 Minimum temperature, must be >0, unit is Celsius
 @property(nonatomic, assign) int humidity;//湿度，为0不显示  Humidity, if it is 0, it will not be displayed
-@property(nonatomic, assign) int uv;//紫外线 1->5，为0不显示 Ultraviolet, if it is 0, it will not be displayed
+
+/**
+ ultraviolet light
+  
+    Gear position:
+    0: invalid
+    1: Weakest (0-2)
+    2: Weak (3-4)
+    3: Medium (5-6)
+    4: Strong (7-9)
+    5: Strong (>= 10)
+ */
+@property(nonatomic, assign) int uv;
+
 @property(nonatomic, assign) int pm;//污染指数，为0不显示 Pollution index, if it is 0, it will not be displayed
 
 @end

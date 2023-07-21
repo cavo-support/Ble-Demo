@@ -209,7 +209,11 @@ NS_ASSUME_NONNULL_BEGIN
 // 尿酸状态改变回调 uricAcid status callback
 @property(nonatomic, copy) JWBleUricAcidStatusCallBack uricAcidStatusCallBack;
 
+//血脂状态改变回调 bloodFat status callback
+@property(nonatomic, copy) JWBleBloodFatStatusCallBack bloodFatStatusCallBack;
 
+//周期血糖状态改变回调 bloodGlucoseCycle status callback
+@property(nonatomic, copy) JWBleBloodGlucoseCycleStatusCallBack bloodGlucoseCycleStatusCallBack;
 
 
 /**

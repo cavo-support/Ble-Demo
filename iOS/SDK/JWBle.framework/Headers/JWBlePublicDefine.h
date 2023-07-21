@@ -264,6 +264,7 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_WearingTime = 10008, // 佩戴时间
     JWBleFunctionEnum_UricAcid = 10009, // 尿酸
     JWBleFunctionEnum_BloodFat = 10010, // 血脂
+    JWBleFunctionEnum_BloodGlucoseCycle = 10011, // 周期血糖
 };
 
 //客户功能枚举 Custom Function enumeration
@@ -505,6 +506,24 @@ typedef void (^JWBleSaunaDataCallBack)(int status, int length ,int time, int hr,
  @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
  */
 typedef void (^JWBleUricAcidStatusCallBack)(BOOL open, int privateValue, int privateRtc);
+
+/**
+ 血脂状态改变回调 bloodFat status callback
+ 
+ @param open 是否开启（get = false 生效）
+ @param privateValue 私人值（get = false 生效）【男性：238~356 μmol/L】【女性：178~297 μmol/L】，设备默认值为0
+ @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
+ */
+typedef void (^JWBleBloodFatStatusCallBack)(BOOL open, int privateValue, int privateRtc);
+
+/**
+ 周期血糖状态改变回调 BloodGlucoseCycle status callback
+ 
+ @param open 是否开启（get = false 生效）
+ @param privateValue 私人值（get = false 生效）【男性：238~356 μmol/L】【女性：178~297 μmol/L】，设备默认值为0
+ @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
+ */
+typedef void (^JWBleBloodGlucoseCycleStatusCallBack)(BOOL open, int privateValue, int privateRtc);
 
 /**
  实时温度回调
