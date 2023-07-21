@@ -34,10 +34,18 @@ public class WeatherSetAction extends BaseActivity {
             @Override
             public void run() {
                 JWWeatherInfo weatherInfo = new JWWeatherInfo();
+                weatherInfo.isOpen = true;
+                weatherInfo.year = 2023;
+                weatherInfo.month = 7;
+                weatherInfo.day = 6;
                 // 多云，当前温度 25 度，最高温度 30 度，最低温度 20，湿度 86，当前紫外线强度 1 - 5，越高紫外线越强， 当前污染指数 1 - 6，越高污染越严重
                 weatherInfo.setCurrentWeather(JWWeatherInfo.WEATHER_CODE_CLOUDY, 25, 30, 20, 86, 2, 3);
                 weatherInfo.setNextOneDayWeather(JWWeatherInfo.WEATHER_CODE_CLOUDY, 30, 20);
                 weatherInfo.setNextTwoDayWeather(JWWeatherInfo.WEATHER_CODE_CLOUDY, 30, 20);
+                weatherInfo.setNextThreeDayWeather(JWWeatherInfo.WEATHER_CODE_CLOUDY, 30, 20);
+                weatherInfo.setNextFourDayWeather(JWWeatherInfo.WEATHER_CODE_CLOUDY, 30, 20);
+                weatherInfo.setNextFiveDayWeather(JWWeatherInfo.WEATHER_CODE_CLOUDY, 30, 20);
+                weatherInfo.setNextSixDayWeather(JWWeatherInfo.WEATHER_CODE_CLOUDY, 30, 20);
                 WristbandManager.getInstance(App.getInstance()).setWeather(weatherInfo, new JWCallback() {
                     @Override
                     public void onSuccess() {
