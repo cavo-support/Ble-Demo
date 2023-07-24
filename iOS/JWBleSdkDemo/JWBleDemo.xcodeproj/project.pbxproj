@@ -15,7 +15,6 @@
 		151A2E5F2A3C4622005E8934 /* RTKOTASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E542A3C451F005E8934 /* RTKOTASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */; };
 		154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */; };
-		156044F12A6A909700AFC942 /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 156044F02A6A909700AFC942 /* JWBle.framework */; };
 		159AC2022A18756800F0C98D /* SaunaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 159AC2012A18756800F0C98D /* SaunaViewController.m */; };
 		15A25C092A0CB95600D7954C /* CustomSetPluseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */; };
 		15A855102A42873500916A12 /* SyncTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A8550E2A42873500916A12 /* SyncTimeViewController.m */; };
@@ -43,6 +42,7 @@
 		15AE9FBC283C886200D9A227 /* UpdateInterfaceColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15AE9FBA283C886200D9A227 /* UpdateInterfaceColorViewController.m */; };
 		15AE9FBD283C886200D9A227 /* UpdateInterfaceColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */; };
 		15C3F79729AEFC19007662F7 /* OtaActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C3F79629AEFC19007662F7 /* OtaActionViewController.m */; };
+		15C635A22A6E621D00FDDB6A /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C635A12A6E621D00FDDB6A /* JWBle.framework */; };
 		15F9C6D92A3C2F4400E73613 /* V7_GT7D_ActionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15F9C6D82A3C2F4400E73613 /* V7_GT7D_ActionListViewController.m */; };
 		4D18086D24EF613E00DD46F7 /* ContinuousBPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D18086B24EF613E00DD46F7 /* ContinuousBPViewController.m */; };
 		4D18086E24EF613E00DD46F7 /* ContinuousBPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D18086C24EF613E00DD46F7 /* ContinuousBPViewController.xib */; };
@@ -177,7 +177,6 @@
 		154308E429CA9B9F00E76C66 /* ImageOtaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageOtaViewController.h; sourceTree = "<group>"; };
 		154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageOtaViewController.m; sourceTree = "<group>"; };
 		154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageOtaViewController.xib; sourceTree = "<group>"; };
-		156044F02A6A909700AFC942 /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
 		159AC2002A18756800F0C98D /* SaunaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaunaViewController.h; sourceTree = "<group>"; };
 		159AC2012A18756800F0C98D /* SaunaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaunaViewController.m; sourceTree = "<group>"; };
 		15A25C072A0CB95600D7954C /* CustomSetPluseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSetPluseViewController.h; sourceTree = "<group>"; };
@@ -223,6 +222,7 @@
 		15AE9FBB283C886200D9A227 /* UpdateInterfaceColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateInterfaceColorViewController.xib; sourceTree = "<group>"; };
 		15C3F79529AEFC19007662F7 /* OtaActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtaActionViewController.h; sourceTree = "<group>"; };
 		15C3F79629AEFC19007662F7 /* OtaActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtaActionViewController.m; sourceTree = "<group>"; };
+		15C635A12A6E621D00FDDB6A /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
 		15F9C6D72A3C2F4400E73613 /* V7_GT7D_ActionListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = V7_GT7D_ActionListViewController.h; sourceTree = "<group>"; };
 		15F9C6D82A3C2F4400E73613 /* V7_GT7D_ActionListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = V7_GT7D_ActionListViewController.m; sourceTree = "<group>"; };
 		4D18086A24EF613E00DD46F7 /* ContinuousBPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContinuousBPViewController.h; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				156044F12A6A909700AFC942 /* JWBle.framework in Frameworks */,
+				15C635A22A6E621D00FDDB6A /* JWBle.framework in Frameworks */,
 				151A2E5C2A3C4620005E8934 /* RTKLEFoundation.framework in Frameworks */,
 				1506E2F52A3C474C00330665 /* CocoaLumberjack.framework in Frameworks */,
 				151A2E5E2A3C4622005E8934 /* RTKOTASDK.framework in Frameworks */,
@@ -430,7 +430,7 @@
 		151A2E512A3C451F005E8934 /* JWBle */ = {
 			isa = PBXGroup;
 			children = (
-				156044F02A6A909700AFC942 /* JWBle.framework */,
+				15C635A12A6E621D00FDDB6A /* JWBle.framework */,
 				151A2E522A3C451F005E8934 /* CocoaLumberjack.framework */,
 				151A2E532A3C451F005E8934 /* RTKLEFoundation.framework */,
 				151A2E542A3C451F005E8934 /* RTKOTASDK.framework */,
