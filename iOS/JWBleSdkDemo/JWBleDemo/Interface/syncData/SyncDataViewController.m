@@ -84,6 +84,11 @@
         }];
     } else if (self.dataTypeSeg.selectedSegmentIndex == 1) {//sleep
         
+//        get filter data
+        [JWBleDataAction jwGetFilterSleepDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) {
+
+        }];
+        
         [JWBleDataAction jwGetSleepDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) {
             if (dataArr.count == 0) {
                 weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n empty data",weakSelf.detaDetailTextView.text];

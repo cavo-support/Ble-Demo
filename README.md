@@ -6,8 +6,10 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.0.13  | 1) Fix: When JWBleManager.isProduce = true; The device is connected to the system and automatically reconnects the device;<br/><br/>2) Fix: sleep data returns abnormal value |
+| 1.0.12  | 1.sleep add filter method <br />[JWBleDataAction jwGetFilterSleepDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) { }]; |
 | 1.0.11  | 1.Weather function optimization<br />2.Added 【uric acid】function |
-| 1.0.10  |         1. Fix sedentary reminder weekly repeat bug          |
+| 1.0.10  |        }];1. Fix sedentary reminder weekly repeat bug        |
 |  1.0.9  | 1.optimize heart rate data storage, adapt to different firmware versions |
 |  1.0.8  | 1. Added female and weather functions;<br/>2. Delete the abnormal value of heart rate; |
 |  1.0.7  |              1：sdk and demo【sauna function】               |

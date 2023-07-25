@@ -870,6 +870,40 @@
  */
 + (void)jwUricAcidAction:(BOOL)get open:(BOOL)open privateValue:(int)privateValue privateRtc:(int)privateRtc callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int privateValue, int privateRtc))callBack;
 
+/**
+ 血脂评估
+    @param get  是否获取
+    @param open 是否开启（get = false 生效）
+    @param privateValue 私人值（get = false 生效）【男性：238~356 μmol/L】【女性：178~297 μmol/L】，设备默认值为0
+    @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
+    @param callBack 回调
+ 
+ blood fat assessment
+    @param get Whether to get
+    @param open Whether to open (get = false to take effect)
+    @param privateValue private value (get = false to take effect) [male: 238~356 μmol/L] [female: 178~297 μmol/L], the default value of the device is 0
+    @param privateRtc Set the private value time (get = false to take effect), the default value of the device is 0，accurate to the second
+    @param callBack callback
+ */
++ (void)jwBloodFatAction:(BOOL)get open:(BOOL)open privateValue:(int)privateValue privateRtc:(int)privateRtc callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int privateValue, int privateRtc))callBack;
+
+/**
+ 周期血糖评估
+    @param get  是否获取
+    @param open 是否开启（get = false 生效）
+    @param privateValue 私人值（get = false 生效）【男性：238~356 μmol/L】【女性：178~297 μmol/L】，设备默认值为0
+    @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
+    @param callBack 回调
+ 
+ BloodGlucoseCycle assessment
+    @param get Whether to get
+    @param open Whether to open (get = false to take effect)
+    @param privateValue private value (get = false to take effect) [male: 238~356 μmol/L] [female: 178~297 μmol/L], the default value of the device is 0
+    @param privateRtc Set the private value time (get = false to take effect), the default value of the device is 0，accurate to the second
+    @param callBack callback
+ */
++ (void)jwBloodGlucoseCycleAction:(BOOL)get open:(BOOL)open privateValue:(int)privateValue privateRtc:(int)privateRtc callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int privateValue, int privateRtc))callBack;
+
 #pragma mark - 客户定制  Customer customization
 
 /**

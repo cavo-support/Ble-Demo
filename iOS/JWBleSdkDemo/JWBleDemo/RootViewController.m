@@ -109,6 +109,11 @@
 - (IBAction)click2ConnectionBtn:(id)sender {
     if (JWBleManager.isConnected) {
         [JWBleAction jwDisConnect];
+        
+        // not to auto reconnect device
+        // JWBleManager.isProduce = true;
+        // Disconnect, but do not unbind
+        // [JWBleAction jwDisConnectNotUnBond];
     } else {
         [self.navigationController pushViewController:[ScanViewController new] animated:true];
     }
