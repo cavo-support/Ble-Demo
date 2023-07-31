@@ -135,10 +135,10 @@
                     NSDictionary *valueDic = dataArr[i];
                     
                     int time = [[valueDic objectForKey:@"time"] intValue];
-                    int value = [[valueDic objectForKey:@"value"] intValue];
+                    float value = [JWBleDataAction jwTemperatureCalibration:[[valueDic objectForKey:@"value"] intValue]];
                     int wearingState = [[valueDic objectForKey:@"wearingState"] intValue];
                     int compensationStatus = [[valueDic objectForKey:@"compensationStatus"] intValue];
-                    NSString *valueStr = [NSString stringWithFormat:@"time:%d value:%d wearingState:%d compensationStatus:%d",time,value,wearingState,compensationStatus];
+                    NSString *valueStr = [NSString stringWithFormat:@"time:%d value:%.1f wearingState:%d compensationStatus:%d",time,value,wearingState,compensationStatus];
                     
                     weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n %@",weakSelf.detaDetailTextView.text,valueStr];
                 }
@@ -189,5 +189,6 @@
     NSString *dateString = [dateFormatter stringFromDate:currentDate];
     return dateString;
 }
+
 
 @end

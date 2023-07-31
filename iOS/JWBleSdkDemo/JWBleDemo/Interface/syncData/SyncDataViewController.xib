@@ -62,11 +62,8 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSU-P4-YoO">
-                    <rect key="frame" x="20" y="256.66666666666669" width="353" height="200"/>
+                    <rect key="frame" x="20" y="256.66666666666669" width="353" height="541.33333333333326"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="u0C-Zm-LXR"/>
-                    </constraints>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -76,6 +73,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="qjc-BD-BK3" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="4kx-Vc-qnE"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="sSU-P4-YoO" secondAttribute="bottom" constant="20" id="580-nd-xf7"/>
                 <constraint firstItem="7yw-TB-he2" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="7HJ-CZ-4QG"/>
                 <constraint firstItem="sSU-P4-YoO" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="20" id="FQj-l9-OM0"/>
                 <constraint firstItem="6d3-iO-Nsi" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KNL-PZ-hkl"/>

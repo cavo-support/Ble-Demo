@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.0.14  | 1: Fix [JWBleDataAction jwTemperatureCalibration:xx]; abnormal value;<br/>2: Message notification, add full open example; |
 | 1.0.13  | 1) Fix: When JWBleManager.isProduce = true; The device is connected to the system and automatically reconnects the device;<br/><br/>2) Fix: sleep data returns abnormal value |
 | 1.0.12  | 1.sleep add filter method <br />[JWBleDataAction jwGetFilterSleepDataByYYYYMMDDStr:dateString callBack:^(NSArray *dataArr) { }]; |
 | 1.0.11  | 1.Weather function optimization<br />2.Added 【uric acid】function |

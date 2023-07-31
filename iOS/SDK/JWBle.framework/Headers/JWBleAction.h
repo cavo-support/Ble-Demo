@@ -1086,6 +1086,7 @@
 //获取手环history数据地址
 //Get the wristband history data address
 + (void)jwGetHistoryAddress:(void (^)(JWBleCommunicationStatus status, NSData *step, NSData *sleep, NSData *hr, NSData *bp ,NSData *motion))callBack;
++ (void)jwGetHistoryAddress_oriData:(void (^)(JWBleCommunicationStatus status, NSData *oriData))callBack;
 
 //进行LE广播
 //Conduct LE broadcast
