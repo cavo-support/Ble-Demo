@@ -135,8 +135,13 @@
                     NSDictionary *valueDic = dataArr[i];
                     
                     int time = [[valueDic objectForKey:@"time"] intValue];
-                    float value = [JWBleDataAction jwTemperatureCalibration:[[valueDic objectForKey:@"value"] intValue]];
                     int wearingState = [[valueDic objectForKey:@"wearingState"] intValue];
+                    float value = [[valueDic objectForKey:@"value"] floatValue];
+                    if (wearingState) {
+                        value = [JWBleDataAction jwTemperatureCalibration:value];
+                    } else {
+                        value = value / 10.0f;
+                    }
                     int compensationStatus = [[valueDic objectForKey:@"compensationStatus"] intValue];
                     NSString *valueStr = [NSString stringWithFormat:@"time:%d value:%.1f wearingState:%d compensationStatus:%d",time,value,wearingState,compensationStatus];
                     
