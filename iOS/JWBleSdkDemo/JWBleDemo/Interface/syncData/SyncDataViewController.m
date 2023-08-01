@@ -43,6 +43,16 @@
             weakSelf.syncStatusLB.text = @"synchron Interrupt";
         } else if (syncStateEnum == JWBleSyncEnum_InconsistentTotals) {
             weakSelf.syncStatusLB.text = @"synchron InconsistentTotals";
+            
+            /**
+            A data exception occurs, and the total number of data returned by the firmware is inconsistent with the total number received;
+
+            1: Full data can be pulled back, but it takes a long time;
+            [JWBleAction jwDeviceDataReset];
+            
+            2: It can be ignored, and the synchronization is directly considered successful;
+             */
+            
         } else if (syncStateEnum == JWBleSyncEnum_Complete) {
             weakSelf.syncStatusLB.text = @"synchron Complete";
             
