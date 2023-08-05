@@ -50,6 +50,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString *fontVersionCodeStr;
 
 /**
+ 资源版本号
+ resource version number
+ */
+@property(nonatomic, assign) int resourceVersionCode;
+
+/**
+ 资源版本号字符串
+ resource version number string
+ */
+@property(nonatomic, strong) NSString *resourceVersionCodeStr;
+
+/**
  mac地址
  mac address
  */

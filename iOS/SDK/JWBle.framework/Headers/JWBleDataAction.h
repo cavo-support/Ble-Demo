@@ -187,6 +187,7 @@
  */
 + (void)jwGetFilterSleepDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 
+
 /**
  获取心率数据
 
@@ -477,33 +478,14 @@
 
 /**
  获取 设备尿酸【周期】数据
- @param yyyymmddStr 获取的日期 如：20180911
- @param deviceMac 设备mac
- @param callBack
-     resultDic:
-    {
-         @"cycleStartTime":1688441255, //周期开始时间。
-         @"valueTime":1688745599,//周期出值时间，（白天、黑夜 累积有14个出值）
-         @"cycleEndTime":1688441255, //周期结束时间，cycleStartTime + 14天
-         @"dayStatusList":
-                 [
-                     {
-                        “t”:1689609599
-                        "day":0// 0：不达标，1：达标,
-                        "night":0// 0：不达标，1：达标,
-                     },
-                     ......//总长度为：14
-                 ]
-         @"evaluationResult":1688441255, //评估结果。  详情请查看【JWUricAcidEvaluationResultEnum】枚举
-    }
- 
  Get device uric acid [period] data
    The date obtained by @param yyyymmddStr such as: 20180911
    @param deviceMac device mac
    @param callBack
        resultDic:
          {
-               @"cycleStartTime":1688441255, //Cycle start time.
+               @"cycleStartTime":1688441255, //Period start time, 0:00 of the day
+               @"cycleStartActionTime":1688441255, //Cycle start time, operating time
                @"valueTime":1688745599,//period value output time, (there are 14 output values accumulatively during day and night)
                @"cycleEndTime":1688441255, //cycle end time, cycleStartTime + 14 days
                @"dayStatusList":
@@ -522,26 +504,6 @@
 
 /**
  获取 设备血脂【周期】数据
- @param yyyymmddStr 获取的日期 如：20180911
- @param deviceMac 设备mac
- @param callBack
-     resultDic:
-    {
-         @"cycleStartTime":1688441255, //周期开始时间。
-         @"valueTime":1688745599,//周期出值时间，（白天、黑夜 累积有14个出值）
-         @"cycleEndTime":1688441255, //周期结束时间，cycleStartTime + 14天
-         @"dayStatusList":
-                 [
-                     {
-                        “t”:1689609599
-                        "day":0// 0：不达标，1：达标,
-                        "night":0// 0：不达标，1：达标,
-                     },
-                     ......//总长度为：14
-                 ]
-         @"evaluationResult":1688441255, //评估结果。  详情请查看【JWUricAcidEvaluationResultEnum】枚举
-    }
- 
  Get device Blood Fat [period] data
    The date obtained by @param yyyymmddStr such as: 20180911
    @param deviceMac device mac
@@ -567,46 +529,27 @@
 
 /**
  获取 设备血糖【周期】数据
- @param yyyymmddStr 获取的日期 如：20180911
- @param deviceMac 设备mac
+ Get device BloodGlucoseCycle [period] data
+ The date obtained by @param yyyymmddStr such as: 20180911
+ @param deviceMac device mac
  @param callBack
      resultDic:
-    {
-         @"cycleStartTime":1688441255, //周期开始时间。
-         @"valueTime":1688745599,//周期出值时间，（白天、黑夜 累积有14个出值）
-         @"cycleEndTime":1688441255, //周期结束时间，cycleStartTime + 14天
-         @"dayStatusList":
-                 [
-                     {
-                        “t”:1689609599
-                        "day":0// 0：不达标，1：达标,
-                        "night":0// 0：不达标，1：达标,
-                     },
-                     ......//总长度为：14
-                 ]
-         @"evaluationResult":1688441255, //评估结果。  详情请查看【JWUricAcidEvaluationResultEnum】枚举
-    }
- 
- Get device BloodGlucoseCycle [period] data
-   The date obtained by @param yyyymmddStr such as: 20180911
-   @param deviceMac device mac
-   @param callBack
-       resultDic:
-         {
-               @"cycleStartTime":1688441255, //Cycle start time.
-               @"valueTime":1688745599,//period value output time, (there are 14 output values accumulatively during day and night)
-               @"cycleEndTime":1688441255, //cycle end time, cycleStartTime + 14 days
-               @"dayStatusList":
-                       [
-                           {
-                              “t”:1689609599
-                              "day":0// 0: not up to standard, 1: up to standard,
-                              "night":0// 0: not up to standard, 1: up to standard,
-                           },
-                           ......//The total length is: 14
-                       ]
-               @"evaluationResult":1688441255, //Evaluation result. For details, please refer to [JWUricAcidEvaluationResultEnum] enumeration
-          }
+       {
+             @"cycleStartTime":1688441255, //Period start time, 0:00 of the day
+             @"cycleStartActionTime":1688441255, //Cycle start time, operating time
+             @"valueTime":1688745599,//period value output time, (there are 14 output values accumulatively during day and night)
+             @"cycleEndTime":1688441255, //cycle end time, cycleStartTime + 14 days
+             @"dayStatusList":
+                     [
+                         {
+                            “t”:1689609599
+                            "day":0// 0: not up to standard, 1: up to standard,
+                            "night":0// 0: not up to standard, 1: up to standard,
+                         },
+                         ......//The total length is: 14
+                     ]
+             @"evaluationResult":1688441255, //Evaluation result. For details, please refer to [JWUricAcidEvaluationResultEnum] enumeration
+        }
  */
 + (void)jwGetBloodGlucoseCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
 

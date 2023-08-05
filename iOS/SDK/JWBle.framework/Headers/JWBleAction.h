@@ -449,6 +449,9 @@
 
 /**
  将手环数据下标，重置   Subscript the bracelet data, reset
+ 
+ waring: 请注意，您最好执行一下[JWBleDataAction jwRemoveDataTimeLessThan:],否则会出现数据重复问题
+ Please note that you'd better execute [JWBleDataAction jwRemoveDataTimeLessThan:], otherwise data duplication will occur
  */
 + (void)jwDeviceDataReset;
 
