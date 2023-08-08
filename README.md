@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.0.16  |                   1:Optimize 3 cycle data                    |
 | 1.0.15  | 1: Add the current resource version number and return to JWBleDeviceModel.resourceVersionCode;<br/>2: Optimize the sleep data duplication problem; |
 | 1.0.14  | 1: Fix [JWBleDataAction jwTemperatureCalibration:xx]; abnormal value;<br/>2: Message notification, add full open example; |
 | 1.0.13  | 1) Fix: When JWBleManager.isProduce = true; The device is connected to the system and automatically reconnects the device;<br/><br/>2) Fix: sleep data returns abnormal value |
