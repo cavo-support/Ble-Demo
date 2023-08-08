@@ -46,10 +46,22 @@
     if (showHud) {
         [MBProgressHUD showHUDAddedTo:self.view animated:true];
     }
-    
+     
     __weak __typeof(self)weakSelf = self;
     [JWBleAction jwGetNotiStatusWithCallBack:^(JWBleCommunicationStatus status, NSDictionary *dic) {
         if (status == JWBleCommunicationStatus_Success) {
+            
+//            Batch set to fully open
+//            NSMutableDictionary *deviceDic = [NSMutableDictionary new];
+//            NSArray *allKeys = [dic allKeys];
+//            for (int i = 0; i < allKeys.count; i++) {
+//                [deviceDic setObject:@(true) forKey:[NSString stringWithFormat:@"%@",allKeys[i]]];
+//            }
+//            [JWBleAction jwOneTimeUpdateNotiStatus:deviceDic callBack:^(JWBleCommunicationStatus status) {
+//                NSLog(@"..");
+//            }];
+//            return;
+            
             NSArray *deviceMessageNotiAvailableArr = self.enumArr;
             for (int i = 0; i < deviceMessageNotiAvailableArr.count; i++) {
                 NSInteger jwType = [deviceMessageNotiAvailableArr[i] integerValue];;

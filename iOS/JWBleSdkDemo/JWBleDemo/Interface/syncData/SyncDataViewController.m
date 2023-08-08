@@ -43,6 +43,16 @@
             weakSelf.syncStatusLB.text = @"synchron Interrupt";
         } else if (syncStateEnum == JWBleSyncEnum_InconsistentTotals) {
             weakSelf.syncStatusLB.text = @"synchron InconsistentTotals";
+            
+            /**
+            A data exception occurs, and the total number of data returned by the firmware is inconsistent with the total number received;
+
+            1: Full data can be pulled back, but it takes a long time;
+            [JWBleAction jwDeviceDataReset];
+            
+            2: It can be ignored, and the synchronization is directly considered successful;
+             */
+            
         } else if (syncStateEnum == JWBleSyncEnum_Complete) {
             weakSelf.syncStatusLB.text = @"synchron Complete";
             
@@ -135,10 +145,15 @@
                     NSDictionary *valueDic = dataArr[i];
                     
                     int time = [[valueDic objectForKey:@"time"] intValue];
-                    int value = [[valueDic objectForKey:@"value"] intValue];
                     int wearingState = [[valueDic objectForKey:@"wearingState"] intValue];
+                    float value = [[valueDic objectForKey:@"value"] floatValue];
+                    if (wearingState) {
+                        value = [JWBleDataAction jwTemperatureCalibration:value];
+                    } else {
+                        value = value / 10.0f;
+                    }
                     int compensationStatus = [[valueDic objectForKey:@"compensationStatus"] intValue];
-                    NSString *valueStr = [NSString stringWithFormat:@"time:%d value:%d wearingState:%d compensationStatus:%d",time,value,wearingState,compensationStatus];
+                    NSString *valueStr = [NSString stringWithFormat:@"time:%d value:%.1f wearingState:%d compensationStatus:%d",time,value,wearingState,compensationStatus];
                     
                     weakSelf.detaDetailTextView.text = [NSString stringWithFormat:@"%@ \n %@",weakSelf.detaDetailTextView.text,valueStr];
                 }
@@ -189,5 +204,6 @@
     NSString *dateString = [dateFormatter stringFromDate:currentDate];
     return dateString;
 }
+
 
 @end

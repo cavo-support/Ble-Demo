@@ -425,6 +425,7 @@ typedef NS_ENUM (NSInteger, JWUserPreferenceType) {
 //删除数据枚举 delete data enumeration
 typedef NS_ENUM (NSInteger, JWDeleteDataType) {
     JWDeleteDataType_Step = 0,
+    JWDeleteDataType_Sleep,
     JWDeleteDataType_HeartRate,
     JWDeleteDataType_BloodPressure,
     JWDeleteDataType_Oxygen,

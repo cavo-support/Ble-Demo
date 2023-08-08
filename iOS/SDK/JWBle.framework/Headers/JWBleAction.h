@@ -449,6 +449,9 @@
 
 /**
  将手环数据下标，重置   Subscript the bracelet data, reset
+ 
+ waring: 请注意，您最好执行一下[JWBleDataAction jwRemoveDataTimeLessThan:],否则会出现数据重复问题
+ Please note that you'd better execute [JWBleDataAction jwRemoveDataTimeLessThan:], otherwise data duplication will occur
  */
 + (void)jwDeviceDataReset;
 
@@ -1086,6 +1089,7 @@
 //获取手环history数据地址
 //Get the wristband history data address
 + (void)jwGetHistoryAddress:(void (^)(JWBleCommunicationStatus status, NSData *step, NSData *sleep, NSData *hr, NSData *bp ,NSData *motion))callBack;
++ (void)jwGetHistoryAddress_oriData:(void (^)(JWBleCommunicationStatus status, NSData *oriData))callBack;
 
 //进行LE广播
 //Conduct LE broadcast
