@@ -25,6 +25,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.2.25  | 1：fix database upgrade bugs  |
 | 1.2.24  | 1：fix print log bugs  |
 | 1.2.23  | 1：Added [uric acid], [blood fat], [blood sugar cycle] function  |
 | 1.2.22  | 1：fix spo2 storage error  |
