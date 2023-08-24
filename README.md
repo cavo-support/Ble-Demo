@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.0.17  | 1: Three cycle data optimization;<br/>2: Repair synchronization timeout does not work;<br/>3: Custom dial added to return data callback;<br/>4: Add ecgoridatacallback; |
 | 1.0.16  |                   1:Optimize 3 cycle data                    |
 | 1.0.15  | 1: Add the current resource version number and return to JWBleDeviceModel.resourceVersionCode;<br/>2: Optimize the sleep data duplication problem; |
 | 1.0.14  | 1: Fix [JWBleDataAction jwTemperatureCalibration:xx]; abnormal value;<br/>2: Message notification, add full open example; |
@@ -15,12 +16,6 @@
 | 1.0.10  |        }];1. Fix sedentary reminder weekly repeat bug        |
 |  1.0.9  | 1.optimize heart rate data storage, adapt to different firmware versions |
 |  1.0.8  | 1. Added female and weather functions;<br/>2. Delete the abnormal value of heart rate; |
-|  1.0.7  |              1：sdk and demo【sauna function】               |
-|  1.0.6  |         1：sdk and demo【customized pulse function】         |
-|  1.0.5  | 1：Added【customized pulse function】in SDK<br />2：DEMO implements 【customized pulse function】 |
-|  1.0.4  | Add Temperature data calibration:<br />[JWBleDataAction jwTemperatureCalibration:(float)]; |
-|  1.0.3  | Added log fine-grained control configuration:<br/>1: JWBleManager. shareInstance. saveLog<br/>2: JWBleManager. shareInstance. cacheLogCount |
-|  1.0.2  |                                                              |
 
 
 

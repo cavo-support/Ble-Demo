@@ -96,6 +96,10 @@
     JWBleManager.centralManagerStateChangeBlock = ^(JWBleCentralManagerState centralManagerState) {
         weakSelf.bleStatusLB.text = [NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"Phone Bluetooth status", nil),NSLocalizedString(txtArr[centralManagerState], nil)];
     };
+    
+    JWBleManager.ecgOriDataCallBack = ^(NSData *oriData) {
+        NSLog(@"ecgOriDataCallBack : %@", oriData);
+    };
 }
 
 - (void)updateConnectionBtnTitle {

@@ -196,6 +196,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 // ecg 数据回调
 @property(nonatomic, copy) JwECGDataCallBack ecgDataCallBack;
+@property(nonatomic, copy) JwECGOriDataCallBack ecgOriDataCallBack;
 
 // ecg 数据回调
 @property(nonatomic, copy) JwDeviceTestECGCallBack deviceTestECGCallBack;

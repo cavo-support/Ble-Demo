@@ -187,6 +187,12 @@
  */
 + (void)jwGetFilterSleepDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 
+/**
+ oriData:
+ @"2F 01 00 01 .. ..";
+ */
++ (NSArray *)jwTestSleepOriData:(NSString *)oriData;
+
 
 /**
  获取心率数据

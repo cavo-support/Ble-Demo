@@ -812,6 +812,11 @@ typedef void (^JwFactoryFunctionCallBack)(JWBleCommunicationStatus status, NSDat
 typedef void (^JwECGDataCallBack)(NSArray *originalSignals, NSArray *filterSignals);
 
 /**
+ ECG ori data callback
+ */
+typedef void (^JwECGOriDataCallBack)(NSData *oriData);
+
+/**
  Device Test ECG data callback
  */
 typedef void (^JwDeviceTestECGCallBack)(NSDictionary *dic);
