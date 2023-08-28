@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+| 1.0.18  | Fix the problem of sending a large number of steps to the device abnormally |
 | 1.0.17  | 1: Three cycle data optimization;<br/>2: Repair synchronization timeout does not work;<br/>3: Custom dial added to return data callback;<br/>4: Add ecgoridatacallback; |
 | 1.0.16  |                   1:Optimize 3 cycle data                    |
 | 1.0.15  | 1: Add the current resource version number and return to JWBleDeviceModel.resourceVersionCode;<br/>2: Optimize the sleep data duplication problem; |
