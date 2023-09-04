@@ -170,6 +170,12 @@ public class CustomWatchFaceActivity extends BaseActivity {
                 int color = 0;// 0 黑色 65535 白色
                 int position = 5;// 九宫格，时间位置
                 packet.setTimeColor(color);
+                // 时间显示位置以九宫格为准
+                // 1 2 3
+                // 4 5 6
+                // 7 8 9
+                // gravity取值范围 0，1，2，代表左 中 右
+                // 具体的 x，y 坐标联系我们获取
                 switch (position) {
                     case 1:
                         packet.setGravity(0);
