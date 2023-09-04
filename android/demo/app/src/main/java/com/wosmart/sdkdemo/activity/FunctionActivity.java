@@ -137,6 +137,8 @@ public class FunctionActivity extends BaseActivity {
 
         Function sauna = new Function(47, getString(R.string.app_sauna));
 
+        Function watchFace = new Function(WatchFaceActivity.FUNCTION_ID, getString(R.string.app_watch_face));
+
 
         functions.add(login);
         functions.add(device);
@@ -178,6 +180,7 @@ public class FunctionActivity extends BaseActivity {
         functions.add(pulse);
         functions.add(sleepHelp);
         functions.add(sauna);
+        functions.add(watchFace);
 
         rcy_function.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FunctionAdapter(this, functions);
@@ -389,6 +392,9 @@ public class FunctionActivity extends BaseActivity {
                         break;
                     case 47:
                         startActivity(new Intent(FunctionActivity.this, SaunaActivity.class));
+                        break;
+                    case WatchFaceActivity.FUNCTION_ID:
+                        startActivity(new Intent(FunctionActivity.this, WatchFaceActivity.class));
                         break;
                 }
             }

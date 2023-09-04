@@ -48,9 +48,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation(name: 'UkProtocolLibary-release-1.2.25', ext: 'aar')
     implementation(name: 'RealtekSDK-1.0.1-release', ext: 'aar')
-    implementation files('libs/rtk-core-1.2.4.jar')
-    implementation files('libs/rtk-dfu-3.3.11.jar')
-    implementation files('libs/rtk-bbpro-core-1.6.6.jar')
+    implementation files('libs/rtk-core-1.4.3.jar')
+    implementation files('libs/rtk-dfu-3.6.4.jar')
+    implementation files('libs/rtk-bbpro-core-1.8.0.jar')
 
     def work_version = "2.4.0"
 

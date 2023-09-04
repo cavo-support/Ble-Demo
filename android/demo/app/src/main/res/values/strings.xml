@@ -44,6 +44,7 @@
     <string name="app_pulse">Pulse</string>
     <string name="app_sleep_help">Sleep Help</string>
     <string name="app_sauna">Sauna</string>
+    <string name="app_watch_face">Watch Face</string>
 
 
     <string name="app_start_measure">Start detect</string>
@@ -220,4 +221,7 @@
     <string name="app_close_notify_switch">close notify switch</string>
 
     <string name="app_current_switch_status">current switch status：</string>
+    <string name="app_built_in_watch_face">Built-in</string>
+    <string name="app_market_watch_face">Market</string>
+    <string name="app_custom_watch_face">Custom</string>
 </resources>

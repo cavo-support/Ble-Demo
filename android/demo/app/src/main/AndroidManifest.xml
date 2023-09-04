@@ -129,6 +129,8 @@
 
         <activity android:name=".activity.SaunaActivity" />
 
+        <activity android:name=".activity.MarketWatchFaceActivity" />
+
     </application>
 
 </manifest>

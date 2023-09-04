@@ -47,7 +47,6 @@ public class MusicControllerAction extends BaseActivity {
             @Override
             public void onMusicToggle() {
                 super.onMusicToggle();
-                // 暂时无用
             }
 
             @Override

@@ -44,6 +44,7 @@
     <string name="app_pulse">脉冲</string>
     <string name="app_sleep_help">睡眠辅助</string>
     <string name="app_sauna">桑拿</string>
+    <string name="app_watch_face">表盘</string>
 
     <string name="app_start_measure">开始测量</string>
     <string name="app_stop_measure">结束测量</string>
@@ -218,4 +219,8 @@
     <string name="app_close_notify_switch">关闭通知开关</string>
 
     <string name="app_current_switch_status">当前开关状态：</string>
+
+    <string name="app_built_in_watch_face">内置</string>
+    <string name="app_market_watch_face">市场</string>
+    <string name="app_custom_watch_face">自定义</string>
 </resources>
