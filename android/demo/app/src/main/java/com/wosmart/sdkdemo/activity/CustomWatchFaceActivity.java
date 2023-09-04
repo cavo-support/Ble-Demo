@@ -33,16 +33,15 @@ import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerCustomUiPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerScreenStylePacket;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 public class CustomWatchFaceActivity extends BaseActivity {
 
     private int faceCount = 0;
 
+    /**
+     * 设备芯片类型 0:C(正常芯片) 1:D(VD版本)
+     * Device chip type 0:C (normal chip) 1:D (VD version)
+     */
+    private int deviceChipType = 1;
     private ImageView previewImg;
 
     @Override
@@ -61,6 +60,17 @@ public class CustomWatchFaceActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 setCustomWatchFace();
+            }
+        });
+
+        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+
+            @Override
+            public void onBondReqChipType(int type) {
+                super.onBondReqChipType(type);
+                // 在登录成功后会触发此回调，用户需自行记录设备芯片类型
+                // This callback will be triggered after successful login. The user needs to record the device chip type by himself.
+                deviceChipType = type;
             }
         });
     }
@@ -101,8 +111,10 @@ public class CustomWatchFaceActivity extends BaseActivity {
 //        String deviceMac = "64:9E:B5:47:20:04";
         Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.bg_preview);// your watch face background img
         Bitmap previewBitmap = previewImg.getDrawingCache();// your watch face preview img
+
+
         String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-                1, 360, 360,
+                deviceChipType, 360, 360,
                 238, 238, 119, 2, "#08d3ff");
 
         if (TextUtils.isEmpty(otaFilePath)) {
