@@ -129,7 +129,10 @@
 
         <activity android:name=".activity.SaunaActivity" />
 
+        <activity android:name=".activity.WatchFaceActivity" />
+        <activity android:name=".activity.BuiltInWatchFaceActivity" />
         <activity android:name=".activity.MarketWatchFaceActivity" />
+        <activity android:name=".activity.CustomWatchFaceActivity" />
 
     </application>
 

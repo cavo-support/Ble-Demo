@@ -3,10 +3,12 @@ package com.wosmart.sdkdemo.activity;
 import static com.realsil.sdk.dfu.DfuConstants.PROGRESS_ACTIVE_IMAGE_AND_RESET;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
@@ -31,15 +33,26 @@ import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerCustomUiPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerScreenStylePacket;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class CustomWatchFaceActivity extends BaseActivity {
 
     private int faceCount = 0;
+
+    private ImageView previewImg;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_watch_face_market);
+
+        previewImg = findViewById(R.id.img_preview);
+        previewImg.setDrawingCacheEnabled(true);
 
         // 先读取内置表盘信息 First read the built-in dial information
         readWatchFaceCount();
@@ -85,11 +98,12 @@ public class CustomWatchFaceActivity extends BaseActivity {
      */
     private void setCustomWatchFace() {
         String deviceMac = "your device mac";
-        Bitmap bgBitmap = null;// your watch face background img
-        Bitmap previewBitmap = null;// your watch face preview img
+//        String deviceMac = "64:9E:B5:47:20:04";
+        Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.bg_preview);// your watch face background img
+        Bitmap previewBitmap = previewImg.getDrawingCache();// your watch face preview img
         String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-                0, 172, 320,
-                77, 143, 5, 1, null);
+                1, 360, 360,
+                238, 238, 119, 2, "#08d3ff");
 
         if (TextUtils.isEmpty(otaFilePath)) {
             return;
@@ -134,6 +148,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
             public void onSilenceUpgradeModel(int model) {
                 super.onSilenceUpgradeModel(model);
                 // 设置升级模式返回 set upgrade mode return
+//                prepareOtaFile(deviceMac);
                 initUkOta(deviceMac, otaFilePath);
             }
         });
@@ -166,63 +181,69 @@ public class CustomWatchFaceActivity extends BaseActivity {
             public void run() {
                 // 表盘 OTA 成功
                 // 设置表盘时间位置，字体颜色，坐标等信息
-                ApplicationLayerCustomUiPacket packet = new ApplicationLayerCustomUiPacket();
-                int color = 0;// 0 黑色 65535 白色
-                int position = 5;// 九宫格，时间位置
-                packet.setTimeColor(color);
+//                ApplicationLayerCustomUiPacket packet = new ApplicationLayerCustomUiPacket();
+//                int color = 0;// 0 黑色 65535 白色
+//                int position = 5;// 九宫格，时间位置
+//                packet.setTimeColor(color);
                 // 时间显示位置以九宫格为准
                 // 1 2 3
                 // 4 5 6
                 // 7 8 9
                 // gravity取值范围 0，1，2，代表左 中 右
                 // 具体的 x，y 坐标联系我们获取
-                switch (position) {
-                    case 1:
-                        packet.setGravity(0);
-                        packet.setxCoordinate(15);
-                        packet.setyCoordinate(14);
-                        break;
-                    case 2:
-                        packet.setGravity(1);
-                        packet.setxCoordinate(51);
-                        packet.setyCoordinate(14);
-                        break;
-                    case 3:
-                        packet.setGravity(2);
-                        packet.setxCoordinate(86);
-                        packet.setyCoordinate(14);
-                        break;
-                    case 4:
-                        packet.setGravity(0);
-                        packet.setxCoordinate(15);
-                        packet.setyCoordinate(85);
-                        break;
-                    case 5:
-                        packet.setGravity(1);
-                        packet.setxCoordinate(51);
-                        packet.setyCoordinate(85);
-                        break;
-                    case 6:
-                        packet.setGravity(2);
-                        packet.setxCoordinate(86);
-                        packet.setyCoordinate(85);
-                        break;
-                    case 7:
-                        packet.setGravity(0);
-                        packet.setxCoordinate(15);
-                        packet.setyCoordinate(157);
-                        break;
-                    case 8:
-                        packet.setGravity(1);
-                        packet.setxCoordinate(51);
-                        packet.setyCoordinate(157);
-                        break;
-                    case 9:
-                        packet.setGravity(2);
-                        packet.setxCoordinate(86);
-                        packet.setyCoordinate(157);
-                        break;
-                }
+//                switch (position) {
+//                    case 1:
+//                        packet.setGravity(0);
+//                        packet.setxCoordinate(15);
+//                        packet.setyCoordinate(14);
+//                        break;
+//                    case 2:
+//                        packet.setGravity(1);
+//                        packet.setxCoordinate(51);
+//                        packet.setyCoordinate(14);
+//                        break;
+//                    case 3:
+//                        packet.setGravity(2);
+//                        packet.setxCoordinate(86);
+//                        packet.setyCoordinate(14);
+//                        break;
+//                    case 4:
+//                        packet.setGravity(0);
+//                        packet.setxCoordinate(15);
+//                        packet.setyCoordinate(85);
+//                        break;
+//                    case 5:
+//                        packet.setGravity(1);
+//                        packet.setxCoordinate(51);
+//                        packet.setyCoordinate(85);
+//                        break;
+//                    case 6:
+//                        packet.setGravity(2);
+//                        packet.setxCoordinate(86);
+//                        packet.setyCoordinate(85);
+//                        break;
+//                    case 7:
+//                        packet.setGravity(0);
+//                        packet.setxCoordinate(15);
+//                        packet.setyCoordinate(157);
+//                        break;
+//                    case 8:
+//                        packet.setGravity(1);
+//                        packet.setxCoordinate(51);
+//                        packet.setyCoordinate(157);
+//                        break;
+//                    case 9:
+//                        packet.setGravity(2);
+//                        packet.setxCoordinate(86);
+//                        packet.setyCoordinate(157);
+//                        break;
+//                }
+
+                ApplicationLayerCustomUiPacket packet = new ApplicationLayerCustomUiPacket();
+                packet.setGravity(1);
+                packet.setTimeColor(0);
+                packet.setxCoordinate(77);
+                packet.setyCoordinate(37);
                 WristbandManager.getInstance(App.getInstance()).setCustomUi(packet);
 
                 // 设置新表盘位置，mode = WristbandManager.OTA_MODE_DIAL_MARKET_RESOURCES 情况下为固定 faceCount + 1
@@ -276,6 +297,13 @@ public class CustomWatchFaceActivity extends BaseActivity {
                     super.onError(type, code);
                     // fail
                     Log.e("SSSS", "onError type = " + type + ", code = " + code);
+                    if (type == 65536 && code == 517) {
+                        // 自定义表盘升级模式下，这个 type 和 code 也是成功
+                        // In the custom dial upgrade mode, this type and code are also successful
+                        onOTASuccess();
+                    } else {
+                        // 其它都是错误 Everything else is wrong
+                    }
                 }
 
                 @Override
