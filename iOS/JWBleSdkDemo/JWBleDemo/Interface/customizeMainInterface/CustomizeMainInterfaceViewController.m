@@ -98,7 +98,7 @@
     configModel.position = JWBleCustomizeMainInterfaceActionConfigModelPosition_Bottom_Right;
     
     //以下2个固定写死即可
-    configModel.chipType = 1;
+    configModel.chipType = JWBleManager.connectionModel.chipType;
     NSMutableDictionary *devicePositionDic = [NSMutableDictionary new];
     [devicePositionDic setObject:@{@"x":@(26),@"y":@(44)} forKey:@(0)];
     [devicePositionDic setObject:@{@"x":@(98),@"y":@(44)} forKey:@(1)];
@@ -109,6 +109,7 @@
     [devicePositionDic setObject:@{@"x":@(26),@"y":@(312)} forKey:@(6)];
     [devicePositionDic setObject:@{@"x":@(98),@"y":@(312)} forKey:@(7)];
     [devicePositionDic setObject:@{@"x":@(170),@"y":@(312)} forKey:@(8)];
+    configModel.devicePositionDic = devicePositionDic;
     
     [JWBleCustomizeMainInterfaceAction startWithImage:contentImage
                                          previewImage:previewImage
@@ -123,8 +124,9 @@
         }];
     
     // 3: 显示手环 首页表盘为 该自定义表盘
-    int deviceInterfaceCount = 999;// 通过 [JWBleAction jwMainInterfaceAction] 获取到的总数
-    [JWBleAction jwMainInterfaceAction:false willShowIndex:deviceInterfaceCount+1 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
+    [JWBleAction jwMainInterfaceAction:true willShowIndex:0 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
+        [JWBleAction jwMainInterfaceAction:false willShowIndex:curShowIndex+1 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
+        }];
     }];
 }
 

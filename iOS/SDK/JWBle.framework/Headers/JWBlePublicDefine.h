@@ -355,6 +355,8 @@ typedef NS_ENUM (NSInteger, JWBleLanguageEnum) {
     JWBleLanguageEnum_Portuguese = 62,
     JWBleLanguageEnum_Russian = 19,
     JWBleLanguageEnum_Turkey = 82,
+    JWBleLanguageEnum_Polish = 13,
+    JWBleLanguageEnum_Mongolian = 53,
 };
 
 //运动操作枚举 Motion enumeration
@@ -432,7 +434,10 @@ typedef NS_ENUM (NSInteger, JWDeleteDataType) {
     JWDeleteDataType_Temperature,
     JWDeleteDataType_BloodGlucose,
     JWDeleteDataType_Hrv,
-    JWDeleteDataType_Sports
+    JWDeleteDataType_Sports,
+    JWDeleteDataType_BloodFat,
+    JWDeleteDataType_UricAcid,
+    JWDeleteDataType_BloodGlucoseCycle
 };
 
 #pragma mark - CallBack
@@ -805,6 +810,11 @@ typedef void (^JwFactoryFunctionCallBack)(JWBleCommunicationStatus status, NSDat
  ECG data callback
  */
 typedef void (^JwECGDataCallBack)(NSArray *originalSignals, NSArray *filterSignals);
+
+/**
+ ECG ori data callback
+ */
+typedef void (^JwECGOriDataCallBack)(NSData *oriData);
 
 /**
  Device Test ECG data callback

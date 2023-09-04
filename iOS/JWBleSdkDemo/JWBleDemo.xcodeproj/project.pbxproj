@@ -13,9 +13,9 @@
 		151A2E5D2A3C4620005E8934 /* RTKLEFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E532A3C451F005E8934 /* RTKLEFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		151A2E5E2A3C4622005E8934 /* RTKOTASDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E542A3C451F005E8934 /* RTKOTASDK.framework */; };
 		151A2E5F2A3C4622005E8934 /* RTKOTASDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151A2E542A3C451F005E8934 /* RTKOTASDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1525B5EE2A972D97008B36CC /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1525B5ED2A972D97008B36CC /* JWBle.framework */; };
 		154308E729CA9B9F00E76C66 /* ImageOtaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */; };
 		154308E829CA9B9F00E76C66 /* ImageOtaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */; };
-		1576711B2A7766EA00CCCC74 /* JWBle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1576711A2A7766EA00CCCC74 /* JWBle.framework */; };
 		159AC2022A18756800F0C98D /* SaunaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 159AC2012A18756800F0C98D /* SaunaViewController.m */; };
 		15A25C092A0CB95600D7954C /* CustomSetPluseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A25C082A0CB95600D7954C /* CustomSetPluseViewController.m */; };
 		15A855102A42873500916A12 /* SyncTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15A8550E2A42873500916A12 /* SyncTimeViewController.m */; };
@@ -174,10 +174,10 @@
 		151A2E522A3C451F005E8934 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
 		151A2E532A3C451F005E8934 /* RTKLEFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RTKLEFoundation.framework; sourceTree = "<group>"; };
 		151A2E542A3C451F005E8934 /* RTKOTASDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RTKOTASDK.framework; sourceTree = "<group>"; };
+		1525B5ED2A972D97008B36CC /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
 		154308E429CA9B9F00E76C66 /* ImageOtaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageOtaViewController.h; sourceTree = "<group>"; };
 		154308E529CA9B9F00E76C66 /* ImageOtaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageOtaViewController.m; sourceTree = "<group>"; };
 		154308E629CA9B9F00E76C66 /* ImageOtaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageOtaViewController.xib; sourceTree = "<group>"; };
-		1576711A2A7766EA00CCCC74 /* JWBle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JWBle.framework; sourceTree = "<group>"; };
 		159AC2002A18756800F0C98D /* SaunaViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaunaViewController.h; sourceTree = "<group>"; };
 		159AC2012A18756800F0C98D /* SaunaViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaunaViewController.m; sourceTree = "<group>"; };
 		15A25C072A0CB95600D7954C /* CustomSetPluseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomSetPluseViewController.h; sourceTree = "<group>"; };
@@ -416,7 +416,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1576711B2A7766EA00CCCC74 /* JWBle.framework in Frameworks */,
+				1525B5EE2A972D97008B36CC /* JWBle.framework in Frameworks */,
 				151A2E5C2A3C4620005E8934 /* RTKLEFoundation.framework in Frameworks */,
 				1506E2F52A3C474C00330665 /* CocoaLumberjack.framework in Frameworks */,
 				151A2E5E2A3C4622005E8934 /* RTKOTASDK.framework in Frameworks */,
@@ -430,7 +430,7 @@
 		151A2E512A3C451F005E8934 /* JWBle */ = {
 			isa = PBXGroup;
 			children = (
-				1576711A2A7766EA00CCCC74 /* JWBle.framework */,
+				1525B5ED2A972D97008B36CC /* JWBle.framework */,
 				151A2E522A3C451F005E8934 /* CocoaLumberjack.framework */,
 				151A2E532A3C451F005E8934 /* RTKLEFoundation.framework */,
 				151A2E542A3C451F005E8934 /* RTKOTASDK.framework */,

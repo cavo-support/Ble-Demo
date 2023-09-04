@@ -34,7 +34,7 @@
     
     self.title = @"JW Ble Demo";
     
-    NSLog(@"%@",[JWBleManager sdkInfo]);
+    NSLog(@"sdkInfo： \n\n %@ \n\n",[JWBleManager sdkInfo]);
     
     JWBleManager.showLog = true;
     JWBleManager.checkUserBinding = false;
@@ -95,6 +95,10 @@
     
     JWBleManager.centralManagerStateChangeBlock = ^(JWBleCentralManagerState centralManagerState) {
         weakSelf.bleStatusLB.text = [NSString stringWithFormat:@"%@：%@",NSLocalizedString(@"Phone Bluetooth status", nil),NSLocalizedString(txtArr[centralManagerState], nil)];
+    };
+    
+    JWBleManager.ecgOriDataCallBack = ^(NSData *oriData) {
+        NSLog(@"ecgOriDataCallBack : %@", oriData);
     };
 }
 
