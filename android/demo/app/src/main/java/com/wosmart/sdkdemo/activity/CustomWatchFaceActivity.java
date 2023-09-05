@@ -68,6 +68,9 @@ public class CustomWatchFaceActivity extends BaseActivity {
             @Override
             public void onBondReqChipType(int type) {
                 super.onBondReqChipType(type);
+                if (isDestroyed()) {
+                    return;
+                }
                 // 在登录成功后会触发此回调，用户需自行记录设备芯片类型
                 // This callback will be triggered after successful login. The user needs to record the device chip type by himself.
                 deviceChipType = type;
@@ -86,6 +89,9 @@ public class CustomWatchFaceActivity extends BaseActivity {
             @Override
             public void onHomePager(ApplicationLayerScreenStylePacket packet) {
                 super.onHomePager(packet);
+                if (isDestroyed()) {
+                    return;
+                }
                 // 内置表盘返回 build-in watch face return
                 packet.getCurIndex();
                 faceCount = packet.getTotal();
@@ -123,6 +129,9 @@ public class CustomWatchFaceActivity extends BaseActivity {
             @Override
             public void onSilenceOtaStatus(int status) {
                 super.onSilenceOtaStatus(status);
+                if (isDestroyed()) {
+                    return;
+                }
                 if (status != 0) {
                     // 设备正忙，当前无法升级，device is busy
                     return;
@@ -158,6 +167,9 @@ public class CustomWatchFaceActivity extends BaseActivity {
             @Override
             public void onSilenceUpgradeModel(int model) {
                 super.onSilenceUpgradeModel(model);
+                if (isDestroyed()) {
+                    return;
+                }
                 // 设置升级模式返回 set upgrade mode return
 //                prepareOtaFile(deviceMac);
                 initUkOta(deviceMac, otaFilePath);

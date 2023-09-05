@@ -66,6 +66,9 @@ public class MarketWatchFaceActivity extends BaseActivity {
             @Override
             public void onHomePager(ApplicationLayerScreenStylePacket packet) {
                 super.onHomePager(packet);
+                if (isDestroyed()) {
+                    return;
+                }
                 // 内置表盘信息返回，必须记录内置表盘总数，升级表盘之后需设置新表盘的坐标
                 // To return built-in dial information, the total number of built-in dials must be recorded.
                 // After upgrading the dial, the coordinates of the new dial need to be set.
@@ -93,6 +96,9 @@ public class MarketWatchFaceActivity extends BaseActivity {
             @Override
             public void onSilenceOtaStatus(int status) {
                 super.onSilenceOtaStatus(status);
+                if (isDestroyed()) {
+                    return;
+                }
                 if (status != 0) {
                     // 设备正忙，当前无法升级，device is busy
                     return;
@@ -127,6 +133,9 @@ public class MarketWatchFaceActivity extends BaseActivity {
             @Override
             public void onSilenceUpgradeModel(int model) {
                 super.onSilenceUpgradeModel(model);
+                if (isDestroyed()) {
+                    return;
+                }
                 // 设置升级模式返回 set upgrade mode return
                 prepareOtaFile(deviceMac);
 //                initUkOta(deviceMac, otaFilePath);
