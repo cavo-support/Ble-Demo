@@ -14,6 +14,8 @@ public class App extends Application {
         return sInstance;
     }
 
+    private String deviceMac;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -29,5 +31,13 @@ public class App extends Application {
         RtkCore.initialize(this, configure);
         RtkDfu.initialize(this, true);
 
+    }
+
+    public String getDeviceMac() {
+        return deviceMac;
+    }
+
+    public void setDeviceMac(String deviceMac) {
+        this.deviceMac = deviceMac;
     }
 }

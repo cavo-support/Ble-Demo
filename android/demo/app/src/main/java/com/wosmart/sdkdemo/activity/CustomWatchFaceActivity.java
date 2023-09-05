@@ -107,8 +107,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
      * 设置自定义表盘
      */
     private void setCustomWatchFace() {
-        String deviceMac = "your device mac";
-//        String deviceMac = "64:9E:B5:47:20:04";
+        String deviceMac = App.getInstance().getDeviceMac();
         Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.bg_preview);// your watch face background img
         Bitmap previewBitmap = previewImg.getDrawingCache();// your watch face preview img
 

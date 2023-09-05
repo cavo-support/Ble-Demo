@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 
+import com.wosmart.sdkdemo.App;
 import com.wosmart.sdkdemo.adapter.DeviceAdapter;
 import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.sdkdemo.R;
@@ -154,6 +155,7 @@ public class ScanActivity extends BaseActivity {
                     Intent intent = new Intent();
                     intent.putExtra("mac", mac);
                     intent.putExtra("name", name);
+                    App.getInstance().setDeviceMac(mac);
                     setResult(0x02, intent);
                     ScanActivity.this.finish();
                 } else {

@@ -27,6 +27,12 @@ import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerScreenStylePacket;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class MarketWatchFaceActivity extends BaseActivity {
 
 
@@ -81,7 +87,7 @@ public class MarketWatchFaceActivity extends BaseActivity {
      * 设置市场表盘
      */
     private void setMarketWatchFace() {
-        String deviceMac = "your device mac";
+        String deviceMac = App.getInstance().getDeviceMac();
         String otaFilePath = "your ota file path";
         WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
             @Override
@@ -122,7 +128,8 @@ public class MarketWatchFaceActivity extends BaseActivity {
             public void onSilenceUpgradeModel(int model) {
                 super.onSilenceUpgradeModel(model);
                 // 设置升级模式返回 set upgrade mode return
-                initUkOta(deviceMac, otaFilePath);
+                prepareOtaFile(deviceMac);
+//                initUkOta(deviceMac, otaFilePath);
             }
         });
         Thread thread = new Thread(new Runnable() {
@@ -225,6 +232,39 @@ public class MarketWatchFaceActivity extends BaseActivity {
                 .reconnectTimes(3)
                 .build();
         dfuHelper.connectDevice(connectParams);
+    }
+
+    public void prepareOtaFile(String mac) {
+        String binFileName = "mode5_usedata_E88P_0.16.0.1_OTA.bin";// we save it at asset now, you will download it in internet
+        File dir = new File(getCacheDir() + "/bin");
+        if (!dir.exists()) {
+            dir.mkdir();
+        }
+        // check local bin file, you must save it to local before ota
+        File binFile = new File(dir, binFileName);
+        if (binFile.exists()) {
+            // bin file is ready, start ota now
+            initUkOta(mac, binFile.getAbsolutePath());
+            return;
+        }
+        try {
+            binFile.createNewFile();
+            // load bin file to phone
+            InputStream is = this.getApplicationContext().getResources().getAssets().open(binFileName);
+            FileOutputStream fos = new FileOutputStream(binFile);
+            byte[] buffere = new byte[is.available()];
+            is.read(buffere);
+            fos.write(buffere);
+            is.close();
+            fos.close();
+
+            // bin file is ready, start ota now
+            initUkOta(mac, binFile.getAbsolutePath());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void checkOTAFile(String mac, OtaDeviceInfo otaDeviceInfo, String filePath) {
