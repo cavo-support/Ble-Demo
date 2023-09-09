@@ -2,7 +2,6 @@ package com.wosmart.sdkdemo.activity;
 
 import static com.realsil.sdk.dfu.DfuConstants.PROGRESS_ACTIVE_IMAGE_AND_RESET;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -44,7 +43,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
     /**
      * 是否为圆形手表 Is it a round watch?
      */
-    private boolean isRound;
+    private boolean isRoundWatch;
 
     private ImageView previewImg;
 
@@ -57,8 +56,8 @@ public class CustomWatchFaceActivity extends BaseActivity {
         previewImg = findViewById(R.id.img_preview);
         previewImg.setDrawingCacheEnabled(true);
 
-        isRound = new Random().nextBoolean();// 用户需确认手表是否为圆形 Users need to confirm whether the watch is round
-        previewImg.setImageDrawable(ContextCompat.getDrawable(this, isRound ? R.mipmap.bg_preview_round : R.mipmap.bg_preview_rect));
+        isRoundWatch = new Random().nextBoolean();// 用户需确认手表是否为圆形 Users need to confirm whether the watch is round
+        previewImg.setImageDrawable(ContextCompat.getDrawable(this, isRoundWatch ? R.mipmap.bg_preview_round : R.mipmap.bg_preview_rect));
 
         // 先读取内置表盘信息 First read the built-in dial information
         readWatchFaceCount();
@@ -117,13 +116,13 @@ public class CustomWatchFaceActivity extends BaseActivity {
      */
     private void setCustomWatchFace() {
         String deviceMac = App.getInstance().getDeviceMac();
-        Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), isRound ? R.mipmap.bg_preview_round : R.mipmap.bg_preview_rect);// your watch face background img
+        Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), isRoundWatch ? R.mipmap.bg_preview_round : R.mipmap.bg_preview_rect);// your watch face background img
         Bitmap previewBitmap = previewImg.getDrawingCache();// your watch face preview img
 
 
         // TF 5S
         String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-                App.getInstance().getDeviceChipType(), 360, 360,
+                isRoundWatch, App.getInstance().getDeviceChipType(), 360, 360,
                 238, 238, 119, 2, "#08d3ff");
 
         // P1S
