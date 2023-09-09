@@ -2,6 +2,7 @@ package com.wosmart.sdkdemo.activity;
 
 import static com.realsil.sdk.dfu.DfuConstants.PROGRESS_ACTIVE_IMAGE_AND_RESET;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import com.realsil.sdk.dfu.DfuConstants;
 import com.realsil.sdk.dfu.image.BinFactory;
@@ -33,9 +35,16 @@ import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerCustomUiPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerScreenStylePacket;
 
+import java.util.Random;
+
 public class CustomWatchFaceActivity extends BaseActivity {
 
     private int faceCount = 0;
+
+    /**
+     * 是否为圆形手表 Is it a round watch?
+     */
+    private boolean isRound;
 
     /**
      * 设备芯片类型 0:C(正常芯片) 1:D(VD版本)
@@ -52,6 +61,9 @@ public class CustomWatchFaceActivity extends BaseActivity {
 
         previewImg = findViewById(R.id.img_preview);
         previewImg.setDrawingCacheEnabled(true);
+
+        isRound = new Random().nextBoolean();// 用户需确认手表是否为圆形 Users need to confirm whether the watch is round
+        previewImg.setImageDrawable(ContextCompat.getDrawable(this, isRound ? R.mipmap.bg_preview_round : R.mipmap.bg_preview_rect));
 
         // 先读取内置表盘信息 First read the built-in dial information
         readWatchFaceCount();
@@ -114,12 +126,13 @@ public class CustomWatchFaceActivity extends BaseActivity {
      */
     private void setCustomWatchFace() {
         String deviceMac = App.getInstance().getDeviceMac();
-        Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.bg_preview);// your watch face background img
+        Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), isRound ? R.mipmap.bg_preview_round : R.mipmap.bg_preview_rect);// your watch face background img
         Bitmap previewBitmap = previewImg.getDrawingCache();// your watch face preview img
 
 
+
         String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-                deviceChipType, 360, 360,
+                isRound, deviceChipType, 360, 360,
                 238, 238, 119, 2, "#08d3ff");
 
         if (TextUtils.isEmpty(otaFilePath)) {

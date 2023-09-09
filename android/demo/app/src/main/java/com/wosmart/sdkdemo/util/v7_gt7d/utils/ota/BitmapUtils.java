@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.text.TextUtils;
@@ -15,6 +17,28 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 public class BitmapUtils {
+
+    public static Bitmap createCircleBitmap(Bitmap resource) {
+        //获取图片的最短的一边
+        int size = Math.min(resource.getWidth(), resource.getHeight());
+        Paint paint = new Paint();
+        //设置抗锯齿
+        paint.setAntiAlias(true);
+
+        //创建一个与原bitmap一样宽度的正方形bitmap
+        Bitmap circleBitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888);
+        //以该bitmap为低创建一块画布
+        Canvas canvas = new Canvas(circleBitmap);
+        //以（size / 2, size/ 2）为圆心，size / 2 为半径画一个圆
+        canvas.drawCircle(size / 2f, size / 2f, size / 2f, paint);
+
+        //设置画笔为取交集模式
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        //裁剪图片
+        canvas.drawBitmap(resource, 0, 0, paint);
+
+        return circleBitmap;
+    }
 
     /**
      * 将bitmap压缩为指定大小
@@ -130,7 +154,7 @@ public class BitmapUtils {
 
         if (boarder > 0) {
             //绘制boarder
-            if(TextUtils.isEmpty(color)){
+            if (TextUtils.isEmpty(color)) {
                 color = "#08d3ff";
             }
             Paint boarderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
