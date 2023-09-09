@@ -19,7 +19,6 @@ public class CustomOTAFileUtils {
      * @param context               上下文
      * @param bgBitmap              背景 bitmap
      * @param previewBitmap         预览图 bitmap
-     * @param isRound               是否为圆形表盘
      * @param deviceChipType        设备芯片类型 0:C(正常芯片) 1:D(VD版本)
      * @param deviceWidth           设备实际宽度
      * @param deviceHeight          设备实际高度
@@ -30,7 +29,7 @@ public class CustomOTAFileUtils {
      * @param previewImgBorderColor 预览图边框颜色
      */
     public static String createOTAFile(Context context, Bitmap bgBitmap, Bitmap previewBitmap,
-                                       boolean isRound, int deviceChipType, int deviceWidth, int deviceHeight,
+                                       int deviceChipType, int deviceWidth, int deviceHeight,
                                        int previewImgWidth, int previewImgHeight, int previewImgRadius, int previewImgBorderWidth, String previewImgBorderColor) {
         if (context == null || bgBitmap == null || previewBitmap == null) {
             return null;

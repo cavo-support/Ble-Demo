@@ -123,7 +123,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
 
         // TF 5S
         String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-                isRound, App.getInstance().getDeviceChipType(), 360, 360,
+                App.getInstance().getDeviceChipType(), 360, 360,
                 238, 238, 119, 2, "#08d3ff");
 
         // P1S
