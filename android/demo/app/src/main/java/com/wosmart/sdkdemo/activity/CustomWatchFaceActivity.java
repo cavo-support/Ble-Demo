@@ -46,11 +46,6 @@ public class CustomWatchFaceActivity extends BaseActivity {
      */
     private boolean isRound;
 
-    /**
-     * 设备芯片类型 0:C(正常芯片) 1:D(VD版本)
-     * Device chip type 0:C (normal chip) 1:D (VD version)
-     */
-    private int deviceChipType = 1;
     private ImageView previewImg;
 
     @Override
@@ -80,12 +75,8 @@ public class CustomWatchFaceActivity extends BaseActivity {
             @Override
             public void onBondReqChipType(int type) {
                 super.onBondReqChipType(type);
-                if (isDestroyed()) {
-                    return;
-                }
                 // 在登录成功后会触发此回调，用户需自行记录设备芯片类型
                 // This callback will be triggered after successful login. The user needs to record the device chip type by himself.
-                deviceChipType = type;
             }
         });
     }
@@ -130,10 +121,15 @@ public class CustomWatchFaceActivity extends BaseActivity {
         Bitmap previewBitmap = previewImg.getDrawingCache();// your watch face preview img
 
 
-
+        // TF 5S
         String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-                isRound, deviceChipType, 360, 360,
+                isRound, App.getInstance().getDeviceChipType(), 360, 360,
                 238, 238, 119, 2, "#08d3ff");
+
+        // P1S
+//        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
+//                isRound, App.getInstance().getDeviceChipType(), 172, 320,
+//                129, 240, 18, 2, "#08d3ff");
 
         if (TextUtils.isEmpty(otaFilePath)) {
             return;

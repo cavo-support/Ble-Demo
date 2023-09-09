@@ -35,10 +35,6 @@ public class CustomOTAFileUtils {
         if (context == null || bgBitmap == null || previewBitmap == null) {
             return null;
         }
-        if (isRound) {
-            bgBitmap = BitmapUtils.createCircleBitmap(bgBitmap);
-            previewBitmap = BitmapUtils.createCircleBitmap(previewBitmap);
-        }
         Bitmap bitmap565 = BitmapUtils.transImage(bgBitmap, deviceWidth, deviceHeight);
         bitmap565 = BitmapUtils.compressBitmap565(bitmap565, deviceWidth, deviceHeight);
         int bytes = bitmap565.getByteCount();

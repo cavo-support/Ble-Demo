@@ -1,10 +1,13 @@
 package com.wosmart.sdkdemo;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.realsil.sdk.core.RtkConfigure;
 import com.realsil.sdk.core.RtkCore;
 import com.realsil.sdk.dfu.RtkDfu;
+import com.wosmart.ukprotocollibary.WristbandManager;
+import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 
 public class App extends Application {
 
@@ -15,6 +18,11 @@ public class App extends Application {
     }
 
     private String deviceMac;
+
+    /**
+     * 设备芯片类型 0:C(正常芯片) 1:D(VD版本)
+     */
+    private int deviceChipType = 1;
 
     @Override
     public void onCreate() {
@@ -31,6 +39,24 @@ public class App extends Application {
         RtkCore.initialize(this, configure);
         RtkDfu.initialize(this, true);
 
+        WristbandManager.getInstance(this).initSDK();
+
+        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+
+            @Override
+            public void onBondReqChipType(int type) {
+                super.onBondReqChipType(type);
+                // 在登录成功后会触发此回调，用户需自行记录设备芯片类型
+                // This callback will be triggered after successful login. The user needs to record the device chip type by himself.
+                deviceChipType = type;
+                Log.e("SSSS", "deviceChipType = " + deviceChipType);
+            }
+
+        });
+    }
+
+    public int getDeviceChipType() {
+        return deviceChipType;
     }
 
     public String getDeviceMac() {
