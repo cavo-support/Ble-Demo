@@ -18,6 +18,7 @@
     [super viewDidLoad];
     
     self.title = NSLocalizedString(@"Continuous blood pressure", nil);
+    
 }
 
 /**
@@ -121,7 +122,7 @@
                                       }
                                        updateCallBack:^(NSInteger didSend, NSInteger totalLength, JWBleDeviceDFUStatus deviceDFUStatus) {
             
-        }];
+    }];
     
     // 3: 显示手环 首页表盘为 该自定义表盘
     [JWBleAction jwMainInterfaceAction:true willShowIndex:0 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
