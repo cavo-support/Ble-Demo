@@ -39,6 +39,29 @@
             android:layout_height="120dp"
             android:src="@mipmap/bg_preview_round"/>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"
+                android:text="@string/app_current_progress"/>
+
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"
+                android:text="0%"/>
+
+        </LinearLayout>
+
+
         <Button
             android:id="@+id/btn_set_watch_face"
             android:layout_width="300dp"

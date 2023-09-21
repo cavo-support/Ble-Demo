@@ -27,16 +27,16 @@ public class SpO2Action extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance(App.getInstance()).getFunctionPacket();
+        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance().getFunctionPacket();
         if (functionPacket == null) {
             // 如果功能列表为空，必须先获取一次功能列表，然后用户可自行缓存该功能列表也可使用 SDK 缓存
-            WristbandManager.getInstance(App.getInstance()).sendFunctionReq();
+            WristbandManager.getInstance().sendFunctionReq();
             return;
         }
         // 判断是否支持该功能
         boolean isSupport = functionPacket.getSpo2Measure() == DeviceFunctionStatus.SUPPORT;
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onReadHealthDataPacket(ApplicationLayerReadHealthPacket readHealthPacket) {
@@ -76,7 +76,7 @@ public class SpO2Action extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                WristbandManager.getInstance(App.getInstance()).readHealth();
+                WristbandManager.getInstance().readHealth();
             }
         }).start();
     }
@@ -85,13 +85,13 @@ public class SpO2Action extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                WristbandManager.getInstance(App.getInstance()).checkSpo2Status();
+                WristbandManager.getInstance().checkSpo2Status();
             }
         }).start();
     }
 
     private void startMeasure() {
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onSpo2DataReceive(ApplicationLayerSpo2Packet packet) {
@@ -103,7 +103,7 @@ public class SpO2Action extends BaseActivity {
             @Override
             public void run() {
                 // 开关测量 true 开 false 关
-                WristbandManager.getInstance(App.getInstance()).setSpo2Status(true);
+                WristbandManager.getInstance().setSpo2Status(true);
             }
         }).start();
     }
@@ -112,7 +112,7 @@ public class SpO2Action extends BaseActivity {
      * 读取自动监测配置
      */
     private void readAutoMeasureConfig() {
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void requestSpo2Continuous(boolean enable, int interval) {
@@ -125,7 +125,7 @@ public class SpO2Action extends BaseActivity {
             @Override
             public void run() {
                 // 请求自动监测配置
-                WristbandManager.getInstance(App.getInstance()).requestSpo2Continuous();
+                WristbandManager.getInstance().requestSpo2Continuous();
             }
         }).start();
     }
@@ -140,7 +140,7 @@ public class SpO2Action extends BaseActivity {
             public void run() {
                 // 自动测量
                 // enable true 打开，interval 间隔 单位 分钟
-                WristbandManager.getInstance(App.getInstance()).setSpo2Continuous(true, 5);
+                WristbandManager.getInstance().setSpo2Continuous(true, 5);
             }
         }).start();
     }

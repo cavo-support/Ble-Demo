@@ -73,7 +73,7 @@ public class SilenceOtaActivity extends BaseActivity implements View.OnClickList
     private void initData() {
         handler = new MyHandler();
 
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onSilenceOtaStatus(int status) {
                 super.onSilenceOtaStatus(status);

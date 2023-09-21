@@ -64,7 +64,7 @@ public class CustomUiActivity extends BaseActivity implements View.OnClickListen
     private void initData() {
         handler = new MyHandler();
 
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onCustomUiSetting(ApplicationLayerCustomUiPacket packet) {

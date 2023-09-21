@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
@@ -34,9 +36,16 @@ import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerCustomUiPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerScreenStylePacket;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
 
 public class CustomWatchFaceActivity extends BaseActivity {
+
+    private static final String TAG = "CustomWatchFaceActivity";
 
     private int faceCount = 0;
 
@@ -47,12 +56,15 @@ public class CustomWatchFaceActivity extends BaseActivity {
 
     private ImageView previewImg;
 
+    private TextView progressTv;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_watch_face_market);
 
+        progressTv = findViewById(R.id.tv_progress);
         previewImg = findViewById(R.id.img_preview);
         previewImg.setDrawingCacheEnabled(true);
 
@@ -69,13 +81,15 @@ public class CustomWatchFaceActivity extends BaseActivity {
             }
         });
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onBondReqChipType(int type) {
                 super.onBondReqChipType(type);
                 // 在登录成功后会触发此回调，用户需自行记录设备芯片类型
+                // 若没有触发此回调，则是默认芯片类型 0
                 // This callback will be triggered after successful login. The user needs to record the device chip type by himself.
+                // If this callback is not triggered, the default chip type is 0
             }
         });
     }
@@ -86,7 +100,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
      */
     private void readWatchFaceCount() {
         // 读取内置表盘
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onHomePager(ApplicationLayerScreenStylePacket packet) {
@@ -104,7 +118,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
             @Override
             public void run() {
                 // 请求内置表盘
-                WristbandManager.getInstance(App.getInstance()).requestHomePager();
+                WristbandManager.getInstance().requestHomePager();
             }
         }).start();
     }
@@ -119,11 +133,16 @@ public class CustomWatchFaceActivity extends BaseActivity {
         Bitmap bgBitmap = BitmapFactory.decodeResource(getResources(), isRoundWatch ? R.mipmap.bg_preview_round : R.mipmap.bg_preview_rect);// your watch face background img
         Bitmap previewBitmap = previewImg.getDrawingCache();// your watch face preview img
 
+        // 每个手表对应的尺寸不一样，具体的尺寸联系请我们获取
+        // V101
+        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
+                isRoundWatch, App.getInstance().getDeviceChipType(), 80, 160,
+                66, 128, 0, 1, "#04fbfe");
 
         // TF 5S
-        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-                isRoundWatch, App.getInstance().getDeviceChipType(), 360, 360,
-                238, 238, 119, 2, "#08d3ff");
+//        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
+//                isRoundWatch, App.getInstance().getDeviceChipType(), 360, 360,
+//                238, 238, 119, 2, "#08d3ff");
 
         // P1S
 //        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
@@ -133,7 +152,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
         if (TextUtils.isEmpty(otaFilePath)) {
             return;
         }
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onSilenceOtaStatus(int status) {
                 super.onSilenceOtaStatus(status);
@@ -170,7 +189,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
      *                 {@link WristbandManager#OTA_MODE_DIAL_MARKET_RESOURCES}
      */
     private void enterSilenceModel(String deviceMac, String otaFilePath, int mode) {
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onSilenceUpgradeModel(int model) {
@@ -275,7 +294,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
                 packet.setTimeColor(0);
                 packet.setxCoordinate(77);
                 packet.setyCoordinate(37);
-                WristbandManager.getInstance(App.getInstance()).setCustomUi(packet);
+                WristbandManager.getInstance().setCustomUi(packet);
 
                 // 设置新表盘位置，mode = WristbandManager.OTA_MODE_DIAL_MARKET_RESOURCES 情况下为固定 faceCount + 1
                 // The watch face OTA is successful, set the new watch face index,
@@ -327,7 +346,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
                 public void onError(int type, int code) {
                     super.onError(type, code);
                     // fail
-                    Log.e("SSSS", "onError type = " + type + ", code = " + code);
+                    Log.e(TAG, "onError type = " + type + ", code = " + code);
                     if (type == 65536 && code == 517) {
                         // 自定义表盘升级模式下，这个 type 和 code 也是成功
                         // In the custom dial upgrade mode, this type and code are also successful
@@ -353,6 +372,12 @@ public class CustomWatchFaceActivity extends BaseActivity {
                     super.onProgressChanged(dfuProgressInfo);
                     // progress info
                     int progress = dfuProgressInfo.getProgress();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressTv.setText(progress + "%");
+                        }
+                    });
                     Log.e("SSSS", "progress = " + progress);
                 }
             };
@@ -381,6 +406,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
             BinInfo binInfo = BinFactory.loadImageBinInfo(builder.build());
             if (binInfo.supportBinInputStreams != null && binInfo.supportBinInputStreams.size() <= 0) {
                 //文件错误, bin file error
+                Toast.makeText(this, "bin file error", Toast.LENGTH_SHORT).show();
             } else {
                 //文件正确
                 startUkOta(mac, filePath);

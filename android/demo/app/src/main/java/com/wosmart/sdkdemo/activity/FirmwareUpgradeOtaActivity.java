@@ -84,12 +84,12 @@ public class FirmwareUpgradeOtaActivity extends BaseActivity {
             }
         });
 
-        boolean connect = WristbandManager.getInstance(this).isConnect();
+        boolean connect = WristbandManager.getInstance().isConnect();
         Log.e("EEEEE", "isConnect = " + connect);
     }
 
     private void checkVersion() {
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onDeviceInfo(ApplicationLayerDeviceInfoPacket packet) {
@@ -106,14 +106,14 @@ public class FirmwareUpgradeOtaActivity extends BaseActivity {
             }
         });
 
-        WristbandManager.getInstance(this).requestDeviceInfo();
+        WristbandManager.getInstance().requestDeviceInfo();
     }
 
     private void startOta() {
         // we have init ota sdk at App，if you want to use it, you can init ota sdk at application.
         // and you should add DfuService in AndroidManifest.xml
         // the ota file should match you smart watch
-        if (!WristbandManager.getInstance(this).isOpenBt() || !WristbandManager.getInstance(this).isConnect()) {
+        if (!WristbandManager.getInstance().isOpenBt() || !WristbandManager.getInstance().isConnect()) {
             // device not connect
             return;
         }

@@ -34,7 +34,7 @@ public class BuiltInWatchFaceActivity extends BaseActivity {
                         if (faceIndex >= faceCount) {
                             return;
                         }
-                        WristbandManager.getInstance(App.getInstance()).settingHomePager(faceIndex);
+                        WristbandManager.getInstance().settingHomePager(faceIndex);
                     }
                 }).start();
             }
@@ -47,7 +47,7 @@ public class BuiltInWatchFaceActivity extends BaseActivity {
      */
     private void readWatchFaceCount() {
         // 读取内置表盘
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onHomePager(ApplicationLayerScreenStylePacket packet) {
@@ -64,7 +64,7 @@ public class BuiltInWatchFaceActivity extends BaseActivity {
             @Override
             public void run() {
                 // 请求内置表盘 read build-in watch face
-                WristbandManager.getInstance(App.getInstance()).requestHomePager();
+                WristbandManager.getInstance().requestHomePager();
             }
         }).start();
     }

@@ -42,7 +42,7 @@ public class SyncHealthDataAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onSyncDataBegin(ApplicationLayerBeginPacket packet) {
@@ -137,7 +137,7 @@ public class SyncHealthDataAction extends BaseActivity {
             @Override
             public void run() {
                 // 请求同步健康数据
-                WristbandManager.getInstance(App.getInstance()).sendDataRequest();
+                WristbandManager.getInstance().sendDataRequest();
             }
         }).start();
     }

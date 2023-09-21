@@ -83,7 +83,7 @@ public class ClockActivity extends BaseActivity implements View.OnClickListener 
 
     private void initData() {
         handler = new MyHandler();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onAlarmsDataReceive(ApplicationLayerAlarmsPacket data) {
                 super.onAlarmsDataReceive(data);

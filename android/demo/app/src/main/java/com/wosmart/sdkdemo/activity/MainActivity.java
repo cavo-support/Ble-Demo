@@ -136,7 +136,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     private void disConnect() {
-        WristbandManager.getInstance(this).close();
+        WristbandManager.getInstance().close();
         connectFlag = false;
         btn_scan.setText(getString(R.string.app_scan));
         appendLog("disconnect device");

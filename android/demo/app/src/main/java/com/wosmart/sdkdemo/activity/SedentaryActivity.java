@@ -51,7 +51,7 @@ public class SedentaryActivity extends BaseActivity implements View.OnClickListe
 
     private void initData() {
         handler = new MyHandler();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onLongSitSettingReceive(ApplicationLayerSitPacket packet) {

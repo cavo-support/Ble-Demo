@@ -19,16 +19,16 @@ public class LongSitReminderAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance(App.getInstance()).getFunctionPacket();
+        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance().getFunctionPacket();
         if (functionPacket == null) {
             // 如果功能列表为空，必须先获取一次功能列表，然后用户可自行缓存该功能列表也可使用 SDK 缓存
-            WristbandManager.getInstance(App.getInstance()).sendFunctionReq();
+            WristbandManager.getInstance().sendFunctionReq();
             return;
         }
         // 判断是否支持该功能
         boolean isSupport = functionPacket.getLongSitReminder() == DeviceFunctionStatus.SUPPORT;
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onLongSitSettingReceive(ApplicationLayerSitPacket packet) {
@@ -40,7 +40,7 @@ public class LongSitReminderAction extends BaseActivity {
             @Override
             public void run() {
                 // 读取久坐提醒
-                WristbandManager.getInstance(App.getInstance()).sendLongSitRequest();
+                WristbandManager.getInstance().sendLongSitRequest();
 
                 // 设置久坐提醒
                 ApplicationLayerSitPacket packet = new ApplicationLayerSitPacket();
@@ -55,7 +55,7 @@ public class LongSitReminderAction extends BaseActivity {
                 // 删除该提醒，则 flags = ApplicationLayerSitPacket.REPETITION_NULL;
                 // 如果设置星期一，星期三提醒，则 flags = ApplicationLayerSitPacket.REPETITION_MON | ApplicationLayerSitPacket.REPETITION_WED
                 packet.setmDayFlags(ApplicationLayerSitPacket.REPETITION_ALL);
-                WristbandManager.getInstance(App.getInstance()).setLongSit(packet);
+                WristbandManager.getInstance().setLongSit(packet);
             }
         }).start();
     }

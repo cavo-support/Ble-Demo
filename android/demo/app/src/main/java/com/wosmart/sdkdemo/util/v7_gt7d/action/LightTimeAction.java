@@ -17,10 +17,10 @@ public class LightTimeAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance(App.getInstance()).getFunctionPacket();
+        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance().getFunctionPacket();
         if (functionPacket == null) {
             // 如果功能列表为空，必须先获取一次功能列表，然后用户可自行缓存该功能列表也可使用 SDK 缓存
-            WristbandManager.getInstance(App.getInstance()).sendFunctionReq();
+            WristbandManager.getInstance().sendFunctionReq();
             return;
         }
         // 判断是否支持该功能
@@ -30,7 +30,7 @@ public class LightTimeAction extends BaseActivity {
             @Override
             public void run() {
                 // 设置亮屏时间，0 - 30，单位 秒
-                WristbandManager.getInstance(App.getInstance()).settingScreenLightDuration(15);
+                WristbandManager.getInstance().settingScreenLightDuration(15);
             }
         }).start();
     }

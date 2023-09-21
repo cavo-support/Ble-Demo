@@ -21,7 +21,7 @@ public class ConnectDeviceAction extends BaseActivity {
     }
 
     private void connectDevice(String macAddress) {
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onConnectionStateChange(boolean result) {
                 super.onConnectionStateChange(result);
@@ -34,7 +34,7 @@ public class ConnectDeviceAction extends BaseActivity {
             }
         });
 
-        WristbandManager.getInstance(this).connect(macAddress);
+        WristbandManager.getInstance().connect(macAddress);
     }
 
 }

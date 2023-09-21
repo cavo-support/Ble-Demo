@@ -87,7 +87,7 @@ public class TempActivity extends BaseActivity implements View.OnClickListener {
 
     private void initData() {
         handler = new MyHandler();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             //此方法需要读取设备支持功能后才会回调
             @Override

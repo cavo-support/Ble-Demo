@@ -50,8 +50,8 @@ public class PulseActivity extends BaseActivity implements View.OnClickListener 
 
     private void initData() {
         // check is support pulse
-        WristbandManager.getInstance(this).sendFunctionReq();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().sendFunctionReq();
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onDeviceFunction(ApplicationLayerFunctionPacket functionPacket) {

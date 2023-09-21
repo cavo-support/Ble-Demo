@@ -18,7 +18,7 @@ public class NotifySwitchAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onNotifyModeSettingReceive(ApplicationLayerNotifyPacket applicationLayerNotifyPacket) {
@@ -41,10 +41,10 @@ public class NotifySwitchAction extends BaseActivity {
             @Override
             public void run() {
                 // 请求各通知开关配置，建议连接完设置后获取一次，然后全局缓存
-                WristbandManager.getInstance(App.getInstance()).sendNotifyModeRequest();
+                WristbandManager.getInstance().sendNotifyModeRequest();
 
                 // 设置单个通知配置
-                WristbandManager.getInstance(App.getInstance()).setNotifyMode(NotifyType.WECHAT, true);
+                WristbandManager.getInstance().setNotifyMode(NotifyType.WECHAT, true);
 
                 ApplicationLayerNotifyPacket packet = new ApplicationLayerNotifyPacket();
                 packet.setCall(DeviceFunctionStatus.SUPPORT_OPEN);
@@ -57,7 +57,7 @@ public class NotifySwitchAction extends BaseActivity {
                 packet.setMessenger(DeviceFunctionStatus.SUPPORT_OPEN);
 
                 // 一次性设置多个通知配置
-                WristbandManager.getInstance(App.getInstance()).setAllNotify(packet);
+                WristbandManager.getInstance().setAllNotify(packet);
             }
         }).start();
         

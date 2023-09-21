@@ -85,8 +85,8 @@ public class SleepAction extends BaseActivity {
         SleepInfo sleepInfo = SleepFilter.filterByData(2023, 6, 16);
         // 如果感觉数据不正确，可以重置手表历史数据指标
         // 发送重置数据指令
-        WristbandManager.getInstance(App.getInstance()).setFullSync();
+        WristbandManager.getInstance().setFullSync();
         // 重置成功后，可以再次发起同步，即可拉取全量数据
-        WristbandManager.getInstance(App.getInstance()).sendDataRequest();
+        WristbandManager.getInstance().sendDataRequest();
     }
 }

@@ -6,6 +6,8 @@ import android.os.Build;
 import android.util.Log;
 
 
+import com.wosmart.ukprotocollibary.util.DataConverter;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -87,6 +89,9 @@ public class CustomOTAFileUtils {
             imgHeader = ImgHeadUtil.getImgHeader(picArray);
             mpHeader = ImgHeadUtil.getMpHeader(picArray);
         }
+
+        Log.d(TAG, "imgHeader = " + DataConverter.bytes2Hex(imgHeader));
+        Log.d(TAG, "mpHeader = " + DataConverter.bytes2Hex(mpHeader));
         int imgLen = imgHeader.length;
         int mpLen = mpHeader.length;
 

@@ -34,7 +34,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void initData() {
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onLoginStateChange(int state) {
                 super.onLoginStateChange(state);
@@ -65,7 +65,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     public void login() {
-        WristbandManager.getInstance(this).startLoginProcess("1234567890");
+        WristbandManager.getInstance().startLoginProcess("1234567890");
     }
 
 

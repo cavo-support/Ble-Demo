@@ -57,7 +57,7 @@ public class EarPhoneActivity extends BaseActivity implements View.OnClickListen
 
     private void initData() {
         handler = new MyHandler();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onEarMac(ApplicationLayerEarMacPacket packet) {
                 super.onEarMac(packet);

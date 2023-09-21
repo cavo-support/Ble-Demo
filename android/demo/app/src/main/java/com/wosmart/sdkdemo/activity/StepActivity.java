@@ -50,7 +50,7 @@ public class StepActivity extends BaseActivity implements View.OnClickListener {
 
     private void initData() {
         handler = new MyHandler();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onSyncDataBegin(ApplicationLayerBeginPacket packet) {

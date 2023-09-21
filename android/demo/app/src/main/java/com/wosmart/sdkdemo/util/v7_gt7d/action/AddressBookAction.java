@@ -41,7 +41,7 @@ public class AddressBookAction extends BaseActivity {
             contactList.add(new Contact("name" + i, "phone" + i));
         }
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onAddressBookToDevice(int state) {
@@ -81,7 +81,7 @@ public class AddressBookAction extends BaseActivity {
                 packet.setSendState(0);
                 packet.setAddressLen(count);
 
-                WristbandManager.getInstance(App.getInstance()).setAddressBookToDevice(packet);
+                WristbandManager.getInstance().setAddressBookToDevice(packet);
             }
         }).start();
 
@@ -99,7 +99,7 @@ public class AddressBookAction extends BaseActivity {
 
                 packet.setAddressName(contact.name);
                 packet.setAddressPhone(contact.phone);
-                WristbandManager.getInstance(App.getInstance()).setAddressBookToDevice(packet);
+                WristbandManager.getInstance().setAddressBookToDevice(packet);
             }
         }).start();
 
@@ -117,7 +117,7 @@ public class AddressBookAction extends BaseActivity {
                 packet.setSendState(1);
                 packet.setAddressLen(count);
 
-                WristbandManager.getInstance(App.getInstance()).setAddressBookToDevice(packet);
+                WristbandManager.getInstance().setAddressBookToDevice(packet);
             }
         }).start();
 

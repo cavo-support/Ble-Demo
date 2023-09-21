@@ -38,7 +38,7 @@ public class Utils {
      * @return true
      */
     public static boolean checkPowerStatus() {
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onDeviceStatus(ApplicationLayerDeviceStatusPacket packet) {
@@ -47,7 +47,7 @@ public class Utils {
             }
         });
         // 获取设备状态
-        WristbandManager.getInstance(App.getInstance()).readDeviceStatus();
+        WristbandManager.getInstance().readDeviceStatus();
         return isLowPowerMode || batteryLevel <= 5;
     }
 

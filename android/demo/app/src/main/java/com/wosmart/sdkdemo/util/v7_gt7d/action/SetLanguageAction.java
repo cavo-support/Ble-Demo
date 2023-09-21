@@ -20,7 +20,7 @@ public class SetLanguageAction extends BaseActivity {
             @Override
             public void run() {
                 // 设置语言为中文
-                WristbandManager.getInstance(App.getInstance()).settingLanguage(DeviceLanguage.LANGUAGE_SAMPLE_CHINESE);
+                WristbandManager.getInstance().settingLanguage(DeviceLanguage.LANGUAGE_SAMPLE_CHINESE);
             }
         }).start();
     }

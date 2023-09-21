@@ -17,7 +17,7 @@ public class BatteryLevelAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onBatteryRead(int value) {
@@ -34,6 +34,6 @@ public class BatteryLevelAction extends BaseActivity {
             }
         });
 
-        WristbandManager.getInstance(App.getInstance()).readBatteryLevel();
+        WristbandManager.getInstance().readBatteryLevel();
     }
 }

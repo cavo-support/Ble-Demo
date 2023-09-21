@@ -18,7 +18,7 @@ public class MusicControllerAction extends BaseActivity {
         super.onCreate(savedInstanceState);
 
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onMusicPlay() {
@@ -69,7 +69,7 @@ public class MusicControllerAction extends BaseActivity {
                 packet.setPlayerToggle(true);// 打开音乐控制
                 packet.setPlayStatus(true);// 是否正在播放
                 packet.setVolumePercent(3);// 音量百分比
-                WristbandManager.getInstance(App.getInstance()).setMusicStatus(packet);
+                WristbandManager.getInstance().setMusicStatus(packet);
             }
         }).start();
     }

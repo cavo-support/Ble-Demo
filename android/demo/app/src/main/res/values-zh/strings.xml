@@ -223,4 +223,5 @@
     <string name="app_built_in_watch_face">内置</string>
     <string name="app_market_watch_face">市场</string>
     <string name="app_custom_watch_face">自定义</string>
+    <string name="app_current_progress">当前进度：</string>
 </resources>

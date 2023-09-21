@@ -15,7 +15,7 @@ public class LoginAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onLoginStateChange(int state) {
@@ -41,7 +41,7 @@ public class LoginAction extends BaseActivity {
 
     private void login(String userID) {
         // 连接设备成功后即可发起登录流程
-        WristbandManager.getInstance(this).startLoginProcess(userID);
+        WristbandManager.getInstance().startLoginProcess(userID);
     }
 
 }

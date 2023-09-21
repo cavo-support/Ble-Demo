@@ -47,7 +47,7 @@ public class SportActivity extends BaseActivity implements View.OnClickListener 
 
     private void initData() {
         handler = new MyHandler();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onSportRateStatus(int status) {
                 super.onSportRateStatus(status);
@@ -104,7 +104,7 @@ public class SportActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void checkSport() {
-        if (WristbandManager.getInstance(this).checkAppSportRateDetect()) {
+        if (WristbandManager.getInstance().checkAppSportRateDetect()) {
             showToast(getString(R.string.app_success));
         } else {
             showToast(getString(R.string.app_fail));

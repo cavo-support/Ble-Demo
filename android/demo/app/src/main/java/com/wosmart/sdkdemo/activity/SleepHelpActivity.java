@@ -98,8 +98,8 @@ public class SleepHelpActivity extends BaseActivity implements View.OnClickListe
 
     private void initData() {
         // check is support sleep help
-        WristbandManager.getInstance(this).sendFunctionReq();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().sendFunctionReq();
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onDeviceFunction(ApplicationLayerFunctionPacket functionPacket) {

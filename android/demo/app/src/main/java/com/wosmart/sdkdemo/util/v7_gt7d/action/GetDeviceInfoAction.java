@@ -17,7 +17,7 @@ public class GetDeviceInfoAction extends BaseActivity {
         super.onCreate(savedInstanceState);
 
 
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onDeviceInfo(ApplicationLayerDeviceInfoPacket packet) {
@@ -32,7 +32,7 @@ public class GetDeviceInfoAction extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                WristbandManager.getInstance(App.getInstance()).requestDeviceInfo();
+                WristbandManager.getInstance().requestDeviceInfo();
             }
         }).start();
     }

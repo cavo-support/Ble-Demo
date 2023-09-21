@@ -28,16 +28,16 @@ public class TemperatureAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance(App.getInstance()).getFunctionPacket();
+        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance().getFunctionPacket();
         if (functionPacket == null) {
             // 如果功能列表为空，必须先获取一次功能列表，然后用户可自行缓存该功能列表也可使用 SDK 缓存
-            WristbandManager.getInstance(App.getInstance()).sendFunctionReq();
+            WristbandManager.getInstance().sendFunctionReq();
             return;
         }
         // 判断是否支持该功能
         boolean isSupport = functionPacket.getTemperature() == DeviceFunctionStatus.SUPPORT;
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onReadHealthDataPacket(ApplicationLayerReadHealthPacket readHealthPacket) {
@@ -64,13 +64,13 @@ public class TemperatureAction extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                WristbandManager.getInstance(App.getInstance()).readHealth();
+                WristbandManager.getInstance().readHealth();
             }
         }).start();
     }
 
     private void tempSet() {
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onTemperatureMeasureSetting(ApplicationLayerTemperatureControlPacket packet) {
@@ -82,13 +82,13 @@ public class TemperatureAction extends BaseActivity {
             @Override
             public void run() {
                 // 读取温度设置配置
-                WristbandManager.getInstance(App.getInstance()).requestTemperatureSetting();
+                WristbandManager.getInstance().requestTemperatureSetting();
                 // 温度设置
                 ApplicationLayerTemperatureControlPacket packet = new ApplicationLayerTemperatureControlPacket();
                 packet.setCelsiusUnit(true);// true 摄氏度 false 华氏度
                 packet.setShow(true);// 打开固件温度测试
                 packet.setAdjust(true);// 打开温度补偿
-                WristbandManager.getInstance(App.getInstance()).setTemperatureControl(packet);
+                WristbandManager.getInstance().setTemperatureControl(packet);
             }
         }).start();
     }
@@ -98,7 +98,7 @@ public class TemperatureAction extends BaseActivity {
             @Override
             public void run() {
                 // 开关温度测量 true 开 false 关
-                WristbandManager.getInstance(App.getInstance()).setTemperatureStatus(true);
+                WristbandManager.getInstance().setTemperatureStatus(true);
             }
         }).start();
     }

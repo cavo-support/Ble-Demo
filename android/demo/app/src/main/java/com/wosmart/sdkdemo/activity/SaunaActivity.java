@@ -14,7 +14,9 @@ import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerFunctionPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerTodaySumSportPacket;
 import com.wosmart.ukprotocollibary.model.db.GlobalGreenDAO;
+import com.wosmart.ukprotocollibary.model.db.JWHealthDataManager;
 import com.wosmart.ukprotocollibary.model.enums.DeviceFunctionStatus;
+import com.wosmart.ukprotocollibary.v2.JWValueCallback;
 import com.wosmart.ukprotocollibary.v2.entity.JWSaunaInfo;
 
 import java.util.Calendar;
@@ -36,7 +38,7 @@ public class SaunaActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void initData() {
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onDeviceFunction(ApplicationLayerFunctionPacket functionPacket) {
@@ -80,6 +82,19 @@ public class SaunaActivity extends BaseActivity implements View.OnClickListener 
                 if (saunaInfoList != null) {
                     Log.e(TAG, "onSyncSaunaDataFinished, local dataList = " + saunaInfoList.toString());
                 }
+
+                // or user this method to get sauna data, it's 2.0 api
+                JWHealthDataManager.getInstance().getHistorySaunaListByDate(year, month, day, new JWValueCallback<List<JWSaunaInfo>>() {
+                    @Override
+                    public void onSuccess(List<JWSaunaInfo> data) {
+
+                    }
+
+                    @Override
+                    public void onError(int code, String desc) {
+
+                    }
+                });
             }
 
         });

@@ -18,7 +18,7 @@ public class SMSAndWeChatNotifyAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onNotifyModeSettingReceive(ApplicationLayerNotifyPacket applicationLayerNotifyPacket) {
@@ -39,11 +39,11 @@ public class SMSAndWeChatNotifyAction extends BaseActivity {
             @Override
             public void run() {
                 // 请求各通知开关配置，建议连接完设置后获取一次，然后全局缓存
-                WristbandManager.getInstance(App.getInstance()).sendNotifyModeRequest();
+                WristbandManager.getInstance().sendNotifyModeRequest();
 
                 // 通知来电
-                WristbandManager.getInstance(App.getInstance()).sendOtherNotifyInfo(NotifyType.SMS, "18025481234 来短信了");
-                WristbandManager.getInstance(App.getInstance()).sendOtherNotifyInfo(NotifyType.WECHAT, "18025481234 给你发微信了");
+                WristbandManager.getInstance().sendOtherNotifyInfo(NotifyType.SMS, "18025481234 来短信了");
+                WristbandManager.getInstance().sendOtherNotifyInfo(NotifyType.WECHAT, "18025481234 给你发微信了");
             }
         }).start();
     }

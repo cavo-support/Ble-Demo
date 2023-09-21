@@ -224,4 +224,5 @@
     <string name="app_built_in_watch_face">Built-in</string>
     <string name="app_market_watch_face">Market</string>
     <string name="app_custom_watch_face">Custom</string>
+    <string name="app_current_progress">Current progress：</string>
 </resources>

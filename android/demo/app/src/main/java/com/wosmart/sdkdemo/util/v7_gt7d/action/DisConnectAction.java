@@ -15,7 +15,7 @@ public class DisConnectAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WristbandManager.getInstance(this).close();
+        WristbandManager.getInstance().close();
     }
 
 }

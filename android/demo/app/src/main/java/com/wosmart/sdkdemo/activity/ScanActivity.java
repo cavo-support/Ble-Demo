@@ -84,7 +84,7 @@ public class ScanActivity extends BaseActivity {
 
 
     private void startScan() {
-        WristbandManager.getInstance(this).startScan(true, new WristbandScanCallback() {
+        WristbandManager.getInstance().startScan(true, new WristbandScanCallback() {
             @Override
             public void onWristbandDeviceFind(BluetoothDevice device, int rssi, byte[] scanRecord) {
                 super.onWristbandDeviceFind(device, rssi, scanRecord);
@@ -140,12 +140,12 @@ public class ScanActivity extends BaseActivity {
     }
 
     private void stopScan() {
-        WristbandManager.getInstance(this).stopScan();
+        WristbandManager.getInstance().stopScan();
     }
 
     private void connect(final String mac, final String name) {
 
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onConnectionStateChange(boolean status) {
                 super.onConnectionStateChange(status);
@@ -172,12 +172,12 @@ public class ScanActivity extends BaseActivity {
             }
         });
 
-        WristbandManager.getInstance(this).connect(mac);
+        WristbandManager.getInstance().connect(mac);
 
     }
 
     private void disConnect() {
-        WristbandManager.getInstance(this).close();
+        WristbandManager.getInstance().close();
     }
 
     private class RssiComparable implements Comparator<SearchResult> {

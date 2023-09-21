@@ -22,7 +22,7 @@ public class App extends Application {
     /**
      * 设备芯片类型 0:C(正常芯片) 1:D(VD版本)
      */
-    private int deviceChipType = 1;
+    private int deviceChipType = 0;
 
     @Override
     public void onCreate() {
@@ -39,15 +39,17 @@ public class App extends Application {
         RtkCore.initialize(this, configure);
         RtkDfu.initialize(this, true);
 
-        WristbandManager.getInstance(this).initSDK();
+        WristbandManager.getInstance().initSDK(this);
 
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onBondReqChipType(int type) {
                 super.onBondReqChipType(type);
                 // 在登录成功后会触发此回调，用户需自行记录设备芯片类型
+                // 若没有触发此回调，则是默认芯片类型 0
                 // This callback will be triggered after successful login. The user needs to record the device chip type by himself.
+                // If this callback is not triggered, the default chip type is 0
                 deviceChipType = type;
                 Log.e("SSSS", "deviceChipType = " + deviceChipType);
             }

@@ -20,7 +20,7 @@ public class SyncTimeAction extends BaseActivity {
             @Override
             public void run() {
                 // 同步当前时间给设备
-                WristbandManager.getInstance(App.getInstance()).setTimeSync();
+                WristbandManager.getInstance().setTimeSync();
             }
         }).start();
     }

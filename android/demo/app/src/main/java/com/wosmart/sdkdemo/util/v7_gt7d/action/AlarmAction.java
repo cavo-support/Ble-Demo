@@ -19,10 +19,10 @@ public class AlarmAction extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance(App.getInstance()).getFunctionPacket();
+        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance().getFunctionPacket();
         if (functionPacket == null) {
             // 如果功能列表为空，必须先获取一次功能列表，然后用户可自行缓存该功能列表也可使用 SDK 缓存
-            WristbandManager.getInstance(App.getInstance()).sendFunctionReq();
+            WristbandManager.getInstance().sendFunctionReq();
             return;
         }
         // 判断是否支持该功能
@@ -32,7 +32,7 @@ public class AlarmAction extends BaseActivity {
     }
 
     private void readAlarm() {
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onAlarm2(ApplicationLayerAlarm2Packet alarm2) {
@@ -43,7 +43,7 @@ public class AlarmAction extends BaseActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                WristbandManager.getInstance(App.getInstance()).requestAlarm2();
+                WristbandManager.getInstance().requestAlarm2();
             }
         }).start();
     }
@@ -67,7 +67,7 @@ public class AlarmAction extends BaseActivity {
                 // 删除该提醒，则 flags = ApplicationLayerSitPacket.REPETITION_NULL;
                 // 如果设置星期一，星期三提醒，则 flags = ApplicationLayerSitPacket.REPETITION_MON | ApplicationLayerSitPacket.REPETITION_WED
                 packet.setmDayFlags(ApplicationLayerSitPacket.REPETITION_ALL);// 由低 bit 位到高 bit 位，分别代表周一到周日的重复设置。bit 位为 1 表示重复，为 0 时表示不重复。所有 bit 都为 0 时，表示只在当天有效。
-                WristbandManager.getInstance(App.getInstance()).setAlarm2(packet);
+                WristbandManager.getInstance().setAlarm2(packet);
 
             }
         }).start();
@@ -91,7 +91,7 @@ public class AlarmAction extends BaseActivity {
                 // 删除该提醒，则 flags = ApplicationLayerSitPacket.REPETITION_NULL;
                 // 如果设置星期一，星期三提醒，则 flags = ApplicationLayerSitPacket.REPETITION_MON | ApplicationLayerSitPacket.REPETITION_WED
                 packet.setmDayFlags(ApplicationLayerSitPacket.REPETITION_ALL);// 由低 bit 位到高 bit 位，分别代表周一到周日的重复设置。bit 位为 1 表示重复，为 0 时表示不重复。所有 bit 都为 0 时，表示只在当天有效。
-                WristbandManager.getInstance(App.getInstance()).setAlarm2(packet);
+                WristbandManager.getInstance().setAlarm2(packet);
 
 
                 // 删除闹钟，当 month 和 day 以及 day flags 同时设置为 0 的时候，意思是删除该闹钟。
@@ -116,7 +116,7 @@ public class AlarmAction extends BaseActivity {
                 packet.setmDayFlags(ApplicationLayerSitPacket.REPETITION_NULL);// 由低 bit 位到高 bit 位，分别代表周一到周日的重复设置。bit 位为 1 表示重复，为 0 时表示不重复。所有 bit 都为 0 时，表示只在当天有效。
 
                 // 删除闹钟，当 month 和 day 以及 day flags 同时设置为 0 的时候，意思是删除该闹钟。
-                WristbandManager.getInstance(App.getInstance()).setAlarm2(packet);
+                WristbandManager.getInstance().setAlarm2(packet);
             }
         }).start();
     }

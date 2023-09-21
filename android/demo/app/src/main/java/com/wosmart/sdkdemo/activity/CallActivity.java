@@ -45,7 +45,7 @@ public class CallActivity extends BaseActivity implements View.OnClickListener {
 
     private void initData() {
         handler = new MyHandler();
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onError(int error) {
                 super.onError(error);

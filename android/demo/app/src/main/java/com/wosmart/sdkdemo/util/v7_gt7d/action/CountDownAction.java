@@ -18,10 +18,10 @@ public class CountDownAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance(App.getInstance()).getFunctionPacket();
+        ApplicationLayerFunctionPacket functionPacket = WristbandManager.getInstance().getFunctionPacket();
         if (functionPacket == null) {
             // 如果功能列表为空，必须先获取一次功能列表，然后用户可自行缓存该功能列表也可使用 SDK 缓存
-            WristbandManager.getInstance(App.getInstance()).sendFunctionReq();
+            WristbandManager.getInstance().sendFunctionReq();
             return;
         }
         // 判断是否支持该功能
@@ -38,7 +38,7 @@ public class CountDownAction extends BaseActivity {
                 // TimerOpt.END  结束倒计时
                 // TimerOpt.SETTING 仅设置倒计时
                 packet.setOpt(TimerOpt.BEGIN);
-                WristbandManager.getInstance(App.getInstance()).setTimerInfo(packet);
+                WristbandManager.getInstance().setTimerInfo(packet);
             }
         }).start();
 

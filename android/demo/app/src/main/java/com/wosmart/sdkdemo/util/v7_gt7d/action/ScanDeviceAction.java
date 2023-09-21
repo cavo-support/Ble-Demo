@@ -22,7 +22,7 @@ public class ScanDeviceAction extends BaseActivity {
         super.onDestroy();
 
         // 注意连接设备前或退出界面要取消扫描
-        WristbandManager.getInstance(this).stopScan();
+        WristbandManager.getInstance().stopScan();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ScanDeviceAction extends BaseActivity {
     }
 
     private void scanDevice() {
-        WristbandManager.getInstance(this).startScan(true, new WristbandScanCallback() {
+        WristbandManager.getInstance().startScan(true, new WristbandScanCallback() {
             @Override
             public void onWristbandDeviceFind(BluetoothDevice device, int rssi, byte[] scanRecord) {
                 super.onWristbandDeviceFind(device, rssi, scanRecord);

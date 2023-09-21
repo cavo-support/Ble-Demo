@@ -65,7 +65,7 @@ public class ResetActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void close() {
-        WristbandManager.getInstance(this).close();
+        WristbandManager.getInstance().close();
     }
 
     private void removeBind() {

@@ -5,6 +5,7 @@ import static com.realsil.sdk.dfu.DfuConstants.PROGRESS_ACTIVE_IMAGE_AND_RESET;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -36,6 +37,7 @@ import java.io.InputStream;
 public class MarketWatchFaceActivity extends BaseActivity {
 
 
+    private TextView progressTv;
 
     private int faceCount = 0;
     @Override
@@ -44,6 +46,7 @@ public class MarketWatchFaceActivity extends BaseActivity {
 
         setContentView(R.layout.activity_watch_face_market);
 
+        progressTv = findViewById(R.id.tv_progress);
 
         // 先读取内置表盘信息 First read the built-in dial information
         readWatchFaceCount();
@@ -61,7 +64,7 @@ public class MarketWatchFaceActivity extends BaseActivity {
      */
     private void readWatchFaceCount() {
         // 读取内置表盘
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onHomePager(ApplicationLayerScreenStylePacket packet) {
@@ -81,7 +84,7 @@ public class MarketWatchFaceActivity extends BaseActivity {
             @Override
             public void run() {
                 // 请求内置表盘
-                WristbandManager.getInstance(App.getInstance()).requestHomePager();
+                WristbandManager.getInstance().requestHomePager();
             }
         }).start();
     }
@@ -92,7 +95,7 @@ public class MarketWatchFaceActivity extends BaseActivity {
     private void setMarketWatchFace() {
         String deviceMac = App.getInstance().getDeviceMac();
         String otaFilePath = "your ota file path";
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onSilenceOtaStatus(int status) {
                 super.onSilenceOtaStatus(status);
@@ -128,7 +131,7 @@ public class MarketWatchFaceActivity extends BaseActivity {
      *                 {@link WristbandManager#OTA_MODE_DIAL_MARKET_RESOURCES}
      */
     private void enterSilenceModel(String deviceMac, String otaFilePath, int mode) {
-        WristbandManager.getInstance(this).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onSilenceUpgradeModel(int model) {
@@ -228,6 +231,12 @@ public class MarketWatchFaceActivity extends BaseActivity {
                     super.onProgressChanged(dfuProgressInfo);
                     // progress info
                     int progress = dfuProgressInfo.getProgress();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressTv.setText(progress + "%");
+                        }
+                    });
                     Log.e("SSSS", "progress = " + progress);
                 }
             };

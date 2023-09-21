@@ -18,7 +18,7 @@ public class CallNotifyAction extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WristbandManager.getInstance(App.getInstance()).registerCallback(new WristbandManagerCallback() {
+        WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
             public void onNotifyModeSettingReceive(ApplicationLayerNotifyPacket applicationLayerNotifyPacket) {
@@ -47,11 +47,11 @@ public class CallNotifyAction extends BaseActivity {
             @Override
             public void run() {
                 // 请求各通知开关配置，建议连接完设置后获取一次，然后全局缓存
-                WristbandManager.getInstance(App.getInstance()).sendNotifyModeRequest();
+                WristbandManager.getInstance().sendNotifyModeRequest();
 
                 // 通知来电
-                WristbandManager.getInstance(App.getInstance()).sendOtherNotifyInfo(NotifyType.CALL, "18025481234 来电");
-                WristbandManager.getInstance(App.getInstance()).sendCallNotifyInfo("18025481234 来电");
+                WristbandManager.getInstance().sendOtherNotifyInfo(NotifyType.CALL, "18025481234 来电");
+                WristbandManager.getInstance().sendCallNotifyInfo("18025481234 来电");
             }
         }).start();
     }
