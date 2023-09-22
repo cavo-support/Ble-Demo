@@ -12,6 +12,7 @@ import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.ukprotocollibary.WristbandManager;
 import com.wosmart.ukprotocollibary.WristbandManagerCallback;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerFunctionPacket;
+import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerRateListPacket;
 import com.wosmart.ukprotocollibary.applicationlayer.ApplicationLayerTodaySumSportPacket;
 import com.wosmart.ukprotocollibary.model.db.GlobalGreenDAO;
 import com.wosmart.ukprotocollibary.model.db.JWHealthDataManager;
@@ -38,6 +39,11 @@ public class SaunaActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void initData() {
+        // make sure you have logged in successfully before performing synchronization
+        // 执行同步前确保已经登录成功 WristbandManager.getInstance().startLoginProcess("1234567890");
+        // when you end the sauna, you need to execute the synchronization function
+        // 在桑拿结束后执行一次同步才能获取到桑拿数据
+        WristbandManager.getInstance().sendDataRequest();
         WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
 
             @Override
@@ -58,6 +64,12 @@ public class SaunaActivity extends BaseActivity implements View.OnClickListener 
                 super.onSyncSaunaDataStart(totalCount);
                 // sync sauna data started, it will be trigger after sync health data[onSyncDataEnd]
                 Log.e(TAG, "onSyncSaunaDataStart");
+            }
+
+            @Override
+            public void onRateList(ApplicationLayerRateListPacket packet) {
+                super.onRateList(packet);
+                Log.e(TAG, "onRateList = " + packet.toString());
             }
 
             @Override
