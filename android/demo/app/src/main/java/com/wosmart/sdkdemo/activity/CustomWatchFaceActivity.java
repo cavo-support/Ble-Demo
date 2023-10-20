@@ -69,6 +69,7 @@ public class CustomWatchFaceActivity extends BaseActivity {
         previewImg.setDrawingCacheEnabled(true);
 
         isRoundWatch = new Random().nextBoolean();// 用户需确认手表是否为圆形 Users need to confirm whether the watch is round
+        isRoundWatch = false;
         previewImg.setImageDrawable(ContextCompat.getDrawable(this, isRoundWatch ? R.mipmap.bg_preview_round : R.mipmap.bg_preview_rect));
 
         // 先读取内置表盘信息 First read the built-in dial information
@@ -135,9 +136,9 @@ public class CustomWatchFaceActivity extends BaseActivity {
 
         // 每个手表对应的尺寸不一样，具体的尺寸联系请我们获取
         // V101
-        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-                isRoundWatch, App.getInstance().getDeviceChipType(), 80, 160,
-                66, 128, 0, 1, "#04fbfe");
+//        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
+//                isRoundWatch, App.getInstance().getDeviceChipType(), 80, 160,
+//                66, 128, 0, 1, "#04fbfe");
 
         // TF 5S
 //        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
@@ -145,9 +146,9 @@ public class CustomWatchFaceActivity extends BaseActivity {
 //                238, 238, 119, 2, "#08d3ff");
 
         // P1S
-//        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
-//                isRound, App.getInstance().getDeviceChipType(), 172, 320,
-//                129, 240, 18, 2, "#08d3ff");
+        String otaFilePath = CustomOTAFileUtils.createOTAFile(this, bgBitmap, previewBitmap,
+                isRoundWatch, App.getInstance().getDeviceChipType(), 172, 320,
+                129, 240, 18, 2, "#08d3ff");
 
         if (TextUtils.isEmpty(otaFilePath)) {
             return;
