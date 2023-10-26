@@ -69,7 +69,7 @@ public class SaunaActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onSyncSaunaDataReceived(List<JWSaunaInfo> saunaInfoList) {
                 super.onSyncSaunaDataReceived(saunaInfoList);
-                // sync pulse data received, you can save it by yourself
+                // sync sauna data received, you can save it by yourself
                 Log.e(TAG, "onSyncSaunaDataReceived, dataList = " + (saunaInfoList != null ? saunaInfoList.toString() : ""));
             }
 
