@@ -62,6 +62,11 @@
         } else if (deviceDFUStatus == JWBleDeviceDFUStatus_Updating) {
             NSString *str = [NSString stringWithFormat:@"progress.. : %.1f%%",(float)didSend/(float)totalLength*100];
             NSLog(@"%@",str);
+            
+            // 3: 显示手环 首页表盘为 该下载表盘
+            int deviceInterfaceCount = 999;// 通过 [JWBleAction jwMainInterfaceAction] 获取到的总数
+            [JWBleAction jwMainInterfaceAction:false willShowIndex:deviceInterfaceCount+2 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
+            }];
         } else if (deviceDFUStatus == JWBleDeviceDFUStatus_Success) {
             
         } else if (deviceDFUStatus == JWBleDeviceDFUStatus_Failure) {
@@ -69,10 +74,7 @@
         }
     }];
     
-    // 3: 显示手环 首页表盘为 该下载表盘
-    int deviceInterfaceCount = 999;// 通过 [JWBleAction jwMainInterfaceAction] 获取到的总数
-    [JWBleAction jwMainInterfaceAction:false willShowIndex:deviceInterfaceCount+2 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
-    }];
+
 }
 
 /**
