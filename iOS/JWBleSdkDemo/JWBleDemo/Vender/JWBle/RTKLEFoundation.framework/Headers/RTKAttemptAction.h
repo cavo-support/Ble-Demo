@@ -21,12 +21,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) NSInteger ID;
 @property (nonatomic, readonly) NSInteger subID;
-@property (nonatomic, readonly) NSUInteger remainAttemptNumber;
 
-- (BOOL)setRetryCount:(NSUInteger)count;
-- (BOOL)setRetryInterval:(NSTimeInterval)retryInterval;
+@property (nonatomic) NSUInteger retryCount;
+@property (nonatomic) NSTimeInterval timeoutInterval;
 
 @property (readonly) BOOL isInProgress;
+
+@property (readonly) NSUInteger remainTryCount;
 
 
 - (instancetype)initWithID:(NSInteger)ID subID:(NSInteger)subID action:(BOOL(^)(NSError *_Nullable* err))action completion:(void(^)(BOOL success, NSError*_Nullable err, id _Nullable obj))handler;
@@ -34,6 +35,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithID:(NSInteger)ID action:(BOOL(^)(NSError *_Nullable* err))action completion:(void(^)(BOOL success, NSError*_Nullable err, id _Nullable obj))handler;
 
 - (void)resume;
+
+// will not trigger completion invoked.
+- (void)cancel;
+
+- (void)endCurrentTry;
 
 - (void)endEarlyWithSuccess:(BOOL)success error:(nullable NSError *)error userInfo:(nullable id)info;
 

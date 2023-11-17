@@ -265,6 +265,8 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_UricAcid = 10009, // 尿酸
     JWBleFunctionEnum_BloodFat = 10010, // 血脂
     JWBleFunctionEnum_BloodGlucoseCycle = 10011, // 周期血糖
+    JWBleFunctionEnum_UricAcid_ContinuesMonitoring_Private = 10012,  // 尿酸，持续监测，私人模式
+    JWBleFunctionEnum_BloodFat_ContinuesMonitoring_Private = 10013,  // 血脂，持续监测，私人模式
 };
 
 //客户功能枚举 Custom Function enumeration
@@ -291,7 +293,8 @@ typedef NS_ENUM (NSInteger, JWBleDeviceSwitchFunctionEnum) {
     JWBleDeviceSwitchFunctionEnum_Temperature_Function_Independent,//温度功能独立，返回值（0：关闭， 1：开启）  Temperature function independent, return value (0: off, 1: on)
     JWBleDeviceSwitchFunctionEnum_BloodGlucose_Monitoring,//血糖功能独立，返回值（0：关闭， 1：开启）  BloodGlucose function independent, return value (0: off, 1: on)
     JWBleDeviceSwitchFunctionEnum_Gesture_Bright_Screen,//手势亮屏，返回值（0：关闭， 1：开启） Gesture bright screen, return value (0: off, 1: on)
-    
+    JWBleDeviceSwitchFunctionEnum_UricAcidContinuesMonitoring,//尿酸连续监测，返回值（0：关闭， 1：开启） Continuous monitoring of uric acid, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_BloodFatContinuesMonitoring,//血脂连续监测，返回值（0：关闭， 1：开启） Continuous monitoring of blood lipids, return value (0: off, 1: on)
 };
 
 //通知枚举 Notification enumeration
@@ -437,7 +440,9 @@ typedef NS_ENUM (NSInteger, JWDeleteDataType) {
     JWDeleteDataType_Sports,
     JWDeleteDataType_BloodFat,
     JWDeleteDataType_UricAcid,
-    JWDeleteDataType_BloodGlucoseCycle
+    JWDeleteDataType_BloodGlucoseCycle,
+    JWDeleteDataType_BloodFatContinuousMonitoring,
+    JWDeleteDataType_UricAcidContinuousMonitoring,
 };
 
 #pragma mark - CallBack

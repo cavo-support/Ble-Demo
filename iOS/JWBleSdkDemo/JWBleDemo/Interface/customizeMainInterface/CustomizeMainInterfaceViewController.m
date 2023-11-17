@@ -19,6 +19,7 @@
     
     self.title = NSLocalizedString(@"Continuous blood pressure", nil);
     
+    [self downloadIntercadeAction];
 }
 
 /**
@@ -49,10 +50,13 @@
     }];
         
     // 2: 进行升级
-    NSString *basePath = @"";
-    NSString *fileName = @"";
+//    NSString *basePath = @"";
+//    NSString *fileName = @"";
     
-    NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",basePath,fileName]]];
+    NSString *basePath = [[NSBundle mainBundle] pathForResource:@"image" ofType:@"bin"];
+    NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath: basePath]];
+    
+//    NSData *data = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@",basePath,fileName]]];
     [[JWBleOTAAction shareInstance] startImageOTAWithData:data callBack:^(NSInteger didSend, NSInteger totalLength, JWBleDeviceDFUStatus deviceDFUStatus) {
         
         if (deviceDFUStatus == JWBleDeviceDFUStatus_FileNotExist) {
@@ -74,7 +78,6 @@
         }
     }];
     
-
 }
 
 /**

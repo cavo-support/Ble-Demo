@@ -26,11 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id <RTKMultiDFUPeripheralDelegate> delegate;
 
-@property (nonatomic, weak, readonly) RTKLEProfile *profile;  /* Protected */
-
 @property (readonly, nullable) NSArray <RTKOTAUpgradeBin*> *upgradeImages;
-
-- (instancetype)initWithCBPeripheral:(CBPeripheral *)peripheral OTAPeripheral:(RTKOTAPeripheral *)OTAPeri profile:(RTKLEProfile*)profile;
 
 - (void)upgradeImages:(NSArray <RTKOTAUpgradeBin*> *)images inOTAMode:(BOOL)yesOrNo;
 

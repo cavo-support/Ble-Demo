@@ -10,17 +10,11 @@
 #ifndef RTKOTAFileFormat_h
 #define RTKOTAFileFormat_h
 
-typedef NS_ENUM(NSUInteger, RTKOTAICType) {
-    RTKOTAICTypeUnknown     = 0,
-    RTKOTAICTypeBee         = 3,
-    RTKOTAICTypeBBpro       = 4,
-    RTKOTAICTypeBee2        = 5,
-    RTKOTAICTypeBBLite      =  6,
-};
 
 typedef NS_ENUM(NSUInteger, RTKOTAImageType) {
     RTKOTAImageType_Unknown = 0,
     
+    // Bee
     RTKOTAImageType_Bee_Patch                       = 0x01<<0,
     RTKOTAImageType_Bee_AppBank0                    = 0x01<<1,
     RTKOTAImageType_Bee_AppBank1                    = 0x01<<2,
@@ -28,6 +22,7 @@ typedef NS_ENUM(NSUInteger, RTKOTAImageType) {
     RTKOTAImageType_Bee_PatchExt                    = 0x01<<4,
     RTKOTAImageType_Bee_Config                      = 0x01<<6,
     
+    // Bee 2
     RTKOTAImageType_Bee2_SOCV_CFG                   = 0x01<<0,
     RTKOTAImageType_Bee2_SystemConfig               = 0x01<<1,
     RTKOTAImageType_Bee2_OTAHeader                  = 0x01<<2,
@@ -40,18 +35,30 @@ typedef NS_ENUM(NSUInteger, RTKOTAImageType) {
     RTKOTAImageType_Bee2_APP_DATA4                  = 0x01<<9,
     RTKOTAImageType_Bee2_APP_DATA5                  = 0x01<<10,
     RTKOTAImageType_Bee2_APP_DATA6                  = 0x01<<11,
+    RTKOTAImageType_Bee2_APP_DATA7                  = 0x01<<12,
+    RTKOTAImageType_Bee2_APP_DATA8                  = 0x01<<13,
+    RTKOTAImageType_Bee2_APP_DATA9                  = 0x01<<14,
+    RTKOTAImageType_Bee2_APP_DATA10                 = 0x01<<15,
     
-    RTKOTAImageType_Bee2_OTAHeader_bank             = 0x01<<(2+16),
-    RTKOTAImageType_Bee2_Secure_Boot_Loader_bank    = 0x01<<(3+16),
-    RTKOTAImageType_Bee2_ROM_PATCH_bank             = 0x01<<(4+16),
-    RTKOTAImageType_Bee2_APP_IMG_bank               = 0x01<<(5+16),
-    RTKOTAImageType_Bee2_APP_DATA1_bank             = 0x01<<(6+16),
-    RTKOTAImageType_Bee2_APP_DATA2_bank             = 0x01<<(7+16),
-    RTKOTAImageType_Bee2_APP_DATA3_bank             = 0x01<<(8+16),
-    RTKOTAImageType_Bee2_APP_DATA4_bank             = 0x01<<(9+16),
-    RTKOTAImageType_Bee2_APP_DATA5_bank             = 0x01<<(10+16),
-    RTKOTAImageType_Bee2_APP_DATA6_bank             = 0x01<<(11+16),
+    // SBee 2 (Bee3)
+    RTKOTAImageType_SBee2_SOCV_CFG                   = 0x01<<0,
+    RTKOTAImageType_SBee2_SystemConfig               = 0x01<<1,
+    RTKOTAImageType_SBee2_OTAHeader                  = 0x01<<2,
+    RTKOTAImageType_SBee2_Secure_Boot_Loader         = 0x01<<3,
+    RTKOTAImageType_SBee2_ROM_PATCH                  = 0x01<<4,
+    RTKOTAImageType_SBee2_APP_IMG                    = 0x01<<5,
+    RTKOTAImageType_SBee2_APP_DATA1                  = 0x01<<6,
+    RTKOTAImageType_SBee2_APP_DATA2                  = 0x01<<7,
+    RTKOTAImageType_SBee2_APP_DATA3                  = 0x01<<8,
+    RTKOTAImageType_SBee2_APP_DATA4                  = 0x01<<9,
+    RTKOTAImageType_SBee2_APP_DATA5                  = 0x01<<10,
+    RTKOTAImageType_SBee2_APP_DATA6                  = 0x01<<11,
+    RTKOTAImageType_SBee2_UPPERSTACK                 = 0x01<<12,
+    RTKOTAImageType_SBee2_APP_DATA8                  = 0x01<<13,
+    RTKOTAImageType_SBee2_APP_DATA9                  = 0x01<<14,
+    RTKOTAImageType_SBee2_APP_DATA10                 = 0x01<<15,
     
+    // BBpro (BBLite, BBpro 2 including)
     RTKOTAImageType_BBpro_SOCV_CFG                  = 0x01<<0,
     RTKOTAImageType_BBpro_SystemConfig              = 0x01<<1,
     RTKOTAImageType_BBpro_OTAHeader                 = 0x01<<2,
@@ -68,20 +75,11 @@ typedef NS_ENUM(NSUInteger, RTKOTAImageType) {
     RTKOTAImageType_BBpro_EXT_IMAGE3                = 0x01<<13,
     RTKOTAImageType_BBpro_FACTORY_IMAGE             = 0x01<<14,
     RTKOTAImageType_BBpro_BACKUP_DATA               = 0x01<<15,
-    
-    RTKOTAImageType_BBpro_OTAHeader_bank           = 0x01<<(2+16),
-    RTKOTAImageType_BBpro_Secure_Boot_Loader_bank   = 0x01<<(3+16),
-    RTKOTAImageType_BBpro_ROM_PATCH_bank            = 0x01<<(4+16),
-    RTKOTAImageType_BBpro_APP_IMG_bank              = 0x01<<(5+16),
-    RTKOTAImageType_BBpro_DSP_System_bank           = 0x01<<(6+16),
-    RTKOTAImageType_BBpro_DSP_APP_bank              = 0x01<<(7+16),
-    RTKOTAImageType_BBpro_DSP_UI_PARAMETER_bank     = 0x01<<(8+16),
-    RTKOTAImageType_BBpro_APP_UI_PARAMETER_bank     = 0x01<<(9+16),
-    RTKOTAImageType_BBpro_EXT_IMAGE0_bank           = 0x01<<(10+16),
-    RTKOTAImageType_BBpro_EXT_IMAGE1_bank           = 0x01<<(11+16),
-    RTKOTAImageType_BBpro_EXT_IMAGE2_bank           = 0x01<<(12+16),
-    RTKOTAImageType_BBpro_EXT_IMAGE3_bank           = 0x01<<(13+16),
-    
+    RTKOTAImageType_BBpro_BACKUP_DATA2              = 0x01<<16,
+    RTKOTAImageType_BBpro_Platform_Img              = 0x01<<17,
+    RTKOTAImageType_BBpro_Lower_Stack_Img           = 0x01<<18,
+    RTKOTAImageType_BBpro_Upper_Stack_Img           = 0x01<<19,
+    RTKOTAImageType_BBpro_Framework_Img             = 0x01<<20,
 };
 
 typedef NS_ENUM(uint16_t, RTKSubBinHeaderType)
@@ -117,10 +115,47 @@ typedef struct {
     uint16_t    signature;
     uint32_t    size;
     uint8_t     checkSum[32];
-    uint16_t    extension;
-    uint32_t    indicator;
+    union {
+        uint16_t value;
+        struct {
+            uint8_t packVersion : 4;
+            uint8_t reserved : 3;
+            uint8_t isDualBank : 1;
+            uint8_t icType;
+        } components;
+    } extension;
+    union {
+        uint32_t    value;
+        struct {
+            uint16_t bank0;
+            uint16_t bank1;
+        } components;
+    } indicator;
     RTKOTAMPSubFileIndicator subFileIndicator;
-} RTKOTAMPHeader;
+} RTKOTAMPPackHeader;
+
+typedef struct {
+    uint16_t    signature;
+    uint32_t    size;
+    uint8_t     checkSum[32];
+    union {
+        uint16_t value;
+        struct {
+            uint8_t packVersion : 4;
+            uint8_t reserved : 3;
+            uint8_t isDualBank : 1;
+            uint8_t icType;
+        } components;
+    } extension;
+    union {
+        uint32_t    value[8];
+        struct {
+            uint64_t bank0[2];
+            uint64_t bank1[2];
+        } components;
+    } indicator;
+    RTKOTAMPSubFileIndicator subFileIndicator;
+} RTKOTAMPPackHeaderNew;
 
 
 typedef struct {
@@ -160,7 +195,6 @@ union VersionFormatBee2 {
     } component;
 };
 
-
 union VersionFormatBBpro {
     uint32_t numberValue;
     struct {
@@ -191,9 +225,6 @@ union VersionFormatBBproPatch {
     } component;
 };
 
-
-
-
 union VersionFormatOTA {
     uint32_t numberValue;
     struct {
@@ -207,9 +238,21 @@ union VersionFormatOTA {
 union VersionFormatDSP {
     uint32_t numberValue;
     struct {
+        uint8_t customer_info: 8;
+        uint8_t svn_revision: 8;
+        uint8_t svn_minor: 8;
+        uint8_t svn_major: 8;
+    } component;
+};
+
+
+union VersionFormatDSPConfig {
+    uint32_t numberValue;
+    struct {
         uint8_t minor: 8;
         uint8_t major: 8;
-        uint32_t rsv: 16;
+        uint8_t custom_minor: 8;
+        uint8_t custom_major: 8;
     } component;
 };
 

@@ -38,10 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)profile:(RTKLEProfile *)profile didDiscoverPeripheral:(RTKLEPeripheral *)peripheral;
 
-/**
- * Invoked when the Profile is about to connect a peripheral.
- */
-- (void)profile:(RTKLEProfile *)profile willConnectPeripheral:(RTKLEPeripheral *)peripheral;
 
 /**
  * Invoked when a connection is successfully created with a peripheral.
@@ -53,7 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * Invoked when the central manager fails to create a connection with a peripheral.
  *
- * @discussion Not like the CBCentralManager, this connect methods of RTKLEProfile will time out. When connection time out, the error parameter has a RTKGenericErrorTimeout code.
+ * @discussion Unlike the CBCentralManager, this connect methods of RTKLEProfile will time out. When connection time out, the error parameter has a RTKErrorTimeout code.
  */
 - (void)profile:(RTKLEProfile *)profile didFailToConnectPeripheral:(RTKLEPeripheral *)peripheral error:(nullable NSError *)error;
 
@@ -75,6 +71,8 @@ NS_ASSUME_NONNULL_BEGIN
     @protected
     CBCentralManager *_centralManager;
 }
+
+- (instancetype)initWithDelegate:(nullable id <RTKLEProfileDelegate>)delegate;
 
 // Protected accessors
 @property (readonly) CBCentralManager *centralManager;
@@ -102,8 +100,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 // Scan expected peripheral nearby.
+
+// protected
+@property (readonly) NSPointerArray *scanedPeripherals;
+
 @property (readonly) BOOL isScaning;
+
 - (void)scanForPeripherals;
+
+- (void)scanForPeripheralsWithDuplicateReport;
+
 - (void)stopScan;
 
 
@@ -117,7 +123,7 @@ NS_ASSUME_NONNULL_BEGIN
 */
 
 
-- (nullable RTKLEPeripheral *)peripheralUsingCBPeripheral:(CBPeripheral *)peripheral;
+- (NSArray <RTKLEPeripheral*> *)peripheralsUsingCBPeripheral:(CBPeripheral *)peripheral;
 
 - (nullable RTKLEPeripheral *)instantiatePeripheralWithCBPeripheral:(CBPeripheral *)peripheral;
 
@@ -141,6 +147,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /* Protected */
 - (void)_connectTo:(RTKLEPeripheral *)peripheral withTimeout:(NSTimeInterval)timeout completionHandler:(nullable RTKLECompletionBlock)handler;
+- (void)_cancelConnectionWith:(RTKLEPeripheral *)peripheral;
+
+- (void)validatePeripheralAndOpen:(RTKLEPeripheral *)peripheral withCompletion:(RTKLECompletionBlock)handler;
 
 @end
 

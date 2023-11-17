@@ -6,11 +6,39 @@
 //  Copyright © 2019 Realtek. All rights reserved.
 //
 
+#ifdef RTK_SDK_IS_STATIC_LIBRARY
+#import "libRTKLEFoundation.h"
+#else
 #import <RTKLEFoundation/RTKLEFoundation.h>
+#endif
+
 #import "RTKOTAFormat.h"
-#import "RTKOTABin.h"
+#import "RTKOTAInstalledBin.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+
+typedef enum : NSUInteger {
+    RTKOTAProtocolTypeGATTSPP  =  0x0000,
+    RTKOTAProtocolTypeGATT  =   0x0010,
+    RTKOTAProtocolTypeSPP =   0x0011,
+} RTKOTAProtocolType;
+
+
+typedef enum : NSUInteger {
+    RTKOTAEarbudUnkown,
+    RTKOTAEarbudPrimary,
+    RTKOTAEarbudSecondary,
+    RTKOTAEarbudSingle,
+} RTKOTAEarbud;
+
+
+typedef enum : NSInteger {
+    RTKOTABankTypeInvalid   =   -1,
+    RTKOTABankTypeSingle    = 0x00,
+    RTKOTABankTypeBank0,
+    RTKOTABankTypeBank1,
+} RTKOTABankType;
 
 
 @class RTKOTAPeripheral;
@@ -29,13 +57,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RTKOTAPeripheral : RTKLEPeripheral
 
 @property (readonly) BOOL infoSettled;
+@property (readonly) BOOL isBBpro;
 
 @property (nonatomic, weak) id <RTKOTAPeripheralDelegate> delegate;
-
-/**
- * Realtek IC
- */
-@property (readonly) RTKOTAICType ic;
 
 /**
  * OTA process version
@@ -44,17 +68,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly) NSUInteger securityVersion;
 
-@property (readonly) uint64_t bdAddress;
+@property (readonly) BDAddressType bdAddress;
+@property (readonly) BDAddressType pairedBDAddress;
 
 @property (readonly) uint16_t appVersion;
 @property (readonly) uint16_t patchVersion;
 
 @property (readonly) NSString *linkKey;
-
-@property () NSUInteger maxBufferSize;
 @property (readonly) NSUInteger tempBufferSize;
 
-@property (readonly) NSUInteger freeBank;
+@property (readonly) RTKOTABankType activeBank;
 @property (readonly) NSUInteger appFreeBank;
 @property (readonly) NSUInteger patchFreeBank;
 
@@ -64,14 +87,38 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) BOOL copyImage;
 @property (readonly) BOOL updateMultiImages;
 
+/* RWS Upgrade related properties */
+/**
+ Whether this peripheral is a one of the RWS pair.
+ */
+@property (readonly) BOOL isRWS;
+
+/**
+ Indicate what bud is this perpheral.
+ */
+@property (readonly) RTKOTAEarbud budType;
+
+/**
+Indicate whether RWS bud is in engaged.d
+*/
+@property (readonly) BOOL notEngaged;
+
+
+/**
+ Indicate whether this peripheral have received images right now, but not active.
+ */
+@property (readonly) BOOL upgradedCurrently;
+
 @property (readonly) uint32_t imageIndicator;
 
-@property (readonly) uint16_t protocolVer;
+@property (readonly) RTKOTAProtocolType protocolType;
 
 /**
  * The executable bins installed in Realtek peripheral.
  */
-@property (readonly) NSArray <RTKOTABin*> *bins;
+@property (readonly) NSArray <RTKOTAInstalledBin*> *bins;
+
+
 
 
 /**
@@ -92,5 +139,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)enterOTAMode;
 
 @end
+
+
+// only used for BBpro 2 dual bank situation.
+@interface RTKOTAPeripheral (DualBank)
+
+@property (readonly, nullable) NSArray <RTKOTAInstalledBin*> *inactiveBins;
+
+
+@end
+
 
 NS_ASSUME_NONNULL_END

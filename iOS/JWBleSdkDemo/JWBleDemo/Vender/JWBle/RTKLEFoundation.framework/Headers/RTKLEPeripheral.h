@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, RTKLEPeripheralValidState) {
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class RTKLEProfile;
 @class RTKLEPeripheral;
 
 /**
@@ -48,8 +49,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @class RTKLEPeripheral
  *  Realtek wrapper of CBPeripheral.
  *
- *  @discussion Use this class for Realtek SDK context.
- *              Do not confuse with CBPeripheral.
+ *  @discussion The CBPeer class is an abstract base class that defines common behavior for objects representing Realtek remote devices. Use this class for Realtek SDK context. Do not confuse with CBPeripheral.
  */
 @interface RTKLEPeripheral : NSObject <CBPeripheralDelegate> {
     @protected
@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
  * Designated initializer
  * @param peripheral The underlying CBPeripheral.
  */
-- (instancetype)initWithCBPeripheral:(CBPeripheral *)peripheral;
+- (instancetype)initWithCBPeripheral:(CBPeripheral *)peripheral profile:(RTKLEProfile *)profile;
 
 
 @property (weak, nonatomic, nullable) id<RTKLEPeripheralDelegate> delegate;
@@ -97,13 +97,18 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)stopMonitorRSSI;
 
+/**
+ * The profile which this peripheral belong to.
+ */
+@property (nonatomic, weak, readonly) RTKLEProfile *profile;
+
 @end
 
 
 @interface RTKLEPeripheral(Validation)
 
 /**
- * 指示当前外设是否符合Profile Service Specification
+ * Indicate whether the peripheral conform Profile Service Spec. i.e have specified service & characterisitc.
  */
 @property (readonly) RTKLEPeripheralValidState validState;
 
@@ -115,7 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RTKLEPeripheral(Open)
 
 /**
- * 指示当前外设是否可以使用
+ * Whether peripheral is ready for operation.
  */
 @property (readonly) BOOL isOpen;
 
@@ -136,7 +141,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /**
- * Interface about Discovery
+ * Interface related to ATT Discovery
  */
 @interface RTKLEPeripheral(Discovery)
 
@@ -152,6 +157,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)discoverService:(NSString *)serviceID containingCharacteristics:(nullable NSArray <NSString*>*)characteristicIDs timeout:(NSTimeInterval)timeout completionHandler:(void(^)(BOOL, NSError *_Nullable))handler;
 
 - (void)_clearDiscoveryCache;
+
+
+- (nullable CBService *)serviceWithID:(NSString *)serviceID;
 
 /**
  * Return the Characteristic already discovered.

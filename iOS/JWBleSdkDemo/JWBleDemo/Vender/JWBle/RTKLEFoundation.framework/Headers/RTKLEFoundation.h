@@ -19,32 +19,33 @@ FOUNDATION_EXPORT const unsigned char RTKLEFoundationVersionString[];
 #import <RTKLEFoundation/RTKLEGeneralDefines.h>
 
 #import <RTKLEFoundation/RTKLEPeripheral.h>
-#import <RTKLEFoundation/RTKProfileAttribute.h> // deprecated
-#import <RTKLEFoundation/RTKProfileAttributeKey.h>  // deprecated
-
 #import <RTKLEFoundation/RTKLEProfile.h>
-
-
-#import <RTKLEFoundation/RTKLECentralManager.h> // deprecated
 
 #import <RTKLEFoundation/RTKPeripheralCharacteristicOperation.h>
 #import <RTKLEFoundation/RTKLEPackage.h>
 #import <RTKLEFoundation/RTKPackageCommunication.h>
 #import <RTKLEFoundation/RTKCharacteristicReadWrite.h>
+#import <RTKLEFoundation/RTKCommunicationDataReceiver.h>
+#import <RTKLEFoundation/RTKCommunicationDataSender.h>
 
 #import <RTKLEFoundation/RTKAttemptAction.h>
 
-#import <RTKLEFoundation/RTKGATTProfileClient.h>    // deprecated
-
 #import <RTKLEFoundation/RTKPackageIDGenerator.h>
-#import <RTKLEFoundation/RTKLog.h>
 #import <RTKLEFoundation/RTKLELogMacros.h>
 #import <RTKLEFoundation/RTKError.h>
 
+#import <RTKLEFoundation/RTKAccessoryManager.h>
+#import <RTKLEFoundation/RTKAccessory.h>
+#import <RTKLEFoundation/RTKAccessorySessionCommunication.h>
+
+
 /* UI */
-#import <RTKLEFoundation/RTKScanPeripheralViewController.h>
+//#import <RTKLEFoundation/RTKScanPeripheralViewController.h>
 
 #import <RTKLEFoundation/RTKFile.h>
 #import <RTKLEFoundation/RTKFileBrowseViewController.h>
 
-#import <RTKLEFoundation/RTKTableViewCell.h>
+//#import <RTKLEFoundation/RTKTableViewCell.h>
+
+#import <RTKLEFoundation/NSData+KKAES.h>
+#import <RTKLEFoundation/NSData+CRC16.h>
