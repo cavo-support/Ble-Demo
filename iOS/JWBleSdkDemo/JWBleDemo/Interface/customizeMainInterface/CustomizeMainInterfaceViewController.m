@@ -123,14 +123,27 @@
             
                                       }
                                        updateCallBack:^(NSInteger didSend, NSInteger totalLength, JWBleDeviceDFUStatus deviceDFUStatus) {
+        
+        if (deviceDFUStatus == JWBleDeviceDFUStatus_FileNotExist) {
             
+        } else if (deviceDFUStatus == JWBleDeviceDFUStatus_Start) {
+            
+        } else if (deviceDFUStatus == JWBleDeviceDFUStatus_Updating) {
+            NSString *str = [NSString stringWithFormat:@"progress.. : %.1f%%",(float)didSend/(float)totalLength*100];
+            NSLog(@"%@",str);
+            
+            // 3: 显示手环 首页表盘为 该自定义表盘
+            [JWBleAction jwMainInterfaceAction:true willShowIndex:0 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
+                [JWBleAction jwMainInterfaceAction:false willShowIndex:curShowIndex+1 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
+                }];
+            }];
+        } else if (deviceDFUStatus == JWBleDeviceDFUStatus_Success) {
+            
+        } else if (deviceDFUStatus == JWBleDeviceDFUStatus_Failure) {
+            
+        }
     }];
     
-    // 3: 显示手环 首页表盘为 该自定义表盘
-    [JWBleAction jwMainInterfaceAction:true willShowIndex:0 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
-        [JWBleAction jwMainInterfaceAction:false willShowIndex:curShowIndex+1 callBack:^(JWBleCommunicationStatus status, int curShowIndex, int count) {
-        }];
-    }];
 }
 
 - (IBAction)clickStartBtn:(id)sender {
