@@ -21,6 +21,17 @@ FOUNDATION_EXPORT const unsigned char RTKOTASDKVersionString[];
 #import <RTKOTASDK/RTKDFUPeripheral.h>
 #import <RTKOTASDK/RTKMultiDFUPeripheral.h>
 
+#import <RTKOTASDK/RTKOTAUpgrade.h>
+#import <RTKOTASDK/RTKAccessoryOTAUpgrade.h>
+#import <RTKOTASDK/RTKOTADeviceInfo.h>
+#import <RTKOTASDK/RTKOTAUpgradeBin+Available.h>
+
+#import <RTKOTASDK/RTKOTACoordinator.h>
+#import <RTKOTASDK/RTKAccessoryOTACoordinator.h>
+
+
 #import <RTKOTASDK/RTKOTABin.h>
+#import <RTKOTASDK/RTKOTAInstalledBin.h>
 #import <RTKOTASDK/RTKOTAUpgradeBin.h>
+
 #import <RTKOTASDK/RTKOTAFormat.h>

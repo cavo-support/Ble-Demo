@@ -1,6 +1,6 @@
 //
 //  RTKFile.h
-//  RTKCheck
+//  RTKTest
 //
 //  Created by jerome_gu on 2018/5/29.
 //  Copyright © 2018年 jerome_gu. All rights reserved.
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)fileWithPath:(NSString *)path;
 - (instancetype)initWithPath:(NSString *)path;
 
-- (instancetype)initWithURL:(NSURL *)url;
+//- (instancetype)initWithURL:(NSURL *)url;
 
 @property (readonly, copy) NSString *path;
 

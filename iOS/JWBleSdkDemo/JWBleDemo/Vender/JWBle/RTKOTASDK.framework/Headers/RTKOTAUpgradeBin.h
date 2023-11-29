@@ -9,11 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "RTKOTABin.h"
 
-typedef NS_ENUM(NSUInteger, RTKOTABinBankInfo) {
-    RTKOTABinBankInfo_Unknown,
-    RTKOTABinBankInfo_Bank0,
-    RTKOTABinBankInfo_Bank1,
+
+typedef NS_ENUM(NSUInteger, RTKOTAUpgradeBank) {
+    RTKOTAUpgradeBank_Unknown,
+    RTKOTAUpgradeBank_SingleOrBank0,
+    RTKOTAUpgradeBank_Bank1,
 };
+
+
+
+@class RTKOTAPeripheral;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -30,20 +35,34 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (readonly) NSData *data;
 
-@property (nonatomic) RTKOTABinBankInfo bank;
-
 
 - (instancetype)initWithPureData:(NSData *)data;
 
-- (instancetype)initWithMPBinData:(NSData *)data ic:(RTKOTAICType)ic;
+/**
+ * Whether this image is able to be installed at bank1. This is available for dual bank SOC.
+ */
+@property (readonly) RTKOTAUpgradeBank upgradeBank;
+
+// 32-byte
+@property (readonly, nullable) NSData *checkValue;
 
 
-+ (nullable NSArray <RTKOTAUpgradeBin*> *)imagesExtractFromMPPackFilePath:(NSString *)path error:(NSError *__nullable *__nullable)errPtr;
++ (nullable NSArray <RTKOTAUpgradeBin*> *)imagesExtractedFromMPPackFilePath:(NSString *)path error:(NSError *__nullable *__nullable)errPtr;
 
-+ (nullable NSArray <RTKOTAUpgradeBin*> *)imagesExtractFromMPPackFileData:(NSData *)data error:(NSError *__nullable *__nullable)errPtr;
++ (nullable NSArray <RTKOTAUpgradeBin*> *)imagesExtractFromMPPackFilePath:(NSString *)path error:(NSError *__nullable *__nullable)errPtr  DEPRECATED_MSG_ATTRIBUTE("use +imagesExtractedFromMPPackFilePath:error: instead");
 
+
++ (nullable NSArray <RTKOTAUpgradeBin*> *)imagesExtractedFromMPPackFileData:(NSData *)data error:(NSError *__nullable *__nullable)errPtr;
+
++ (nullable NSArray <RTKOTAUpgradeBin*> *)imagesExtractFromMPPackFileData:(NSData *)data error:(NSError *__nullable *__nullable)errPtr DEPRECATED_MSG_ATTRIBUTE("use +imagesExtractedFromMPPackFileData:error: instead");
+
+
++ (nullable NSError*)extractCombinePackFileWithFilePath:(NSString *)path toPrimaryBudBins:(NSArray <RTKOTAUpgradeBin*> *_Nullable*_Nullable)primaryBinsRef secondaryBudBins:(NSArray <RTKOTAUpgradeBin*> *_Nullable*_Nullable)secondaryBinsRef;
+
++ (nullable NSError*)extractCombinePackFileWithData:(NSData *)fileData toPrimaryBudBins:(NSArray <RTKOTAUpgradeBin*> *_Nullable*_Nullable)primaryBinsRef secondaryBudBins:(NSArray <RTKOTAUpgradeBin*> *_Nullable*_Nullable)secondaryBinsRef;
 
 
 @end
+
 
 NS_ASSUME_NONNULL_END

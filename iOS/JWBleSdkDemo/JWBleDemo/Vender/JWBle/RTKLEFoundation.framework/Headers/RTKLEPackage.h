@@ -26,7 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable instancetype)initWithRawData:(NSData *)data;
 
-@property NSData *rawData;
+@property (retain) NSData *rawData;
 
 @end
 

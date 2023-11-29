@@ -9,19 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "RTKOTAFormat.h"
 
-
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- * A binary installed in Realtek peripheral.
+ * A general OTA bin.
  */
 @interface RTKOTABin : NSObject
 
 /* Bin type */
 @property (readonly) RTKOTAImageType type;
 
-
-@property (assign) RTKOTAICType IC;
 
 /**
  * Version in integer.
@@ -40,16 +37,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (readonly) NSString *versionString;
 
 
-- (instancetype)initWithType:(RTKOTAImageType)type version:(uint32_t)verInt ofIC:(RTKOTAICType)ic;
+- (NSComparisonResult)compareVersionWith:(RTKOTABin *)anotherBin;
 
-
-/**
- * The maximum length of thie image section in SOC.
- * @discussion When 0 is returned, means section size is undefined.
- */
-@property (readonly) NSUInteger sectionSize;
-
-- (instancetype)initWithType:(RTKOTAImageType)type version:(uint32_t)verInt ofIC:(RTKOTAICType)ic sectionSize:(NSUInteger)size;
 
 @end
 

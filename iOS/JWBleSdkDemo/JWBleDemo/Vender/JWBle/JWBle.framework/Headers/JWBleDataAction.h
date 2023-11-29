@@ -508,6 +508,8 @@
  */
 + (void)jwGetUricAcidCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
 
++ (void)jwGetUricAcidContinuousMonitoringDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+
 /**
  获取 设备血脂【周期】数据
  Get device Blood Fat [period] data
@@ -532,6 +534,8 @@
           }
  */
 + (void)jwGetBloodFatCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
+
++ (void)jwGetBloodFatContinuousMonitoringDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
  获取 设备血糖【周期】数据
@@ -558,6 +562,7 @@
         }
  */
 + (void)jwGetBloodGlucoseCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
+
 
 /**
  获取运动数据

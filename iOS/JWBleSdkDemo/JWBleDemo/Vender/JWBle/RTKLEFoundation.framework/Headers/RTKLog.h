@@ -10,10 +10,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef enum : NSUInteger {
+    RTKLogFacilityDefault,  // NSLog
+    RTKLogFacilityCocoaLumberjack,   // use CocoaLumberjack logger facility. Not support now
+    RTKLogFacilityCustom,  // provide a custom C function to do actual logging.
+} RTKLogFacility;
+
+
 /**
  * Log level of this module, not global.
  */
-typedef NS_ENUM(NSUInteger, RTKLogLevel){
+typedef NS_ENUM(NSUInteger, RTKLogLevel) {
     RTKLogLevelOff       = 0,
     RTKLogLevelError,
     RTKLogLevelWarning,
@@ -28,6 +35,12 @@ typedef NS_ENUM(NSUInteger, RTKLogLevel){
  * @discussion The log system print log messsage to Console and Files simultaneously. 
  */
 @interface RTKLog : NSObject
+
+// Change the logging direction.
+// Before set to RTKLogFacilityCustom, you should call +setLogger to set the logging function first.
++ (void)setFacility:(RTKLogFacility)facility;
+
++ (void)setLogger:(void(*)(NSString*))logFunc;
 
 /**
  * Set log level of this module

@@ -11,26 +11,40 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSErrorDomain const RTKGenericErrorDomain;
+extern NSErrorDomain const RTKBTErrorDomain;
 
-/* RTKGenericErrorDomain Error code */
+/* RTKBTErrorDomain Error code */
 typedef enum : NSUInteger {
-    RTKGenericErrorNotAvailable = 100,
-    RTKGenericErrorTimeout,
-    RTKGenericErrorServiceDiscoverFail,
-    RTKGenericErrorEnableNotifyFail,
-    RTKGenericErrorUnexpectedDisconnection,
-    RTKGenericErrorUnavailable,
-    RTKGenericErrorInvalidParameter,
-    RTKGenericErrorBusy,
-    RTKGenericErrorNotExist,
+    RTKErrorNotAvailable = 100,
+    RTKErrorConnectionTimeout,                      // Connect to a LE peripheral time out.
+    RTKErrorTimeout,        /* generic timeout, operation is not specified. */
+    RTKErrorCharacteristicNotifyEnableFail,
+    RTKErrorPeripheralDisconnection,
+    RTKErrorPeripheralNotConnected,
+    RTKErrorUnavailable,
+    RTKErrorInvalidParameter,
     
-    RTKGenericErrorNotConform  = 150,
-} RTKGenericErrorCode;
+    RTKErrorATTDiscoveryFail,
+    RTKErrorATTNotExist,
+    RTKErrorATTDiscoveryBusy,                       // Attemp to discovery service while there is already a pending discovery
+    RTKErrorATTDiscoveryTimeout,
+    RTKErrorATTInsufficient,
+    
+    RTKErrorPeripheralNotOpen,
+    
+    RTKErrorPeripheralTransmissionUnresponsive,
+    RTKErrorPeripheralInProgressAlready,
+    
+    RTKErrorAccessorySessionNotOpen = 130,
+    
+    
+    RTKErrorNotConform  = 150,
+    
+} RTKErrorCode;
 
 
 
-@interface NSError (RTKLE)
+@interface NSError (RTKBT)
 
 @property (readonly) BOOL isLinkloss;
 

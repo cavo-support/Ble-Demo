@@ -1,6 +1,6 @@
 //
 //  RTKFileBrowseViewController.h
-//  RTKCheck
+//  RTKTest
 //
 //  Created by jerome_gu on 2018/5/29.
 //  Copyright © 2018年 jerome_gu. All rights reserved.
