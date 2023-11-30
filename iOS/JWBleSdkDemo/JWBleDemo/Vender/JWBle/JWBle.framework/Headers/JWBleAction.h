@@ -913,6 +913,8 @@
 + (void)jwBloodFatContinuesMonitoringAction:(BOOL)get open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
 + (void)jwBloodFatContinuesMonitoringPrivateAction:(BOOL)get open:(BOOL)open value:(int)value callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int value))callBack;
 
++ (void)jwCommonMeasurementAction:(JWBleCommonMeasurementEnum)actionEnum start:(BOOL)start;
+
 #pragma mark - 客户定制  Customer customization
 
 /**
@@ -1155,6 +1157,11 @@
  DVT检查
  */
 + (void)jwDvtCheckAction:(BOOL)isGet index:(int)showIndex callBack:(void (^)(JWBleCommunicationStatus status, int count))callBack;
+
+/**
+ 获取资源ota状态
+ */
++ (void)jwGetResourceOTAStatusWithCallBack:(void (^)(JWBleCommunicationStatus status, bool success))callBack;
 
 @end
 
