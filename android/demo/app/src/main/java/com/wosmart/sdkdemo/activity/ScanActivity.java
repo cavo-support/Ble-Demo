@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
@@ -80,6 +81,13 @@ public class ScanActivity extends BaseActivity {
                 finish();
             }
         });
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                startScan();
+//            }
+//        }, 1000);
     }
 
 

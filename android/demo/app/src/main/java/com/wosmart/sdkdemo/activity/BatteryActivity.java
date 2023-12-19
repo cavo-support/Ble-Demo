@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.wosmart.sdkdemo.common.BaseActivity;
 import com.wosmart.sdkdemo.R;
@@ -22,6 +23,8 @@ public class BatteryActivity extends BaseActivity implements View.OnClickListene
 
     private Button btn_query_battery;
 
+    private TextView tv_value;
+
     private Handler handler;
 
     @Override
@@ -35,6 +38,7 @@ public class BatteryActivity extends BaseActivity implements View.OnClickListene
 
     private void initView() {
         toolbar = findViewById(R.id.toolbar);
+        tv_value = findViewById(R.id.tv_value);
         btn_query_battery = findViewById(R.id.btn_query_battery);
     }
 
@@ -46,12 +50,16 @@ public class BatteryActivity extends BaseActivity implements View.OnClickListene
             public void onBatteryRead(int value) {
                 super.onBatteryRead(value);
                 Log.i(tag, "battery : " + value);
+
+                tv_value.setText(String.valueOf(value));
             }
 
             @Override
             public void onBatteryChange(int value) {
                 super.onBatteryChange(value);
                 Log.i(tag, "battery : " + value);
+
+                tv_value.setText(String.valueOf(value));
             }
         });
     }
