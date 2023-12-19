@@ -216,6 +216,12 @@ NS_ASSUME_NONNULL_BEGIN
 //周期血糖状态改变回调 bloodGlucoseCycle status callback
 @property(nonatomic, copy) JWBleBloodGlucoseCycleStatusCallBack bloodGlucoseCycleStatusCallBack;
 
+//设备结束点测回调 Device end Measurement callback
+@property(nonatomic, copy) JWBleEndMeasurementStatusCallBack endMeasurementStatusCallBack;
+
+//设备体脂数据回调 Device body fat data callback
+@property(nonatomic, copy) JWBleBodyFatDataCallBack bodyFatDataCallBack;
+
 
 /**
  连接后是否弹出系统配对窗口，默认YES

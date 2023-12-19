@@ -130,6 +130,7 @@ typedef NS_ENUM(NSInteger, JWBleBusyStatus) {
     JWBleBusyStatus_Manual_Blood_Glucose_Measurement, //血糖手动测量
     JWBleBusyStatus_Silent_Measurement_Of_Blood_Glucose, //血糖静默测量
     JWBleBusyStatus_Pulsed_Magnetic_Therapy, //脉冲磁疗测试中
+    JWBleBusyStatus_BodyFat_Testing, //体脂测试中
 };
 
 //女性状态枚举 female status enumeration
@@ -185,6 +186,11 @@ typedef NS_ENUM (NSInteger, JWBleDeviceMotionEnum) {
 typedef NS_ENUM (NSInteger, JWBleImmediateDataEnum) {
     JWBleImmediateDataEnum_Step,//记步 Step
     JWBleImmediateDataEnum_HR,//心率 Heart rate
+};
+
+//通用点测枚举 Real-time data enumeration
+typedef NS_ENUM (NSInteger, JWBleCommonMeasurementEnum) {
+    JWBleCommonMeasurementEnum_BodyFat = 5//血脂
 };
 
 //功能枚举 Function enumeration
@@ -265,6 +271,9 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_UricAcid = 10009, // 尿酸
     JWBleFunctionEnum_BloodFat = 10010, // 血脂
     JWBleFunctionEnum_BloodGlucoseCycle = 10011, // 周期血糖
+    JWBleFunctionEnum_UricAcid_ContinuesMonitoring_Private = 10012,  // 尿酸，持续监测，私人模式
+    JWBleFunctionEnum_BloodFat_ContinuesMonitoring_Private = 10013,  // 血脂，持续监测，私人模式
+    JWBleFunctionEnum_BodyFat = 10014,  // 体脂
 };
 
 //客户功能枚举 Custom Function enumeration
@@ -291,7 +300,8 @@ typedef NS_ENUM (NSInteger, JWBleDeviceSwitchFunctionEnum) {
     JWBleDeviceSwitchFunctionEnum_Temperature_Function_Independent,//温度功能独立，返回值（0：关闭， 1：开启）  Temperature function independent, return value (0: off, 1: on)
     JWBleDeviceSwitchFunctionEnum_BloodGlucose_Monitoring,//血糖功能独立，返回值（0：关闭， 1：开启）  BloodGlucose function independent, return value (0: off, 1: on)
     JWBleDeviceSwitchFunctionEnum_Gesture_Bright_Screen,//手势亮屏，返回值（0：关闭， 1：开启） Gesture bright screen, return value (0: off, 1: on)
-    
+    JWBleDeviceSwitchFunctionEnum_UricAcidContinuesMonitoring,//尿酸连续监测，返回值（0：关闭， 1：开启） Continuous monitoring of uric acid, return value (0: off, 1: on)
+    JWBleDeviceSwitchFunctionEnum_BloodFatContinuesMonitoring,//血脂连续监测，返回值（0：关闭， 1：开启） Continuous monitoring of blood lipids, return value (0: off, 1: on)
 };
 
 //通知枚举 Notification enumeration
@@ -437,7 +447,17 @@ typedef NS_ENUM (NSInteger, JWDeleteDataType) {
     JWDeleteDataType_Sports,
     JWDeleteDataType_BloodFat,
     JWDeleteDataType_UricAcid,
-    JWDeleteDataType_BloodGlucoseCycle
+    JWDeleteDataType_BloodGlucoseCycle,
+    JWDeleteDataType_BloodFatContinuousMonitoring,
+    JWDeleteDataType_UricAcidContinuousMonitoring,
+    JWDeleteDataType_BodyFat,
+};
+
+//通用点测状态回调
+typedef NS_ENUM (NSInteger, JWBleEndMeasurementStatusType) {
+    JWBleEndMeasurementStatusType_Cancel = 0,
+    JWBleEndMeasurementStatusType_Fail,
+    JWBleEndMeasurementStatusType_Success
 };
 
 #pragma mark - CallBack
@@ -521,6 +541,44 @@ typedef void (^JWBleUricAcidStatusCallBack)(BOOL open, int privateValue, int pri
  @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
  */
 typedef void (^JWBleBloodFatStatusCallBack)(BOOL open, int privateValue, int privateRtc);
+
+/**
+ 设备结束点测回调 Device end Measurement callback
+ */
+typedef void (^JWBleEndMeasurementStatusCallBack)(JWBleEndMeasurementStatusType statusType);
+
+/**
+ 设备体脂数据回调 Device body fat data callback
+ 
+ @param dataDic : {
+     @"time":        // time
+     @"weight":    // 体重    weight
+
+     NSInteger weight;  // 体重
+     NSInteger bmi;  // bmi
+     NSInteger bmiLevel;
+     NSInteger bmiMaxLevel;
+     NSInteger fm;  // 脂肪
+     NSInteger fmLevel;
+     NSInteger fmMaxLevel;
+     NSInteger tbw;  // 水分 moisture content
+     NSInteger tbwLevel;
+     NSInteger tbwMaxLevel;
+     NSInteger pw;  // 蛋白质  protein
+     NSInteger pwLevel;
+     NSInteger pwMaxLevel;
+     NSInteger mm;  // 骨盐量 BMC
+     NSInteger mmLevel;
+     NSInteger mmMaxLevel;
+     NSInteger slm;  // 肌肉量 Muscle Mass
+     NSInteger slmLevel;
+     NSInteger slmMaxLevel;
+     NSInteger bmr;  // 基础代谢量 Basal metabolic capacity
+     NSInteger bmrLevel;
+     NSInteger bmrMaxLevel;
+}
+ */
+typedef void (^JWBleBodyFatDataCallBack)(NSDictionary *dataDic);
 
 /**
  周期血糖状态改变回调 BloodGlucoseCycle status callback

@@ -563,6 +563,46 @@
  */
 + (void)jwGetBloodGlucoseCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
 
+/**
+ 
+ 获取体脂数据
+ 
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ 
+ @[
+    @{
+         @"time":        // time
+         @"weight":    // 体重    weight
+
+         NSInteger weight;  // 体重
+         NSInteger bmi;  // bmi
+         NSInteger bmiLevel;
+         NSInteger bmiMaxLevel;
+         NSInteger fm;  // 脂肪
+         NSInteger fmLevel;
+         NSInteger fmMaxLevel;
+         NSInteger tbw;  // 水分 moisture content
+         NSInteger tbwLevel;
+         NSInteger tbwMaxLevel;
+         NSInteger pw;  // 蛋白质  protein
+         NSInteger pwLevel;
+         NSInteger pwMaxLevel;
+         NSInteger mm;  // 骨盐量 BMC
+         NSInteger mmLevel;
+         NSInteger mmMaxLevel;
+         NSInteger slm;  // 肌肉量 Muscle Mass
+         NSInteger slmLevel;
+         NSInteger slmMaxLevel;
+         NSInteger bmr;  // 基础代谢量 Basal metabolic capacity
+         NSInteger bmrLevel;
+         NSInteger bmrMaxLevel;
+     },
+    @{
+        ......
+    }
+ */
++ (void)jwGetBodyFatByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
  获取运动数据
@@ -648,6 +688,13 @@
     
  */
 + (void)jwRemoveDataTimeLessThan:(NSInteger)t dataType:(JWDeleteDataType)dataType;
+
+/**
+ fix db，主要用于解决[JWBleAction jwDeviceDataReset]，后再次sync导致数据重复问题
+ 
+ fix db, mainly used to solve [JWBleAction jwDeviceDataReset], and then sync again, causing data duplication problem
+ */
++ (void)jwFixDBData;
 
 
 @end
