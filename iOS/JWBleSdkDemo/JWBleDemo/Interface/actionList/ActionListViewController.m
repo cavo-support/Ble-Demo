@@ -108,10 +108,11 @@
        //1: 设备当前电量
        int power = JWBleManager.connectionModel.power;
        
-       [self.view makeToast:[NSString stringWithFormat:@"power:%d",power]];
-       
        //2: 监听电量改变
        //JWBleManager.connectStateChangeCallBack 回调中，监听 JWBleDeviceConnectStatus_BatteryUpdate，然后再以第一步方式获取
+       
+       //3: 当前电量
+       [JWBleAction jwGetDeviceCurrentBattery];
    } else if ([actionStr isEqualToString:@"通知开关"]) {
        [self.navigationController pushViewController:[NoticeViewController new] animated:true];
    } else if ([actionStr isEqualToString:@"闹钟"]) {

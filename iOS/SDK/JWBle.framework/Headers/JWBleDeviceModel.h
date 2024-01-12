@@ -162,6 +162,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 芯片类型 chip type
 @property(nonatomic, assign) int chipType;
 
+//芯片平台 0：rtk 、 100：联睿微
+@property(nonatomic, assign) int platform;
+
 @property (nonatomic, strong) NSDictionary<NSString *, id> *advertisementData;
 
 //手环可控制的开关数据  The switch data that the bracelet can control

@@ -36,7 +36,7 @@
     
     NSLog(@"sdkInfo： \n\n %@ \n\n",[JWBleManager sdkInfo]);
     
-    JWBleManager.showLog = true;
+    JWBleManager.showLog = false;
     JWBleManager.checkUserBinding = false;
     [JWBleManager setUpWithUid:@"cavo"];
     
@@ -76,6 +76,10 @@
         } else if (deviceConnectStatus == JWBleDeviceConnectStatus_DiscoverNewUpdateFirm) {
             weakSelf.textView.text = NSLocalizedString(@"Discover new firmware that can be upgraded", nil);
             [weakSelf.view hideToastActivity];
+        } else if (deviceConnectStatus == JWBleDeviceConnectStatus_BatteryUpdate) {
+            if (JWBleManager.connectionModel.power > 0) {
+                NSLog(@"power:%d",JWBleManager.connectionModel.power);
+            }
         } else if (deviceConnectStatus == JWBleDeviceConnectStatus_DisConnect) {
             [weakSelf.navigationController popToRootViewControllerAnimated:true];
             weakSelf.textView.text = NSLocalizedString(@"Device is not connected", nil);
