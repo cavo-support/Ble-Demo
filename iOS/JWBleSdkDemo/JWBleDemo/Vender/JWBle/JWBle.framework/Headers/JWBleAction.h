@@ -915,6 +915,16 @@
 
 + (void)jwCommonMeasurementAction:(JWBleCommonMeasurementEnum)actionEnum start:(BOOL)start;
 
+/**
+ getDeviceBattery 获取设备当前电量
+ 
+ JWBleManager.JWBleConnectStatusChangeCallBack 
+ if (deviceConnectStatus == JWBleDeviceConnectStatus_BatteryUpdate) {
+     NSLog(@"Battery：%d",JWBleManager.connectionModel.power);
+ }
+ */
++ (void)jwGetDeviceCurrentBattery;
+
 #pragma mark - 客户定制  Customer customization
 
 /**

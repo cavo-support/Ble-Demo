@@ -367,6 +367,8 @@ typedef NS_ENUM (NSInteger, JWBleLanguageEnum) {
     JWBleLanguageEnum_Turkey = 82,
     JWBleLanguageEnum_Polish = 13,
     JWBleLanguageEnum_Mongolian = 53,
+    JWBleLanguageEnum_Vietnamese = 102,
+    
 };
 
 //运动操作枚举 Motion enumeration
