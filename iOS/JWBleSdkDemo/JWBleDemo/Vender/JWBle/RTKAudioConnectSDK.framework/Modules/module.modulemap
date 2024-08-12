@@ -1,6 +1,0 @@
-framework module RTKAudioConnectSDK {
-  umbrella header "RTKAudioConnectSDK.h"
-
-  export *
-  module * { export * }
-}

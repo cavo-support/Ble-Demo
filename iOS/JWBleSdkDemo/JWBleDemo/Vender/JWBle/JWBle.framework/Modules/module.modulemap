@@ -1,6 +1,0 @@
-framework module JWBle {
-  umbrella header "JWBle.h"
-  export *
-
-  module * { export * }
-}

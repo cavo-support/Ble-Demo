@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+|  1.3.0  |                    1：fix hrv time zone;                     |
 |  1.1.0  | 1: New data function, body fat;<br/>2: Added data exception cleaning function;<br/>3: Optimize known issues; |
 | 1.0.18  | Fix the problem of sending a large number of steps to the device abnormally |
 | 1.0.17  | 1: Three cycle data optimization;<br/>2: Repair synchronization timeout does not work;<br/>3: Custom dial added to return data callback;<br/>4: Add ecgoridatacallback; |

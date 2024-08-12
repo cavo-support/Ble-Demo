@@ -22,6 +22,7 @@
 #import "JWLogAction.h"
 #import "JWLogModel.h"
 #import "JWBleDBModel.h"
+#import "JWBleMyMainInterfaceAction.h"
 
 //! Project version number for JWBle.
 FOUNDATION_EXPORT double JWBleVersionNumber;

@@ -523,6 +523,7 @@
  
  */
 + (void)jwBPPrivateSet:(BOOL)open h:(NSInteger)h l:(NSInteger)l callBack:(void (^)(JWBleCommunicationStatus status))callBack;
++ (void)jwBPPrivateGetWithcallBack:(void (^)(JWBleCommunicationStatus status, BOOL open, NSInteger h, NSInteger l))callBack;
 
 /**
  闹钟功能V2  Alarm clock functionV2
@@ -628,6 +629,19 @@
      999: data collection
  */
 + (void)jwECGAction:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, int ecgStatus))callBack;
+
+/**
+ belt
+ 
+ callBack - ecgStatus
+     0: normal
+     1: start
+     2: end
+     3: interrupt
+     4:interrupt 10s after end
+     999: data collection
+ */
++ (void)jwBeltAction:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, int beltStatus))callBack;
 
 /**
  使手环关机
@@ -969,6 +983,7 @@
     level: gear level, default 1
  */
 + (void)jwCustomSleepAidAction:(bool)open time:(int)time effectTime:(int)effectTime level:(int)level callBack:(void (^)(JWBleCommunicationStatus status))callBack;
++ (void)jwCustomSleepAidAction_V2:(bool)open mode:(int)mode time:(int)time level:(int)level callBack:(void (^)(JWBleCommunicationStatus status, int deviceStatus))callBack;
 
 #pragma mark - 以下是生产测试方法  The following is the production test method
 /**
@@ -1164,6 +1179,11 @@
 + (void)jwGetFirmwareBurningConfigurationWithCallBack:(void (^)(JWBleCommunicationStatus status, NSString *resultStr))callBack;
 
 /**
+ ic_euid
+ */
++ (void)jwGetIcEuidWithCallBack:(void (^)(JWBleCommunicationStatus status, NSString *resultStr))callBack;
+
+/**
  DVT检查
  */
 + (void)jwDvtCheckAction:(BOOL)isGet index:(int)showIndex callBack:(void (^)(JWBleCommunicationStatus status, int count))callBack;
@@ -1172,6 +1192,12 @@
  获取资源ota状态
  */
 + (void)jwGetResourceOTAStatusWithCallBack:(void (^)(JWBleCommunicationStatus status, bool success))callBack;
+
+/**
+ 获取DebugShow
+ */
++ (void)jwGetDebugShowWithCallBack:(void (^)(JWBleCommunicationStatus status, NSData *data))callBack;
+
 
 @end
 

@@ -605,6 +605,45 @@
 + (void)jwGetBodyFatByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
+ 获取 微体检数据
+ 
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+    
+ @[
+    @{
+         time:1710384537
+         hrValue:86   //平均心率
+         oxygenValue:91  //血氧 低血氧(<=70%); 较低血氧(<70%~89%); 正常(>=90%)
+         stressValue:65  //压力 放松(1~29); 正常(30~59); 中等(60~79); 偏高(80~99)
+         temperatureValue:371  ;//体温 <37.2℃; 37.2~38.0℃; >= 38.0℃
+         skinTemperatureValue:316  // 皮肤温度
+         bloodVesselElasticityValue:0  //血管弹性 正常(0);
+         cardiovascularValue:0 //心血管 低风低风险(0); 中风险(1); 高风险(2);
+    }
+  ]
+ 
+ Obtain micro physical examination data
+  
+ @The date obtained by param yyyymmddStr is as follows: 20180911
+ @Param callBack
+     
+ @[
+     @{
+         Time: 1710384537
+         HrValue: 86//Average heart rate
+         OxygenValue: 91//Blood oxygen deficiency (<=70%); Lower blood oxygen (<70%~89%); Normal (>=90%)
+         StressValue: 65//Stress relaxation (1-29); Normal (30-59); Medium (60-79); High (80-99)
+         TemperatureValue: 371// Body temperature<37.2 ℃; 37.2-38.0 ℃;>= 38.0 ℃
+         SkinTemperatureValue: 316//Skin temperature
+         BloodVessel Elasticity Value: 0//Blood vessel elasticity is normal (0);
+         CardiovascularValue: 0//Cardiovascular low-risk (0); Medium risk (1); High risk (2);
+     }
+ ]
+ */
++ (void)jwGetMicroPhysicalExaminationByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
  获取运动数据
 
  @param yyyymmddStr 获取的日期 如：20180911
@@ -688,6 +727,17 @@
     
  */
 + (void)jwRemoveDataTimeLessThan:(NSInteger)t dataType:(JWDeleteDataType)dataType;
+
+/**
+ 删除某个时间戳的数据
+ 
+ Delete data before a certain timestamp
+ 
+ t: 时间戳的时间 imestamp
+ dataType: JWDeleteDataType
+    
+ */
++ (void)jwRemoveDataTime:(NSInteger)t dataType:(JWDeleteDataType)dataType;
 
 /**
  fix db，主要用于解决[JWBleAction jwDeviceDataReset]，后再次sync导致数据重复问题
