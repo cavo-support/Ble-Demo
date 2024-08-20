@@ -258,6 +258,9 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_HighHeartRateReminder = 43, // 心率过高提醒 High heart rate reminder
     JWBleFunctionEnum_SleepAllDay = 42, // 全天睡眠 sleep all day
     JWBleFunctionEnum_DialDateFormat = 41, // 表盘日期格式 Dial date format
+    JWBleFunctionEnum_ECGHidden_HRV_QT = 40, // ecg不显示qt和hrv
+    
+    JWBleFunctionEnum_Belt = 39,
     
 #pragma mark - Device Function 2
     JWBleFunctionEnum_DevicePrivateBloodPressure = 10001, // 设备私人血压  Device private blood pressure
@@ -274,6 +277,7 @@ typedef NS_ENUM (NSInteger, JWBleFunctionEnum) {
     JWBleFunctionEnum_UricAcid_ContinuesMonitoring_Private = 10012,  // 尿酸，持续监测，私人模式
     JWBleFunctionEnum_BloodFat_ContinuesMonitoring_Private = 10013,  // 血脂，持续监测，私人模式
     JWBleFunctionEnum_BodyFat = 10014,  // 体脂
+    JWBleFunctionEnum_MicroPhysicalExamination = 10015, // 微体检 Micro physical examination
 };
 
 //客户功能枚举 Custom Function enumeration
@@ -368,7 +372,7 @@ typedef NS_ENUM (NSInteger, JWBleLanguageEnum) {
     JWBleLanguageEnum_Polish = 13,
     JWBleLanguageEnum_Mongolian = 53,
     JWBleLanguageEnum_Vietnamese = 102,
-    
+    JWBleLanguageEnum_Dutch = 31,
 };
 
 //运动操作枚举 Motion enumeration
@@ -453,6 +457,7 @@ typedef NS_ENUM (NSInteger, JWDeleteDataType) {
     JWDeleteDataType_BloodFatContinuousMonitoring,
     JWDeleteDataType_UricAcidContinuousMonitoring,
     JWDeleteDataType_BodyFat,
+    JWDeleteDataType_MicroPhysicalExamination,
 };
 
 //通用点测状态回调
@@ -884,6 +889,14 @@ typedef void (^JwDeviceTestECGCallBack)(NSDictionary *dic);
  ECG value data callback
  */
 typedef void (^JwECGValueDataCallBack)(int bpm, int qt, int hrv, int rri, int progress);
+/**
+ Belt value data callback
+ */
+typedef void (^JwBeltValueDataCallBack)(int bpm, int qt, int hrv, int rri);
+/**
+ belt data callback
+ */
+typedef void (^JwBeltDataCallBack)(NSArray *originalSignals, NSArray *filterSignals);
 
 /**
  Device switch change callback

@@ -204,6 +204,10 @@ NS_ASSUME_NONNULL_BEGIN
 // ecg 数据回调
 @property(nonatomic, copy) JwECGValueDataCallBack ecgValueDataCallBack;
 
+// belt
+@property(nonatomic, copy) JwBeltValueDataCallBack beltValueDataCallBack;
+@property(nonatomic, copy) JwBeltDataCallBack beltDataCallBack;
+
 // Device switch change callback
 @property(nonatomic, copy) JwDeviceSwitchChangeCallBack deviceSwitchChangeCallBack;
 
