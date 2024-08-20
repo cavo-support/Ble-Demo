@@ -985,6 +985,14 @@
 + (void)jwCustomSleepAidAction:(bool)open time:(int)time effectTime:(int)effectTime level:(int)level callBack:(void (^)(JWBleCommunicationStatus status))callBack;
 + (void)jwCustomSleepAidAction_V2:(bool)open mode:(int)mode time:(int)time level:(int)level callBack:(void (^)(JWBleCommunicationStatus status, int deviceStatus))callBack;
 
+/**
+ 客户定制 - HRV-rmssd
+ @param isGet Whether to get
+ @param timeInterval 0：close、5、10、15
+ @param callBack callback
+ */
++ (void)jwCustomHrvRmssdAction:(BOOL)isGet timeInterval:(int)timeInterval callBack:(void (^)(JWBleCommunicationStatus status, int timeInterval))callBack;
+
 #pragma mark - 以下是生产测试方法  The following is the production test method
 /**
  修改设备名称

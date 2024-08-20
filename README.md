@@ -6,6 +6,7 @@
 
 | Version |                         Description                          |
 | :-----: | :----------------------------------------------------------: |
+|  1.3.1  |                       1：add hrv-rmssd                       |
 |  1.3.0  |                    1：fix hrv time zone;                     |
 |  1.1.0  | 1: New data function, body fat;<br/>2: Added data exception cleaning function;<br/>3: Optimize known issues; |
 | 1.0.18  | Fix the problem of sending a large number of steps to the device abnormally |

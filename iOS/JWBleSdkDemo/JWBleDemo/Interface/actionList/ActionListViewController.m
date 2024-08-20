@@ -46,6 +46,7 @@
 #import "RemotePhotographyViewController.h"
 #import "AddressBookViewController.h"
 #import "AudioBluetoothPairingViewController.h"
+#import "HRVRmssdViewController.h"
 
 @interface ActionListViewController ()
 <
@@ -139,131 +140,17 @@
        [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
    } else if ([actionStr isEqualToString:@"内置/下载/自定义表盘"]) {
        [self.navigationController pushViewController:[CustomizeMainInterfaceViewController new] animated:true];
+   } else if ([actionStr isEqualToString:@"HRV-RMSSD"]) {
+       [self.navigationController pushViewController:[HRVRmssdViewController new] animated:true];
    }
 }
 
-//
-///**
-// @param tableView tableView description
-// @param indexPath indexPath description
-// */
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//
-//    NSString *actionStr = NSLocalizedString(self.functionArr[indexPath.row], nil);
-//
-//    __weak __typeof(self)weakSelf = self;
-//    if ([actionStr isEqualToString:NSLocalizedString(@"Synchronize personal information", nil)]) {
-//
-//        [self.view makeToast:NSLocalizedString(@"Setting Gender: Male, Age: 18, Height: 60.5cm, Weight: 75.5kg", nil)];
-//
-//        [MBProgressHUD showHUDAddedTo:self.view animated:true];
-//        [JWBleAction jwSynchronizePersonalInformation:18 isMan:true height:60.5 weight:75.5 callBack:^(JWBleCommunicationStatus status) {
-//            [MBProgressHUD hideHUDForView:weakSelf.view animated:true];
-//            [weakSelf.view makeToast:[JWBleDemoHelp communication2Str:status]];
-//        }];
-//
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Set step goal", nil)]) {
-//
-//        [self.view makeToast:NSLocalizedString(@"Setting goals: 1000 steps", nil)];
-//
-//        [MBProgressHUD showHUDAddedTo:self.view animated:true];
-//        [JWBleAction jwSetStepTargetAction:10000 callBack:^(JWBleCommunicationStatus status) {
-//            [MBProgressHUD hideHUDForView:weakSelf.view animated:true];
-//            [weakSelf.view makeToast:[JWBleDemoHelp communication2Str:status]];
-//        }];
-//
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Set sleep goals", nil)]) {
-//
-//        [self.view makeToast:NSLocalizedString(@"Setting goal: 6 hours", nil)];
-//
-//        [MBProgressHUD showHUDAddedTo:self.view animated:true];
-//        [JWBleAction jwSetSleepTargetAction:6*60 callBack:^(JWBleCommunicationStatus status) {
-//            [MBProgressHUD hideHUDForView:weakSelf.view animated:true];
-//            [weakSelf.view makeToast:[JWBleDemoHelp communication2Str:status]];
-//        }];
-//
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Find bracelet", nil)]) {
-//        [JWBleAction jwFindDeviceWithCallBack:^(JWBleCommunicationStatus status) {
-//            [weakSelf.view makeToast:[JWBleDemoHelp communication2Str:status]];
-//        }];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Open the remote camera", nil)]) {
-//        [MBProgressHUD showHUDAddedTo:self.view animated:true];
-//
-//        [JWBleAction jwRemotePhotography:true callBack:^(JWBleCommunicationStatus status) {
-//            [MBProgressHUD hideHUDForView:weakSelf.view animated:true];
-//        }];
-//
-//        [self.view makeToast:NSLocalizedString(@"If shaking the bracelet has no effect, do some other operations first", nil)];
-//
-//        JWBleManager.remotePhotographyCallBack = ^(JWBleRemotePhotographyStatus remotePhotographyStatus) {
-//            if (remotePhotographyStatus == JWBleRemotePhotographyStatus_TakePhoto) {
-//                [weakSelf.view makeToast:NSLocalizedString(@"Photo callback", nil)];
-//            }
-//        };
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Turn off the remote camera", nil)]) {
-//        [MBProgressHUD showHUDAddedTo:self.view animated:true];
-//        [JWBleAction jwRemotePhotography:false callBack:^(JWBleCommunicationStatus status) {
-//            [MBProgressHUD hideHUDForView:weakSelf.view animated:true];
-//            [weakSelf.view makeToast:[JWBleDemoHelp communication2Str:status]];
-//        }];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Continuous heart rate monitoring", nil)]) {
-//        [self.navigationController pushViewController:[ContinuousHRViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Turn the wrist bright screen-bright screen duration", nil)]) {
-//        [self.navigationController pushViewController:[TurnWristViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Sedentary reminder", nil)]) {
-//        [self.navigationController pushViewController:[SedentaryReminderViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Hour System-Metric and Imperial", nil)]) {
-//        [self.navigationController pushViewController:[TimeThemeViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Language", nil)]) {
-//        [self.navigationController pushViewController:[LanguageViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Do not disturb mode", nil)]) {
-//        [self.navigationController pushViewController:[NotDisturbViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"notification", nil)]) {
-//        [self.navigationController pushViewController:[NoticeViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Alarm setting", nil)]) {
-//        [self.navigationController pushViewController:[AlarmClockViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Test heart rate", nil)]) {
-//        [self.navigationController pushViewController:[TestHRViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Test blood pressure", nil)]) {
-//        TestHRViewController *vc = [TestHRViewController new];
-//        vc.testBP = true;
-//        [self.navigationController pushViewController:vc animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Test headphones", nil)]) {
-//        [self.navigationController pushViewController:[TestHeadsetViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Get bracelet data", nil)]) {
-//        [self.navigationController pushViewController:[GetDeviceDataViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Check if there is a function", nil)]) {
-//        [self.navigationController pushViewController:[CheckFunctionViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Temperature correlation", nil)]) {
-//        [self.navigationController pushViewController:[TestTemperatureViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Bracelet function display and hide", nil)]) {
-//        [self.navigationController pushViewController:[HiddenFunctionActionViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Heart rate switch", nil)]) {
-//        [self.navigationController pushViewController:[HRSwitchViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Continuous blood pressure", nil)]) {
-//        [self.navigationController pushViewController:[ContinuousBPViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Customize the main interface", nil)]) {
-//        [self.navigationController pushViewController:[CustomizeMainInterfaceViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Update Interface Color", nil)]) {
-//        [self.navigationController pushViewController:[UpdateInterfaceColorViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"OTA", nil)]) {
-//        [self.navigationController pushViewController:[OtaActionViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Image OTA", nil)]) {
-//        [self.navigationController pushViewController:[ImageOtaViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Custom Set Pulse/SleepAid", nil)]) {
-//        [self.navigationController pushViewController:[CustomSetPluseViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"Sauna Data", nil)]) {
-//        [self.navigationController pushViewController:[SaunaViewController new] animated:true];
-//    } else if ([actionStr isEqualToString:NSLocalizedString(@"V7(GT7D) ActionList", nil)]) {
-//        [self.navigationController pushViewController:[V7_GT7D_ActionListViewController new] animated:true];
-//    }
-//
-//}
 
 #pragma mark - getter
 - (NSArray *)functionArr {
     if (!_functionArr) {
         _functionArr = @[
+            @"HRV-RMSSD",
             @"蓝牙搜索",
             @"设备连接",
             @"断开连接",

@@ -35,6 +35,8 @@
 //    JWBleSyncEnum_InconsistentTotals, //总数不一致 Inconsistent totals
 //    JWBleSyncEnum_Complete //完成
     
+//    [JWBleAction jwDeviceDataReset];
+    
     __weak __typeof(self)weakSelf = self;
     [JWBleDataAction jwSyncDataWithCallBack:^(JWBleCommunicationStatus status, JWBleSyncStateEnum syncStateEnum) {
         if (syncStateEnum == JWBleSyncEnum_Start) {

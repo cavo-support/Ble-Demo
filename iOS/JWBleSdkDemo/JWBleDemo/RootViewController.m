@@ -36,7 +36,7 @@
     
     NSLog(@"sdkInfo： \n\n %@ \n\n",[JWBleManager sdkInfo]);
     
-    JWBleManager.showLog = false;
+    JWBleManager.showLog = true;
     JWBleManager.checkUserBinding = false;
     [JWBleManager setUpWithUid:@"cavo"];
     
