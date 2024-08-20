@@ -139,6 +139,8 @@ public class FunctionActivity extends BaseActivity {
 
         Function watchFace = new Function(WatchFaceActivity.FUNCTION_ID, getString(R.string.app_watch_face));
 
+        Function hrvRmssd = new Function(HRVRmssdActivity.FUNCTION_ID, getString(R.string.app_hrv_rmssd));
+
 
         functions.add(login);
         functions.add(device);
@@ -181,6 +183,7 @@ public class FunctionActivity extends BaseActivity {
         functions.add(sleepHelp);
         functions.add(sauna);
         functions.add(watchFace);
+        functions.add(hrvRmssd);
 
         rcy_function.setLayoutManager(new LinearLayoutManager(this));
         adapter = new FunctionAdapter(this, functions);
@@ -395,6 +398,9 @@ public class FunctionActivity extends BaseActivity {
                         break;
                     case WatchFaceActivity.FUNCTION_ID:
                         startActivity(new Intent(FunctionActivity.this, WatchFaceActivity.class));
+                        break;
+                    case HRVRmssdActivity.FUNCTION_ID:
+                        startActivity(new Intent(FunctionActivity.this, HRVRmssdActivity.class));
                         break;
                 }
             }

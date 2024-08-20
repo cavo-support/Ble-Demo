@@ -79,17 +79,8 @@ public class SleepHelpActivity extends BaseActivity implements View.OnClickListe
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        WristbandManager.getInstance(SleepHelpActivity.this).setSleepHelp(isOpen, duration, effectiveTime, level, new JWCallback() {
-                            @Override
-                            public void onSuccess() {
-                                showToast(getString(R.string.app_success));
-                            }
-
-                            @Override
-                            public void onError(int code, String desc) {
-                                showToast(getString(R.string.app_fail));
-                            }
-                        });
+                        // mode 0 -2
+                        WristbandManager.getInstance(SleepHelpActivity.this).setSleepHelp(isOpen, 0, duration, effectiveTime, level);
                     }
                 }).start();
             }

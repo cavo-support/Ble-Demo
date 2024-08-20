@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import androidx.annotation.Nullable;
@@ -31,6 +32,9 @@ public class HrDetectActivity extends BaseActivity implements View.OnClickListen
 
     private RadioGroup rg_detect_status;
 
+    private RadioButton btn_open;
+    private RadioButton btn_close;
+
     private Button btn_set;
 
     private Handler handler;
@@ -42,22 +46,32 @@ public class HrDetectActivity extends BaseActivity implements View.OnClickListen
         initView();
         initData();
         addListener();
+
     }
 
     private void initView() {
         toolbar = findViewById(R.id.toolbar);
         btn_read = findViewById(R.id.btn_read);
         rg_detect_status = findViewById(R.id.rg_detect_status);
+        btn_open = findViewById(R.id.rb_detect_open);
+        btn_close = findViewById(R.id.rb_detect_close);
         btn_set = findViewById(R.id.btn_set);
     }
 
     private void initData() {
         handler = new MyHandler();
+
+        readHrDetect();
         WristbandManager.getInstance().registerCallback(new WristbandManagerCallback() {
             @Override
             public void onHrpContinueParamRsp(boolean enable, int interval) {
                 super.onHrpContinueParamRsp(enable, interval);
                 Log.i(tag, "enable : " + enable + "interval : " + interval);
+                if (enable) {
+                    btn_open.setChecked(true);
+                } else {
+                    btn_close.setChecked(true);
+                }
             }
         });
     }
