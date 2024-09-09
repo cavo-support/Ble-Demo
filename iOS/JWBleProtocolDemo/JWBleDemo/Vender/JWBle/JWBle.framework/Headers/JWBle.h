@@ -14,6 +14,7 @@
 #import "JWBleDataAction.h"
 #import "JWBleDeviceModel.h"
 #import "JWBleAlarmClockModel.h"
+#import "JWBleMedicationReminderModel.h"
 #import "JWBlePublicHelp.h"
 #import "JWBleOTAAction.h"
 #import "JWBleCustomizeMainInterfaceAction.h"
@@ -21,6 +22,7 @@
 #import "JWLogAction.h"
 #import "JWLogModel.h"
 #import "JWBleDBModel.h"
+#import "JWBleMyMainInterfaceAction.h"
 
 //! Project version number for JWBle.
 FOUNDATION_EXPORT double JWBleVersionNumber;

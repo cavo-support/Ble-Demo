@@ -87,7 +87,9 @@
        [self.navigationController pushViewController:[ScanViewController new] animated:true];
    } else if ([actionStr isEqualToString:@"设备连接"]) {
        [self.navigationController pushViewController:[ScanViewController new] animated:true];
-   } else if ([actionStr isEqualToString:@"断开连接"]) {
+   } else if ([actionStr isEqualToString:@"勿扰模式"]) {
+       [self.navigationController pushViewController:[NotDisturbViewController new] animated:true];
+   }else if ([actionStr isEqualToString:@"断开连接"]) {
        //解绑、会清除设备数据
        [JWBleAction jwDisConnect];
        
@@ -172,6 +174,7 @@
             @"遥控拍照",
             @"通讯录",
             @"音频蓝牙配对",
+            @"勿扰模式",
             @"固体升级",
             @"内置/下载/自定义表盘"
          ];
