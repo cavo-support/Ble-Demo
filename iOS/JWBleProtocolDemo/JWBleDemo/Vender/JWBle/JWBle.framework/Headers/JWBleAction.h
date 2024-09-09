@@ -73,7 +73,7 @@
 /**
  设置卡路里目标 Set calorie goal
  
- @param calorie 单位千卡  Unit kcal
+ @param calorie 单位千卡  Unit kcal 100~9999
  @param callBack 回调 Callback
  */
 + (void)jwSetCalorieTargetAction:(int)calorie callBack:(JWBleCommunicationCallBack)callBack;
@@ -145,8 +145,8 @@
  
  @param isGet 是否获取 Whether to get
  @param open 开启、关闭 switch on switch off
- @param startH 开始小时 Start hour
- @param endH 结束小时 End hour
+ @param startH 开始小时 Start hour 0~23
+ @param endH 结束小时 End hour 0~23
  @param span 间隔【30~240】（分钟） Interval【30~240】(minutes)
  @param threshold 阈值（在设定的时间段内，没有 xxx 步数即提醒）【0~65535】 Threshold (in the set time period, there is no xxx steps to remind)【0~65535】
  @param dayFlagArr 周重复【周一,周二,周三,周四.....周日】重复为true，不重复为false  Week repeat [Monday, Tuesday, Wednesday, Thursday... Sunday] Repeat is true, not repeat is false
@@ -338,7 +338,10 @@
  主界面风格操作 Main interface style operation
 
  @param isGet 是否获取 Whether to get
- @param willShowIndex isGet == false，则需要设置显示的主界面    isGet == false, you need to set the main interface displayed
+ @param willShowIndex
+    isGet == false，则需要设置显示的主界面    isGet == false, you need to set the main interface displayed
+    count+1：显示自定义表盘  count+1: display custom dial
+    count+2：显示下载表盘  count+2: display download dial
  @param callBack status 通信状态，curShowIndex 当前显示的主界面, count 手环有多少个主界面可以选择     Communication status, curShowIndex currently displayed main interface, count how many main interfaces the bracelet can choose
  */
 + (void)jwMainInterfaceAction:(BOOL)isGet
@@ -446,6 +449,9 @@
 
 /**
  将手环数据下标，重置   Subscript the bracelet data, reset
+ 
+ waring: 请注意，您最好执行一下[JWBleDataAction jwRemoveDataTimeLessThan:],否则会出现数据重复问题
+ Please note that you'd better execute [JWBleDataAction jwRemoveDataTimeLessThan:], otherwise data duplication will occur
  */
 + (void)jwDeviceDataReset;
 
@@ -517,6 +523,7 @@
  
  */
 + (void)jwBPPrivateSet:(BOOL)open h:(NSInteger)h l:(NSInteger)l callBack:(void (^)(JWBleCommunicationStatus status))callBack;
++ (void)jwBPPrivateGetWithcallBack:(void (^)(JWBleCommunicationStatus status, BOOL open, NSInteger h, NSInteger l))callBack;
 
 /**
  闹钟功能V2  Alarm clock functionV2
@@ -624,6 +631,19 @@
 + (void)jwECGAction:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, int ecgStatus))callBack;
 
 /**
+ belt
+ 
+ callBack - ecgStatus
+     0: normal
+     1: start
+     2: end
+     3: interrupt
+     4:interrupt 10s after end
+     999: data collection
+ */
++ (void)jwBeltAction:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, int beltStatus))callBack;
+
+/**
  使手环关机
  
  Turn Off Bracelet
@@ -664,6 +684,30 @@
  
  */
 + (void)jwSyncContacts:(NSArray<NSDictionary *> *)addressBooks callBack:(void (^)(JWBleCommunicationStatus status, int index))callBack;
+
+/**
+ 同步SOS
+ 
+ addressBooks: // 最多5个，max length：5
+ @[
+    @{
+        @"name":@"xxxx", //最多15个UTF8
+        @"phone":@"1368xxxxx", //最多19个UTF8
+    }
+ ]
+ 
+ Sync Contacts
+  
+   addressBooks: // 最多5个，max length：5
+   @[
+      @{
+          @"name":@"xxxx", //Up to 15 UTF8
+          @"phone":@"1368xxxxx", //Up to 19 UTF8
+      }
+   ]
+ 
+ */
++ (void)jwSyncSOSContacts:(NSArray<NSDictionary *> *)addressBooks callBack:(void (^)(JWBleCommunicationStatus status, int index))callBack;
 
 /**
  更新界面颜色
@@ -736,7 +780,174 @@
  */
 + (void)jwDialDateFormatAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
 
+/**
+ 体温过高提醒
+ 
+ isGet: 是否获取
+ value:
+    1：范围：38.0->41.9，该值可根据客户定制进行调整
+    2：0为关闭提醒
+    3：值类型为 摄氏度
+ 
+ TemperatureReminder
+  
+   isGet: whether to get
+   value:
+      1: Range: 38.0->41.9, this value can be adjusted according to customer customization
+      2:0 is to close the reminder
+      3: The value type is Celsius
+ */
++ (void)jwTemperatureReminderAction:(BOOL)isGet value:(int)value callBack:(void (^)(JWBleCommunicationStatus status, int value))callBack;
+
+/**
+ 喝水提醒
+ 
+ isGet: 是否获取
+ open: 是否开启
+ startHour: 开始小时
+ startMinute: 开始分钟
+ endHour: 结束小时
+ endMinute: 结束分钟
+ span: 间隔 30-480分钟
+ 
+ drink water reminder
+  
+   isGet: whether to get
+   open: whether to open
+   startHour: start hour
+   startMinute: start minute
+   endHour: end hour
+   endMinute: end minute
+   span: interval 30-480 minutes
+ */
++ (void)jwDrinkWaterReminderAction:(BOOL)isGet
+                              open:(bool)open
+                         startHour:(int)startHour
+                       startMinute:(int)startMinute
+                         endHour:(int)endHour
+                         endMinute:(int)endMinute
+                         span:(int)span
+                          callBack:(void (^)(JWBleCommunicationStatus status, bool open, int startHour, int startMinute, int endHour, int endMinute, int span))callBack;
+
+/**
+ 吃药提醒
+ 
+ @param get  是否获取
+ @param alarmArr 提醒数组（如果设置）
+ @param callBack 回调
+ */
++ (void)jwMedicationReminderAction:(BOOL)get
+             alarmArr:(NSArray<JWBleMedicationReminderModel *> *)alarmArr
+             callBack:(JWBleMedicationReminderActionCallBack)callBack;
+/**
+ 女性健康设置
+     open: 开启/关闭
+     mode：类型
+     cycleDay：周期（天）
+     menstrualDay：经期（天）
+     year：年
+     month：月
+     day：日
+ 
+ Women's Health Settings
+       open: open/close
+       mode: type
+       cycleDay: cycle (days)
+       menstrualDay: menstrual period (days)
+       year: year
+       month: month
+       day: day
+ */
++ (void)jwFemaleAction:(BOOL)open mode:(JWBleFemaleStatus)mode cycleDay:(int)cycleDay menstrualDay:(int)menstrualDay year:(int)year month:(int)month day:(int)day callBack:(void (^)(JWBleCommunicationStatus status))callBack;
+
+/**
+ 天气操作 weather action
+ */
++ (void)jwWeatherAction:(JWBleWeatherModel *)weatherModel callBack:(void (^)(JWBleCommunicationStatus status))callBack;
+
+/**
+ 设置时间 SetTime
+ */
++ (void)jwSetTimeWithYear:(UInt8)year andMonth:(UInt8)month andDay:(UInt8)day andHour:(UInt8)hour andMinute:(UInt8)minute andSecond:(UInt8)second callBack:(void (^)(JWBleCommunicationStatus status))callBack;
+
+/**
+ 尿酸评估
+    @param get  是否获取
+    @param open 是否开启（get = false 生效）
+    @param privateValue 私人值（get = false 生效）【男性：238~356 μmol/L】【女性：178~297 μmol/L】，设备默认值为0
+    @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
+    @param callBack 回调
+ 
+ Uric acid assessment
+    @param get Whether to get
+    @param open Whether to open (get = false to take effect)
+    @param privateValue private value (get = false to take effect) [male: 238~356 μmol/L] [female: 178~297 μmol/L], the default value of the device is 0
+    @param privateRtc Set the private value time (get = false to take effect), the default value of the device is 0，accurate to the second
+    @param callBack callback
+ */
++ (void)jwUricAcidAction:(BOOL)get open:(BOOL)open privateValue:(int)privateValue privateRtc:(int)privateRtc callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int privateValue, int privateRtc))callBack;
+
+/**
+ 血脂评估
+    @param get  是否获取
+    @param open 是否开启（get = false 生效）
+    @param privateValue 私人值（get = false 生效）【男性：238~356 μmol/L】【女性：178~297 μmol/L】，设备默认值为0
+    @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
+    @param callBack 回调
+ 
+ blood fat assessment
+    @param get Whether to get
+    @param open Whether to open (get = false to take effect)
+    @param privateValue private value (get = false to take effect) [male: 238~356 μmol/L] [female: 178~297 μmol/L], the default value of the device is 0
+    @param privateRtc Set the private value time (get = false to take effect), the default value of the device is 0，accurate to the second
+    @param callBack callback
+ */
++ (void)jwBloodFatAction:(BOOL)get open:(BOOL)open privateValue:(int)privateValue privateRtc:(int)privateRtc callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int privateValue, int privateRtc))callBack;
+
+/**
+ 周期血糖评估
+    @param get  是否获取
+    @param open 是否开启（get = false 生效）
+    @param privateValue 私人值（get = false 生效）【男性：238~356 μmol/L】【女性：178~297 μmol/L】，设备默认值为0
+    @param privateRtc 设置私人值时间（get = false 生效），设备默认值为0，精确到秒
+    @param callBack 回调
+ 
+ BloodGlucoseCycle assessment
+    @param get Whether to get
+    @param open Whether to open (get = false to take effect)
+    @param privateValue private value (get = false to take effect) [male: 238~356 μmol/L] [female: 178~297 μmol/L], the default value of the device is 0
+    @param privateRtc Set the private value time (get = false to take effect), the default value of the device is 0，accurate to the second
+    @param callBack callback
+ */
++ (void)jwBloodGlucoseCycleAction:(BOOL)get open:(BOOL)open privateValue:(int)privateValue privateRtc:(int)privateRtc callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int privateValue, int privateRtc))callBack;
+
++ (void)jwUricAcidContinuesMonitoringAction:(BOOL)get open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
++ (void)jwUricAcidContinuesMonitoringPrivateAction:(BOOL)get open:(BOOL)open value:(int)value callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int value))callBack;
+
++ (void)jwBloodFatContinuesMonitoringAction:(BOOL)get open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
++ (void)jwBloodFatContinuesMonitoringPrivateAction:(BOOL)get open:(BOOL)open value:(int)value callBack:(void (^)(JWBleCommunicationStatus status, BOOL open, int value))callBack;
+
++ (void)jwCommonMeasurementAction:(JWBleCommonMeasurementEnum)actionEnum start:(BOOL)start;
+
+/**
+ getDeviceBattery 获取设备当前电量
+ 
+ JWBleManager.JWBleConnectStatusChangeCallBack 
+ if (deviceConnectStatus == JWBleDeviceConnectStatus_BatteryUpdate) {
+     NSLog(@"Battery：%d",JWBleManager.connectionModel.power);
+ }
+ */
++ (void)jwGetDeviceCurrentBattery;
+
 #pragma mark - 客户定制  Customer customization
+
+/**
+ 检查客户功能状态 Check Custom function status
+ 
+ @param functionEnum 功能枚举  Function enumeration
+ @return return 功能状态枚举  Functional state enumeration
+ */
++ (JWBleFunctionStatesEnum)jwCheckCustomFunctionStates:(JWBleCustomFunctionEnum)functionEnum;
 
 /**
  客户定制，消息通知，需要告知商务，客户对应的包名
@@ -744,6 +955,43 @@
  Customer customization, message notification, need to inform the business, the package name corresponding to the customer
  */
 + (void)jwCustomCustomizationNotifyAction:(BOOL)isGet open:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
+
+/**
+ 客户定制 - 设置脉冲
+     open：是否开启
+     minute：持续分钟时间 (1-15)，默认1
+     level：档位强度 (1-7)，默认1
+ 
+ Custom - set pulse
+     open: whether to open
+     minute: duration in minutes (1-15), default 1
+     level: gear strength (1-7), default 1
+ */
++ (void)jwCustomSetPulseAction:(bool)open minute:(int)minute level:(int)level callBack:(void (^)(JWBleCommunicationStatus status))callBack;
+
+/**
+ 客户定制 - 设置辅助睡眠
+     open：是否开启
+     time：时间（10、15、20、30）
+     effectTime：生效时间（1~x），必须小于time
+     level：档位，默认1
+ 
+ Customization - Setting Up Assisted Sleep
+    open: whether to open
+    time: time (10, 15, 20, 30)
+    effectTime: effective time (1~x), must be less than time
+    level: gear level, default 1
+ */
++ (void)jwCustomSleepAidAction:(bool)open time:(int)time effectTime:(int)effectTime level:(int)level callBack:(void (^)(JWBleCommunicationStatus status))callBack;
++ (void)jwCustomSleepAidAction_V2:(bool)open mode:(int)mode time:(int)time level:(int)level callBack:(void (^)(JWBleCommunicationStatus status, int deviceStatus))callBack;
+
+/**
+ 客户定制 - HRV-rmssd
+ @param isGet Whether to get
+ @param timeInterval 0：close、5、10、15
+ @param callBack callback
+ */
++ (void)jwCustomHrvRmssdAction:(BOOL)isGet timeInterval:(int)timeInterval callBack:(void (^)(JWBleCommunicationStatus status, int timeInterval))callBack;
 
 #pragma mark - 以下是生产测试方法  The following is the production test method
 /**
@@ -849,7 +1097,7 @@
 ///
 /// Get the SN ID of the device
 /// param callBack callBack description
-+ (void)jwGetDeviceSNIDWithBlock:(void (^)(JWBleCommunicationStatus status, NSString *snID))callBack;
++ (void)jwGetDeviceSNIDWithBlock:(void (^)(JWBleCommunicationStatus status, NSString *snID, NSData *oriContentData))callBack;
 
 // 设置温度 36.5 则传365
 // Set the temperature 36.5, then pass 365
@@ -882,6 +1130,7 @@
 //获取手环history数据地址
 //Get the wristband history data address
 + (void)jwGetHistoryAddress:(void (^)(JWBleCommunicationStatus status, NSData *step, NSData *sleep, NSData *hr, NSData *bp ,NSData *motion))callBack;
++ (void)jwGetHistoryAddress_oriData:(void (^)(JWBleCommunicationStatus status, NSData *oriData))callBack;
 
 //进行LE广播
 //Conduct LE broadcast
@@ -938,9 +1187,25 @@
 + (void)jwGetFirmwareBurningConfigurationWithCallBack:(void (^)(JWBleCommunicationStatus status, NSString *resultStr))callBack;
 
 /**
+ ic_euid
+ */
++ (void)jwGetIcEuidWithCallBack:(void (^)(JWBleCommunicationStatus status, NSString *resultStr))callBack;
+
+/**
  DVT检查
  */
 + (void)jwDvtCheckAction:(BOOL)isGet index:(int)showIndex callBack:(void (^)(JWBleCommunicationStatus status, int count))callBack;
+
+/**
+ 获取资源ota状态
+ */
++ (void)jwGetResourceOTAStatusWithCallBack:(void (^)(JWBleCommunicationStatus status, bool success))callBack;
+
+/**
+ 获取DebugShow
+ */
++ (void)jwGetDebugShowWithCallBack:(void (^)(JWBleCommunicationStatus status, NSData *data))callBack;
+
 
 @end
 

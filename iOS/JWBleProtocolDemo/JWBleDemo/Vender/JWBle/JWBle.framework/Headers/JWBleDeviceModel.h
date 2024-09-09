@@ -50,6 +50,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong) NSString *fontVersionCodeStr;
 
 /**
+ 资源版本号
+ resource version number
+ */
+@property(nonatomic, assign) int resourceVersionCode;
+
+/**
+ 资源版本号字符串
+ resource version number string
+ */
+@property(nonatomic, strong) NSString *resourceVersionCodeStr;
+
+/**
  mac地址
  mac address
  */
@@ -150,10 +162,16 @@ NS_ASSUME_NONNULL_BEGIN
 // 芯片类型 chip type
 @property(nonatomic, assign) int chipType;
 
+//芯片平台 0：rtk 、 100：联睿微
+@property(nonatomic, assign) int platform;
+
 @property (nonatomic, strong) NSDictionary<NSString *, id> *advertisementData;
 
 //手环可控制的开关数据  The switch data that the bracelet can control
 @property(nonatomic, strong) NSData *deviceSwitchData;
+
+//客户定制功能支持 Customer customized function support
+@property(nonatomic, strong) NSDictionary *customizedFunctionDic;
 
 @end
 

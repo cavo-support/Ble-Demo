@@ -176,19 +176,55 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property(nonatomic, copy) JWBleRealTimeTemperatureCallBack realTimeTemperatureCallBack;
 
+/**
+ 脉冲结束回调 Pulse end callback
+ */
+@property(nonatomic, copy) JWBleEndOfPulseCallBack endOfPulseCallBack;
+
+/**
+ 脉冲数据回调 Pulse data callback
+ */
+@property(nonatomic, copy) JWBlePulseDataCallBack pulseDataCallBack;
+
+/**
+ 脉冲数据回调 sauna data callback
+ */
+@property(nonatomic, copy) JWBleSaunaDataCallBack saunaDataCallBack;
+
 //Opus数据回调 -- Opus数据回调
 @property(nonatomic, copy) JWBleOpusDataCallBack opusDataCallBack;
 
 // ecg 数据回调
 @property(nonatomic, copy) JwECGDataCallBack ecgDataCallBack;
+@property(nonatomic, copy) JwECGOriDataCallBack ecgOriDataCallBack;
+
 // ecg 数据回调
 @property(nonatomic, copy) JwDeviceTestECGCallBack deviceTestECGCallBack;
 
 // ecg 数据回调
 @property(nonatomic, copy) JwECGValueDataCallBack ecgValueDataCallBack;
 
+// belt
+@property(nonatomic, copy) JwBeltValueDataCallBack beltValueDataCallBack;
+@property(nonatomic, copy) JwBeltDataCallBack beltDataCallBack;
+
 // Device switch change callback
 @property(nonatomic, copy) JwDeviceSwitchChangeCallBack deviceSwitchChangeCallBack;
+
+// 尿酸状态改变回调 uricAcid status callback
+@property(nonatomic, copy) JWBleUricAcidStatusCallBack uricAcidStatusCallBack;
+
+//血脂状态改变回调 bloodFat status callback
+@property(nonatomic, copy) JWBleBloodFatStatusCallBack bloodFatStatusCallBack;
+
+//周期血糖状态改变回调 bloodGlucoseCycle status callback
+@property(nonatomic, copy) JWBleBloodGlucoseCycleStatusCallBack bloodGlucoseCycleStatusCallBack;
+
+//设备结束点测回调 Device end Measurement callback
+@property(nonatomic, copy) JWBleEndMeasurementStatusCallBack endMeasurementStatusCallBack;
+
+//设备体脂数据回调 Device body fat data callback
+@property(nonatomic, copy) JWBleBodyFatDataCallBack bodyFatDataCallBack;
 
 
 /**

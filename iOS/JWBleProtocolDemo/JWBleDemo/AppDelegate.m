@@ -16,9 +16,9 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    JWBleManager.showLog = YES;
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     RootViewController *controllerA = [[RootViewController alloc]init];
-    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controllerA];
     
     self.window.rootViewController = nav;

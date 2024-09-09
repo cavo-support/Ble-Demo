@@ -146,6 +146,7 @@
  
  */
 + (void)jwGetSleepDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+
 /**
  计算睡眠质量 sleep quality calculation
  @param firstSleepMinute 第一段睡眠的时长
@@ -162,6 +163,36 @@
     5：完美    Perfect
  */
 + (int)jwSleepQualityCalculation:(NSInteger)firstSleepMinute deepMinute:(NSInteger)deepMinute totalMinute:(NSInteger)totalMinute wakeUpCount:(NSInteger)wakeUpCount;
+
+/**
+ 获取过滤的睡眠数据  Get filtered sleep data
+ 
+ @param yyyymmddStr  获取的日期 如：20180911  The obtained date such as: 20180911
+ @param callBack
+ {
+     "DEEP_HOUR" = "0.520";
+     "LIGHT_HOUR" = "7.170";
+     "SLEEP_LEVEL" = 2;
+     "SLEEP_TIME" = "2023/07/21 00:05";
+     "SLE_HOUR" = 07;
+     "SLE_MINUTE" = 41;
+     "WAKE_TIME" = "2023/07/21 08:00";
+     WakeUpTime = 2;
+     oneSleLine = "[
+        {\"type\":2,\"duration\":0},    //tpye： (1: light sleep, 2: deep sleep, 3: sober)；duration：unit second
+        {\"type\":2,\"duration\":201},
+        .......
+     ]";
+ }
+ */
++ (void)jwGetFilterSleepDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ oriData:
+ @"2F 01 00 01 .. ..";
+ */
++ (NSArray *)jwTestSleepOriData:(NSString *)oriData;
+
 
 /**
  获取心率数据
@@ -204,6 +235,7 @@
  */
 + (void)jwGetHRDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 + (void)jwGetHRDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetHRRawDataWithCallBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
  获取血压数据
@@ -383,6 +415,249 @@
 + (void)jwGetBloodGlucoseDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
 
 /**
+ 获取 设备脉冲数据
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ dataArr:
+ [
+    {
+     @"value": //  值
+     @"time": //时间戳
+    }
+ ]
+ 
+ Get device pulse data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+      {
+       @"value": //  value
+       @"time": //time stamp
+      }
+   ]
+ */
++ (void)jwGetPulseDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetPulseDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ Get device Sauna data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+      {
+        ....
+      }
+   ]
+ */
++ (void)jwGetSaunaDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetSaunaDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ Get device HrvRmssd data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+      {
+        ....
+      }
+   ]
+ */
++ (void)jwGetHrvRmssdDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetHrvRmssdDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ 获取 设备佩戴状态数据
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ dataArr:
+ [
+     {
+         time: 1688433457，//时间戳，精确到秒
+         wearingState: 0：未佩戴，1：已佩戴
+     },
+     ...
+ ]
+ 
+ Get device wearing status data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param callBack
+   dataArr:
+   [
+        {
+           time: 1688433457, //time stamp, accurate to seconds
+           wearingState: 0: not worn, 1: worn
+       },
+       ...
+   ]
+ */
++ (void)jwGetWearStatusDataByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
++ (void)jwGetWearStatusDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ 获取 设备尿酸【周期】数据
+ Get device uric acid [period] data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param deviceMac device mac
+   @param callBack
+       resultDic:
+         {
+               @"cycleStartTime":1688441255, //Period start time, 0:00 of the day
+               @"cycleStartActionTime":1688441255, //Cycle start time, operating time
+               @"valueTime":1688745599,//period value output time, (there are 14 output values accumulatively during day and night)
+               @"cycleEndTime":1688441255, //cycle end time, cycleStartTime + 14 days
+               @"dayStatusList":
+                       [
+                           {
+                              “t”:1689609599
+                              "day":0// 0: not up to standard, 1: up to standard,
+                              "night":0// 0: not up to standard, 1: up to standard,
+                           },
+                           ......//The total length is: 14
+                       ]
+               @"evaluationResult":1688441255, //Evaluation result. For details, please refer to [JWUricAcidEvaluationResultEnum] enumeration
+          }
+ */
++ (void)jwGetUricAcidCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
+
++ (void)jwGetUricAcidContinuousMonitoringDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ 获取 设备血脂【周期】数据
+ Get device Blood Fat [period] data
+   The date obtained by @param yyyymmddStr such as: 20180911
+   @param deviceMac device mac
+   @param callBack
+       resultDic:
+         {
+               @"cycleStartTime":1688441255, //Cycle start time.
+               @"valueTime":1688745599,//period value output time, (there are 14 output values accumulatively during day and night)
+               @"cycleEndTime":1688441255, //cycle end time, cycleStartTime + 14 days
+               @"dayStatusList":
+                       [
+                           {
+                              “t”:1689609599
+                              "day":0// 0: not up to standard, 1: up to standard,
+                              "night":0// 0: not up to standard, 1: up to standard,
+                           },
+                           ......//The total length is: 14
+                       ]
+               @"evaluationResult":1688441255, //Evaluation result. For details, please refer to [JWUricAcidEvaluationResultEnum] enumeration
+          }
+ */
++ (void)jwGetBloodFatCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
+
++ (void)jwGetBloodFatContinuousMonitoringDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ 获取 设备血糖【周期】数据
+ Get device BloodGlucoseCycle [period] data
+ The date obtained by @param yyyymmddStr such as: 20180911
+ @param deviceMac device mac
+ @param callBack
+     resultDic:
+       {
+             @"cycleStartTime":1688441255, //Period start time, 0:00 of the day
+             @"cycleStartActionTime":1688441255, //Cycle start time, operating time
+             @"valueTime":1688745599,//period value output time, (there are 14 output values accumulatively during day and night)
+             @"cycleEndTime":1688441255, //cycle end time, cycleStartTime + 14 days
+             @"dayStatusList":
+                     [
+                         {
+                            “t”:1689609599
+                            "day":0// 0: not up to standard, 1: up to standard,
+                            "night":0// 0: not up to standard, 1: up to standard,
+                         },
+                         ......//The total length is: 14
+                     ]
+             @"evaluationResult":1688441255, //Evaluation result. For details, please refer to [JWUricAcidEvaluationResultEnum] enumeration
+        }
+ */
++ (void)jwGetBloodGlucoseCycleDataByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSDictionary *resultDic))callBack;
+
+/**
+ 
+ 获取体脂数据
+ 
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+ 
+ @[
+    @{
+         @"time":        // time
+         @"weight":    // 体重    weight
+
+         NSInteger weight;  // 体重
+         NSInteger bmi;  // bmi
+         NSInteger bmiLevel;
+         NSInteger bmiMaxLevel;
+         NSInteger fm;  // 脂肪
+         NSInteger fmLevel;
+         NSInteger fmMaxLevel;
+         NSInteger tbw;  // 水分 moisture content
+         NSInteger tbwLevel;
+         NSInteger tbwMaxLevel;
+         NSInteger pw;  // 蛋白质  protein
+         NSInteger pwLevel;
+         NSInteger pwMaxLevel;
+         NSInteger mm;  // 骨盐量 BMC
+         NSInteger mmLevel;
+         NSInteger mmMaxLevel;
+         NSInteger slm;  // 肌肉量 Muscle Mass
+         NSInteger slmLevel;
+         NSInteger slmMaxLevel;
+         NSInteger bmr;  // 基础代谢量 Basal metabolic capacity
+         NSInteger bmrLevel;
+         NSInteger bmrMaxLevel;
+     },
+    @{
+        ......
+    }
+ */
++ (void)jwGetBodyFatByYYYYDDStr:(NSString *)yyyymmddStr deviceMac:(NSString *)deviceMac callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
+ 获取 微体检数据
+ 
+ @param yyyymmddStr 获取的日期 如：20180911
+ @param callBack
+    
+ @[
+    @{
+         time:1710384537
+         hrValue:86   //平均心率
+         oxygenValue:91  //血氧 低血氧(<=70%); 较低血氧(<70%~89%); 正常(>=90%)
+         stressValue:65  //压力 放松(1~29); 正常(30~59); 中等(60~79); 偏高(80~99)
+         temperatureValue:371  ;//体温 <37.2℃; 37.2~38.0℃; >= 38.0℃
+         skinTemperatureValue:316  // 皮肤温度
+         bloodVesselElasticityValue:0  //血管弹性 正常(0);
+         cardiovascularValue:0 //心血管 低风低风险(0); 中风险(1); 高风险(2);
+    }
+  ]
+ 
+ Obtain micro physical examination data
+  
+ @The date obtained by param yyyymmddStr is as follows: 20180911
+ @Param callBack
+     
+ @[
+     @{
+         Time: 1710384537
+         HrValue: 86//Average heart rate
+         OxygenValue: 91//Blood oxygen deficiency (<=70%); Lower blood oxygen (<70%~89%); Normal (>=90%)
+         StressValue: 65//Stress relaxation (1-29); Normal (30-59); Medium (60-79); High (80-99)
+         TemperatureValue: 371// Body temperature<37.2 ℃; 37.2-38.0 ℃;>= 38.0 ℃
+         SkinTemperatureValue: 316//Skin temperature
+         BloodVessel Elasticity Value: 0//Blood vessel elasticity is normal (0);
+         CardiovascularValue: 0//Cardiovascular low-risk (0); Medium risk (1); High risk (2);
+     }
+ ]
+ */
++ (void)jwGetMicroPhysicalExaminationByYYYYDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
+
+/**
  获取运动数据
 
  @param yyyymmddStr 获取的日期 如：20180911
@@ -466,6 +741,24 @@
     
  */
 + (void)jwRemoveDataTimeLessThan:(NSInteger)t dataType:(JWDeleteDataType)dataType;
+
+/**
+ 删除某个时间戳的数据
+ 
+ Delete data before a certain timestamp
+ 
+ t: 时间戳的时间 imestamp
+ dataType: JWDeleteDataType
+    
+ */
++ (void)jwRemoveDataTime:(NSInteger)t dataType:(JWDeleteDataType)dataType;
+
+/**
+ fix db，主要用于解决[JWBleAction jwDeviceDataReset]，后再次sync导致数据重复问题
+ 
+ fix db, mainly used to solve [JWBleAction jwDeviceDataReset], and then sync again, causing data duplication problem
+ */
++ (void)jwFixDBData;
 
 
 @end

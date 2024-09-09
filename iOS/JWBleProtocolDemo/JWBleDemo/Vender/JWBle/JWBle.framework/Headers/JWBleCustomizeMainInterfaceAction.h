@@ -21,6 +21,8 @@ typedef NS_ENUM (NSInteger, JWBleCustomizeMainInterfaceActionStatus) {
 
 typedef void (^JWBleCustomizeMainInterfaceActionCallBack)(JWBleCustomizeMainInterfaceActionStatus actionStatus);
 
+typedef void (^JWBleCustomizeMainInterfaceCombinedDataSuccessCallBack)(NSDictionary *dataDic);
+
 @interface JWBleCustomizeMainInterfaceAction : NSObject
 
 + (void)startWithImage:(UIImage *)bgImage
@@ -45,6 +47,17 @@ typedef void (^JWBleCustomizeMainInterfaceActionCallBack)(JWBleCustomizeMainInte
            deviceHeight:(int)deviceHeight
             configModel:(JWBleCustomizeMainInterfaceActionConfigModel *)configModel
         actionCallBack:(JWBleCustomizeMainInterfaceActionCallBack)actionCallBack
+        updateCallBack:(JWBleDFUCallBack)updateCallBack;
+/**
+ 动态图片大小
+ */
++ (void)startWithImage:(UIImage *)bgImage
+          previewImage:(UIImage *)previewImage
+          deviceWidth:(int)deviceWidth
+           deviceHeight:(int)deviceHeight
+            configModel:(JWBleCustomizeMainInterfaceActionConfigModel *)configModel
+        actionCallBack:(JWBleCustomizeMainInterfaceActionCallBack)actionCallBack
+combinedDataSuccessCallBack:(JWBleCustomizeMainInterfaceCombinedDataSuccessCallBack)combinedDataSuccessCallBack
         updateCallBack:(JWBleDFUCallBack)updateCallBack;
 
 + (unsigned char *) convertUIImageToBitmapRGBRGB:(UIImage *) image;

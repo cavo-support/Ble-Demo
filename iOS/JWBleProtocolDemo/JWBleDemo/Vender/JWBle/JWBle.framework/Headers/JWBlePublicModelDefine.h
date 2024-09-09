@@ -10,6 +10,7 @@
 #define JWBlePublicModelDefine_h
 
 #import "JWBleAlarmClockModel.h"
+#import "JWBleMedicationReminderModel.h"
 #import "JWNotDisturbModel.h"
 #import "JWCountDownModel.h"
 
