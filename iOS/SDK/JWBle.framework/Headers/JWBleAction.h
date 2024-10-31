@@ -1056,8 +1056,8 @@
 + (void)jwGetHALLWithBlock:(void (^)(JWBleCommunicationStatus status, BOOL open))callBack;
 
 //默认功能设置  Default function settings
-+ (void)jwDefaultFunctionSettings:(BOOL)bpOpen temperatureOpen:(BOOL)temperatureOpen pressureOpen:(BOOL)pressureOpen sceneControl:(BOOL)sceneControl alexa:(BOOL)alexa;
-+ (void)jwGetDefaultFunctionSettings:(void (^)(JWBleCommunicationStatus status, BOOL bpOpen, BOOL temperatureOpen, BOOL pressureOpen, BOOL sceneControl, BOOL alexa))callBack;
++ (void)jwDefaultFunctionSettings:(BOOL)bpOpen temperatureOpen:(BOOL)temperatureOpen pressureOpen:(BOOL)pressureOpen sceneControl:(BOOL)sceneControl alexa:(BOOL)alexa light:(BOOL)light;
++ (void)jwGetDefaultFunctionSettings:(void (^)(JWBleCommunicationStatus status, BOOL bpOpen, BOOL temperatureOpen, BOOL pressureOpen, BOOL sceneControl, BOOL alexa,BOOL light))callBack;
 
 //生产测试结束  End of production test
 + (void)jwProduceEnd:(void (^)(JWBleCommunicationStatus status))callBack;
@@ -1146,7 +1146,7 @@
 
 //获取生产测试功能
 //Get production test capabilities
-+ (void)jwGetFactoryFunctionWithCallBack222:(JwFactoryFunctionCallBack)callBack;
+//+ (void)jwGetFactoryFunctionWithCallBack222:(JwFactoryFunctionCallBack)callBack;
 
 //打开、关闭 手环TP功能
 + (void)jwUpdateTpModel:(BOOL)open callBack:(void (^)(JWBleCommunicationStatus status, int x, int y))callBack;

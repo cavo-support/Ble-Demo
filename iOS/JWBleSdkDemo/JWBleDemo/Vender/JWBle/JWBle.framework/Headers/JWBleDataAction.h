@@ -62,6 +62,8 @@
  */
 + (void)jwGetStepDataByYYYYMMDDStr:(NSString *)yyyymmddStr callBack:(void (^)(NSArray *dataArr))callBack;
 
++ (void)jwGetStepDataByStartT:(NSInteger)startT endT:(NSInteger)endT callBack:(void (^)(NSArray *dataArr))callBack;
+
 /**
  获取某天的计步数据
 
