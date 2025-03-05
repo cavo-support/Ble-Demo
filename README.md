@@ -1,5 +1,10 @@
 # Wo-Smart Technologies Bluetooth SDK and Demo 
 
+The Android and iOS repositories have now been separated. The new repository addresses are as follows:
+
+For Android: https://github.com/cavo-support/Ble-Demo-Android
+For iOS: https://github.com/cavo-support/Ble-Demo-iOS
+These repositories are now maintained independently, with separate links for each platform.
 
 
 ## iOS  Version Description
